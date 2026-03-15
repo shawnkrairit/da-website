@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Dej-Udom & Associates, Attorneys at Law</title>
+<meta name="description" content="Join Dej-Udom & Associates — Bangkok's established full-service law firm. We're looking for talented legal professionals who want to grow their careers in IP, immigration, corporate law, litigation, and taxation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #051b04;
+    --green-mid: #0a2810;
+    --green-light: #1a5c2e;
+    --gold: #c5a96d;
+    --gold-light: #d4bf8a;
+    --cream: #f8f7f4;
+    --warm-white: #fdfcfa;
+    --text: #1a1a1a;
+    --text-light: #555;
+    --text-muted: #888;
+    --border: #e5e2db;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--warm-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5, 27, 4, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+  .nav-logo-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.3px;
+  }
+  .nav-logo-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-top: 2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: white; }
+  .nav-contact {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(197, 169, 109, 0.35);
+    padding: 8px 22px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .nav-contact:hover {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .nav-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: rgba(255,255,255,0.7);
+    margin: 5px 0;
+    transition: all 0.3s;
+  }
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(5, 27, 4, 0.98);
+    padding: 24px 40px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--green-dark);
+  }
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(135deg, rgba(5,27,4,0.93) 0%, rgba(5,27,4,0.78) 50%, rgba(5,27,4,0.62) 100%),
+      url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80') center/cover no-repeat;
+    z-index: 1;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 160px 40px 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    max-width: 650px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 44px;
+  }
+  .hero-cta a {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+  .hero-cta a:hover { background: var(--gold-light); }
+
+  /* ===== SHARED SECTION ===== */
+  .section {
+    padding: 120px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 42px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  /* ===== WHY D&A — VALUE CARDS ===== */
+  .why-bg { background: var(--warm-white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .why-card {
+    padding: 36px 28px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    border-color: var(--gold);
+  }
+  .why-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(197, 169, 109, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .why-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .why-card h3 {
+    font-size: 16px;
+    color: var(--green-dark);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .why-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ===== CAREER PATHWAY ===== */
+  .pathway-bg {
+    background: var(--green-dark);
+    padding: 120px 0;
+  }
+  .pathway-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .pathway-bg .section-label { color: var(--gold); }
+  .pathway-bg .section-title { color: white; }
+  .pathway-bg .section-intro { color: rgba(255,255,255,0.5); }
+
+  .pathway-steps {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+  }
+  .pathway-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 12px;
+  }
+  .pathway-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(197, 169, 109, 0.15);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .pathway-circle-num {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .pathway-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(50% + 28px);
+    right: calc(-50% + 28px);
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), rgba(197, 169, 109, 0.3));
+    z-index: 1;
+  }
+  .pathway-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: white;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .pathway-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  /* ===== LIFE AT D&A — PHOTO GRID + TESTIMONIALS ===== */
+  .life-bg { background: var(--cream); }
+  .life-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 24px;
+  }
+  .life-photo {
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 240px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+  }
+  .life-photo:hover { transform: scale(1.02); }
+  .life-photo.tall {
+    grid-row: span 2;
+    min-height: 504px;
+  }
+
+  .life-quote {
+    background: var(--green-dark);
+    border-radius: 8px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .life-quote-mark {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 64px;
+    color: var(--gold);
+    line-height: 0.5;
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+  .life-quote-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .life-quote-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+  .life-quote-role {
+    font-size: 11px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  /* ===== OPEN POSITIONS ===== */
+  .positions-bg { background: var(--warm-white); }
+  .positions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .position-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .position-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .position-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .position-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
+  .position-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: var(--green-dark);
+    font-weight: 400;
+  }
+  .position-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .position-dept {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    background: rgba(197, 169, 109, 0.1);
+    color: var(--gold);
+  }
+  .position-level {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .position-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.3s;
+    flex-shrink: 0;
+  }
+  .position-arrow svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text-muted);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s;
+  }
+  .position-card.open .position-arrow {
+    transform: rotate(180deg);
+    background: rgba(197, 169, 109, 0.15);
+  }
+  .position-card.open .position-arrow svg { stroke: var(--gold); }
+
+  .position-body {
+    display: none;
+    padding: 0 32px 32px;
+    border-top: 1px solid var(--border);
+    margin-top: -1px;
+  }
+  .position-card.open .position-body { display: block; padding-top: 28px; }
+
+  .position-body h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+  .position-body h4:first-child { margin-top: 0; }
+  .position-body p, .position-body li {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+  .position-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .position-body ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 6px;
+  }
+  .position-body ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+  .position-apply {
+    display: inline-block;
+    margin-top: 28px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    cursor: pointer;
+  }
+  .position-apply:hover { background: var(--gold-light); }
+
+  /* Unsolicited application card */
+  .unsolicited-card {
+    background: var(--cream);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 48px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .unsolicited-card h3 {
+    font-size: 22px;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+  .unsolicited-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .unsolicited-card a {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    border: 1px solid var(--green-dark);
+    color: var(--green-dark);
+  }
+  .unsolicited-card a:hover {
+    background: var(--green-dark);
+    color: white;
+  }
+
+  /* ===== APPLICATION PROCESS ===== */
+  .process-bg { background: var(--cream); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 28px;
+    right: -16px;
+    width: 32px;
+    height: 2px;
+    background: var(--border);
+  }
+  .process-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .process-num span {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .process-step h3 {
+    font-size: 16px;
+    color: var(--green-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.65;
+  }
+
+  /* ===== CTA — APPLICATION FORM ===== */
+  .apply-bg { background: var(--green-dark); padding: 120px 0; }
+  .apply-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .apply-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .apply-text .section-label { color: var(--gold); }
+  .apply-text h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .apply-text p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+  .apply-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .apply-contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(197, 169, 109, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .apply-contact-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .apply-contact-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+  .apply-contact-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+  .apply-contact-value a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .apply-contact-value a:hover { color: var(--gold); }
+
+  /* Application form */
+  .apply-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 40px;
+  }
+  .apply-form h3 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(255,255,255,0.2);
+  }
+  .form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-group select option {
+    background: var(--green-dark);
+    color: white;
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* File upload */
+  .file-upload {
+    width: 100%;
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border: 2px dashed rgba(255,255,255,0.1);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .file-upload:hover {
+    border-color: var(--gold);
+    background: rgba(197, 169, 109, 0.05);
+  }
+  .file-upload-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .file-upload-text strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .file-upload input { display: none; }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #030f03;
+    padding: 72px 40px 40px;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .footer-brand-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .footer-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+  }
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-legal a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: repeat(3, 1fr); }
+    .pathway-steps { flex-wrap: wrap; }
+    .pathway-step { flex: 0 0 calc(33.33% - 12px); }
+    .pathway-step:not(:last-child)::after { display: none; }
+    .life-grid { grid-template-columns: repeat(2, 1fr); }
+    .life-photo.tall { grid-row: span 1; min-height: 240px; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-step:not(:last-child)::after { display: none; }
+    .apply-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+    .hero h1 { font-size: 36px; }
+    .hero-inner { padding: 140px 24px 80px; }
+    .section { padding: 80px 24px; }
+    .section-title { font-size: 32px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .pathway-step { flex: 0 0 calc(50% - 8px); }
+    .life-grid { grid-template-columns: 1fr; }
+    .position-left { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .apply-inner { padding: 0 24px; }
+    .apply-bg { padding: 80px 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="DA Website Landing Page.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom & Associates</span>
+      <span class="nav-logo-sub">Attorneys at Law</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="DA Website Landing Page.html">Home</a></li>
+      <li><a href="DA About Us.html">About</a></li>
+      <li><a href="DA Website Landing Page.html#practices">Expertise</a></li>
+      <li><a href="DA Insights.html">Insights</a></li>
+      <li><a href="DA Careers.html" class="active">Careers</a></li>
+    </ul>
+    <a href="DA Website Landing Page.html#contact" class="nav-contact">Contact</a>
+    <button class="nav-menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Careers</div>
+    <h1>Shape the Law.<br>Grow Your <em>Career</em></h1>
+    <p class="hero-desc">Join a firm where merit drives progression, cross-practice collaboration is the norm, and every member contributes to work that matters — for clients, for the profession, and for Thailand's legal landscape.</p>
+    <div class="hero-cta">
+      <a href="#positions">View Open Positions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY D&A ===== -->
+<div class="why-bg">
+  <div class="section">
+    <div class="section-label">Why Dej-Udom</div>
+    <h2 class="section-title">What Makes Us Different</h2>
+    <p class="section-intro">We've built a firm where talented people can do their best work — with the support, structure, and autonomy to grow on their own terms.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Forward-Thinking Practice</h3>
+        <p>We invest in legal technology and modern workflows. You'll work with tools that make practice efficient — not paperwork for the sake of it.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <h3>Merit-Based Growth</h3>
+        <p>Clear performance criteria, transparent promotion pathways, and regular feedback. Advancement here is earned — not waited for.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Cross-Practice Exposure</h3>
+        <p>Work across IP, corporate, immigration, and litigation — not in a silo. Our multidisciplinary structure means real breadth from day one.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Work-Life Balance</h3>
+        <p>Hybrid flexibility, reasonable hours, and respect for personal time. We deliver excellent work without burning people out.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Continuous Learning</h3>
+        <p>Annual CPD budget, international conference attendance, and secondment opportunities through our ILN and ASEAN network.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CAREER PATHWAY ===== -->
+<div class="pathway-bg">
+  <div class="pathway-inner">
+    <div class="section-label">Your Path</div>
+    <h2 class="section-title">Career Progression at D&A</h2>
+    <p class="section-intro">A transparent, structured pathway from your first day to partnership — with clear milestones and development support at every stage.</p>
+
+    <div class="pathway-steps">
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">1</span>
+        </div>
+        <div class="pathway-title">Intern</div>
+        <div class="pathway-desc">Foundation training, research assignments, court observation</div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">2</span>
+        </div>
+        <div class="pathway-title">Junior Associate</div>
+        <div class="pathway-desc">Supervised client work, drafting, and filings</div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">3</span>
+        </div>
+        <div class="pathway-title">Associate</div>
+        <div class="pathway-desc">Independent matter management, client relationships</div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">4</span>
+        </div>
+        <div class="pathway-title">Senior Associate</div>
+        <div class="pathway-desc">Team leadership, complex matters, business development</div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">5</span>
+        </div>
+        <div class="pathway-title">Of Counsel</div>
+        <div class="pathway-desc">Specialist advisory, mentoring, strategic input</div>
+      </div>
+      <div class="pathway-step">
+        <div class="pathway-circle">
+          <span class="pathway-circle-num">6</span>
+        </div>
+        <div class="pathway-title">Partner</div>
+        <div class="pathway-desc">Firm leadership, practice development, strategic direction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LIFE AT D&A ===== -->
+<div class="life-bg">
+  <div class="section">
+    <div class="section-label">Life at D&A</div>
+    <h2 class="section-title">More Than a Workplace</h2>
+    <p class="section-intro">A practice built on collaboration, mutual respect, and the shared belief that legal work should be intellectually rewarding.</p>
+    <div class="life-grid">
+      <div class="life-photo tall" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');"></div>
+      <div class="life-quote">
+        <div class="life-quote-mark">"</div>
+        <div class="life-quote-text">What drew me here was the chance to work across practice areas from day one. Within my first year, I was handling trademark prosecutions, assisting with corporate formations, and sitting in on immigration consultations.</div>
+        <div class="life-quote-author">Associate, IP Department</div>
+        <div class="life-quote-role">3 years at D&A</div>
+      </div>
+      <div class="life-photo" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');"></div>
+      <div class="life-photo" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80');"></div>
+      <div class="life-quote">
+        <div class="life-quote-mark">"</div>
+        <div class="life-quote-text">The partners here actually listen. When I proposed a new workflow for LTR Visa processing, it was adopted within a month. That kind of openness to ideas from junior staff is rare in Thai law firms.</div>
+        <div class="life-quote-author">Senior Associate, Immigration</div>
+        <div class="life-quote-role">5 years at D&A</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OPEN POSITIONS ===== -->
+<div class="positions-bg" id="positions">
+  <div class="section">
+    <div class="section-label">Open Positions</div>
+    <h2 class="section-title">Current Opportunities</h2>
+    <p class="section-intro">We're always looking for talented people who share our standards. Explore current openings or submit a general application below.</p>
+
+    <div class="positions-list">
+      <!-- Position 1 -->
+      <div class="position-card">
+        <div class="position-header" onclick="togglePosition(this)">
+          <div class="position-left">
+            <div class="position-title">Associate — Intellectual Property</div>
+            <div class="position-meta">
+              <span class="position-dept">IP</span>
+              <span class="position-level">2–4 years experience</span>
+            </div>
+          </div>
+          <div class="position-arrow">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="position-body">
+          <h4>About the Role</h4>
+          <p>Join our IP department handling trademark and patent prosecution, enforcement, and portfolio management for multinational clients. You'll work directly with brand owners on registrations, oppositions, and customs enforcement across Thailand.</p>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Thai lawyer's licence (or eligible to obtain one)</li>
+            <li>2–4 years' experience in intellectual property law</li>
+            <li>Strong English drafting and communication skills</li>
+            <li>Experience with DIP procedures and CIPITC litigation preferred</li>
+            <li>Familiarity with Madrid Protocol and PCT procedures is a plus</li>
+          </ul>
+          <h4>What We Offer</h4>
+          <ul>
+            <li>Competitive salary with annual review</li>
+            <li>CPD budget and conference attendance (INTA, APAA)</li>
+            <li>Cross-practice exposure across all departments</li>
+            <li>Clear pathway to Senior Associate and beyond</li>
+          </ul>
+          <a href="#apply" class="position-apply">Apply for This Role</a>
+        </div>
+      </div>
+
+      <!-- Position 2 -->
+      <div class="position-card">
+        <div class="position-header" onclick="togglePosition(this)">
+          <div class="position-left">
+            <div class="position-title">Senior Associate — Immigration</div>
+            <div class="position-meta">
+              <span class="position-dept">Immigration</span>
+              <span class="position-level">4–6 years experience</span>
+            </div>
+          </div>
+          <div class="position-arrow">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="position-body">
+          <h4>About the Role</h4>
+          <p>Lead our growing immigration practice — managing work permit and visa applications for corporate clients, coordinating LTR Visa submissions as a BOI Certified Agency, and mentoring junior team members. You'll handle a portfolio of multinational employers and high-net-worth individuals.</p>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Thai lawyer's licence</li>
+            <li>4–6 years' experience in Thai immigration law</li>
+            <li>Proven track record managing high-volume corporate immigration accounts</li>
+            <li>Fluent English (written and spoken)</li>
+            <li>Experience with BOI processes and LTR Visa applications strongly preferred</li>
+          </ul>
+          <h4>What We Offer</h4>
+          <ul>
+            <li>Senior-level compensation package</li>
+            <li>Direct client relationship management</li>
+            <li>Leadership opportunities within the immigration department</li>
+            <li>International network access through ILN and ASEAN Attorneys Alliance</li>
+          </ul>
+          <a href="#apply" class="position-apply">Apply for This Role</a>
+        </div>
+      </div>
+
+      <!-- Position 3 -->
+      <div class="position-card">
+        <div class="position-header" onclick="togglePosition(this)">
+          <div class="position-left">
+            <div class="position-title">Legal Intern — General Practice</div>
+            <div class="position-meta">
+              <span class="position-dept">All Departments</span>
+              <span class="position-level">Final year / recent graduate</span>
+            </div>
+          </div>
+          <div class="position-arrow">
+            <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="position-body">
+          <h4>About the Role</h4>
+          <p>A structured internship programme rotating across all six practice areas. You'll gain hands-on experience in IP prosecution, immigration applications, corporate filings, and court proceedings — with mentorship from senior practitioners throughout.</p>
+          <h4>Requirements</h4>
+          <ul>
+            <li>Currently enrolled in or recently graduated from a Thai law programme</li>
+            <li>Strong academic record</li>
+            <li>Working proficiency in English</li>
+            <li>Genuine interest in commercial legal practice</li>
+          </ul>
+          <h4>What We Offer</h4>
+          <ul>
+            <li>3–6 month structured programme with rotation across departments</li>
+            <li>Mentorship from senior associates and partners</li>
+            <li>Stipend and transport allowance</li>
+            <li>Fast-track consideration for full-time Junior Associate positions</li>
+          </ul>
+          <a href="#apply" class="position-apply">Apply for This Role</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unsolicited application -->
+    <div class="unsolicited-card">
+      <h3>Don't See Your Role?</h3>
+      <p>We're always interested in hearing from exceptional candidates. Send us your CV and a brief note about what you're looking for — we'll be in touch if there's a fit.</p>
+      <a href="#apply">Submit a General Application</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== APPLICATION PROCESS ===== -->
+<div class="process-bg">
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Our Process</h2>
+    <p class="section-intro">A straightforward, respectful process — we value your time and aim to move quickly.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-num"><span>1</span></div>
+        <h3>Submit Application</h3>
+        <p>Send your CV, cover letter, and any relevant writing samples through the form below.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num"><span>2</span></div>
+        <h3>Initial Review</h3>
+        <p>Our team reviews every application within 5 business days. We'll get back to you either way.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num"><span>3</span></div>
+        <h3>Interview</h3>
+        <p>A conversation with the practice head and a member of the team. We focus on fit, not trick questions.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num"><span>4</span></div>
+        <h3>Offer</h3>
+        <p>If it's mutual, we'll move to an offer with clear terms, start date, and onboarding plan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA — APPLICATION FORM ===== -->
+<div class="apply-bg" id="apply">
+  <div class="apply-inner">
+    <div class="apply-grid">
+      <div class="apply-text">
+        <div class="section-label">Get in Touch</div>
+        <h2>Interested? Let's Talk</h2>
+        <p>Whether you're applying for a specific role or just exploring opportunities, we'd like to hear from you. Send us your details and we'll be in touch.</p>
+        <div class="apply-contact-row">
+          <div class="apply-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="apply-contact-label">HR Contact</div>
+            <div class="apply-contact-value">Human Resources Department</div>
+          </div>
+        </div>
+        <div class="apply-contact-row">
+          <div class="apply-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="apply-contact-label">Email</div>
+            <div class="apply-contact-value"><a href="mailto:careers@dejudomlaw.com">careers@dejudomlaw.com</a></div>
+          </div>
+        </div>
+        <div class="apply-contact-row">
+          <div class="apply-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="apply-contact-label">Phone</div>
+            <div class="apply-contact-value"><a href="tel:+6622330055">+66 (0) 2233-0055</a></div>
+          </div>
+        </div>
+        <div class="apply-contact-row">
+          <div class="apply-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="apply-contact-label">Office</div>
+            <div class="apply-contact-value">Charn Issara Tower I, 2nd Floor<br>942/69 Rama IV Road, Bangkok 10500</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-form">
+        <h3>Submit Your Application</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+66">
+          </div>
+          <div class="form-group">
+            <label>Position of Interest</label>
+            <select>
+              <option value="" disabled selected>Select a position</option>
+              <option>Associate — IP</option>
+              <option>Senior Associate — Immigration</option>
+              <option>Legal Intern</option>
+              <option>General Application</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Upload CV</label>
+          <label class="file-upload">
+            <input type="file" accept=".pdf,.doc,.docx">
+            <div class="file-upload-text"><strong>Click to upload</strong> or drag and drop<br>PDF or Word document (max 5MB)</div>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Cover Note</label>
+          <textarea placeholder="Tell us about yourself and why you're interested in D&A..."></textarea>
+        </div>
+        <button class="form-submit">Submit Application</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Dej-Udom & Associates</div>
+        <div class="footer-brand-sub">Attorneys at Law</div>
+        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Expertise</h4>
+        <a href="DA Website Landing Page.html">Intellectual Property</a>
+        <a href="DA Website Landing Page.html">Immigration</a>
+        <a href="DA Website Landing Page.html">Corporate & Investment</a>
+        <a href="DA Website Landing Page.html">Litigation</a>
+        <a href="DA Website Landing Page.html">Taxation</a>
+        <a href="DA Website Landing Page.html">Notarial Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <a href="DA About Us.html">About Us</a>
+        <a href="DA About Us.html#team">Our People</a>
+        <a href="DA About Us.html#recognition">Recognition</a>
+        <a href="DA Insights.html">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="DA Careers.html">Careers</a>
+        <a href="DA Website Landing Page.html#contact">Contact Us</a>
+        <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  document.querySelector('.nav-menu-btn').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('mobile-open');
+  });
+
+  // Accordion toggle for position cards
+  function togglePosition(header) {
+    const card = header.closest('.position-card');
+    const wasOpen = card.classList.contains('open');
+
+    // Close all open cards
+    document.querySelectorAll('.position-card.open').forEach(function(c) {
+      c.classList.remove('open');
+    });
+
+    // Toggle clicked card
+    if (!wasOpen) {
+      card.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>

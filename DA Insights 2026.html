@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — Dej-Udom & Associates, Attorneys at Law</title>
+<meta name="description" content="Legal updates, thought leadership, and practical guidance from Dej-Udom & Associates — covering Thai IP, immigration, corporate law, litigation, and taxation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== CUSTOM PROPERTIES ===== */
+  :root {
+    --forest: #0a1a0f;
+    --forest-deep: #050d08;
+    --forest-mid: #0f2918;
+    --emerald: #1a7a3a;
+    --emerald-dim: #145a2a;
+    --gold: #d4a853;
+    --gold-light: #e0c07a;
+    --gold-muted: rgba(212, 168, 83, 0.15);
+    --cream: #f5f2ec;
+    --warm-white: #faf8f5;
+    --text-primary: #e8e4dd;
+    --text-secondary: rgba(232, 228, 221, 0.55);
+    --text-muted: rgba(232, 228, 221, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass: rgba(10, 26, 15, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+    --radius-sm: 6px;
+    --radius-lg: 20px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--forest-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  .cursor-dot {
+    position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 10000; transition: transform 0.15s ease; mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px; border: 1.5px solid var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 10000; transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; opacity: 0.5;
+  }
+  .cursor-ring.hover { width: 56px; height: 56px; border-color: var(--gold-light); opacity: 0.3; }
+  @media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled {
+    background: rgba(5, 13, 8, 0.85);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 48px; height: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled .nav-inner { height: 64px; }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 2px; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.5px; line-height: 1; }
+  .nav-logo-sub { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-weight: 500; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.3px; position: relative; transition: color 0.3s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active::after { width: 100%; }
+  .nav-contact-btn {
+    font-size: 12px; font-weight: 600; color: var(--forest); background: var(--gold); text-decoration: none;
+    padding: 10px 28px; border-radius: 100px; letter-spacing: 0.8px; text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
+  }
+  .nav-contact-btn::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--gold-light); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: inherit; }
+  .nav-contact-btn:hover::before { transform: scaleX(1); transform-origin: left; }
+  .nav-contact-btn span { position: relative; z-index: 1; }
+  .nav-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 6px; }
+  .nav-menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--text-primary); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform-origin: center; }
+  .nav-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-menu-btn.active span:nth-child(2) { opacity: 0; }
+  .nav-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .nav-links.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: rgba(5, 13, 8, 0.97); backdrop-filter: blur(24px); padding: 32px 48px; gap: 24px; border-bottom: 1px solid var(--border-subtle); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; padding: 180px 48px 100px;
+    background: var(--forest-deep); overflow: hidden;
+  }
+  .hero-gradient {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26, 122, 58, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212, 168, 83, 0.04) 0%, transparent 60%);
+    z-index: 1;
+  }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: orbFloat 12s ease-in-out infinite; }
+  .hero-orb-1 { width: 350px; height: 350px; background: rgba(26, 122, 58, 0.1); top: 15%; right: 20%; }
+  .hero-orb-2 { width: 250px; height: 250px; background: rgba(212, 168, 83, 0.05); bottom: 15%; left: 15%; animation-delay: -4s; }
+  @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(20px, -30px) scale(1.05); } 66% { transform: translate(-15px, 20px) scale(0.95); } }
+  .hero-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+  .hero-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .hero h1 { font-size: clamp(40px, 5vw, 56px); color: white; line-height: 1.1; margin-bottom: 24px; max-width: 600px; }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.85; max-width: 560px; }
+
+  /* ===== FEATURED ARTICLE ===== */
+  .featured-section { padding: 0 48px 120px; max-width: 1400px; margin: 0 auto; }
+  .featured-card {
+    display: grid; grid-template-columns: 1.1fr 1fr; border-radius: var(--radius-lg);
+    overflow: hidden; background: var(--glass); border: 1px solid var(--glass-border);
+    transition: border-color 0.4s;
+  }
+  .featured-card:hover { border-color: rgba(212, 168, 83, 0.15); }
+  .featured-image { min-height: 420px; background: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80') center/cover no-repeat; }
+  .featured-content { padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
+  .featured-badge { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .featured-badge-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--forest); background: var(--gold); padding: 5px 12px; border-radius: 100px; }
+  .featured-badge-cat { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); }
+  .featured-content h2 { font-size: 28px; color: var(--text-primary); line-height: 1.3; margin-bottom: 18px; }
+  .featured-content h2 a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; }
+  .featured-content h2 a:hover { color: var(--gold-light); }
+  .featured-summary { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 28px; }
+  .featured-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .featured-date, .featured-read { font-size: 12px; color: var(--text-muted); }
+  .featured-link { font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: gap 0.3s; }
+  .featured-link:hover { gap: 14px; }
+  .featured-link svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ===== FILTER BAR ===== */
+  .filter-section {
+    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+    background: var(--forest-mid);
+  }
+  .filter-bar {
+    max-width: 1400px; margin: 0 auto; padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-tab {
+    font-size: 12px; font-weight: 500; padding: 8px 20px; border-radius: 100px;
+    border: 1px solid var(--border-light); background: transparent; color: var(--text-secondary);
+    cursor: pointer; transition: all 0.3s; letter-spacing: 0.3px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .filter-tab:hover { border-color: var(--gold); color: var(--text-primary); }
+  .filter-tab.active { background: var(--gold); color: var(--forest); border-color: var(--gold); font-weight: 600; }
+  .filter-search { position: relative; flex-shrink: 0; }
+  .filter-search input {
+    padding: 10px 16px 10px 40px; border: 1px solid var(--border-light); border-radius: var(--radius-sm);
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: var(--text-primary);
+    background: rgba(255,255,255,0.04); width: 260px; outline: none; transition: border-color 0.3s;
+  }
+  .filter-search input:focus { border-color: var(--gold); }
+  .filter-search input::placeholder { color: var(--text-muted); }
+  .filter-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ===== ARTICLES GRID ===== */
+  .articles-section { max-width: 1400px; margin: 0 auto; padding: 72px 48px 140px; }
+  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .article-card {
+    background: var(--glass); border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--glass-border); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column;
+  }
+  .article-card:hover { transform: translateY(-6px); border-color: rgba(212, 168, 83, 0.15); box-shadow: 0 24px 64px rgba(0,0,0,0.3); }
+  .article-image { height: 200px; background-size: cover; background-position: center; position: relative; }
+  .article-cat {
+    position: absolute; top: 16px; left: 16px; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; padding: 5px 14px; border-radius: 100px;
+    background: rgba(5, 13, 8, 0.8); color: var(--gold); backdrop-filter: blur(8px);
+  }
+  .article-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+  .article-type { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 10px; }
+  .article-title { font-size: 18px; color: var(--text-primary); line-height: 1.4; margin-bottom: 12px; font-weight: 400; }
+  .article-title a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; }
+  .article-title a:hover { color: var(--gold); }
+  .article-excerpt { font-size: 13px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 20px; flex: 1; }
+  .article-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  .article-date { font-size: 11px; color: var(--text-muted); }
+  .article-read-link { font-size: 12px; font-weight: 500; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.3s; }
+  .article-read-link:hover { gap: 10px; }
+  .article-read-link svg { width: 12px; height: 12px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ===== TRENDING ===== */
+  .trending-section { margin-top: 80px; padding-top: 64px; border-top: 1px solid var(--border-subtle); }
+  .trending-title { font-size: 26px; color: var(--text-primary); margin-bottom: 36px; }
+  .trending-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .trending-card {
+    padding: 32px 24px; background: var(--glass); border-radius: var(--radius);
+    border: 1px solid var(--glass-border); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .trending-card:hover { border-color: rgba(212, 168, 83, 0.15); transform: translateY(-4px); }
+  .trending-num { font-family: 'Libre Baskerville', serif; font-size: 36px; color: var(--gold); opacity: 0.15; line-height: 1; margin-bottom: 16px; }
+  .trending-card-cat { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 8px; }
+  .trending-card-title { font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--text-primary); line-height: 1.4; margin-bottom: 8px; }
+  .trending-card-title a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; }
+  .trending-card-title a:hover { color: var(--gold); }
+  .trending-card-date { font-size: 11px; color: var(--text-muted); }
+
+  /* ===== NEWSLETTER CTA ===== */
+  .newsletter-section {
+    background: var(--forest-mid); padding: 100px 48px;
+    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+  }
+  .newsletter-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .newsletter-inner .section-label { justify-content: center; }
+  .newsletter-inner .section-label::before { display: none; }
+  .newsletter-inner h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 16px; line-height: 1.3; }
+  .newsletter-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 40px; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+  .newsletter-form input {
+    flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-light); border-radius: 100px;
+    color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.3s;
+  }
+  .newsletter-form input:focus { border-color: var(--gold); }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+  .newsletter-form button {
+    padding: 14px 32px; background: var(--gold); color: var(--forest); border: none;
+    border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px;
+    font-weight: 600; letter-spacing: 0.5px; cursor: pointer; flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .newsletter-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--forest-deep); padding: 80px 48px 48px; border-top: 1px solid var(--border-subtle); }
+  .footer-inner { max-width: 1400px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border-subtle); }
+  .footer-brand-name { font-family: 'Libre Baskerville', serif; font-size: 20px; color: white; margin-bottom: 4px; }
+  .footer-brand-sub { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
+  .footer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; max-width: 340px; }
+  .footer-col h4 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .footer-col a { display: block; font-size: 13px; color: var(--text-muted); text-decoration: none; padding: 5px 0; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+  .footer-copy { font-size: 12px; color: rgba(232, 228, 221, 0.15); }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: rgba(232, 228, 221, 0.15); text-decoration: none; transition: color 0.3s; }
+  .footer-legal a:hover { color: var(--text-secondary); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-image { min-height: 300px; }
+    .articles-grid { grid-template-columns: repeat(2, 1fr); }
+    .trending-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+    .nav-inner { padding: 0 24px; }
+    .hero { padding: 160px 24px 80px; }
+    .hero h1 { font-size: 36px; }
+    .featured-section { padding: 0 24px 80px; }
+    .featured-content { padding: 32px 28px; }
+    .featured-content h2 { font-size: 22px; }
+    .filter-bar { flex-direction: column; align-items: flex-start; padding: 20px 24px; }
+    .filter-search input { width: 100%; }
+    .articles-section { padding: 48px 24px 100px; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .trending-grid { grid-template-columns: 1fr; }
+    .newsletter-section { padding: 72px 24px; }
+    .newsletter-form { flex-direction: column; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    footer { padding: 60px 24px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="DA Landing Page 2026.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub">Attorneys at Law</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="DA Landing Page 2026.html">Home</a></li>
+      <li><a href="DA About Us 2026.html">About</a></li>
+      <li><a href="DA Landing Page 2026.html#practices">Expertise</a></li>
+      <li><a href="DA Insights 2026.html" class="active">Insights</a></li>
+      <li><a href="DA Careers 2026.html">Careers</a></li>
+    </ul>
+    <a href="DA Landing Page 2026.html#contact" class="nav-contact-btn magnetic-wrap"><span>Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-label reveal">Insights</div>
+    <h1 class="reveal reveal-delay-1">Relevant Issues.<br><em>Tangible</em> Impact</h1>
+    <p class="hero-desc reveal reveal-delay-2">Legal updates, practical guidance, and thought leadership from our team — covering the developments that matter to businesses operating in Thailand.</p>
+  </div>
+</section>
+
+<!-- ===== FEATURED ARTICLE ===== -->
+<div class="featured-section">
+  <div class="featured-card reveal">
+    <div class="featured-image"></div>
+    <div class="featured-content">
+      <div class="featured-badge">
+        <span class="featured-badge-label">Featured</span>
+        <span class="featured-badge-cat">Immigration</span>
+      </div>
+      <h2><a href="#">Thailand's LTR Visa: A Practical Guide for Qualifying Applicants in 2026</a></h2>
+      <p class="featured-summary">A comprehensive walkthrough of the Long-Term Resident Visa programme — eligibility criteria, required documentation, processing timelines, and the tax advantages that make it one of Southeast Asia's most attractive residency options.</p>
+      <div class="featured-meta">
+        <span class="featured-date">12 March 2026</span>
+        <span class="featured-read">8 min read</span>
+      </div>
+      <a href="#" class="featured-link">
+        Read article
+        <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FILTER BAR ===== -->
+<div class="filter-section">
+  <div class="filter-bar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterArticles(this, 'all')">All</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'ip')">Intellectual Property</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'immigration')">Immigration</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'corporate')">Corporate</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'litigation')">Litigation</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'tax')">Tax</button>
+    </div>
+    <div class="filter-search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search insights..." oninput="searchArticles(this.value)">
+    </div>
+  </div>
+</div>
+
+<!-- ===== ARTICLES GRID ===== -->
+<div class="articles-section">
+  <div class="articles-grid" id="articlesGrid">
+
+    <div class="article-card reveal" data-category="ip" data-title="madrid protocol thailand trademark international registration">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Legal Update</div>
+        <h3 class="article-title"><a href="#">Madrid Protocol Designations into Thailand: What Applicants Need to Know</a></h3>
+        <p class="article-excerpt">Recent changes to the DIP's examination practices for international trademark registrations designating Thailand — and how they affect filing strategy for foreign brand owners.</p>
+        <div class="article-footer">
+          <span class="article-date">5 March 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-1" data-category="corporate" data-title="boi promotion 2026 investment incentives thailand">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Thought Leadership</div>
+        <h3 class="article-title"><a href="#">BOI Investment Promotion in 2026: Updated Incentives and Eligible Activities</a></h3>
+        <p class="article-excerpt">An overview of the Board of Investment's revised promotion categories, enhanced tax incentives for targeted industries, and practical considerations for companies applying this year.</p>
+        <div class="article-footer">
+          <span class="article-date">28 February 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-2" data-category="immigration" data-title="work permit digital dwp thailand employment">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Practical Guide</div>
+        <h3 class="article-title"><a href="#">Digital Work Permits: Transitioning from Paper to the DWP System</a></h3>
+        <p class="article-excerpt">Thailand's shift to digital work permits — what employers need to update, how the verification process works, and common issues we're seeing in practice.</p>
+        <div class="article-footer">
+          <span class="article-date">20 February 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal" data-category="litigation" data-title="cipitc intellectual property court thailand enforcement">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Case Commentary</div>
+        <h3 class="article-title"><a href="#">Enforcing IP Rights in the CIPITC: Recent Developments in Damages Awards</a></h3>
+        <p class="article-excerpt">An analysis of recent Central Intellectual Property and International Trade Court decisions on damages calculation in trademark infringement cases — and what they signal for rights holders.</p>
+        <div class="article-footer">
+          <span class="article-date">14 February 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-1" data-category="tax" data-title="transfer pricing thailand revenue department audit">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Legal Update</div>
+        <h3 class="article-title"><a href="#">Transfer Pricing in Thailand: Preparing for Revenue Department Audits</a></h3>
+        <p class="article-excerpt">With the Revenue Department increasing its focus on related-party transactions, here's what multinational groups operating in Thailand should have in place.</p>
+        <div class="article-footer">
+          <span class="article-date">7 February 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-2" data-category="ip" data-title="patent prosecution highway pph thailand japan">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Practical Guide</div>
+        <h3 class="article-title"><a href="#">Using the Patent Prosecution Highway to Accelerate Thai Patent Grants</a></h3>
+        <p class="article-excerpt">A step-by-step guide to leveraging the PPH agreement between the Thai DIP and the Japan Patent Office — eligibility, documentation, and typical timelines.</p>
+        <div class="article-footer">
+          <span class="article-date">30 January 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal" data-category="corporate" data-title="foreign business act fbl licence thailand market entry">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Thought Leadership</div>
+        <h3 class="article-title"><a href="#">Navigating the Foreign Business Act: When Do You Need an FBL?</a></h3>
+        <p class="article-excerpt">A practical breakdown of which business activities require a Foreign Business Licence in Thailand, common structuring approaches, and the application process.</p>
+        <div class="article-footer">
+          <span class="article-date">22 January 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-1" data-category="immigration" data-title="smart visa thailand targeted industries s-curve">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Legal Update</div>
+        <h3 class="article-title"><a href="#">Smart Visa Update: Expanded Categories and Streamlined Processing</a></h3>
+        <p class="article-excerpt">Thailand's Smart Visa programme has expanded its eligible industries and simplified the endorsement process — here's what qualifies and how to apply.</p>
+        <div class="article-footer">
+          <span class="article-date">15 January 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-card reveal reveal-delay-2" data-category="litigation" data-title="arbitration enforcement foreign awards new york convention thailand">
+      <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&q=80');"></div>
+      <div class="article-body">
+        <div class="article-type">Case Commentary</div>
+        <h3 class="article-title"><a href="#">Enforcing Foreign Arbitral Awards in Thailand Under the New York Convention</a></h3>
+        <p class="article-excerpt">Key considerations for parties seeking to enforce international arbitral awards in Thai courts — procedural requirements, common grounds for challenge, and recent court trends.</p>
+        <div class="article-footer">
+          <span class="article-date">8 January 2026</span>
+          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Trending -->
+  <div class="trending-section reveal">
+    <h2 class="trending-title">Trending Topics</h2>
+    <div class="trending-grid">
+      <div class="trending-card reveal reveal-delay-1">
+        <div class="trending-num">01</div>
+        <div class="trending-card-cat">Immigration</div>
+        <div class="trending-card-title"><a href="#">LTR Visa Programme</a></div>
+        <div class="trending-card-date">5 articles this quarter</div>
+      </div>
+      <div class="trending-card reveal reveal-delay-2">
+        <div class="trending-num">02</div>
+        <div class="trending-card-cat">Corporate</div>
+        <div class="trending-card-title"><a href="#">BOI Promotion Updates</a></div>
+        <div class="trending-card-date">3 articles this quarter</div>
+      </div>
+      <div class="trending-card reveal reveal-delay-3">
+        <div class="trending-num">03</div>
+        <div class="trending-card-cat">IP</div>
+        <div class="trending-card-title"><a href="#">Thai Trademark Reform</a></div>
+        <div class="trending-card-date">4 articles this quarter</div>
+      </div>
+      <div class="trending-card reveal reveal-delay-4">
+        <div class="trending-num">04</div>
+        <div class="trending-card-cat">Tax</div>
+        <div class="trending-card-title"><a href="#">Transfer Pricing Compliance</a></div>
+        <div class="trending-card-date">2 articles this quarter</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NEWSLETTER CTA ===== -->
+<div class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="section-label reveal">Stay Informed</div>
+    <h2 class="reveal reveal-delay-1">Legal Updates, Delivered</h2>
+    <p class="newsletter-desc reveal reveal-delay-2">Subscribe to receive our latest insights, legal updates, and practical guides directly — typically once or twice a month, never spam.</p>
+    <div class="newsletter-form reveal reveal-delay-3">
+      <input type="email" placeholder="Your email address">
+      <button class="magnetic-wrap">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Dej-Udom & Associates</div>
+        <div class="footer-brand-sub">Attorneys at Law</div>
+        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Expertise</h4>
+        <a href="DA Landing Page 2026.html#practices">Intellectual Property</a>
+        <a href="DA Landing Page 2026.html#practices">Immigration</a>
+        <a href="DA Landing Page 2026.html#practices">Corporate & Investment</a>
+        <a href="DA Landing Page 2026.html#practices">Litigation</a>
+        <a href="DA Landing Page 2026.html#practices">Taxation</a>
+        <a href="DA Landing Page 2026.html#practices">Notarial Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <a href="DA About Us 2026.html">About Us</a>
+        <a href="DA About Us 2026.html#team">Our People</a>
+        <a href="DA About Us 2026.html#recognition">Recognition</a>
+        <a href="DA Insights 2026.html">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="DA Careers 2026.html">Careers</a>
+        <a href="DA Landing Page 2026.html#contact">Contact Us</a>
+        <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  (function() {
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const dot = document.querySelector('.cursor-dot');
+      const ring = document.querySelector('.cursor-ring');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx - 4 + 'px';
+        dot.style.top = my - 4 + 'px';
+      });
+      function animateRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = rx - 18 + 'px';
+        ring.style.top = ry - 18 + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button, .article-card, .trending-card, .magnetic-wrap').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
+        el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+      });
+    }
+  })();
+
+  // Nav scroll
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  document.querySelector('.nav-menu-btn').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('mobile-open');
+  });
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+  // Filter articles
+  function filterArticles(btn, category) {
+    document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    var cards = document.querySelectorAll('.article-card');
+    cards.forEach(function(card) {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Search articles
+  function searchArticles(query) {
+    var q = query.toLowerCase().trim();
+    var cards = document.querySelectorAll('.article-card');
+    if (q.length > 0) {
+      document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelector('.filter-tab').classList.add('active');
+    }
+    cards.forEach(function(card) {
+      var title = card.dataset.title || '';
+      var text = card.querySelector('.article-title').textContent.toLowerCase();
+      var excerpt = card.querySelector('.article-excerpt').textContent.toLowerCase();
+      if (q.length === 0 || title.includes(q) || text.includes(q) || excerpt.includes(q)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

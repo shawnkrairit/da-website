@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dej-Udom & Associates — Attorneys at Law, Bangkok</title>
+<meta name="description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #051b04;
+    --green-mid: #0a2810;
+    --green-light: #1a5c2e;
+    --gold: #c5a96d;
+    --gold-light: #d4bf8a;
+    --cream: #f8f7f4;
+    --warm-white: #fdfcfa;
+    --text: #1a1a1a;
+    --text-light: #555;
+    --text-muted: #888;
+    --border: #e5e2db;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--warm-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  /* Focus indicators */
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ===== NAV (DRPB-style: clean horizontal) ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5, 27, 4, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; }
+
+  .nav-logo-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-logo-sub {
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: white; }
+
+  .nav-contact {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(197, 169, 109, 0.35);
+    padding: 8px 22px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .nav-contact:hover {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .nav-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: rgba(255,255,255,0.7);
+    margin: 5px 0;
+    transition: all 0.3s;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px; left: 0; right: 0;
+    background: rgba(5, 27, 4, 0.98);
+    padding: 24px 40px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== HERO (DRPB-inspired: full-width image with text overlay) ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--green-dark);
+  }
+
+  /* Background image with overlay */
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(135deg, rgba(5,27,4,0.92) 0%, rgba(5,27,4,0.75) 50%, rgba(5,27,4,0.6) 100%),
+      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 160px 40px 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-text {
+    max-width: 700px;
+  }
+
+  .hero-text h1 {
+    font-size: 56px;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-text .hero-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    max-width: 540px;
+    margin-bottom: 44px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 72px;
+  }
+
+  .hero-cta a {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .hero-cta .cta-primary {
+    background: var(--gold);
+    color: var(--green-dark);
+  }
+
+  .hero-cta .cta-primary:hover { background: var(--gold-light); }
+
+  .hero-cta .cta-secondary {
+    color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .hero-cta .cta-secondary:hover { border-color: white; }
+
+  /* Baker McKenzie-style large stat callouts */
+  .hero-stats {
+    display: flex;
+    gap: 64px;
+  }
+
+  .hero-stat {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .hero-stat::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 4px; bottom: 4px;
+    width: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-stat .number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 40px;
+    color: white;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* ===== SECTION SHARED ===== */
+  .section {
+    padding: 120px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: 42px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .section-intro {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  /* ===== PRACTICE AREAS (DRPB-inspired image cards) ===== */
+  .practices-bg { background: var(--cream); }
+
+  .practices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .practice-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .practice-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+  }
+
+  /* Image backgrounds for each practice area */
+  .practice-card .card-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s;
+  }
+
+  .practice-card:hover .card-bg {
+    transform: scale(1.05);
+  }
+
+  .practice-card .card-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(5,27,4,0.92) 0%, rgba(5,27,4,0.55) 50%, rgba(5,27,4,0.25) 100%);
+    transition: background 0.3s;
+  }
+
+  .practice-card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(5,27,4,0.95) 0%, rgba(5,27,4,0.65) 50%, rgba(5,27,4,0.35) 100%);
+  }
+
+  .practice-card .card-content {
+    position: relative;
+    z-index: 2;
+    padding: 32px 28px;
+  }
+
+  .practice-card .card-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .practice-card h3 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .practice-card .card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s, margin 0.3s;
+  }
+
+  .practice-card:hover .card-desc {
+    max-height: 100px;
+    margin-bottom: 12px;
+  }
+
+  .practice-card .card-arrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .practice-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Notarial - smaller treatment */
+  .practice-card.supporting {
+    min-height: 240px;
+  }
+
+  /* ===== VALUES (DRPB-inspired three pillars) ===== */
+  .values-section {
+    background: white;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .value-item {
+    padding: 48px 40px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .value-item:last-child {
+    border-right: none;
+  }
+
+  .value-item .value-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 56px;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .value-item .value-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .value-item .value-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  /* ===== DIFFERENTIATORS ===== */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .diff-item {
+    padding: 40px 40px 40px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .diff-item:nth-child(even) {
+    padding-left: 40px;
+    border-left: 1px solid var(--border);
+  }
+
+  .diff-item .diff-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: var(--green-dark);
+  }
+
+  .diff-item .diff-text { flex: 1; }
+
+  .diff-item .diff-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .diff-item .diff-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* ===== INDUSTRIES (dark section) ===== */
+  .industries-bg {
+    background: var(--green-dark);
+    padding: 100px 40px;
+  }
+
+  .industries-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .industries-inner .section-title {
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  .industry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .industry-tag {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 12px 24px;
+    border-radius: 40px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .industry-tag:hover {
+    color: white;
+    border-color: var(--gold);
+    background: rgba(197, 169, 109, 0.1);
+  }
+
+  /* ===== CREDENTIALS ===== */
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .credential-card {
+    text-align: center;
+    padding: 36px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: white;
+    transition: all 0.3s;
+  }
+
+  .credential-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .credential-card .cred-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .credential-card .cred-org {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .credential-card .cred-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ===== REPRESENTATIVE MATTERS ===== */
+  .matters-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+  }
+
+  .matter-item {
+    display: grid;
+    grid-template-columns: 200px 1fr 160px;
+    gap: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .matter-item .matter-area {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+  }
+
+  .matter-item .matter-desc {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .matter-item .matter-team {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* ===== NETWORK ===== */
+  .network-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .network-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+  }
+
+  .network-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  .network-card h4 {
+    font-size: 18px;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+
+  .network-card .network-stat {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .network-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ===== CTA (Deloitte-inspired: form + contact) ===== */
+  .cta-section {
+    background: var(--green-dark);
+    padding: 100px 40px;
+  }
+
+  .cta-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .cta-text h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .cta-text p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    margin-bottom: 36px;
+  }
+
+  .cta-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cta-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .cta-contact-row .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .cta-contact-row a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .cta-contact-row a:hover { color: white; }
+
+  /* Deloitte-inspired contact form */
+  .cta-form {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 36px;
+  }
+
+  .cta-form h3 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field.full {
+    grid-column: 1 / -1;
+  }
+
+  .form-field label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .form-field select option {
+    background: var(--green-dark);
+    color: white;
+  }
+
+  .form-field textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .form-submit {
+    margin-top: 20px;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    width: 100%;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #030f03;
+    padding: 64px 40px 40px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+  }
+
+  .footer-brand .footer-logo {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 17px;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  .footer-brand .footer-tagline {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .footer-col h5 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: white; }
+
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ===== PRACTICE AREA OVERLAY ===== */
+  .pa-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s, visibility 0.35s;
+  }
+
+  .pa-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .pa-backdrop {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(5, 27, 4, 0.7);
+    backdrop-filter: blur(4px);
+  }
+
+  .pa-panel {
+    position: absolute;
+    top: 0; right: 0;
+    width: 68%;
+    max-width: 920px;
+    height: 100%;
+    background: white;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.15);
+  }
+
+  .pa-overlay.active .pa-panel {
+    transform: translateX(0);
+  }
+
+  .pa-close {
+    position: absolute;
+    top: 28px; right: 32px;
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-light);
+    transition: all 0.2s;
+    z-index: 10;
+  }
+
+  .pa-close:hover {
+    background: var(--cream);
+    border-color: var(--text-muted);
+  }
+
+  .pa-header {
+    background: var(--green-dark);
+    padding: 60px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pa-header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .pa-header .pa-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .pa-header h2 {
+    font-size: 34px;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .pa-header .pa-overview {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  .pa-subnav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  .pa-subnav-btn {
+    padding: 18px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+  }
+
+  .pa-subnav-btn:hover { color: var(--text); }
+
+  .pa-subnav-btn.active {
+    color: var(--green-dark);
+    border-bottom-color: var(--green-dark);
+  }
+
+  .pa-content { padding: 48px; }
+
+  .pa-sub-section { display: none; }
+
+  .pa-sub-section.active {
+    display: block;
+    animation: fadeUp 0.3s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pa-sub-section h3 {
+    font-size: 24px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .pa-sub-section .pa-body,
+  .pa-content-single .pa-body {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.85;
+    margin-bottom: 32px;
+  }
+
+  .pa-sub-section .pa-body p,
+  .pa-content-single .pa-body p {
+    margin-bottom: 16px;
+  }
+
+  .pa-content-single { padding: 48px; }
+
+  .pa-content-single h3 {
+    font-size: 24px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .pa-handles {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-top: 32px;
+  }
+
+  .pa-handles .handles-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .pa-handles .handles-list {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .pa-cta {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .pa-cta-btn {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: all 0.2s;
+  }
+
+  .pa-cta-btn.primary {
+    background: var(--green-dark);
+    color: white;
+  }
+
+  .pa-cta-btn.primary:hover { background: var(--green-mid); }
+
+  .pa-cta-btn.secondary {
+    background: none;
+    color: var(--green-dark);
+    border: 1px solid var(--border);
+  }
+
+  .pa-cta-btn.secondary:hover { border-color: var(--green-dark); }
+
+  /* Prevent body scroll */
+  body.overlay-open { overflow: hidden; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .hero-text h1 { font-size: 42px; }
+    .practices-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: repeat(3, 1fr); }
+    .diff-grid { grid-template-columns: 1fr; }
+    .diff-item:nth-child(even) { padding-left: 0; border-left: none; }
+    .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+    .matter-item { grid-template-columns: 1fr; gap: 8px; }
+    .cta-inner { grid-template-columns: 1fr; gap: 48px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .pa-panel { width: 85%; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+    .hero-text h1 { font-size: 32px; }
+    .hero-inner { padding: 120px 24px 80px; }
+    .hero-stats { gap: 32px; flex-wrap: wrap; }
+    .hero-cta { flex-direction: column; }
+    .hero-cta a { text-align: center; }
+    .section { padding: 80px 24px; }
+    .section-title { font-size: 30px; }
+    .practices-grid { grid-template-columns: 1fr; }
+    .practice-card { min-height: 260px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .value-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .value-item:last-child { border-bottom: none; }
+    .credentials-grid { grid-template-columns: 1fr; }
+    .network-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+    .form-row { grid-template-columns: 1fr; }
+    .pa-panel { width: 100%; }
+    .pa-header { padding: 48px 28px 36px; }
+    .pa-header h2 { font-size: 26px; }
+    .pa-subnav { padding: 0 28px; overflow-x: auto; }
+    .pa-content, .pa-content-single { padding: 32px 28px; }
+    .pa-close { top: 16px; right: 16px; }
+    .matter-item .matter-team { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="DA Website Landing Page.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub">Attorneys at Law</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="DA Website Landing Page.html" class="active">Home</a></li>
+      <li><a href="DA About Us.html">About</a></li>
+      <li><a href="#practices">Expertise</a></li>
+      <li><a href="DA Insights.html">Insights</a></li>
+      <li><a href="DA Careers.html">Careers</a></li>
+    </ul>
+    <a href="#contact" class="nav-contact">Contact</a>
+    <button class="nav-menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO (DRPB-style: image background with text overlay) ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Legal expertise <em>with a commercial edge</em></h1>
+      <p class="hero-desc">A partner-led law firm in Bangkok advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+      <div class="hero-cta">
+        <a href="#practices" class="cta-primary">Explore Our Expertise</a>
+        <a href="#contact" class="cta-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="number">40</div>
+          <div class="label">Years of Practice</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">80%+</div>
+          <div class="label">Multinational Clients</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">67</div>
+          <div class="label">Countries via ILN</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">40</div>
+          <div class="label">Licensed Attorneys</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY VALUES (DRPB-style pillars) ===== -->
+<div class="values-section">
+  <div class="values-grid">
+    <div class="value-item">
+      <div class="value-number">5</div>
+      <div class="value-title">Practice Areas</div>
+      <div class="value-desc">IP, immigration, corporate, litigation, and tax teams work under one roof on cross-cutting matters.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-number">2</div>
+      <div class="value-title">Working Languages</div>
+      <div class="value-desc">Thai and English fluency across every practice area, court filing, and government submission.</div>
+    </div>
+    <div class="value-item">
+      <div class="value-number">1</div>
+      <div class="value-title">BOI Certified Agency</div>
+      <div class="value-desc">Authorised to submit LTR Visa applications directly to the Board of Investment.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRACTICE AREAS (DRPB-style image cards) ===== -->
+<div class="practices-bg" id="practices">
+  <div class="section">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-intro">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge across technology, manufacturing, energy, life sciences, and consumer sectors.</p>
+
+    <div class="practices-grid">
+
+      <div class="practice-card" onclick="openPracticeArea('ip')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">01</div>
+          <h3>Intellectual Property</h3>
+          <p class="card-desc">Trademark, patent, and copyright protection across Thailand and ASEAN.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card" onclick="openPracticeArea('immigration')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">02</div>
+          <h3>Immigration & Relocation</h3>
+          <p class="card-desc">Work permits, visas, and Long-Term Resident (LTR) Visa. BOI Certified Agency.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card" onclick="openPracticeArea('corporate')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">03</div>
+          <h3>Corporate & Investment</h3>
+          <p class="card-desc">Market entry, M&A, BOI promotion, and ongoing compliance in Thailand.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card" onclick="openPracticeArea('litigation')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">04</div>
+          <h3>Litigation & Dispute Resolution</h3>
+          <p class="card-desc">Complex disputes across civil, criminal, and specialised courts. Arbitration and mediation.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card" onclick="openPracticeArea('tax')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">05</div>
+          <h3>Taxation</h3>
+          <p class="card-desc">Corporate tax, VAT, customs, transfer pricing, and BOI tax incentives.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card supporting" onclick="openPracticeArea('notarial')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">06</div>
+          <h3>Notarial Services</h3>
+          <p class="card-desc">Document certification, authentication, and sworn statements.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRACTICE AREA OVERLAYS ===== -->
+
+<!-- IP -->
+<div class="pa-overlay" id="pa-ip">
+  <div class="pa-backdrop" onclick="closePracticeArea('ip')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Intellectual Property</h2>
+      <p class="pa-overview">Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation. We act for multinational brand owners, technology companies, pharmaceutical groups, and FMCG businesses managing portfolios that span multiple jurisdictions and asset classes.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'ip','trademark')">Trademark</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','patent')">Patent</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','overseas')">Overseas IP</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="ip-trademark">
+        <h3>Trademark</h3>
+        <div class="pa-body">
+          <p>We advise on the full lifecycle of trademark protection under Thai law: clearance searches, filing, prosecution, opposition and cancellation proceedings, renewals, assignments, and licensing. Our trademark practice extends to service marks, house marks, certification marks, and collective marks.</p>
+          <p>Where brand owners face infringement, we coordinate enforcement through the Department of Intellectual Property, Thai Customs, and the Central Intellectual Property and International Trade Court. This includes border measures, customs seizures, and civil litigation to secure injunctive relief and damages.</p>
+          <p>For companies entering the Thai market, we provide clearance opinions and filing strategies that account for the classification requirements and examination practices of the Thai DIP. For global brands already operating here, we manage renewal portfolios, recordals, and watch services to maintain and defend existing registrations.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Registration and prosecution, opposition and cancellation, enforcement and anti-counterfeiting, customs recordals, licensing and assignments, passing off, IP commercialisation, portfolio management and renewals.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Trademark%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="ip-patent">
+        <h3>Patent</h3>
+        <div class="pa-body">
+          <p>We advise on patent protection for inventions, industrial designs, and petty patents (utility models) under the Thai Patent Act.</p>
+          <p>For invention patents, we handle drafting and filing of applications, prosecution through the Department of Intellectual Property, responses to official actions and examiner objections, and maintenance of granted patents through the 20-year term. Thailand offers several mechanisms to accelerate substantive examination — including the ASEAN Patent Examination Co-operation (ASPEC) programme, the Patent Prosecution Highway (PPH) with the Japan Patent Office, and the Target Patent Fast-Track.</p>
+          <p>For PCT national phase applications, we manage entry into the Thai national phase within the prescribed deadlines, coordinate Thai-language translation of specifications and claims, and prosecute applications through examination.</p>
+          <p>Design patents protect the ornamental or aesthetic aspects of industrial products, with a 10-year term. Petty patents cover functional innovations that may not meet the inventive step threshold for a full invention patent, with a 6-year initial term extendable to 10 years.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Invention patents, design patents, petty patents, PCT national phase entry, patent prosecution and official action responses, accelerated examination (ASPEC, PPH, Target Patent), annuity management, assignments and licence recordals.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Patent%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="ip-overseas">
+        <h3>Overseas IP</h3>
+        <div class="pa-body">
+          <p>For clients who need IP protection beyond Thailand, our overseas filing desk coordinates trademark and patent applications across ASEAN and internationally.</p>
+          <p>We work as the instructing firm, liaising with trusted local counsel in each jurisdiction while maintaining a single point of contact for the client. This is particularly relevant for multinational companies that use Bangkok as a regional hub and need consistent portfolio management across Southeast Asia.</p>
+          <p>Through our long-standing memberships in INTA, APAA, and the International Lawyers Network, we have direct access to vetted practitioners in over 50 countries. This allows us to coordinate multi-jurisdiction filings, manage prosecution timelines, and consolidate reporting.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMMIGRATION -->
+<div class="pa-overlay" id="pa-immigration">
+  <div class="pa-backdrop" onclick="closePracticeArea('immigration')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Immigration & Relocation</h2>
+      <p class="pa-overview">Our Immigration and Relocation Department advises on all aspects of employing foreign nationals in Thailand — from obtaining work permits and visas before arrival through to long-term residency planning. Since March 2023, the firm has been appointed as a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'immigration','workpermits')">Work Permits</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','visas')">Visas</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','ltr')">LTR Visa</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="immigration-workpermits">
+        <h3>Work Permits</h3>
+        <div class="pa-body">
+          <p>We handle new work permit applications, renewals, amendments, and cancellations under both the BOI single-window system and the standard process through the Department of Employment.</p>
+          <p>For BOI-promoted companies, applications are processed through the Thailand Investment and Expat Services Center (TIESC) using the online single-window system. This covers new work permits (both long-term and short-term), renewals, temporary 30-day permits, and cancellations.</p>
+          <p>For non-BOI companies, we handle applications through the TIESC or Employment Department directly. This includes the pre-approval (WP3) route, the standard Bor Thor 25 process, renewals, and amendments for changes of workplace or personal particulars.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">BOI and non-BOI work permit applications, renewals and amendments, Digital Work Permits (DWP), temporary and urgent work permits, work permit cancellations, change of employer, medical certificate coordination.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Work%20Permit%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="immigration-visas">
+        <h3>Visas</h3>
+        <div class="pa-body">
+          <p>We advise on the full range of visa categories available to foreign nationals working or residing in Thailand.</p>
+          <p>For most business visa matters, this means the Non-Immigrant B visa — processed simultaneously with the work permit application for employees of BOI-promoted companies, or through the Immigration Bureau for non-BOI companies.</p>
+          <p>Beyond business visas, we assist with dependent visas for family members, retirement visas, the Smart Visa for qualified professionals in targeted industries, and permanent residency applications. We also handle re-entry permits, 90-day reporting, transfer of visa endorsements, and overseas visa support letters.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Non-Immigrant B and O visas, visa extensions and renewals, dependent visas, retirement visas, Smart Visa, permanent residency, re-entry permits, 90-day reporting, transfer of endorsement (TOE), overseas visa support letters.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="immigration-ltr">
+        <h3>Long-Term Resident (LTR) Visa</h3>
+        <div class="pa-body">
+          <p>The LTR Visa is a 10-year visa programme administered by the Board of Investment, designed for high-potential individuals who want to live and work in Thailand long-term. The visa is available to four categories: wealthy global citizens, wealthy pensioners, work-from-Thailand professionals, and highly-skilled professionals.</p>
+          <p>As a BOI Certified Agency, we manage the entire LTR application process — from initial eligibility assessment through document preparation, submission to the LTR Unit, and obtaining the visa stamp and Digital Work Permit.</p>
+          <p>The LTR Visa carries significant privileges: a 10-year renewable visa, exemption from the 4:1 Thai-to-foreigner employment ratio, airport fast-track, annual reporting instead of 90-day, reduced income tax of 17% for highly-skilled professionals, and tax exemption on overseas income.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">LTR Visa eligibility assessment and pre-screening, application preparation and filing, coordination with the BOI LTR Unit, visa stamp and Digital Work Permit issuance, dependent applications, LTR Visa renewals, annual reporting.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=LTR%20Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CORPORATE -->
+<div class="pa-overlay" id="pa-corporate">
+  <div class="pa-backdrop" onclick="closePracticeArea('corporate')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Corporate & Investment</h2>
+      <p class="pa-overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand. We handle the legal, regulatory, and administrative requirements across the full business lifecycle.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')">Market Entry</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')">M&A</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')">Compliance</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="corporate-entry">
+        <h3>Market Entry & Formation</h3>
+        <div class="pa-body">
+          <p>We advise on the most appropriate legal structure for entering the Thai market, taking into account the Foreign Business Act, BOI incentives, and the client's commercial objectives.</p>
+          <p>This includes incorporation of Thai limited companies and public companies, registration of branch offices and representative offices, structuring of joint ventures with Thai partners, and applications for Foreign Business Licences (FBL).</p>
+          <p>For companies eligible for investment promotion, we prepare and submit applications to the Board of Investment (BOI) and manage the post-approval process including obtaining the BOI promotion certificate and applying for tax and non-tax incentives.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Company incorporation, joint venture structuring, Foreign Business Licence (FBL) applications, BOI promotion applications, IEAT privileges, factory licences, import/export permits, business licensing.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Market%20Entry%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="corporate-ma">
+        <h3>Transactions & M&A</h3>
+        <div class="pa-body">
+          <p>We advise on acquisitions, disposals, mergers, and corporate restructuring transactions in Thailand.</p>
+          <p>Our work covers the full transaction cycle: structuring, due diligence, negotiation and drafting of transaction documents, regulatory filings and approvals, and completion mechanics. We also advise on post-completion matters including integration, regulatory notifications, and transfer of licences.</p>
+          <p>For cross-border transactions, we coordinate with the client's international counsel and provide Thai-law opinions on foreign ownership restrictions, exchange control requirements, and tax implications.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Mergers and acquisitions, due diligence, share and asset purchase agreements, shareholders' agreements, corporate restructuring, joint venture agreements, regulatory approvals, cross-border transaction support.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=M%26A%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="corporate-compliance">
+        <h3>Ongoing Compliance & Licensing</h3>
+        <div class="pa-body">
+          <p>For companies already operating in Thailand, we provide ongoing corporate secretarial and regulatory compliance support.</p>
+          <p>This includes annual returns, minutes of board and shareholder meetings, directorship and shareholder changes, capital increases, and amendments to the memorandum and articles of association. We also advise on regulatory compliance matters specific to the client's industry.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Corporate secretarial services, annual compliance filings, board and shareholder meeting administration, BOI compliance and reporting, licence renewals, regulatory advisory, monthly retainer arrangements.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LITIGATION -->
+<div class="pa-overlay" id="pa-litigation">
+  <div class="pa-backdrop" onclick="closePracticeArea('litigation')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Litigation & Dispute Resolution</h2>
+      <p class="pa-overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation proceedings.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>The department represents clients from the Courts of First Instance through the Courts of Appeal to the Supreme Court, with particular depth in commercial disputes, employment and labour matters, intellectual property and international trade cases, and tax disputes.</p>
+        <p>For disputes involving international parties, we regularly handle matters before the Thai Arbitration Institute and advise on enforcement of foreign arbitral awards under the New York Convention.</p>
+        <p>Our approach is to give clients a clear assessment of the merits, likely timeline, and costs at the outset — and to pursue resolution through the most practical and cost-effective route available.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Civil and commercial litigation, criminal defence, labour and employment disputes, IP and international trade court, tax court, bankruptcy, domestic and international arbitration, mediation, enforcement of foreign judgments and arbitral awards.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAXATION -->
+<div class="pa-overlay" id="pa-tax">
+  <div class="pa-backdrop" onclick="closePracticeArea('tax')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('tax')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Taxation</h2>
+      <p class="pa-overview">We advise on all matters relating to taxation in Thailand, covering both the planning and compliance aspects that businesses and individuals encounter when operating in or investing into the country.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>On the corporate side, this includes structuring advice on corporate income tax, VAT, customs and excise duties, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments, advise on the application of Thailand's double tax treaties (in force with 61 countries), and represent clients in dealings with the Revenue Department.</p>
+        <p>For individual clients, we advise on personal income tax obligations for expatriates, tax residency issues, and the tax implications of various visa categories — including the reduced 17% flat rate available under the LTR Visa programme.</p>
+        <p>Our tax practice works in close coordination with the corporate and immigration departments, particularly on BOI-promoted investments where tax incentives are central to the investment structure.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTARIAL -->
+<div class="pa-overlay" id="pa-notarial">
+  <div class="pa-backdrop" onclick="closePracticeArea('notarial')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('notarial')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Notarial Services</h2>
+      <p class="pa-overview">Our firm maintains licensed Notarial Services Attorneys who provide a full range of notarial services for both domestic and international clients, regulated under the Lawyers Act B.E. 2528.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>This is particularly relevant for foreign companies and individuals who require notarised or certified documents for use in Thailand or in other jurisdictions — including powers of attorney for foreign proceedings, certified copies of corporate documents, signature verification, and sworn statements.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Certification of document copies, signature verification and authentication, recording of statements under oath, administration of oaths, ID verification and certification, powers of attorney for foreign jurisdictions.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY CLIENTS CHOOSE US ===== -->
+<div class="section">
+  <div class="section-label">The Firm</div>
+  <h2 class="section-title">Built for Cross-Border Work</h2>
+  <p class="section-intro">Over 80% of our clients are foreign companies or multinational firms. That concentration shapes how we work — bilingual teams, international-standard processes, and an understanding of what in-house counsel need.</p>
+
+  <div class="diff-grid">
+    <div class="diff-item">
+      <div class="diff-icon">40</div>
+      <div class="diff-text">
+        <div class="diff-title">Years of Practice</div>
+        <div class="diff-desc">Established in 1986, with four decades of institutional knowledge advising Fortune 500 companies and multinational enterprises.</div>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">67</div>
+      <div class="diff-text">
+        <div class="diff-title">Countries via ILN</div>
+        <div class="diff-desc">Thailand's exclusive member of the International Lawyers Network since 1990, connecting clients to 6,000+ vetted practitioners worldwide.</div>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">8</div>
+      <div class="diff-text">
+        <div class="diff-title">Industry Sectors</div>
+        <div class="diff-desc">Deep specialisation in manufacturing, automotive, life sciences, energy, technology, consumer, financial services, and international trade.</div>
+      </div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-icon">2</div>
+      <div class="diff-text">
+        <div class="diff-title">Working Languages</div>
+        <div class="diff-desc">Thai and English fluency across all practice areas ensures clarity in every legal communication, court filing, and government submission.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INDUSTRIES ===== -->
+<div class="industries-bg" id="industries">
+  <div class="industries-inner">
+    <div class="section-label">Industries</div>
+    <h2 class="section-title">Sectors We Serve</h2>
+    <div class="industry-tags">
+      <span class="industry-tag">Manufacturing</span>
+      <span class="industry-tag">Automotive & EV</span>
+      <span class="industry-tag">Life Sciences & Pharma</span>
+      <span class="industry-tag">Energy & Utilities</span>
+      <span class="industry-tag">Technology & Fintech</span>
+      <span class="industry-tag">Consumer & Retail</span>
+      <span class="industry-tag">Financial Services</span>
+      <span class="industry-tag">International Trade</span>
+      <span class="industry-tag">Logistics & Supply Chain</span>
+      <span class="industry-tag">Real Estate & Infrastructure</span>
+      <span class="industry-tag">Food & Agriculture</span>
+      <span class="industry-tag">Hospitality & Tourism</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CREDENTIALS ===== -->
+<div class="section" id="credentials">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Rankings & Memberships</h2>
+  <p class="section-intro">Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand.</p>
+
+  <div class="credentials-grid">
+    <div class="credential-card">
+      <div class="cred-name">WTR 1000</div>
+      <div class="cred-org">World Trademark Review</div>
+      <div class="cred-desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
+    </div>
+    <div class="credential-card">
+      <div class="cred-name">Legal 500</div>
+      <div class="cred-org">Asia Pacific</div>
+      <div class="cred-desc">Recommended for commercial legal services across multiple practice areas.</div>
+    </div>
+    <div class="credential-card">
+      <div class="cred-name">IP STARS</div>
+      <div class="cred-org">Managing IP</div>
+      <div class="cred-desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
+    </div>
+    <div class="credential-card">
+      <div class="cred-name">Asia Law</div>
+      <div class="cred-org">Top 100 Lawyers</div>
+      <div class="cred-desc">Prof. Dr. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REPRESENTATIVE MATTERS ===== -->
+<div class="practices-bg" id="matters">
+  <div class="section">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Representative Matters</h2>
+    <p class="section-intro">Selected examples of recent work across the firm's practice areas. Client names withheld for confidentiality.</p>
+
+    <div class="matters-list">
+      <div class="matter-item">
+        <div class="matter-area">Corporate & M&A</div>
+        <div class="matter-desc">Advised a Fortune 500 manufacturer on a BOI-promoted greenfield investment in Thailand, securing maximum tax incentives and achieving operational status within 12 months.</div>
+        <div class="matter-team">Corporate + Tax + Immigration</div>
+      </div>
+      <div class="matter-item">
+        <div class="matter-area">Intellectual Property</div>
+        <div class="matter-desc">Enforced trademark rights for a global consumer brand against counterfeiters across Thailand, coordinating customs seizures and civil litigation resulting in permanent injunctions.</div>
+        <div class="matter-team">IP + Litigation</div>
+      </div>
+      <div class="matter-item">
+        <div class="matter-area">Immigration & LTR</div>
+        <div class="matter-desc">Managed end-to-end LTR visa applications for a multinational technology company relocating senior executives and highly-skilled professionals to Bangkok, including family dependents.</div>
+        <div class="matter-team">Immigration</div>
+      </div>
+      <div class="matter-item">
+        <div class="matter-area">Litigation</div>
+        <div class="matter-desc">Represented a European energy company in a high-value commercial arbitration dispute before the Thai Arbitration Institute, achieving a favourable award on all claims.</div>
+        <div class="matter-team">Litigation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INTERNATIONAL NETWORK ===== -->
+<div class="section" id="network">
+  <div class="section-label">Global Reach</div>
+  <h2 class="section-title">International Network</h2>
+  <p class="section-intro">Our memberships in international legal organisations provide clients with access to trusted practitioners across the region and beyond.</p>
+
+  <div class="network-grid">
+    <div class="network-card">
+      <h4>International Lawyers Network</h4>
+      <div class="network-stat">6,000+ lawyers &middot; 67 countries</div>
+      <p>Thailand's exclusive member since 1990. High-quality independent law firms selected for each jurisdiction.</p>
+    </div>
+    <div class="network-card">
+      <h4>INTA</h4>
+      <div class="network-stat">7,200+ members &middot; 190+ countries</div>
+      <p>Global trademark association. Our membership facilitates international filing coordination and enforcement cooperation.</p>
+    </div>
+    <div class="network-card">
+      <h4>APAA</h4>
+      <div class="network-stat">Asia-Pacific IP Network</div>
+      <p>Patent and IP protection across the Asia-Pacific region. Direct relationships with IP practitioners in every ASEAN market.</p>
+    </div>
+    <div class="network-card">
+      <h4>Inter-Pacific Bar Association</h4>
+      <div class="network-stat">Cross-border legal collaboration</div>
+      <p>Prof. Krairit served as President (1999-2000). Ongoing engagement in regional legal development.</p>
+    </div>
+    <div class="network-card">
+      <h4>ASEAN Attorneys Alliance</h4>
+      <div class="network-stat">Regional coverage</div>
+      <p>Legal services network covering Vietnam, Cambodia, and Lao PDR for clients expanding across mainland Southeast Asia.</p>
+    </div>
+    <div class="network-card">
+      <h4>AIPPI</h4>
+      <div class="network-stat">Global IP policy</div>
+      <p>International Association for the Protection of Intellectual Property. Contributing to IP advocacy and policy development.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA (Deloitte-inspired: form + direct contact) ===== -->
+<div class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>Talk to Us</h2>
+      <p>Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.</p>
+      <div class="cta-contact-info">
+        <div class="cta-contact-row">
+          <div class="icon">&#9742;</div>
+          <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        </div>
+        <div class="cta-contact-row">
+          <div class="icon">&#9993;</div>
+          <a href="mailto:dej-udom@dejudom.com">dej-udom@dejudom.com</a>
+        </div>
+        <div class="cta-contact-row">
+          <div class="icon">&#9679;</div>
+          <a href="#">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500</a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-form">
+      <h3>Send an Enquiry</h3>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label>Company</label>
+          <input type="text" placeholder="Company name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-field">
+          <label>Practice Area</label>
+          <select>
+            <option value="">Select practice area</option>
+            <option>Intellectual Property</option>
+            <option>Immigration & Relocation</option>
+            <option>Corporate & Investment</option>
+            <option>Litigation & Disputes</option>
+            <option>Taxation</option>
+            <option>Notarial Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field full">
+          <label>Message</label>
+          <textarea placeholder="Brief description of your matter"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" type="button">Send Enquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Dej-Udom &amp; Associates</div>
+      <div class="footer-tagline">Attorneys at Law</div>
+      <p>Charn Issara Tower I, 2nd Floor<br>942/69 Rama IV Road, Bangrak<br>Bangkok 10500, Thailand</p>
+    </div>
+    <div class="footer-col">
+      <h5>Expertise</h5>
+      <a href="javascript:void(0)" onclick="openPracticeArea('ip')">Intellectual Property</a>
+      <a href="javascript:void(0)" onclick="openPracticeArea('immigration')">Immigration & Relocation</a>
+      <a href="javascript:void(0)" onclick="openPracticeArea('corporate')">Corporate & Investment</a>
+      <a href="javascript:void(0)" onclick="openPracticeArea('litigation')">Litigation & Disputes</a>
+      <a href="javascript:void(0)" onclick="openPracticeArea('tax')">Taxation</a>
+      <a href="javascript:void(0)" onclick="openPracticeArea('notarial')">Notarial Services</a>
+    </div>
+    <div class="footer-col">
+      <h5>The Firm</h5>
+      <a href="DA About Us.html">About Us</a>
+      <a href="DA About Us.html#team">Our People</a>
+      <a href="DA About Us.html#recognition">Recognition</a>
+      <a href="DA Insights.html">Insights</a>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <a href="DA Careers.html">Careers</a>
+      <a href="#contact">Contact Us</a>
+      <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+      <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Dej-Udom & Associates. All rights reserved.</span>
+    <span>Bangkok Rooted. Globally Connected.</span>
+  </div>
+</footer>
+
+<script>
+  function openPracticeArea(id) {
+    var overlay = document.getElementById('pa-' + id);
+    if (overlay) {
+      overlay.classList.add('active');
+      document.body.classList.add('overlay-open');
+      var panel = overlay.querySelector('.pa-panel');
+      if (panel) panel.scrollTop = 0;
+    }
+  }
+
+  function closePracticeArea(id) {
+    var overlay = document.getElementById('pa-' + id);
+    if (overlay) {
+      overlay.classList.remove('active');
+      document.body.classList.remove('overlay-open');
+    }
+  }
+
+  function switchTab(evt, area, tab) {
+    var overlay = document.getElementById('pa-' + area);
+    if (!overlay) return;
+    var buttons = overlay.querySelectorAll('.pa-subnav-btn');
+    var sections = overlay.querySelectorAll('.pa-sub-section');
+    buttons.forEach(function(btn) { btn.classList.remove('active'); });
+    sections.forEach(function(sec) { sec.classList.remove('active'); });
+    var targetSection = document.getElementById(area + '-' + tab);
+    if (targetSection) targetSection.classList.add('active');
+    if (evt && evt.target) evt.target.classList.add('active');
+  }
+
+  document.querySelector('.nav-menu-btn').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('mobile-open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.remove('mobile-open');
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var activeOverlay = document.querySelector('.pa-overlay.active');
+      if (activeOverlay) {
+        closePracticeArea(activeOverlay.id.replace('pa-', ''));
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

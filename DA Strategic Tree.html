@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dej-Udom & Associates — Strategic Framework</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f8f7f4;
+    color: #1a1a1a;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .page-title {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0d2818;
+    letter-spacing: -0.5px;
+  }
+
+  .page-subtitle {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tree-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* === HORIZONTAL LAYOUT === */
+  .level {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .level-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 0;
+  }
+
+  .level-center {
+    width: 220px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .level-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+  }
+
+  /* === SECTION HEADERS === */
+  .section-header {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-header-left {
+    text-align: right;
+    padding-right: 40px;
+    width: 100%;
+  }
+
+  .section-header-right {
+    text-align: left;
+    padding-left: 40px;
+    width: 100%;
+  }
+
+  /* === CENTER SPINE === */
+  .spine {
+    width: 4px;
+    background: linear-gradient(180deg, #0d2818, #1a5c2e, #b8960c);
+    flex: 1;
+    min-height: 40px;
+  }
+
+  /* === CEO NODE === */
+  .ceo-node {
+    background: #0d2818;
+    color: white;
+    padding: 20px 28px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 4px;
+    box-shadow: 0 4px 20px rgba(13, 40, 24, 0.3);
+  }
+
+  .ceo-node .name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .ceo-node .title {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === FIRM NODE === */
+  .firm-node {
+    background: #1a5c2e;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 4px;
+    box-shadow: 0 3px 15px rgba(26, 92, 46, 0.25);
+  }
+
+  .firm-node .name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .firm-node .detail {
+    font-size: 10px;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+  }
+
+  /* === ROW CONTAINER === */
+  .tree-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 80px;
+    position: relative;
+  }
+
+  .tree-row-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .tree-row-center {
+    width: 220px;
+    min-width: 220px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .tree-row-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0;
+    position: relative;
+  }
+
+  /* === PRACTICE AREA NODES (LEFT) === */
+  .practice-node {
+    background: white;
+    border: 2px solid #0d2818;
+    border-radius: 10px;
+    padding: 14px 20px;
+    min-width: 200px;
+    max-width: 280px;
+    position: relative;
+    margin-right: 20px;
+  }
+
+  .practice-node .practice-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0d2818;
+    margin-bottom: 6px;
+  }
+
+  .practice-node .practice-subs {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* connector line from practice node to spine */
+  .practice-node::after {
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    background: #0d2818;
+  }
+
+  /* === PARTNER NODE (CENTER) === */
+  .partner-node {
+    background: #b8960c;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(184, 150, 12, 0.3);
+    position: relative;
+    z-index: 3;
+  }
+
+  .partner-node .partner-role {
+    font-size: 9px;
+    font-weight: 400;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1px;
+  }
+
+  /* === CHANNEL NODES (RIGHT) === */
+  .channel-node {
+    background: white;
+    border: 2px solid #b8960c;
+    border-radius: 10px;
+    padding: 14px 20px;
+    min-width: 200px;
+    max-width: 320px;
+    position: relative;
+    margin-left: 20px;
+  }
+
+  .channel-node .channel-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #b8960c;
+    margin-bottom: 6px;
+  }
+
+  .channel-node .channel-detail {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* connector line from spine to channel node */
+  .channel-node::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    background: #b8960c;
+  }
+
+  /* === TEAM NODES === */
+  .team-node {
+    background: #f0ede5;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 16px;
+    min-width: 180px;
+    max-width: 240px;
+    position: relative;
+    margin-right: 20px;
+  }
+
+  .team-node .team-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3px;
+  }
+
+  .team-node .team-detail {
+    font-size: 10px;
+    color: #777;
+    line-height: 1.4;
+  }
+
+  .team-node::after {
+    content: '';
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    width: 22px;
+    height: 2px;
+    background: #ccc;
+  }
+
+  /* === GRID LAYOUT === */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 4px 1fr;
+    gap: 0;
+    position: relative;
+  }
+
+  .grid-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 24px;
+    align-items: flex-end;
+  }
+
+  .grid-spine {
+    background: linear-gradient(180deg, #0d2818 0%, #1a5c2e 50%, #b8960c 100%);
+    width: 4px;
+    border-radius: 2px;
+  }
+
+  .grid-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 24px;
+    align-items: flex-start;
+  }
+
+  /* === CONNECTOR DOTS === */
+  .dot-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    min-height: 20px;
+  }
+
+  /* === SIMPLIFIED APPROACH === */
+  .framework {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  /* Top section: CEO + Firm */
+  .top-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .connector-v {
+    width: 3px;
+    height: 30px;
+    background: #0d2818;
+  }
+
+  .connector-v.gold {
+    background: #b8960c;
+  }
+
+  /* Split section */
+  .split-section {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .split-left {
+    flex: 1;
+    padding-right: 60px;
+    border-right: 3px solid #ccc;
+  }
+
+  .split-right {
+    flex: 1;
+    padding-left: 60px;
+  }
+
+  .split-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+
+  .split-label.left {
+    color: #0d2818;
+    border-color: #0d2818;
+    text-align: right;
+  }
+
+  .split-label.right {
+    color: #b8960c;
+    border-color: #b8960c;
+  }
+
+  /* Left cards */
+  .left-card {
+    background: white;
+    border-left: 4px solid #0d2818;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    text-align: right;
+  }
+
+  .left-card .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0d2818;
+    margin-bottom: 5px;
+  }
+
+  .left-card .card-sub {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .left-card .card-people {
+    font-size: 10px;
+    color: #999;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Team sub-cards */
+  .team-sub {
+    background: #f5f3ed;
+    border-left: 3px solid #999;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    text-align: right;
+  }
+
+  .team-sub .sub-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+  }
+
+  .team-sub .sub-detail {
+    font-size: 10px;
+    color: #888;
+  }
+
+  /* Right cards */
+  .right-card {
+    background: white;
+    border-left: 4px solid #b8960c;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .right-card .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #b8960c;
+    margin-bottom: 5px;
+  }
+
+  .right-card .card-sub {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .right-card .card-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-top: 8px;
+  }
+
+  .tag-primary { background: #fff3d4; color: #8a6d00; }
+  .tag-secondary { background: #e8f5ec; color: #1a5c2e; }
+  .tag-tertiary { background: #f0ede5; color: #666; }
+
+  /* Arrow connectors */
+  .arrow-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6px 0;
+  }
+
+  .arrow-down .line {
+    width: 2px;
+    height: 16px;
+    background: #ccc;
+  }
+
+  .arrow-down .head {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #ccc;
+  }
+
+  /* Section grouping */
+  .practice-group {
+    margin-bottom: 28px;
+  }
+
+  .practice-group:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Channel grouping */
+  .channel-group {
+    margin-bottom: 24px;
+  }
+
+  .channel-group-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #b8960c;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+
+  /* Database callout */
+  .database-node {
+    background: #0d2818;
+    color: white;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 14px;
+    text-align: right;
+  }
+
+  .database-node .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .database-node .card-sub {
+    font-size: 10px;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .chart-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 0.5px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .split-section { flex-direction: column; }
+    .split-left { border-right: none; border-bottom: 3px solid #ccc; padding: 0 0 40px 0; margin-bottom: 40px; }
+    .split-right { padding: 0; }
+    .left-card { text-align: left; }
+    .team-sub { text-align: left; margin-left: 20px; }
+    .split-label.left { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="framework">
+
+  <p class="page-title">Dej-Udom & Associates</p>
+  <p class="page-subtitle">Strategic Framework — Firm Structure & Client Acquisition</p>
+
+  <!-- TOP: CEO + FIRM -->
+  <div class="top-section">
+    <div class="ceo-node">
+      <div class="name">Prof. Dr. Dej-Udom Krairit</div>
+      <div class="title">Founder & CEO</div>
+    </div>
+    <div class="connector-v"></div>
+    <div class="firm-node">
+      <div class="name">Dej-Udom & Associates</div>
+      <div class="detail">Est. 1986 &nbsp;·&nbsp; 40 Licensed Attorneys &nbsp;·&nbsp; 70 Total Staff &nbsp;·&nbsp; 80%+ Multinational Clients</div>
+    </div>
+  </div>
+
+  <!-- SPLIT: LEFT = Internal Structure / RIGHT = Client Reach -->
+  <div class="split-section">
+
+    <!-- =============== LEFT SIDE: WHAT THE FIRM HAS =============== -->
+    <div class="split-left">
+      <div class="split-label left">What the Firm Has</div>
+
+      <!-- Database -->
+      <div class="database-node">
+        <div class="card-title">Client & Matter Database</div>
+        <div class="card-sub">40 years of client relationships, precedent matters, industry contacts, and institutional knowledge across all practice areas</div>
+      </div>
+
+      <!-- IP -->
+      <div class="practice-group">
+        <div class="left-card">
+          <div class="card-title">Intellectual Property</div>
+          <div class="card-sub">Trademark · Patent · Overseas IP<br>Filing, prosecution, enforcement, licensing, commercialisation across Thailand and ASEAN</div>
+          <div class="card-people">Partners + Associates + Agents (skill mix: prosecution, litigation, portfolio mgmt)</div>
+        </div>
+        <div class="team-sub">
+          <div class="sub-title">IP Thailand Desk</div>
+          <div class="sub-detail">DIP filings, TM/patent prosecution, opposition, renewals</div>
+        </div>
+        <div class="team-sub">
+          <div class="sub-title">IP Overseas Desk</div>
+          <div class="sub-detail">ASEAN & international coordination via ILN, INTA, APAA</div>
+        </div>
+        <div class="team-sub">
+          <div class="sub-title">Enforcement</div>
+          <div class="sub-detail">Customs seizures, CIPITC litigation, anti-counterfeiting</div>
+        </div>
+      </div>
+
+      <!-- Immigration -->
+      <div class="practice-group">
+        <div class="left-card">
+          <div class="card-title">Immigration & Relocation</div>
+          <div class="card-sub">Work Permits · Visas · LTR Visa<br>BOI & non-BOI processes, full expat lifecycle support</div>
+          <div class="card-people">Partner + Associates + Agents (skill mix: BOI process, non-BOI, LTR specialist)</div>
+        </div>
+        <div class="team-sub">
+          <div class="sub-title">BOI Certified Agency (LTR)</div>
+          <div class="sub-detail">Direct submission to BOI LTR Unit — limited firm authorisation</div>
+        </div>
+        <div class="team-sub">
+          <div class="sub-title">Work Permit & Visa Processing</div>
+          <div class="sub-detail">TIESC, Employment Dept, Immigration Bureau</div>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="practice-group">
+        <div class="left-card">
+          <div class="card-title">Corporate & Investment</div>
+          <div class="card-sub">Market Entry · M&A · Compliance<br>Entity formation, BOI applications, transactions, ongoing regulatory</div>
+          <div class="card-people">Senior Partners + Associates (skill mix: formation, transactions, regulatory)</div>
+        </div>
+      </div>
+
+      <!-- Litigation -->
+      <div class="practice-group">
+        <div class="left-card">
+          <div class="card-title">Litigation & Dispute Resolution</div>
+          <div class="card-sub">Civil, criminal, labour, IP, tax courts · Arbitration · Mediation<br>Courts of First Instance through Supreme Court + Thai Arbitration Institute</div>
+          <div class="card-people">Senior Partners + Associates (skill mix: commercial, IP, labour, criminal)</div>
+        </div>
+      </div>
+
+      <!-- Tax -->
+      <div class="practice-group">
+        <div class="left-card">
+          <div class="card-title">Taxation</div>
+          <div class="card-sub">Corporate & personal tax · VAT · Customs · Transfer pricing<br>Double tax treaties (61 countries), BOI tax incentives</div>
+          <div class="card-people">Partners + Associates (skill mix: corporate tax, customs, treaty planning)</div>
+        </div>
+      </div>
+
+      <!-- Notarial -->
+      <div class="practice-group">
+        <div class="left-card" style="border-left-color: #999;">
+          <div class="card-title" style="color: #666;">Notarial Services</div>
+          <div class="card-sub">Document certification, signature authentication, powers of attorney for foreign jurisdictions</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =============== RIGHT SIDE: HOW WE REACH CLIENTS =============== -->
+    <div class="split-right">
+      <div class="split-label right">How We Reach Clients</div>
+
+      <!-- Referral Networks -->
+      <div class="channel-group">
+        <div class="channel-group-title">Referral Networks</div>
+
+        <div class="right-card">
+          <div class="card-title">International Lawyers Network (ILN)</div>
+          <div class="card-sub">Thailand's exclusive member since 1990. 6,000+ lawyers in 67 countries. Foreign law firms refer Thailand matters directly to D&A. This is the primary inbound channel for cross-border corporate, M&A, and litigation work.</div>
+          <span class="card-tag tag-primary">Primary Channel</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">INTA / APAA / IPBA Networks</div>
+          <div class="card-sub">IP-specific referral pipeline. International trademark and patent attorneys route Thailand filings through D&A. INTA Annual Meeting and APAA conferences generate direct instructions from overseas IP counsel.</div>
+          <span class="card-tag tag-primary">Primary Channel</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">Existing Client Referrals</div>
+          <div class="card-sub">Client-to-client introductions within the same industry or multinational group. A pharma company refers their logistics partner. An automotive OEM refers their tier-1 supplier. 40 years of relationships compound.</div>
+          <span class="card-tag tag-primary">Primary Channel</span>
+        </div>
+      </div>
+
+      <!-- Institutional Reputation -->
+      <div class="channel-group">
+        <div class="channel-group-title">Rankings & Recognition</div>
+
+        <div class="right-card">
+          <div class="card-title">Legal Directory Rankings</div>
+          <div class="card-sub">WTR 1000 (trademark), IP STARS / Managing IP (patent & TM), The Legal 500 Asia Pacific, Asia Law Top 100 Lawyers. In-house counsel at multinationals check these rankings when shortlisting Thailand firms.</div>
+          <span class="card-tag tag-secondary">Reputation</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">BOI Certified Agency Status</div>
+          <div class="card-sub">One of a limited number of firms authorised to submit LTR Visa applications directly to the BOI. Companies and individuals searching for LTR support find D&A through the BOI's own certified agency list.</div>
+          <span class="card-tag tag-secondary">Reputation</span>
+        </div>
+      </div>
+
+      <!-- Digital Presence -->
+      <div class="channel-group">
+        <div class="channel-group-title">Digital & Direct</div>
+
+        <div class="right-card">
+          <div class="card-title">Website & SEO</div>
+          <div class="card-sub">Practice area pages optimised for search terms multinational clients actually use: "Thailand work permit law firm", "Thai trademark registration", "BOI LTR visa agent". Direct inbound enquiries from GCs and HR managers searching for Thailand-specific legal support.</div>
+          <span class="card-tag tag-tertiary">Inbound</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">LinkedIn</div>
+          <div class="card-sub">Firm page and individual attorney profiles. Thought leadership on Thai IP enforcement, immigration updates, BOI policy changes. Builds visibility with in-house counsel and HR decision-makers across APAC.</div>
+          <span class="card-tag tag-tertiary">Inbound</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">Industry Events & Conferences</div>
+          <div class="card-sub">INTA Annual Meeting, APAA Council, ILN regional meetings, AmCham / European chamber events in Bangkok. Face-to-face relationship building with prospective clients and referring counsel.</div>
+          <span class="card-tag tag-tertiary">Outbound</span>
+        </div>
+      </div>
+
+      <!-- Institutional Relationships -->
+      <div class="channel-group">
+        <div class="channel-group-title">Institutional Relationships</div>
+
+        <div class="right-card">
+          <div class="card-title">Government & Regulatory Bodies</div>
+          <div class="card-sub">Longstanding working relationships with BOI, DIP, Department of Employment, Immigration Bureau, TIESC, IEAT. Regulatory bodies refer clients who need private counsel for complex matters.</div>
+          <span class="card-tag tag-secondary">Reputation</span>
+        </div>
+
+        <div class="right-card">
+          <div class="card-title">Chambers of Commerce & Trade Associations</div>
+          <div class="card-sub">AmCham Thailand, European chambers (JFCCT), bilateral trade associations. Member companies seeking local legal counsel are referred through chamber networks and directories.</div>
+          <span class="card-tag tag-tertiary">Outbound</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="chart-footer">
+    Dej-Udom & Associates &nbsp;·&nbsp; Strategic Framework 2026 &nbsp;·&nbsp; Internal Use Only
+  </div>
+
+</div>
+
+</body>
+</html>

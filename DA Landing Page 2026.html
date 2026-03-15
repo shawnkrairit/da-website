@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dej-Udom & Associates — Attorneys at Law, Bangkok</title>
+<meta name="description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== CUSTOM PROPERTIES ===== */
+  :root {
+    --forest: #0a1a0f;
+    --forest-deep: #050d08;
+    --forest-mid: #0f2918;
+    --emerald: #1a7a3a;
+    --emerald-dim: #145a2a;
+    --gold: #d4a853;
+    --gold-light: #e0c07a;
+    --gold-muted: rgba(212, 168, 83, 0.15);
+    --cream: #f5f2ec;
+    --warm-white: #faf8f5;
+    --text-primary: #e8e4dd;
+    --text-secondary: rgba(232, 228, 221, 0.55);
+    --text-muted: rgba(232, 228, 221, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass: rgba(10, 26, 15, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+    --radius-sm: 6px;
+    --radius-lg: 20px;
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--forest-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  /* ===== NOISE TEXTURE OVERLAY ===== */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ===== FOCUS INDICATORS ===== */
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ===== SCROLL-DRIVEN REVEAL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===== MAGNETIC BUTTON EFFECT ===== */
+  .magnetic-wrap {
+    display: inline-block;
+    position: relative;
+  }
+
+  /* ===== CUSTOM CURSOR ===== */
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    opacity: 0.5;
+  }
+  .cursor-ring.hover {
+    width: 56px;
+    height: 56px;
+    border-color: var(--gold-light);
+    opacity: 0.3;
+  }
+
+  @media (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  nav.scrolled {
+    background: rgba(5, 13, 8, 0.85);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  nav.scrolled .nav-inner { height: 64px; }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 2px;
+  }
+  .nav-logo-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-contact-btn {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--forest);
+    background: var(--gold);
+    text-decoration: none;
+    padding: 10px 28px;
+    border-radius: 100px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--gold-light);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: inherit;
+  }
+  .nav-contact-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .nav-contact-btn span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .nav-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+  .nav-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-menu-btn.active span:nth-child(2) { opacity: 0; }
+  .nav-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .nav-links.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 80px; left: 0; right: 0;
+    background: rgba(5, 13, 8, 0.97);
+    backdrop-filter: blur(24px);
+    padding: 32px 48px;
+    gap: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--forest-deep);
+  }
+
+  .hero-gradient {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26, 122, 58, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212, 168, 83, 0.04) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(5, 13, 8, 0) 0%, rgba(5, 13, 8, 0.6) 100%);
+    z-index: 1;
+  }
+
+  /* Animated gradient orbs */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.12;
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+  .hero-orb-1 {
+    width: 600px; height: 600px;
+    background: var(--emerald);
+    top: -200px; right: -100px;
+    animation-delay: 0s;
+  }
+  .hero-orb-2 {
+    width: 400px; height: 400px;
+    background: var(--gold);
+    bottom: -100px; left: -50px;
+    animation-delay: -7s;
+    opacity: 0.06;
+  }
+  .hero-orb-3 {
+    width: 300px; height: 300px;
+    background: var(--emerald-dim);
+    top: 30%; left: 60%;
+    animation-delay: -14s;
+    opacity: 0.08;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+
+  /* Geometric grid lines */
+  .hero-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    opacity: 0.03;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 180px 48px 120px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-content { max-width: 660px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 5.5vw, 68px);
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    opacity: 0;
+    animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .hero-desc {
+    font-size: clamp(15px, 1.2vw, 17px);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: heroReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 16px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--gold);
+    color: var(--forest);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(212, 168, 83, 0.25);
+  }
+  .btn-primary .arrow {
+    transition: transform 0.3s;
+    font-size: 16px;
+  }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-muted);
+  }
+
+  /* Hero right side — stats */
+  .hero-metrics {
+    opacity: 0;
+    animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+  }
+  .hero-metric-card {
+    padding: 36px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: 16px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .hero-metric-card:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateX(4px);
+  }
+  .hero-metric-card:hover::before { opacity: 1; }
+  .hero-metric-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -2px;
+  }
+  .hero-metric-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+
+  .hero-metrics-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== TRUST BAR (horizontal marquee) ===== */
+  .trust-bar {
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(10, 26, 15, 0.5);
+    padding: 20px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .trust-track {
+    display: flex;
+    gap: 64px;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .trust-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .trust-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== SECTION SHARED ===== */
+  .section {
+    padding: clamp(80px, 10vw, 140px) 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4vw, 52px);
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+    font-weight: 400;
+  }
+
+  .section-intro {
+    font-size: clamp(15px, 1.1vw, 17px);
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 72px;
+  }
+
+  /* ===== PRACTICE AREAS (Bento grid) ===== */
+  .practices-bg {
+    background: var(--forest);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .practices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .practice-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid var(--border-subtle);
+    background: var(--forest-mid);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .practice-card:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  }
+
+  .practice-card .card-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.25;
+  }
+  .practice-card:hover .card-bg {
+    transform: scale(1.08);
+    opacity: 0.35;
+  }
+
+  .practice-card .card-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(15, 41, 24, 0.2) 0%, rgba(10, 26, 15, 0.95) 75%);
+  }
+
+  .practice-card .card-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px;
+  }
+
+  .card-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  .practice-card h3 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .card-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .practice-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== VALUES PILLARS — glass cards ===== */
+  .values-strip {
+    background: var(--forest-deep);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .value-cell {
+    padding: 56px 40px;
+    border-right: 1px solid var(--border-subtle);
+    text-align: center;
+    transition: background 0.4s;
+  }
+  .value-cell:last-child { border-right: none; }
+  .value-cell:hover { background: rgba(26, 122, 58, 0.04); }
+
+  .value-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 64px;
+    color: white;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -3px;
+  }
+  .value-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .value-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* ===== WHY US — split layout ===== */
+  .why-section { background: var(--forest-deep); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+
+  .why-list { display: flex; flex-direction: column; gap: 0; }
+  .why-item {
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .why-item:first-child { padding-top: 0; }
+  .why-item:hover { padding-left: 8px; }
+
+  .why-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
+    background: var(--gold-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .why-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .why-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== INDUSTRIES (pill cloud) ===== */
+  .industries-section {
+    background: var(--forest);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .sector-card {
+    padding: 36px 32px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    background: var(--glass);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sector-card:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  }
+  .sector-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .sector-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* ===== CREDENTIALS — horizontal scroll ===== */
+  .credentials-section { background: var(--forest-deep); }
+  .credentials-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .credentials-track::-webkit-scrollbar { display: none; }
+
+  .credential-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    padding: 40px 32px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .credential-card:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-4px);
+  }
+  .cred-source {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+  .cred-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .cred-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ===== REPRESENTATIVE MATTERS — clean list ===== */
+  .matters-section {
+    background: var(--forest);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .matters-list { display: flex; flex-direction: column; }
+  .matter-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 180px;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    align-items: start;
+    transition: all 0.3s;
+  }
+  .matter-row:hover { padding-left: 8px; }
+  .matter-row:last-child { border-bottom: none; }
+
+  .matter-area-tag {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .matter-desc {
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: 1.75;
+  }
+  .matter-team-tag {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: right;
+    font-style: italic;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+  }
+
+  /* ===== NETWORK — split with interactive map dots ===== */
+  .network-section { background: var(--forest-deep); }
+  .network-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .network-text p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+  .network-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  .network-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    background: var(--glass);
+    transition: all 0.3s;
+  }
+  .network-badge:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateX(4px);
+  }
+  .network-badge-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--gold-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .network-badge-icon svg {
+    width: 20px; height: 20px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .network-badge-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .network-badge-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Network map visualization */
+  .network-map-visual {
+    padding: 48px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+  }
+  .map-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .map-dots-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .map-dot-item {
+    text-align: center;
+    padding: 20px 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .map-dot-item:hover { background: rgba(212, 168, 83, 0.06); }
+  .map-dot-circle {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin: 0 auto 10px;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+  .map-dot-item:hover .map-dot-circle {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+  }
+  .map-dot-item.active .map-dot-circle {
+    width: 14px; height: 14px;
+    opacity: 1;
+    box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.15);
+  }
+  .map-dot-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+  }
+  .map-dot-item.active .map-dot-name { color: var(--gold); }
+
+  /* ===== CONTACT CTA ===== */
+  .cta-section {
+    background: var(--forest);
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26, 122, 58, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .cta-text h2 {
+    font-size: clamp(32px, 3.5vw, 48px);
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  .cta-text > p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 40px;
+    max-width: 460px;
+  }
+
+  .cta-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cta-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cta-contact-row .icon-circle {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .cta-contact-row:hover .icon-circle {
+    background: var(--gold-muted);
+    border-color: rgba(212, 168, 83, 0.3);
+  }
+  .cta-contact-row a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+  .cta-contact-row a:hover { color: var(--text-primary); }
+
+  /* Form */
+  .cta-form {
+    padding: 44px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .cta-form h3 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.3s;
+    width: 100%;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(212, 168, 83, 0.04);
+    box-shadow: 0 0 0 3px rgba(212, 168, 83, 0.08);
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: var(--text-muted);
+  }
+  .form-field select option {
+    background: var(--forest);
+    color: var(--text-primary);
+  }
+  .form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    margin-top: 24px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 16px 36px;
+    border-radius: 100px;
+    background: var(--gold);
+    color: var(--forest);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .form-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(212, 168, 83, 0.2);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--forest-deep);
+    border-top: 1px solid var(--border-subtle);
+    padding: 80px 48px 40px;
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .footer-brand-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .footer-brand-sub {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+  .footer-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 0;
+    transition: all 0.3s;
+  }
+  .footer-col a:hover {
+    color: var(--gold);
+    transform: translateX(4px);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-legal a {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-legal a:hover { color: var(--text-secondary); }
+
+  /* ===== PRACTICE AREA OVERLAY (redesigned) ===== */
+  .pa-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+  }
+  .pa-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .pa-backdrop {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(5, 13, 8, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .pa-panel {
+    position: absolute;
+    top: 0; right: 0;
+    width: 65%;
+    max-width: 860px;
+    height: 100%;
+    background: var(--forest);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-left: 1px solid var(--border-subtle);
+  }
+  .pa-overlay.active .pa-panel {
+    transform: translateX(0);
+  }
+  .pa-close {
+    position: absolute;
+    top: 28px; right: 32px;
+    width: 44px; height: 44px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    z-index: 10;
+  }
+  .pa-close:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-muted);
+  }
+
+  .pa-header {
+    background: linear-gradient(180deg, var(--forest-mid) 0%, var(--forest) 100%);
+    padding: 72px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pa-header::after {
+    content: '';
+    position: absolute;
+    bottom: -120px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    pointer-events: none;
+  }
+  .pa-header .pa-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .pa-header h2 {
+    font-size: 38px;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .pa-header .pa-overview {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 540px;
+  }
+
+  .pa-subnav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 48px;
+    background: var(--forest);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .pa-subnav-btn {
+    padding: 18px 24px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .pa-subnav-btn:hover { color: var(--text-primary); }
+  .pa-subnav-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .pa-content { padding: 48px; }
+  .pa-sub-section { display: none; }
+  .pa-sub-section.active {
+    display: block;
+    animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pa-sub-section h3 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .pa-sub-section .pa-body,
+  .pa-content-single .pa-body {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 32px;
+  }
+  .pa-sub-section .pa-body p,
+  .pa-content-single .pa-body p {
+    margin-bottom: 16px;
+  }
+  .pa-content-single { padding: 48px; }
+  .pa-content-single h3 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .pa-handles {
+    background: rgba(212, 168, 83, 0.04);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-top: 32px;
+  }
+  .pa-handles .handles-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .pa-handles .handles-list {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .pa-cta {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .pa-cta-btn {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pa-cta-btn.primary {
+    background: var(--gold);
+    color: var(--forest);
+  }
+  .pa-cta-btn.primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+  .pa-cta-btn.secondary {
+    background: none;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+  }
+  .pa-cta-btn.secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  body.overlay-open { overflow: hidden; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+    .hero-metrics { max-width: 600px; }
+    .practices-grid { grid-template-columns: repeat(2, 1fr); }
+    .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: 1fr; gap: 60px; }
+    .network-layout { grid-template-columns: 1fr; gap: 48px; }
+    .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+    .matter-row { grid-template-columns: 1fr; gap: 8px; }
+    .matter-team-tag { text-align: left; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .pa-panel { width: 80%; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+    .nav-inner { padding: 0 24px; }
+    .section { padding: 80px 24px; }
+
+    .hero-inner { padding: 140px 24px 80px; }
+    .hero h1 { font-size: 36px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions a { text-align: center; justify-content: center; }
+    .hero-metrics-row { grid-template-columns: 1fr; }
+
+    .practices-grid { grid-template-columns: 1fr; }
+    .practice-card { min-height: 280px; }
+    .sectors-grid { grid-template-columns: 1fr; }
+
+    .values-grid { grid-template-columns: 1fr; }
+    .value-cell { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .value-cell:last-child { border-bottom: none; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+
+    .pa-panel { width: 100%; }
+    .pa-header { padding: 56px 24px 36px; }
+    .pa-header h2 { font-size: 28px; }
+    .pa-subnav { padding: 0 24px; overflow-x: auto; }
+    .pa-content, .pa-content-single { padding: 32px 24px; }
+    .pa-close { top: 16px; right: 16px; }
+    .map-dots-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .hero-metric-number { font-size: 40px; }
+    .map-dots-grid { grid-template-columns: repeat(2, 1fr); }
+    .credential-card { flex: 0 0 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="DA Landing Page 2026.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub">Attorneys at Law</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="DA Landing Page 2026.html">Home</a></li>
+      <li><a href="DA About Us 2026.html">About</a></li>
+      <li><a href="#practices">Expertise</a></li>
+      <li><a href="DA Insights 2026.html">Insights</a></li>
+      <li><a href="DA Careers 2026.html">Careers</a></li>
+    </ul>
+    <a href="#contact" class="nav-contact-btn"><span>Contact</span></a>
+    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-gradient"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Bangkok &middot; Since 1986</div>
+      <h1>Legal expertise<br><em>with a commercial edge</em></h1>
+      <p class="hero-desc">A partner-led law firm advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation.</p>
+      <div class="hero-actions">
+        <a href="#practices" class="btn-primary">Explore Our Expertise <span class="arrow">&rarr;</span></a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-metrics">
+      <div class="hero-metric-card">
+        <div class="hero-metric-number">40</div>
+        <div class="hero-metric-label">Years of Practice</div>
+      </div>
+      <div class="hero-metrics-row">
+        <div class="hero-metric-card">
+          <div class="hero-metric-number">80%+</div>
+          <div class="hero-metric-label">Multinational Clients</div>
+        </div>
+        <div class="hero-metric-card">
+          <div class="hero-metric-number">67</div>
+          <div class="hero-metric-label">Countries via ILN</div>
+        </div>
+      </div>
+      <div class="hero-metric-card">
+        <div class="hero-metric-number">40</div>
+        <div class="hero-metric-label">Licensed Attorneys</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar">
+  <div class="trust-track">
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 Recommended</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IP Stars &mdash; Managing IP</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Legal 500 Asia Pacific</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">BOI Certified Agency</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Asia Law Top 100</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN Attorneys Alliance</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 Recommended</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IP Stars &mdash; Managing IP</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Legal 500 Asia Pacific</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">BOI Certified Agency</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Asia Law Top 100</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN Attorneys Alliance</span></div>
+  </div>
+</div>
+
+<!-- ===== VALUES STRIP ===== -->
+<div class="values-strip">
+  <div class="values-grid">
+    <div class="value-cell reveal">
+      <div class="value-number">5</div>
+      <div class="value-title">Practice Areas</div>
+      <div class="value-desc">IP, immigration, corporate, litigation, and tax under one roof.</div>
+    </div>
+    <div class="value-cell reveal reveal-delay-1">
+      <div class="value-number">2</div>
+      <div class="value-title">Working Languages</div>
+      <div class="value-desc">Thai and English fluency across every filing and submission.</div>
+    </div>
+    <div class="value-cell reveal reveal-delay-2">
+      <div class="value-number">1</div>
+      <div class="value-title">BOI Certified Agency</div>
+      <div class="value-desc">Authorised to submit LTR Visa applications directly to BOI.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRACTICE AREAS ===== -->
+<div class="practices-bg" id="practices">
+  <div class="section">
+    <div class="section-label reveal">Expertise</div>
+    <h2 class="section-title reveal reveal-delay-1">What We Do</h2>
+    <p class="section-intro reveal reveal-delay-2">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge.</p>
+
+    <div class="practices-grid">
+      <div class="practice-card reveal" onclick="openPracticeArea('ip')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">01</div>
+          <h3>Intellectual Property</h3>
+          <p class="card-desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('immigration')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">02</div>
+          <h3>Immigration &amp; Relocation</h3>
+          <p class="card-desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card reveal reveal-delay-2" onclick="openPracticeArea('corporate')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">03</div>
+          <h3>Corporate &amp; Investment</h3>
+          <p class="card-desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, and ongoing regulatory compliance for businesses operating in Thailand.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card reveal" onclick="openPracticeArea('litigation')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">04</div>
+          <h3>Litigation &amp; Dispute Resolution</h3>
+          <p class="card-desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('tax')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">05</div>
+          <h3>Taxation</h3>
+          <p class="card-desc">Corporate income tax, VAT, customs and excise, transfer pricing, double tax treaty application, and BOI tax incentives for inbound investments.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+
+      <div class="practice-card reveal reveal-delay-2" onclick="openPracticeArea('notarial')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=75')"></div>
+        <div class="card-overlay"></div>
+        <div class="card-content">
+          <div class="card-number">06</div>
+          <h3>Notarial Services</h3>
+          <p class="card-desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</p>
+          <span class="card-arrow">Explore practice &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PRACTICE AREA OVERLAYS ===== -->
+
+<!-- IP -->
+<div class="pa-overlay" id="pa-ip">
+  <div class="pa-backdrop" onclick="closePracticeArea('ip')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Intellectual Property</h2>
+      <p class="pa-overview">Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'ip','trademark')">Trademark</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','patent')">Patent</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','overseas')">Overseas IP</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="ip-trademark">
+        <h3>Trademark</h3>
+        <div class="pa-body">
+          <p>We advise on the full lifecycle of trademark protection under Thai law: clearance searches, filing, prosecution, opposition and cancellation proceedings, renewals, assignments, and licensing.</p>
+          <p>Where brand owners face infringement, we coordinate enforcement through the Department of Intellectual Property, Thai Customs, and the Central Intellectual Property and International Trade Court.</p>
+          <p>For companies entering the Thai market, we provide clearance opinions and filing strategies that account for the classification requirements and examination practices of the Thai DIP.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Registration and prosecution, opposition and cancellation, enforcement and anti-counterfeiting, customs recordals, licensing and assignments, passing off, IP commercialisation, portfolio management and renewals.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Trademark%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="ip-patent">
+        <h3>Patent</h3>
+        <div class="pa-body">
+          <p>We advise on patent protection for inventions, industrial designs, and petty patents (utility models) under the Thai Patent Act.</p>
+          <p>For invention patents, we handle drafting and filing of applications, prosecution through the DIP, responses to official actions, and maintenance of granted patents through the 20-year term. Thailand offers several mechanisms to accelerate examination — including ASPEC, the Patent Prosecution Highway (PPH) with the Japan Patent Office, and the Target Patent Fast-Track.</p>
+          <p>For PCT national phase applications, we manage entry into the Thai national phase, coordinate Thai-language translation, and prosecute applications through examination.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Invention patents, design patents, petty patents, PCT national phase entry, patent prosecution, accelerated examination (ASPEC, PPH, Target Patent), annuity management, assignments and licence recordals.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Patent%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="ip-overseas">
+        <h3>Overseas IP</h3>
+        <div class="pa-body">
+          <p>For clients who need IP protection beyond Thailand, our overseas filing desk coordinates trademark and patent applications across ASEAN and internationally.</p>
+          <p>Through our memberships in INTA, APAA, and the International Lawyers Network, we have direct access to vetted practitioners in over 50 countries.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMMIGRATION -->
+<div class="pa-overlay" id="pa-immigration">
+  <div class="pa-backdrop" onclick="closePracticeArea('immigration')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Immigration &amp; Relocation</h2>
+      <p class="pa-overview">Our Immigration Department advises on all aspects of employing foreign nationals in Thailand. Since March 2023, we are a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'immigration','workpermits')">Work Permits</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','visas')">Visas</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','ltr')">LTR Visa</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="immigration-workpermits">
+        <h3>Work Permits</h3>
+        <div class="pa-body">
+          <p>We handle new work permit applications, renewals, amendments, and cancellations under both the BOI single-window system and the standard process through the Department of Employment.</p>
+          <p>For BOI-promoted companies, applications are processed through TIESC using the online single-window system. For non-BOI companies, we handle applications through TIESC or the Employment Department directly.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">BOI and non-BOI work permit applications, renewals and amendments, Digital Work Permits (DWP), temporary and urgent work permits, work permit cancellations, change of employer, medical certificate coordination.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Work%20Permit%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="immigration-visas">
+        <h3>Visas</h3>
+        <div class="pa-body">
+          <p>We advise on the full range of visa categories available to foreign nationals in Thailand, including Non-Immigrant B visas, dependent visas, retirement visas, Smart Visa, and permanent residency applications.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Non-Immigrant B and O visas, visa extensions and renewals, dependent visas, retirement visas, Smart Visa, permanent residency, re-entry permits, 90-day reporting, transfer of endorsement, overseas visa support letters.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="immigration-ltr">
+        <h3>Long-Term Resident (LTR) Visa</h3>
+        <div class="pa-body">
+          <p>The LTR Visa is a 10-year visa programme administered by the BOI, available to four categories: wealthy global citizens, wealthy pensioners, work-from-Thailand professionals, and highly-skilled professionals.</p>
+          <p>As a BOI Certified Agency, we manage the entire application process — from eligibility assessment through document preparation, submission, and obtaining the visa stamp and Digital Work Permit.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">LTR Visa eligibility assessment and pre-screening, application preparation and filing, coordination with the BOI LTR Unit, visa stamp and Digital Work Permit issuance, dependent applications, renewals, annual reporting.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=LTR%20Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CORPORATE -->
+<div class="pa-overlay" id="pa-corporate">
+  <div class="pa-backdrop" onclick="closePracticeArea('corporate')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Corporate &amp; Investment</h2>
+      <p class="pa-overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')">Market Entry</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')">M&amp;A</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')">Compliance</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="corporate-entry">
+        <h3>Market Entry &amp; Formation</h3>
+        <div class="pa-body">
+          <p>We advise on the most appropriate legal structure for entering the Thai market, taking into account the Foreign Business Act, BOI incentives, and your commercial objectives.</p>
+          <p>This includes incorporation of Thai limited companies, registration of branch offices, joint venture structuring, and applications for Foreign Business Licences (FBL).</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Company incorporation, joint venture structuring, Foreign Business Licence applications, BOI promotion applications, IEAT privileges, factory licences, import/export permits, business licensing.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Market%20Entry%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="corporate-ma">
+        <h3>Transactions &amp; M&amp;A</h3>
+        <div class="pa-body">
+          <p>We advise on acquisitions, disposals, mergers, and corporate restructuring transactions in Thailand, covering the full transaction cycle from structuring through to completion.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Mergers and acquisitions, due diligence, share and asset purchase agreements, shareholders' agreements, corporate restructuring, joint venture agreements, regulatory approvals.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=M%26A%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="corporate-compliance">
+        <h3>Ongoing Compliance &amp; Licensing</h3>
+        <div class="pa-body">
+          <p>For companies already operating in Thailand, we provide ongoing corporate secretarial and regulatory compliance support, including annual returns, board administration, and BOI reporting.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Corporate secretarial services, annual compliance filings, board and shareholder meeting administration, BOI compliance and reporting, licence renewals, regulatory advisory, monthly retainer arrangements.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LITIGATION -->
+<div class="pa-overlay" id="pa-litigation">
+  <div class="pa-backdrop" onclick="closePracticeArea('litigation')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Litigation &amp; Dispute Resolution</h2>
+      <p class="pa-overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>The department represents clients from the Courts of First Instance through to the Supreme Court, with depth in commercial disputes, employment matters, IP and international trade cases, and tax disputes.</p>
+        <p>For disputes involving international parties, we handle matters before the Thai Arbitration Institute and advise on enforcement of foreign arbitral awards under the New York Convention.</p>
+        <p>Our approach: clear assessment of merits, likely timeline, and costs at the outset — pursuing resolution through the most practical route available.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Civil and commercial litigation, criminal defence, labour and employment disputes, IP and international trade court, tax court, bankruptcy, domestic and international arbitration, mediation, enforcement of foreign judgments and arbitral awards.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAXATION -->
+<div class="pa-overlay" id="pa-tax">
+  <div class="pa-backdrop" onclick="closePracticeArea('tax')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('tax')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Taxation</h2>
+      <p class="pa-overview">We advise on all matters relating to taxation in Thailand, covering both planning and compliance for businesses and individuals.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>Corporate side: structuring advice on corporate income tax, VAT, customs and excise, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments and advise on Thailand's double tax treaties (61 countries).</p>
+        <p>Individual clients: personal income tax for expatriates, tax residency issues, and the reduced 17% flat rate under the LTR Visa programme.</p>
+        <p>Our tax practice coordinates closely with corporate and immigration departments, particularly on BOI-promoted investments.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTARIAL -->
+<div class="pa-overlay" id="pa-notarial">
+  <div class="pa-backdrop" onclick="closePracticeArea('notarial')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('notarial')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Notarial Services</h2>
+      <p class="pa-overview">Licensed Notarial Services Attorneys providing full notarial services for domestic and international clients under the Lawyers Act B.E. 2528.</p>
+    </div>
+    <div class="pa-content-single">
+      <div class="pa-body">
+        <p>Relevant for foreign companies and individuals requiring notarised or certified documents for use in Thailand or other jurisdictions — including powers of attorney, certified copies, signature verification, and sworn statements.</p>
+      </div>
+      <div class="pa-handles">
+        <div class="handles-label">What We Handle</div>
+        <div class="handles-list">Certification of document copies, signature verification and authentication, recording of statements under oath, administration of oaths, ID verification, powers of attorney for foreign jurisdictions.</div>
+      </div>
+      <div class="pa-cta">
+        <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY CLIENTS CHOOSE US ===== -->
+<div class="why-section">
+  <div class="section">
+    <div class="why-grid">
+      <div>
+        <div class="section-label reveal">The Firm</div>
+        <h2 class="section-title reveal reveal-delay-1">Built for<br>Cross-Border Work</h2>
+        <p class="section-intro reveal reveal-delay-2">Over 80% of our clients are foreign companies or multinational firms. That concentration shapes how we work.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-icon">40</div>
+          <div>
+            <div class="why-title">Years of Practice</div>
+            <div class="why-desc">Four decades of institutional knowledge advising Fortune 500 companies and multinational enterprises since 1986.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-icon">67</div>
+          <div>
+            <div class="why-title">Countries via ILN</div>
+            <div class="why-desc">Thailand's exclusive member of the International Lawyers Network since 1995, connecting clients to 6,000+ vetted practitioners worldwide.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-icon">8</div>
+          <div>
+            <div class="why-title">Industry Sectors</div>
+            <div class="why-desc">Deep specialisation in manufacturing, automotive, life sciences, energy, technology, consumer, financial services, and international trade.</div>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-icon">2</div>
+          <div>
+            <div class="why-title">Working Languages</div>
+            <div class="why-desc">Thai and English fluency across all practice areas ensures clarity in every legal communication, filing, and submission.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INDUSTRIES ===== -->
+<div class="industries-section" id="industries">
+  <div class="section">
+    <div class="section-label reveal">Industries</div>
+    <h2 class="section-title reveal reveal-delay-1">Sectors We Serve</h2>
+    <p class="section-intro reveal reveal-delay-2">Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand.</p>
+
+    <div class="sectors-grid">
+      <div class="sector-card reveal">
+        <div class="sector-name">Manufacturing</div>
+        <div class="sector-desc">BOI promotion applications for manufacturing projects, factory licensing under the Factory Act, import/export permits, labour compliance for factory workforces, and environmental regulatory approvals across Thailand's industrial estates.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-name">Automotive &amp; EV</div>
+        <div class="sector-desc">Structuring investments under Thailand's EV incentive packages, BOI privileges for automotive parts and assembly, technology transfer agreements, supply chain joint ventures, and customs classification for components and finished vehicles.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-name">Life Sciences &amp; Pharma</div>
+        <div class="sector-desc">Patent filing and prosecution for pharmaceutical inventions, FDA Thailand regulatory pathways, clinical trial agreements, pharmaceutical distribution licensing, and protection of proprietary formulations and trade secrets.</div>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-name">Energy &amp; Utilities</div>
+        <div class="sector-desc">Power purchase agreements, Energy Regulatory Commission licensing, BOI incentives for renewable energy projects, concession structuring, and dispute resolution for infrastructure and energy sector contracts.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-name">Technology &amp; Fintech</div>
+        <div class="sector-desc">Smart Visa applications for tech professionals, data protection compliance under the PDPA, fintech licensing with the Bank of Thailand and SEC, software IP protection, and corporate structuring for digital businesses.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-name">Consumer &amp; Retail</div>
+        <div class="sector-desc">Trademark portfolio management for consumer brands, franchise and distribution agreements, retail licensing requirements, consumer protection compliance, and anti-counterfeiting enforcement through Thai Customs and the IP Court.</div>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-name">Financial Services</div>
+        <div class="sector-desc">Foreign Business Licence applications for financial service providers, Bank of Thailand and SEC regulatory compliance, fund structuring, fintech joint ventures, and cross-border transaction advisory for regional banking clients.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-name">International Trade</div>
+        <div class="sector-desc">Customs and excise advisory, free trade zone structuring, trade dispute resolution, export control compliance, and coordination with the Department of Foreign Trade on import/export licensing for controlled goods.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-name">Logistics &amp; Supply Chain</div>
+        <div class="sector-desc">Foreign Business Act structuring for logistics operators, warehouse and transport licensing, customs brokerage compliance, BOI privileges for international trading companies, and freight forwarding regulatory requirements.</div>
+      </div>
+      <div class="sector-card reveal">
+        <div class="sector-name">Real Estate &amp; Infrastructure</div>
+        <div class="sector-desc">Foreign ownership structuring under the Land Code and Condominium Act, construction permits, EIA compliance, lease and concession agreements, and BOI promotion for infrastructure projects in designated zones.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-name">Food &amp; Agriculture</div>
+        <div class="sector-desc">FDA product registration and labelling compliance, agricultural licensing, GI protection for Thai agricultural products, food safety regulatory requirements, and BOI incentives for food processing and cold chain operations.</div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-name">Hospitality &amp; Tourism</div>
+        <div class="sector-desc">Hotel and tourism business licensing, Foreign Business Act compliance for hospitality operators, work permits for expatriate hotel management, TAT registration requirements, and liquor and entertainment licensing.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CREDENTIALS ===== -->
+<div class="credentials-section" id="credentials">
+  <div class="section">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="section-title reveal reveal-delay-1">Rankings &amp; Memberships</h2>
+    <p class="section-intro reveal reveal-delay-2">Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand.</p>
+
+    <div class="credentials-track reveal reveal-delay-3">
+      <div class="credential-card">
+        <div class="cred-source">World Trademark Review</div>
+        <div class="cred-name">WTR 1000</div>
+        <div class="cred-desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Legal 500</div>
+        <div class="cred-name">Asia Pacific</div>
+        <div class="cred-desc">Recommended for commercial legal services across multiple practice areas.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Managing IP</div>
+        <div class="cred-name">IP Stars</div>
+        <div class="cred-desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Asia Law</div>
+        <div class="cred-name">Top 100 Lawyers</div>
+        <div class="cred-desc">Prof. Dr. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Board of Investment</div>
+        <div class="cred-name">BOI Certified</div>
+        <div class="cred-desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Google Reviews</div>
+        <div class="cred-name">4.9 Stars</div>
+        <div class="cred-desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REPRESENTATIVE MATTERS ===== -->
+<div class="matters-section" id="matters">
+  <div class="section">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="section-title reveal reveal-delay-1">Representative Matters</h2>
+    <p class="section-intro reveal reveal-delay-2">Selected examples of recent work. Client names withheld for confidentiality.</p>
+
+    <div class="matters-list">
+      <div class="matter-row reveal">
+        <div class="matter-area-tag">Corporate &amp; M&amp;A</div>
+        <div class="matter-desc">Advised a Fortune 500 manufacturer on a BOI-promoted greenfield investment in Thailand, securing maximum tax incentives and achieving operational status within 12 months.</div>
+        <div class="matter-team-tag">Corporate + Tax + Immigration</div>
+      </div>
+      <div class="matter-row reveal reveal-delay-1">
+        <div class="matter-area-tag">Intellectual Property</div>
+        <div class="matter-desc">Enforced trademark rights for a global consumer brand against counterfeiters across Thailand, coordinating customs seizures and civil litigation resulting in permanent injunctions.</div>
+        <div class="matter-team-tag">IP + Litigation</div>
+      </div>
+      <div class="matter-row reveal reveal-delay-2">
+        <div class="matter-area-tag">Immigration &amp; LTR</div>
+        <div class="matter-desc">Managed end-to-end LTR visa applications for a multinational technology company relocating senior executives and highly-skilled professionals to Bangkok, including family dependents.</div>
+        <div class="matter-team-tag">Immigration</div>
+      </div>
+      <div class="matter-row reveal reveal-delay-3">
+        <div class="matter-area-tag">Litigation</div>
+        <div class="matter-desc">Represented a European energy company in a high-value commercial arbitration dispute before the Thai Arbitration Institute, achieving a favourable award on all claims.</div>
+        <div class="matter-team-tag">Litigation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== INTERNATIONAL NETWORK ===== -->
+<div class="network-section" id="network">
+  <div class="section">
+    <div class="section-label reveal">Global Reach</div>
+    <h2 class="section-title reveal reveal-delay-1">Regional Strength,<br>International Reach</h2>
+
+    <div class="network-layout">
+      <div>
+        <div class="network-text reveal reveal-delay-2">
+          <p>As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our ASEAN Attorneys Alliance membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
+          <p>Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
+        </div>
+        <div class="network-badges reveal reveal-delay-3">
+          <div class="network-badge">
+            <div class="network-badge-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <div class="network-badge-name">International Lawyers Network</div>
+              <div class="network-badge-sub">Sole Thai member &middot; 90+ firms &middot; 67 countries</div>
+            </div>
+          </div>
+          <div class="network-badge">
+            <div class="network-badge-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="network-badge-name">ASEAN Attorneys Alliance</div>
+              <div class="network-badge-sub">Regional coverage across 10 ASEAN states</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="network-map-visual reveal reveal-delay-3">
+        <div class="map-title">ASEAN Network Coverage</div>
+        <div class="map-dots-grid">
+          <div class="map-dot-item active">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Thailand</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Vietnam</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Singapore</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Malaysia</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Indonesia</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Philippines</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Cambodia</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Myanmar</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Laos</div>
+          </div>
+          <div class="map-dot-item">
+            <div class="map-dot-circle"></div>
+            <div class="map-dot-name">Brunei</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTACT CTA ===== -->
+<div class="cta-section" id="contact">
+  <div class="section">
+    <div class="cta-grid">
+      <div class="cta-text">
+        <div class="section-label reveal">Get Started</div>
+        <h2 class="reveal reveal-delay-1">Talk to Us</h2>
+        <p class="reveal reveal-delay-2">Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.</p>
+        <div class="cta-contact-info reveal reveal-delay-3">
+          <div class="cta-contact-row">
+            <div class="icon-circle">&#9742;</div>
+            <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+          </div>
+          <div class="cta-contact-row">
+            <div class="icon-circle">&#9993;</div>
+            <a href="mailto:dej-udom@dejudom.com">dej-udom@dejudom.com</a>
+          </div>
+          <div class="cta-contact-row">
+            <div class="icon-circle">&#9679;</div>
+            <a href="#">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500</a>
+          </div>
+        </div>
+      </div>
+      <div class="cta-form reveal reveal-delay-2">
+        <h3>Send an Enquiry</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label>Company</label>
+            <input type="text" placeholder="Company name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label>Practice Area</label>
+            <select>
+              <option value="">Select practice area</option>
+              <option>Intellectual Property</option>
+              <option>Immigration &amp; Relocation</option>
+              <option>Corporate &amp; Investment</option>
+              <option>Litigation &amp; Disputes</option>
+              <option>Taxation</option>
+              <option>Notarial Services</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field full">
+            <label>Message</label>
+            <textarea placeholder="Brief description of your matter"></textarea>
+          </div>
+        </div>
+        <button class="form-submit" type="button">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Dej-Udom &amp; Associates</div>
+        <div class="footer-brand-sub">Attorneys at Law</div>
+        <p class="footer-desc">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangrak, Bangkok 10500, Thailand</p>
+      </div>
+      <div class="footer-col">
+        <h4>Expertise</h4>
+        <a href="javascript:void(0)" onclick="openPracticeArea('ip')">Intellectual Property</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('immigration')">Immigration &amp; Relocation</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')">Corporate &amp; Investment</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('litigation')">Litigation &amp; Disputes</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('tax')">Taxation</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('notarial')">Notarial Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>The Firm</h4>
+        <a href="DA About Us 2026.html">About Us</a>
+        <a href="DA About Us 2026.html#team">Our People</a>
+        <a href="DA About Us 2026.html#recognition">Recognition</a>
+        <a href="DA Insights 2026.html">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="DA Careers 2026.html">Careers</a>
+        <a href="#contact">Contact Us</a>
+        <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Dej-Udom &amp; Associates. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ===== Scroll-driven reveal animations =====
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // ===== Nav scroll effect =====
+  var nav = document.getElementById('mainNav');
+  var lastScroll = 0;
+  window.addEventListener('scroll', function() {
+    var currentScroll = window.scrollY;
+    if (currentScroll > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+
+  // ===== Mobile menu =====
+  var menuBtn = document.getElementById('navMenuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function() {
+    navLinks.classList.toggle('mobile-open');
+    menuBtn.classList.toggle('active');
+  });
+  document.querySelectorAll('#navLinks a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('mobile-open');
+      menuBtn.classList.remove('active');
+    });
+  });
+
+  // ===== Custom cursor =====
+  var dot = document.getElementById('cursorDot');
+  var ring = document.getElementById('cursorRing');
+  var mouseX = 0, mouseY = 0;
+  var ringX = 0, ringY = 0;
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX - 4 + 'px';
+      dot.style.top = mouseY - 4 + 'px';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = ringX - 18 + 'px';
+      ring.style.top = ringY - 18 + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Hover effect on interactive elements
+    document.querySelectorAll('a, button, .practice-card, .sector-card').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+    });
+  }
+
+  // ===== Practice Area Overlay =====
+  function openPracticeArea(id) {
+    var overlay = document.getElementById('pa-' + id);
+    if (overlay) {
+      overlay.classList.add('active');
+      document.body.classList.add('overlay-open');
+      var panel = overlay.querySelector('.pa-panel');
+      if (panel) panel.scrollTop = 0;
+    }
+  }
+
+  function closePracticeArea(id) {
+    var overlay = document.getElementById('pa-' + id);
+    if (overlay) {
+      overlay.classList.remove('active');
+      document.body.classList.remove('overlay-open');
+    }
+  }
+
+  function switchTab(evt, area, tab) {
+    var overlay = document.getElementById('pa-' + area);
+    if (!overlay) return;
+    overlay.querySelectorAll('.pa-subnav-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    overlay.querySelectorAll('.pa-sub-section').forEach(function(sec) { sec.classList.remove('active'); });
+    var target = document.getElementById(area + '-' + tab);
+    if (target) target.classList.add('active');
+    if (evt && evt.target) evt.target.classList.add('active');
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var active = document.querySelector('.pa-overlay.active');
+      if (active) closePracticeArea(active.id.replace('pa-', ''));
+    }
+  });
+
+  // ===== Magnetic button effect on nav contact =====
+  var magneticBtns = document.querySelectorAll('.nav-contact-btn, .btn-primary');
+  if (window.matchMedia('(pointer: fine)').matches) {
+    magneticBtns.forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

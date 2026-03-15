@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Dej-Udom & Associates, Attorneys at Law</title>
+<meta name="description" content="Founded in 1986 by Professor Dej-Udom Krairit, Dej-Udom & Associates is a full-service Thai law firm advising multinational companies on IP, immigration, corporate law, litigation, and taxation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ===== CUSTOM PROPERTIES ===== */
+  :root {
+    --forest: #0a1a0f;
+    --forest-deep: #050d08;
+    --forest-mid: #0f2918;
+    --emerald: #1a7a3a;
+    --emerald-dim: #145a2a;
+    --gold: #d4a853;
+    --gold-light: #e0c07a;
+    --gold-muted: rgba(212, 168, 83, 0.15);
+    --cream: #f5f2ec;
+    --warm-white: #faf8f5;
+    --text-primary: #e8e4dd;
+    --text-secondary: rgba(232, 228, 221, 0.55);
+    --text-muted: rgba(232, 228, 221, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass: rgba(10, 26, 15, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+    --radius-sm: 6px;
+    --radius-lg: 20px;
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--forest-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  /* ===== NOISE TEXTURE OVERLAY ===== */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ===== FOCUS INDICATORS ===== */
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ===== SCROLL-DRIVEN REVEAL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===== CUSTOM CURSOR ===== */
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    opacity: 0.5;
+  }
+  .cursor-ring.hover {
+    width: 56px;
+    height: 56px;
+    border-color: var(--gold-light);
+    opacity: 0.3;
+  }
+
+  @media (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled {
+    background: rgba(5, 13, 8, 0.85);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled .nav-inner { height: 64px; }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    gap: 2px;
+  }
+  .nav-logo-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 0.5px;
+    line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-contact-btn {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--forest);
+    background: var(--gold);
+    text-decoration: none;
+    padding: 10px 28px;
+    border-radius: 100px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--gold-light);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: inherit;
+  }
+  .nav-contact-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .nav-contact-btn span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .nav-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--text-primary);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+  }
+  .nav-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-menu-btn.active span:nth-child(2) { opacity: 0; }
+  .nav-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .nav-links.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 80px; left: 0; right: 0;
+    background: rgba(5, 13, 8, 0.97);
+    backdrop-filter: blur(24px);
+    padding: 32px 48px;
+    gap: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--forest-deep);
+  }
+  .hero-gradient {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26, 122, 58, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212, 168, 83, 0.04) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(5, 13, 8, 0) 0%, rgba(5, 13, 8, 0.6) 100%);
+    z-index: 1;
+  }
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+  .hero-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(26, 122, 58, 0.12);
+    top: 10%;
+    right: 15%;
+    animation-delay: 0s;
+  }
+  .hero-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(212, 168, 83, 0.06);
+    bottom: 10%;
+    left: 10%;
+    animation-delay: -4s;
+  }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -30px) scale(1.05); }
+    66% { transform: translate(-15px, 20px) scale(0.95); }
+  }
+  .hero-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 180px 48px 120px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.5vw, 64px);
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    max-width: 760px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    max-width: 600px;
+    font-weight: 400;
+  }
+
+  /* ===== SHARED SECTION STYLES ===== */
+  .section {
+    padding: 140px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+
+  /* ===== FIRM STORY ===== */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .story-narrative p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 28px;
+  }
+  .story-narrative p:first-child::first-letter {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 60px;
+    float: left;
+    line-height: 1;
+    margin-right: 14px;
+    margin-top: 6px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), rgba(212, 168, 83, 0.2), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 48px;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -44px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--forest-deep), 0 0 0 5px rgba(212, 168, 83, 0.3);
+  }
+  .timeline-year {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== VALUES ===== */
+  .values-section {
+    background: var(--forest-mid);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .value-card {
+    padding: 52px 40px;
+    background: var(--glass);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .value-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212, 168, 83, 0.15);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  }
+  .value-card:hover::before { opacity: 1; }
+  .value-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 52px;
+    color: var(--gold);
+    opacity: 0.15;
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+  .value-card h3 {
+    font-size: 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .value-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ===== LEADERSHIP TEAM ===== */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .team-card {
+    background: var(--glass);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .team-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212, 168, 83, 0.15);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  }
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--forest-mid), var(--forest));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .team-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, var(--glass), transparent);
+  }
+  .team-photo-placeholder {
+    font-size: 48px;
+    color: rgba(255,255,255,0.08);
+    font-family: 'Libre Baskerville', serif;
+  }
+  .team-info {
+    padding: 24px;
+  }
+  .team-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .team-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+  .team-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .team-tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--gold-muted);
+    color: var(--gold);
+  }
+
+  /* ===== RANKINGS & RECOGNITION ===== */
+  .rankings-section {
+    background: var(--forest-mid);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .rankings-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rankings-scroll::-webkit-scrollbar { height: 3px; }
+  .rankings-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 2px; }
+  .rankings-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  .ranking-badge {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 36px 30px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ranking-badge:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  }
+  .ranking-source {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .ranking-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 17px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .ranking-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Notable matters */
+  .notable-matters {
+    margin-top: 80px;
+    padding-top: 56px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .notable-matters h3 {
+    font-size: 22px;
+    color: var(--text-primary);
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .matter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .matter-card {
+    padding: 32px;
+    border-left: 2px solid var(--gold);
+    background: var(--glass);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .matter-card:hover {
+    border-left-color: var(--gold-light);
+    background: rgba(10, 26, 15, 0.8);
+    transform: translateX(4px);
+  }
+  .matter-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .matter-tag {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ===== NETWORK & AFFILIATIONS ===== */
+  .network-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .network-text p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+  .network-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .network-badge {
+    padding: 18px 24px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .network-badge:hover {
+    border-color: rgba(212, 168, 83, 0.2);
+    transform: translateY(-2px);
+  }
+  .network-badge-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .network-badge-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .network-badge-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .network-badge-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Network map */
+  .network-map {
+    background: var(--glass);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    padding: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+  .map-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+  }
+  .map-dots {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+  .map-dot {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .map-dot:hover { background: rgba(255, 255, 255, 0.03); }
+  .map-dot-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin: 0 auto 10px;
+    opacity: 0.4;
+    transition: all 0.3s;
+  }
+  .map-dot:hover .map-dot-circle { opacity: 0.8; }
+  .map-dot.active .map-dot-circle {
+    width: 14px;
+    height: 14px;
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.15);
+  }
+  .map-dot-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== CTA STRIP ===== */
+  .cta-strip {
+    background: var(--forest-mid);
+    padding: 72px 48px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .cta-strip-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .cta-strip h2 {
+    font-size: 30px;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  .cta-strip-btns {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  .btn-gold {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: var(--gold);
+    color: var(--forest);
+    border: none;
+    cursor: pointer;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+    background: none;
+    cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--forest-deep);
+    padding: 80px 48px 48px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .footer-brand-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .footer-brand-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+  .footer-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 340px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(232, 228, 221, 0.15);
+  }
+  .footer-legal {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-legal a {
+    font-size: 12px;
+    color: rgba(232, 228, 221, 0.15);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-legal a:hover { color: var(--text-secondary); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .story-grid { grid-template-columns: 1fr; gap: 56px; }
+    .values-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+    .matter-grid { grid-template-columns: 1fr; }
+    .network-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+    .nav-inner { padding: 0 24px; }
+    .hero h1 { font-size: 36px; }
+    .hero-inner { padding: 160px 24px 100px; }
+    .section { padding: 100px 24px; }
+    .section-title { font-size: 32px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .map-dots { grid-template-columns: repeat(3, 1fr); }
+    .cta-strip { padding: 56px 24px; }
+    .cta-strip-inner { flex-direction: column; text-align: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    footer { padding: 60px 24px 36px; }
+  }
+
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .map-dots { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="DA Landing Page 2026.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom & Associates</span>
+      <span class="nav-logo-sub">Attorneys at Law</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="DA Landing Page 2026.html">Home</a></li>
+      <li><a href="DA About Us 2026.html" class="active">About</a></li>
+      <li><a href="DA Landing Page 2026.html#practices">Expertise</a></li>
+      <li><a href="DA Insights 2026.html">Insights</a></li>
+      <li><a href="DA Careers 2026.html">Careers</a></li>
+    </ul>
+    <a href="DA Landing Page 2026.html#contact" class="nav-contact-btn magnetic-wrap"><span>Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-label reveal">About the Firm</div>
+    <h1 class="reveal reveal-delay-1">Bangkok's Multidisciplinary<br>Law Firm Since <em>1986</em></h1>
+    <p class="hero-desc reveal reveal-delay-2">Founded by Professor Dej-Udom Krairit, our firm has grown from a specialist intellectual property practice into one of Bangkok's established full-service law firms — advising multinational companies across six practice areas and two working languages.</p>
+  </div>
+</section>
+
+<!-- ===== FIRM STORY ===== -->
+<div class="section">
+  <div class="section-label reveal">Our Story</div>
+  <div class="story-grid">
+    <div class="story-narrative reveal reveal-delay-1">
+      <p>Professor Dej-Udom Krairit established the firm in 1986 with a single focus: providing rigorous intellectual property advice to international companies entering the Thai market. At a time when Thailand's IP framework was still developing, the firm built its reputation on technical depth and direct access to the regulatory bodies that shaped the system.</p>
+      <p>Over the following decades, the practice expanded in response to what clients actually needed. Companies that came for trademark protection soon needed corporate structuring, work permits for their expatriate staff, and eventually, representation in disputes. Rather than referring these matters out, the firm built dedicated departments — each led by practitioners with genuine depth in their area.</p>
+      <p>Today, Dej-Udom & Associates advises in Thai and English across intellectual property, immigration and relocation, corporate and investment law, litigation and dispute resolution, taxation, and notarial services. The approach hasn't changed: understand the client's business first, then provide advice that accounts for how Thai law actually works in practice.</p>
+    </div>
+    <div class="timeline reveal reveal-delay-2">
+      <div class="timeline-item">
+        <div class="timeline-year">1986</div>
+        <div class="timeline-desc">Professor Dej-Udom Krairit founds the firm as a specialist intellectual property practice in Bangkok</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1995</div>
+        <div class="timeline-desc">Appointed sole Thai member of the International Lawyers Network (ILN), expanding cross-border capabilities</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2005</div>
+        <div class="timeline-desc">Expands into full-service operations — adding corporate, litigation, and immigration departments</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-desc">Joins the ASEAN Attorneys Alliance, strengthening regional coverage across Southeast Asia</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-desc">Appointed BOI Certified Agency for the Long-Term Resident (LTR) Visa programme — one of a limited number of authorised firms</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VALUES ===== -->
+<div class="values-section">
+  <div class="section">
+    <div class="section-label reveal">What Guides Us</div>
+    <h2 class="section-title reveal reveal-delay-1">Built on Principle</h2>
+    <p class="section-intro reveal reveal-delay-2">Three commitments that have defined our practice for nearly four decades — and that every member of the firm is held to.</p>
+    <div class="values-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-number">01</div>
+        <h3>Client-First Counsel</h3>
+        <p>We start with the business problem, not the legal theory. Every engagement begins by understanding the client's industry context, commercial objectives, and risk tolerance — so the advice we give is actionable, not academic.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-number">02</div>
+        <h3>Excellence in Delivery</h3>
+        <p>Responsiveness, clarity, and follow-through. We meet deadlines, write in plain language, and keep clients informed at every stage. When something changes, we say so immediately — not after the fact.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-number">03</div>
+        <h3>Thai Roots, Global Reach</h3>
+        <p>Deep understanding of Thai law and regulatory practice, combined with the international network to support clients operating across borders. Through ILN and the ASEAN Attorneys Alliance, we coordinate seamlessly across jurisdictions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LEADERSHIP TEAM ===== -->
+<div class="section" id="team">
+  <div class="section-label reveal">Our People</div>
+  <h2 class="section-title reveal reveal-delay-1">Leadership & Team</h2>
+  <p class="section-intro reveal reveal-delay-2">The people behind the practice — each bringing genuine depth in their area and a shared commitment to getting the detail right.</p>
+  <div class="team-grid">
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">DK</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Prof. Dej-Udom Krairit</div>
+        <div class="team-title">Founder & Managing Partner</div>
+        <div class="team-tags">
+          <span class="team-tag">IP</span>
+          <span class="team-tag">Corporate</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">SK</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Shawn Krairit</div>
+        <div class="team-title">Director of Operations</div>
+        <div class="team-tags">
+          <span class="team-tag">Operations</span>
+          <span class="team-tag">Strategy</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Immigration</div>
+        <div class="team-tags">
+          <span class="team-tag">Immigration</span>
+          <span class="team-tag">LTR Visa</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Litigation</div>
+        <div class="team-tags">
+          <span class="team-tag">Litigation</span>
+          <span class="team-tag">ADR</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Trademarks</div>
+        <div class="team-tags">
+          <span class="team-tag">Trademark</span>
+          <span class="team-tag">IP</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Patents</div>
+        <div class="team-tags">
+          <span class="team-tag">Patent</span>
+          <span class="team-tag">IP</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Corporate</div>
+        <div class="team-tags">
+          <span class="team-tag">Corporate</span>
+          <span class="team-tag">M&A</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-photo">
+        <span class="team-photo-placeholder">—</span>
+      </div>
+      <div class="team-info">
+        <div class="team-name">Senior Attorney</div>
+        <div class="team-title">Head of Tax</div>
+        <div class="team-tags">
+          <span class="team-tag">Tax</span>
+          <span class="team-tag">BOI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RANKINGS & RECOGNITION ===== -->
+<div class="rankings-section" id="recognition">
+  <div class="section">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="section-title reveal reveal-delay-1">Recognised Excellence</h2>
+    <p class="section-intro reveal reveal-delay-2">Ranked and recommended by the publications that matter in international legal practice.</p>
+
+    <div class="rankings-scroll reveal reveal-delay-3">
+      <div class="ranking-badge">
+        <div class="ranking-source">World Trademark Review</div>
+        <div class="ranking-title">WTR 1000</div>
+        <div class="ranking-detail">Recommended firm for trademark prosecution and strategy in Thailand</div>
+      </div>
+      <div class="ranking-badge">
+        <div class="ranking-source">IP Stars</div>
+        <div class="ranking-title">Managing IP</div>
+        <div class="ranking-detail">Recognised for patent and trademark practice in Thailand</div>
+      </div>
+      <div class="ranking-badge">
+        <div class="ranking-source">Patent Lawyer Magazine</div>
+        <div class="ranking-title">Top Patent Firms</div>
+        <div class="ranking-detail">Listed among leading patent practices in ASEAN</div>
+      </div>
+      <div class="ranking-badge">
+        <div class="ranking-source">International Lawyers Network</div>
+        <div class="ranking-title">Sole Thai Member</div>
+        <div class="ranking-detail">Exclusive Thai representative since 1995 — 90+ firms across 67 countries</div>
+      </div>
+      <div class="ranking-badge">
+        <div class="ranking-source">Google Reviews</div>
+        <div class="ranking-title">4.9 Star Rating</div>
+        <div class="ranking-detail">Highest-rated law firm in the Bangrak district for client satisfaction</div>
+      </div>
+      <div class="ranking-badge">
+        <div class="ranking-source">Board of Investment</div>
+        <div class="ranking-title">BOI Certified Agency</div>
+        <div class="ranking-detail">Authorised to submit LTR Visa applications directly to the BOI</div>
+      </div>
+    </div>
+
+    <!-- Notable Matters -->
+    <div class="notable-matters reveal">
+      <h3>Notable Matters</h3>
+      <div class="matter-grid">
+        <div class="matter-card reveal reveal-delay-1">
+          <div class="matter-text">Advised a Fortune 500 consumer goods company on its Thailand trademark portfolio — managing 200+ registrations across multiple classes</div>
+          <div class="matter-tag">Intellectual Property</div>
+        </div>
+        <div class="matter-card reveal reveal-delay-2">
+          <div class="matter-text">Coordinated work permits and LTR Visas for a regional headquarters relocating 40+ expatriate employees to Bangkok</div>
+          <div class="matter-tag">Immigration</div>
+        </div>
+        <div class="matter-card reveal reveal-delay-3">
+          <div class="matter-text">Structured BOI-promoted investment for a Japanese manufacturer — from entity formation through to operational launch</div>
+          <div class="matter-tag">Corporate & Tax</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NETWORK & AFFILIATIONS ===== -->
+<div class="section" id="network">
+  <div class="section-label reveal">Global Network</div>
+  <h2 class="section-title reveal reveal-delay-1">Regional Strength,<br>International Reach</h2>
+  <div class="network-grid">
+    <div class="network-text reveal reveal-delay-2">
+      <p>As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our membership in the ASEAN Attorneys Alliance provides direct access to leading independent firms across every ASEAN jurisdiction.</p>
+      <p>This means clients dealing with cross-border matters — whether it's a multi-jurisdiction trademark filing, a regional corporate restructuring, or an employment dispute spanning several countries — get coordinated advice through a single point of contact in Bangkok.</p>
+      <div class="network-badges">
+        <div class="network-badge">
+          <div class="network-badge-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="network-badge-text">International Lawyers Network</div>
+            <div class="network-badge-sub">Sole Thai member since 1995</div>
+          </div>
+        </div>
+        <div class="network-badge">
+          <div class="network-badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="network-badge-text">ASEAN Attorneys Alliance</div>
+            <div class="network-badge-sub">Regional coverage across 10 ASEAN states</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="network-map reveal reveal-delay-3">
+      <div class="map-label">ASEAN Network Coverage</div>
+      <div class="map-dots">
+        <div class="map-dot active">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Thailand</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Vietnam</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Singapore</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Malaysia</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Indonesia</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Philippines</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Cambodia</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Myanmar</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Laos</div>
+        </div>
+        <div class="map-dot">
+          <div class="map-dot-circle"></div>
+          <div class="map-dot-name">Brunei</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CTA STRIP ===== -->
+<div class="cta-strip">
+  <div class="cta-strip-inner">
+    <h2>Ready to discuss your legal needs?</h2>
+    <div class="cta-strip-btns">
+      <a href="DA Landing Page 2026.html#contact" class="btn-gold magnetic-wrap">Contact Us</a>
+      <a href="DA Landing Page 2026.html#practices" class="btn-outline magnetic-wrap">View Our Expertise</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Dej-Udom & Associates</div>
+        <div class="footer-brand-sub">Attorneys at Law</div>
+        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Expertise</h4>
+        <a href="DA Landing Page 2026.html#practices">Intellectual Property</a>
+        <a href="DA Landing Page 2026.html#practices">Immigration</a>
+        <a href="DA Landing Page 2026.html#practices">Corporate & Investment</a>
+        <a href="DA Landing Page 2026.html#practices">Litigation</a>
+        <a href="DA Landing Page 2026.html#practices">Taxation</a>
+        <a href="DA Landing Page 2026.html#practices">Notarial Services</a>
+      </div>
+      <div class="footer-col">
+        <h4>Firm</h4>
+        <a href="DA About Us 2026.html">About Us</a>
+        <a href="DA About Us 2026.html#team">Our People</a>
+        <a href="DA About Us 2026.html#recognition">Recognition</a>
+        <a href="DA Insights 2026.html">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="DA Careers 2026.html">Careers</a>
+        <a href="DA Landing Page 2026.html#contact">Contact Us</a>
+        <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  (function() {
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const dot = document.querySelector('.cursor-dot');
+      const ring = document.querySelector('.cursor-ring');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx - 4 + 'px';
+        dot.style.top = my - 4 + 'px';
+      });
+      function animateRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = rx - 18 + 'px';
+        ring.style.top = ry - 18 + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button, .team-card, .value-card, .ranking-badge, .matter-card, .network-badge, .magnetic-wrap').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
+        el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+      });
+    }
+  })();
+
+  // Nav scroll state
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu toggle
+  document.querySelector('.nav-menu-btn').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('mobile-open');
+  });
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+</script>
+
+</body>
+</html>
