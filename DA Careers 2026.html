@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   /* ===== CUSTOM PROPERTIES ===== */
   :root {
@@ -50,6 +51,11 @@
     font-weight: 400;
     letter-spacing: -0.2px;
   }
+
+  body.lang-th { font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-th h1, body.lang-th h2, body.lang-th h3, body.lang-th h4 { font-family: 'Noto Sans Thai', 'Libre Baskerville', Georgia, serif; }
+  body.lang-zh { font-family: 'Noto Sans SC', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4 { font-family: 'Noto Sans SC', 'Libre Baskerville', Georgia, serif; }
 
   body::after {
     content: '';
@@ -108,9 +114,10 @@
     transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   nav.scrolled .nav-inner { height: 64px; }
-  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 2px; }
-  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.5px; line-height: 1; }
-  .nav-logo-sub { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-weight: 500; }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 3px; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.3px; line-height: 1; }
+  .nav-logo-amp { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 27px; display: inline-block; vertical-align: baseline; margin: 0 1px; }
+  .nav-logo-sub { font-family: 'Libre Baskerville', serif; font-size: 11px; color: var(--text-secondary); letter-spacing: 2.5px; font-weight: 400; text-align: center; }
   .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 400; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.3px; position: relative; transition: color 0.3s; }
   .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -118,6 +125,11 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
+  .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
+  .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+  .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+  .lang-option.active { color: var(--forest); background: var(--gold); }
+
   .nav-contact-btn {
     font-size: 12px; font-weight: 600; color: var(--forest); background: var(--gold); text-decoration: none;
     padding: 10px 28px; border-radius: 100px; letter-spacing: 0.8px; text-transform: uppercase;
@@ -425,7 +437,7 @@
   }
 </style>
 </head>
-<body>
+<body style="opacity:0;transition:opacity .3s" data-i18n-title="careers.meta.title" data-i18n-desc="careers.meta.desc">
 
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
@@ -434,18 +446,23 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <span class="nav-logo-name">Dej-Udom & Associates</span>
-      <span class="nav-logo-sub">Attorneys at Law</span>
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub" data-i18n="common.nav.subtitle">Attorneys At Law</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="DA About Us 2026.html">About</a></li>
-      <li><a href="index.html#practices">Expertise</a></li>
-      <li><a href="DA Insights 2026.html">Insights</a></li>
-      <li><a href="DA Careers 2026.html" class="active">Careers</a></li>
+      <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
+      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
+      <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
+      <li><a href="DA Careers 2026.html" class="active" data-i18n="common.nav.careers">Careers</a></li>
     </ul>
-    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span>Contact</span></a>
-    <button class="nav-menu-btn" aria-label="Open menu">
+    <div class="lang-switcher">
+      <button class="lang-option active" data-lang="en" title="English">EN</button>
+      <button class="lang-option" data-lang="th" title="ภาษาไทย">TH</button>
+      <button class="lang-option" data-lang="zh-CN" title="中文">CN</button>
+    </div>
+    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span data-i18n="common.nav.contact">Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu" data-i18n-aria-label="common.nav.openMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -457,55 +474,55 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-inner">
-    <div class="hero-label reveal">Careers</div>
-    <h1 class="reveal reveal-delay-1">Shape the Law.<br>Grow Your <em>Career</em></h1>
-    <p class="hero-desc reveal reveal-delay-2">Join a firm where merit drives progression, cross-practice collaboration is the norm, and every member contributes to work that matters — for clients, for the profession, and for Thailand's legal landscape.</p>
+    <div class="hero-label reveal" data-i18n="careers.hero.label">Careers</div>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="careers.hero.title">Shape the Law.<br>Grow Your <em>Career</em></h1>
+    <p class="hero-desc reveal reveal-delay-2" data-i18n="careers.hero.desc">Join a firm where merit drives progression, cross-practice collaboration is the norm, and every member contributes to work that matters — for clients, for the profession, and for Thailand's legal landscape.</p>
     <div class="hero-cta reveal reveal-delay-3">
-      <a href="#positions" class="magnetic-wrap">View Open Positions</a>
+      <a href="#positions" class="magnetic-wrap" data-i18n="careers.hero.cta">View Open Positions</a>
     </div>
   </div>
 </section>
 
 <!-- ===== WHY D&A ===== -->
 <div class="section">
-  <div class="section-label reveal">Why Dej-Udom</div>
-  <h2 class="section-title reveal reveal-delay-1">What Makes Us Different</h2>
-  <p class="section-intro reveal reveal-delay-2">We've built a firm where talented people can do their best work — with the support, structure, and autonomy to grow on their own terms.</p>
+  <div class="section-label reveal" data-i18n="careers.why.label">Why Dej-Udom</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.why.title">What Makes Us Different</h2>
+  <p class="section-intro reveal reveal-delay-2" data-i18n="careers.why.intro">We've built a firm where talented people can do their best work — with the support, structure, and autonomy to grow on their own terms.</p>
   <div class="why-grid">
     <div class="why-card reveal reveal-delay-1">
       <div class="why-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
-      <h3>Forward-Thinking Practice</h3>
-      <p>We invest in legal technology and modern workflows. You'll work with tools that make practice efficient — not paperwork for the sake of it.</p>
+      <h3 data-i18n="careers.why.card1.title">Forward-Thinking Practice</h3>
+      <p data-i18n="careers.why.card1.desc">We invest in legal technology and modern workflows. You'll work with tools that make practice efficient — not paperwork for the sake of it.</p>
     </div>
     <div class="why-card reveal reveal-delay-2">
       <div class="why-icon">
         <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
       </div>
-      <h3>Merit-Based Growth</h3>
-      <p>Clear performance criteria, transparent promotion pathways, and regular feedback. Advancement here is earned — not waited for.</p>
+      <h3 data-i18n="careers.why.card2.title">Merit-Based Growth</h3>
+      <p data-i18n="careers.why.card2.desc">Clear performance criteria, transparent promotion pathways, and regular feedback. Advancement here is earned — not waited for.</p>
     </div>
     <div class="why-card reveal reveal-delay-3">
       <div class="why-icon">
         <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
-      <h3>Cross-Practice Exposure</h3>
-      <p>Work across IP, corporate, immigration, and litigation — not in a silo. Our multidisciplinary structure means real breadth from day one.</p>
+      <h3 data-i18n="careers.why.card3.title">Cross-Practice Exposure</h3>
+      <p data-i18n="careers.why.card3.desc">Work across IP, corporate, immigration, and litigation — not in a silo. Our multidisciplinary structure means real breadth from day one.</p>
     </div>
     <div class="why-card reveal reveal-delay-1">
       <div class="why-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
       </div>
-      <h3>Work-Life Balance</h3>
-      <p>Hybrid flexibility, reasonable hours, and respect for personal time. We deliver excellent work without burning people out.</p>
+      <h3 data-i18n="careers.why.card4.title">Work-Life Balance</h3>
+      <p data-i18n="careers.why.card4.desc">Hybrid flexibility, reasonable hours, and respect for personal time. We deliver excellent work without burning people out.</p>
     </div>
     <div class="why-card reveal reveal-delay-2">
       <div class="why-icon">
         <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       </div>
-      <h3>Continuous Learning</h3>
-      <p>Annual CPD budget, international conference attendance, and secondment opportunities through our ILN and ASEAN network.</p>
+      <h3 data-i18n="careers.why.card5.title">Continuous Learning</h3>
+      <p data-i18n="careers.why.card5.desc">Annual CPD budget, international conference attendance, and secondment opportunities through our ILN and ASEAN network.</p>
     </div>
   </div>
 </div>
@@ -513,39 +530,39 @@
 <!-- ===== CAREER PATHWAY ===== -->
 <div class="pathway-section">
   <div class="section">
-    <div class="section-label reveal">Your Path</div>
-    <h2 class="section-title reveal reveal-delay-1">Career Progression at D&A</h2>
-    <p class="section-intro reveal reveal-delay-2">A transparent, structured pathway from your first day to partnership — with clear milestones and development support at every stage.</p>
+    <div class="section-label reveal" data-i18n="careers.pathway.label">Your Path</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n-html="careers.pathway.title">Career Progression at D&amp;A</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="careers.pathway.intro">A transparent, structured pathway from your first day to partnership — with clear milestones and development support at every stage.</p>
     <div class="pathway-steps reveal reveal-delay-3">
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">1</span></div>
-        <div class="pathway-title">Intern</div>
-        <div class="pathway-desc">Foundation training, research assignments, court observation</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step1.title">Intern</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step1.desc">Foundation training, research assignments, court observation</div>
       </div>
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">2</span></div>
-        <div class="pathway-title">Junior Associate</div>
-        <div class="pathway-desc">Supervised client work, drafting, and filings</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step2.title">Junior Associate</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step2.desc">Supervised client work, drafting, and filings</div>
       </div>
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">3</span></div>
-        <div class="pathway-title">Associate</div>
-        <div class="pathway-desc">Independent matter management, client relationships</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step3.title">Associate</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step3.desc">Independent matter management, client relationships</div>
       </div>
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">4</span></div>
-        <div class="pathway-title">Senior Associate</div>
-        <div class="pathway-desc">Team leadership, complex matters, business development</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step4.title">Senior Associate</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step4.desc">Team leadership, complex matters, business development</div>
       </div>
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">5</span></div>
-        <div class="pathway-title">Of Counsel</div>
-        <div class="pathway-desc">Specialist advisory, mentoring, strategic input</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step5.title">Of Counsel</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step5.desc">Specialist advisory, mentoring, strategic input</div>
       </div>
       <div class="pathway-step">
         <div class="pathway-circle"><span class="pathway-circle-num">6</span></div>
-        <div class="pathway-title">Partner</div>
-        <div class="pathway-desc">Firm leadership, practice development, strategic direction</div>
+        <div class="pathway-title" data-i18n="careers.pathway.step6.title">Partner</div>
+        <div class="pathway-desc" data-i18n="careers.pathway.step6.desc">Firm leadership, practice development, strategic direction</div>
       </div>
     </div>
   </div>
@@ -553,24 +570,24 @@
 
 <!-- ===== LIFE AT D&A ===== -->
 <div class="section">
-  <div class="section-label reveal">Life at D&A</div>
-  <h2 class="section-title reveal reveal-delay-1">More Than a Workplace</h2>
-  <p class="section-intro reveal reveal-delay-2">A practice built on collaboration, mutual respect, and the shared belief that legal work should be intellectually rewarding.</p>
+  <div class="section-label reveal" data-i18n="careers.life.label">Life at D&A</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.life.title">More Than a Workplace</h2>
+  <p class="section-intro reveal reveal-delay-2" data-i18n="careers.life.intro">A practice built on collaboration, mutual respect, and the shared belief that legal work should be intellectually rewarding.</p>
   <div class="life-grid">
     <div class="life-photo tall reveal reveal-delay-1" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');"></div>
     <div class="life-quote reveal reveal-delay-2">
       <div class="life-quote-mark">"</div>
-      <div class="life-quote-text">What drew me here was the chance to work across practice areas from day one. Within my first year, I was handling trademark prosecutions, assisting with corporate formations, and sitting in on immigration consultations.</div>
-      <div class="life-quote-author">Associate, IP Department</div>
-      <div class="life-quote-role">3 years at D&A</div>
+      <div class="life-quote-text" data-i18n="careers.life.quote1.text">What drew me here was the chance to work across practice areas from day one. Within my first year, I was handling trademark prosecutions, assisting with corporate formations, and sitting in on immigration consultations.</div>
+      <div class="life-quote-author" data-i18n="careers.life.quote1.author">Associate, IP Department</div>
+      <div class="life-quote-role" data-i18n="careers.life.quote1.role">3 years at D&A</div>
     </div>
     <div class="life-photo reveal reveal-delay-3" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');"></div>
     <div class="life-photo reveal reveal-delay-1" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80');"></div>
     <div class="life-quote reveal reveal-delay-2">
       <div class="life-quote-mark">"</div>
-      <div class="life-quote-text">The partners here actually listen. When I proposed a new workflow for LTR Visa processing, it was adopted within a month. That kind of openness to ideas from junior staff is rare in Thai law firms.</div>
-      <div class="life-quote-author">Senior Associate, Immigration</div>
-      <div class="life-quote-role">5 years at D&A</div>
+      <div class="life-quote-text" data-i18n="careers.life.quote2.text">The partners here actually listen. When I proposed a new workflow for LTR Visa processing, it was adopted within a month. That kind of openness to ideas from junior staff is rare in Thai law firms.</div>
+      <div class="life-quote-author" data-i18n="careers.life.quote2.author">Senior Associate, Immigration</div>
+      <div class="life-quote-role" data-i18n="careers.life.quote2.role">5 years at D&A</div>
     </div>
   </div>
 </div>
@@ -578,18 +595,18 @@
 <!-- ===== OPEN POSITIONS ===== -->
 <div class="positions-section" id="positions">
   <div class="section">
-    <div class="section-label reveal">Open Positions</div>
-    <h2 class="section-title reveal reveal-delay-1">Current Opportunities</h2>
-    <p class="section-intro reveal reveal-delay-2">We're always looking for talented people who share our standards. Explore current openings or submit a general application below.</p>
+    <div class="section-label reveal" data-i18n="careers.positions.label">Open Positions</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.positions.title">Current Opportunities</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="careers.positions.intro">We're always looking for talented people who share our standards. Explore current openings or submit a general application below.</p>
 
     <div class="positions-list reveal reveal-delay-3">
       <div class="position-card">
         <div class="position-header" onclick="togglePosition(this)">
           <div class="position-left">
-            <div class="position-title">Associate — Intellectual Property</div>
+            <div class="position-title" data-i18n="careers.positions.pos1.title">Associate — Intellectual Property</div>
             <div class="position-meta">
-              <span class="position-dept">IP</span>
-              <span class="position-level">2–4 years experience</span>
+              <span class="position-dept" data-i18n="common.practice.ip">IP</span>
+              <span class="position-level" data-i18n="careers.positions.pos1.level">2–4 years experience</span>
             </div>
           </div>
           <div class="position-arrow">
@@ -597,34 +614,34 @@
           </div>
         </div>
         <div class="position-body">
-          <h4>About the Role</h4>
-          <p>Join our IP department handling trademark and patent prosecution, enforcement, and portfolio management for multinational clients. You'll work directly with brand owners on registrations, oppositions, and customs enforcement across Thailand.</p>
-          <h4>Requirements</h4>
+          <h4 data-i18n="careers.positions.aboutRole">About the Role</h4>
+          <p data-i18n="careers.positions.pos1.about">Join our IP department handling trademark and patent prosecution, enforcement, and portfolio management for multinational clients. You'll work directly with brand owners on registrations, oppositions, and customs enforcement across Thailand.</p>
+          <h4 data-i18n="careers.positions.requirements">Requirements</h4>
           <ul>
-            <li>Thai lawyer's licence (or eligible to obtain one)</li>
-            <li>2–4 years' experience in intellectual property law</li>
-            <li>Strong English drafting and communication skills</li>
-            <li>Experience with DIP procedures and CIPITC litigation preferred</li>
-            <li>Familiarity with Madrid Protocol and PCT procedures is a plus</li>
+            <li data-i18n="careers.positions.pos1.req1">Thai lawyer's licence (or eligible to obtain one)</li>
+            <li data-i18n="careers.positions.pos1.req2">2–4 years' experience in intellectual property law</li>
+            <li data-i18n="careers.positions.pos1.req3">Strong English drafting and communication skills</li>
+            <li data-i18n="careers.positions.pos1.req4">Experience with DIP procedures and CIPITC litigation preferred</li>
+            <li data-i18n="careers.positions.pos1.req5">Familiarity with Madrid Protocol and PCT procedures is a plus</li>
           </ul>
-          <h4>What We Offer</h4>
+          <h4 data-i18n="careers.positions.whatWeOffer">What We Offer</h4>
           <ul>
-            <li>Competitive salary with annual review</li>
-            <li>CPD budget and conference attendance (INTA, APAA)</li>
-            <li>Cross-practice exposure across all departments</li>
-            <li>Clear pathway to Senior Associate and beyond</li>
+            <li data-i18n="careers.positions.pos1.offer1">Competitive salary with annual review</li>
+            <li data-i18n="careers.positions.pos1.offer2">CPD budget and conference attendance (INTA, APAA)</li>
+            <li data-i18n="careers.positions.pos1.offer3">Cross-practice exposure across all departments</li>
+            <li data-i18n="careers.positions.pos1.offer4">Clear pathway to Senior Associate and beyond</li>
           </ul>
-          <a href="#apply" class="position-apply">Apply for This Role</a>
+          <a href="#apply" class="position-apply" data-i18n="careers.positions.applyBtn">Apply for This Role</a>
         </div>
       </div>
 
       <div class="position-card">
         <div class="position-header" onclick="togglePosition(this)">
           <div class="position-left">
-            <div class="position-title">Senior Associate — Immigration</div>
+            <div class="position-title" data-i18n="careers.positions.pos2.title">Senior Associate — Immigration</div>
             <div class="position-meta">
-              <span class="position-dept">Immigration</span>
-              <span class="position-level">4–6 years experience</span>
+              <span class="position-dept" data-i18n="common.practice.immigration">Immigration</span>
+              <span class="position-level" data-i18n="careers.positions.pos2.level">4–6 years experience</span>
             </div>
           </div>
           <div class="position-arrow">
@@ -632,34 +649,34 @@
           </div>
         </div>
         <div class="position-body">
-          <h4>About the Role</h4>
-          <p>Lead our growing immigration practice — managing work permit and visa applications for corporate clients, coordinating LTR Visa submissions as a BOI Certified Agency, and mentoring junior team members. You'll handle a portfolio of multinational employers and high-net-worth individuals.</p>
-          <h4>Requirements</h4>
+          <h4 data-i18n="careers.positions.aboutRole">About the Role</h4>
+          <p data-i18n="careers.positions.pos2.about">Lead our growing immigration practice — managing work permit and visa applications for corporate clients, coordinating LTR Visa submissions as a BOI Certified Agency, and mentoring junior team members. You'll handle a portfolio of multinational employers and high-net-worth individuals.</p>
+          <h4 data-i18n="careers.positions.requirements">Requirements</h4>
           <ul>
-            <li>Thai lawyer's licence</li>
-            <li>4–6 years' experience in Thai immigration law</li>
-            <li>Proven track record managing high-volume corporate immigration accounts</li>
-            <li>Fluent English (written and spoken)</li>
-            <li>Experience with BOI processes and LTR Visa applications strongly preferred</li>
+            <li data-i18n="careers.positions.pos2.req1">Thai lawyer's licence</li>
+            <li data-i18n="careers.positions.pos2.req2">4–6 years' experience in Thai immigration law</li>
+            <li data-i18n="careers.positions.pos2.req3">Proven track record managing high-volume corporate immigration accounts</li>
+            <li data-i18n="careers.positions.pos2.req4">Fluent English (written and spoken)</li>
+            <li data-i18n="careers.positions.pos2.req5">Experience with BOI processes and LTR Visa applications strongly preferred</li>
           </ul>
-          <h4>What We Offer</h4>
+          <h4 data-i18n="careers.positions.whatWeOffer">What We Offer</h4>
           <ul>
-            <li>Senior-level compensation package</li>
-            <li>Direct client relationship management</li>
-            <li>Leadership opportunities within the immigration department</li>
-            <li>International network access through ILN and ASEAN Attorneys Alliance</li>
+            <li data-i18n="careers.positions.pos2.offer1">Senior-level compensation package</li>
+            <li data-i18n="careers.positions.pos2.offer2">Direct client relationship management</li>
+            <li data-i18n="careers.positions.pos2.offer3">Leadership opportunities within the immigration department</li>
+            <li data-i18n="careers.positions.pos2.offer4">International network access through ILN and ASEAN Attorneys Alliance</li>
           </ul>
-          <a href="#apply" class="position-apply">Apply for This Role</a>
+          <a href="#apply" class="position-apply" data-i18n="careers.positions.applyBtn">Apply for This Role</a>
         </div>
       </div>
 
       <div class="position-card">
         <div class="position-header" onclick="togglePosition(this)">
           <div class="position-left">
-            <div class="position-title">Legal Intern — General Practice</div>
+            <div class="position-title" data-i18n="careers.positions.pos3.title">Legal Intern — General Practice</div>
             <div class="position-meta">
-              <span class="position-dept">All Departments</span>
-              <span class="position-level">Final year / recent graduate</span>
+              <span class="position-dept" data-i18n="careers.positions.pos3.dept">All Departments</span>
+              <span class="position-level" data-i18n="careers.positions.pos3.level">Final year / recent graduate</span>
             </div>
           </div>
           <div class="position-arrow">
@@ -667,60 +684,60 @@
           </div>
         </div>
         <div class="position-body">
-          <h4>About the Role</h4>
-          <p>A structured internship programme rotating across all six practice areas. You'll gain hands-on experience in IP prosecution, immigration applications, corporate filings, and court proceedings — with mentorship from senior practitioners throughout.</p>
-          <h4>Requirements</h4>
+          <h4 data-i18n="careers.positions.aboutRole">About the Role</h4>
+          <p data-i18n="careers.positions.pos3.about">A structured internship programme rotating across all six practice areas. You'll gain hands-on experience in IP prosecution, immigration applications, corporate filings, and court proceedings — with mentorship from senior practitioners throughout.</p>
+          <h4 data-i18n="careers.positions.requirements">Requirements</h4>
           <ul>
-            <li>Currently enrolled in or recently graduated from a Thai law programme</li>
-            <li>Strong academic record</li>
-            <li>Working proficiency in English</li>
-            <li>Genuine interest in commercial legal practice</li>
+            <li data-i18n="careers.positions.pos3.req1">Currently enrolled in or recently graduated from a Thai law programme</li>
+            <li data-i18n="careers.positions.pos3.req2">Strong academic record</li>
+            <li data-i18n="careers.positions.pos3.req3">Working proficiency in English</li>
+            <li data-i18n="careers.positions.pos3.req4">Genuine interest in commercial legal practice</li>
           </ul>
-          <h4>What We Offer</h4>
+          <h4 data-i18n="careers.positions.whatWeOffer">What We Offer</h4>
           <ul>
-            <li>3–6 month structured programme with rotation across departments</li>
-            <li>Mentorship from senior associates and partners</li>
-            <li>Stipend and transport allowance</li>
-            <li>Fast-track consideration for full-time Junior Associate positions</li>
+            <li data-i18n="careers.positions.pos3.offer1">3–6 month structured programme with rotation across departments</li>
+            <li data-i18n="careers.positions.pos3.offer2">Mentorship from senior associates and partners</li>
+            <li data-i18n="careers.positions.pos3.offer3">Stipend and transport allowance</li>
+            <li data-i18n="careers.positions.pos3.offer4">Fast-track consideration for full-time Junior Associate positions</li>
           </ul>
-          <a href="#apply" class="position-apply">Apply for This Role</a>
+          <a href="#apply" class="position-apply" data-i18n="careers.positions.applyBtn">Apply for This Role</a>
         </div>
       </div>
     </div>
 
     <div class="unsolicited-card reveal">
-      <h3>Don't See Your Role?</h3>
-      <p>We're always interested in hearing from exceptional candidates. Send us your CV and a brief note about what you're looking for — we'll be in touch if there's a fit.</p>
-      <a href="#apply" class="magnetic-wrap">Submit a General Application</a>
+      <h3 data-i18n="careers.positions.unsolicited.title">Don't See Your Role?</h3>
+      <p data-i18n="careers.positions.unsolicited.desc">We're always interested in hearing from exceptional candidates. Send us your CV and a brief note about what you're looking for — we'll be in touch if there's a fit.</p>
+      <a href="#apply" class="magnetic-wrap" data-i18n="careers.positions.unsolicited.cta">Submit a General Application</a>
     </div>
   </div>
 </div>
 
 <!-- ===== APPLICATION PROCESS ===== -->
 <div class="section">
-  <div class="section-label reveal">How It Works</div>
-  <h2 class="section-title reveal reveal-delay-1">Our Process</h2>
-  <p class="section-intro reveal reveal-delay-2">A straightforward, respectful process — we value your time and aim to move quickly.</p>
+  <div class="section-label reveal" data-i18n="careers.process.label">How It Works</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.process.title">Our Process</h2>
+  <p class="section-intro reveal reveal-delay-2" data-i18n="careers.process.intro">A straightforward, respectful process — we value your time and aim to move quickly.</p>
   <div class="process-steps">
     <div class="process-step reveal reveal-delay-1">
       <div class="process-num"><span>1</span></div>
-      <h3>Submit Application</h3>
-      <p>Send your CV, cover letter, and any relevant writing samples through the form below.</p>
+      <h3 data-i18n="careers.process.step1.title">Submit Application</h3>
+      <p data-i18n="careers.process.step1.desc">Send your CV, cover letter, and any relevant writing samples through the form below.</p>
     </div>
     <div class="process-step reveal reveal-delay-2">
       <div class="process-num"><span>2</span></div>
-      <h3>Initial Review</h3>
-      <p>Our team reviews every application within 5 business days. We'll get back to you either way.</p>
+      <h3 data-i18n="careers.process.step2.title">Initial Review</h3>
+      <p data-i18n="careers.process.step2.desc">Our team reviews every application within 5 business days. We'll get back to you either way.</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
       <div class="process-num"><span>3</span></div>
-      <h3>Interview</h3>
-      <p>A conversation with the practice head and a member of the team. We focus on fit, not trick questions.</p>
+      <h3 data-i18n="careers.process.step3.title">Interview</h3>
+      <p data-i18n="careers.process.step3.desc">A conversation with the practice head and a member of the team. We focus on fit, not trick questions.</p>
     </div>
     <div class="process-step reveal reveal-delay-4">
       <div class="process-num"><span>4</span></div>
-      <h3>Offer</h3>
-      <p>If it's mutual, we'll move to an offer with clear terms, start date, and onboarding plan.</p>
+      <h3 data-i18n="careers.process.step4.title">Offer</h3>
+      <p data-i18n="careers.process.step4.desc">If it's mutual, we'll move to an offer with clear terms, start date, and onboarding plan.</p>
     </div>
   </div>
 </div>
@@ -730,16 +747,16 @@
   <div class="section">
     <div class="apply-grid">
       <div class="apply-text reveal">
-        <div class="section-label">Get in Touch</div>
-        <h2>Interested? Let's Talk</h2>
-        <p>Whether you're applying for a specific role or just exploring opportunities, we'd like to hear from you. Send us your details and we'll be in touch.</p>
+        <div class="section-label" data-i18n="careers.apply.label">Get in Touch</div>
+        <h2 data-i18n="careers.apply.title">Interested? Let's Talk</h2>
+        <p data-i18n="careers.apply.desc">Whether you're applying for a specific role or just exploring opportunities, we'd like to hear from you. Send us your details and we'll be in touch.</p>
         <div class="apply-contact-row">
           <div class="apply-contact-icon">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
           <div>
-            <div class="apply-contact-label">HR Contact</div>
-            <div class="apply-contact-value">Human Resources Department</div>
+            <div class="apply-contact-label" data-i18n="careers.apply.hrLabel">HR Contact</div>
+            <div class="apply-contact-value" data-i18n="careers.apply.hrValue">Human Resources Department</div>
           </div>
         </div>
         <div class="apply-contact-row">
@@ -747,7 +764,7 @@
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div>
-            <div class="apply-contact-label">Email</div>
+            <div class="apply-contact-label" data-i18n="careers.apply.emailLabel">Email</div>
             <div class="apply-contact-value"><a href="mailto:careers@dejudomlaw.com">careers@dejudomlaw.com</a></div>
           </div>
         </div>
@@ -756,7 +773,7 @@
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <div>
-            <div class="apply-contact-label">Phone</div>
+            <div class="apply-contact-label" data-i18n="careers.apply.phoneLabel">Phone</div>
             <div class="apply-contact-value"><a href="tel:+6622330055">+66 (0) 2233-0055</a></div>
           </div>
         </div>
@@ -765,52 +782,52 @@
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <div class="apply-contact-label">Office</div>
-            <div class="apply-contact-value">Charn Issara Tower I, 2nd Floor<br>942/69 Rama IV Road, Bangkok 10500</div>
+            <div class="apply-contact-label" data-i18n="careers.apply.officeLabel">Office</div>
+            <div class="apply-contact-value" data-i18n-html="careers.apply.officeValue">Charn Issara Tower I, 2nd Floor<br>942/69 Rama IV Road, Bangkok 10500</div>
           </div>
         </div>
       </div>
 
       <div class="apply-form reveal reveal-delay-2">
-        <h3>Submit Your Application</h3>
+        <h3 data-i18n="careers.form.title">Submit Your Application</h3>
         <div class="form-row">
           <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="Your name">
+            <label data-i18n="careers.form.fullName">Full Name</label>
+            <input type="text" placeholder="Your name" data-i18n-placeholder="careers.form.fullNamePlaceholder">
           </div>
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com">
+            <label data-i18n="careers.form.email">Email</label>
+            <input type="email" placeholder="your@email.com" data-i18n-placeholder="careers.form.emailPlaceholder">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" placeholder="+66">
+            <label data-i18n="careers.form.phone">Phone</label>
+            <input type="tel" placeholder="+66" data-i18n-placeholder="careers.form.phonePlaceholder">
           </div>
           <div class="form-group">
-            <label>Position of Interest</label>
+            <label data-i18n="careers.form.position">Position of Interest</label>
             <select>
-              <option value="" disabled selected>Select a position</option>
-              <option>Associate — IP</option>
-              <option>Senior Associate — Immigration</option>
-              <option>Legal Intern</option>
-              <option>General Application</option>
+              <option value="" disabled selected data-i18n="careers.form.selectPosition">Select a position</option>
+              <option data-i18n="careers.form.optionIP">Associate — IP</option>
+              <option data-i18n="careers.form.optionImmigration">Senior Associate — Immigration</option>
+              <option data-i18n="careers.form.optionIntern">Legal Intern</option>
+              <option data-i18n="careers.form.optionGeneral">General Application</option>
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label>Upload CV</label>
+          <label data-i18n="careers.form.uploadCV">Upload CV</label>
           <label class="file-upload">
             <input type="file" accept=".pdf,.doc,.docx">
-            <div class="file-upload-text"><strong>Click to upload</strong> or drag and drop<br>PDF or Word document (max 5MB)</div>
+            <div class="file-upload-text" data-i18n-html="careers.form.uploadText"><strong>Click to upload</strong> or drag and drop<br>PDF or Word document (max 5MB)</div>
           </label>
         </div>
         <div class="form-group">
-          <label>Cover Note</label>
-          <textarea placeholder="Tell us about yourself and why you're interested in D&A..."></textarea>
+          <label data-i18n="careers.form.coverNote">Cover Note</label>
+          <textarea placeholder="Tell us about yourself and why you're interested in D&A..." data-i18n-placeholder="careers.form.coverNotePlaceholder"></textarea>
         </div>
-        <button class="form-submit">Submit Application</button>
+        <button class="form-submit" data-i18n="careers.form.submit">Submit Application</button>
       </div>
     </div>
   </div>
@@ -822,38 +839,38 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">Dej-Udom & Associates</div>
-        <div class="footer-brand-sub">Attorneys at Law</div>
-        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+        <div class="footer-brand-sub" data-i18n="common.footer.brandSub">Attorneys at Law</div>
+        <p class="footer-desc" data-i18n="common.footer.desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
       </div>
       <div class="footer-col">
-        <h4>Expertise</h4>
-        <a href="index.html#practices">Intellectual Property</a>
-        <a href="index.html#practices">Immigration</a>
-        <a href="index.html#practices">Corporate & Investment</a>
-        <a href="index.html#practices">Litigation</a>
-        <a href="index.html#practices">Taxation</a>
-        <a href="index.html#practices">Notarial Services</a>
+        <h4 data-i18n="common.footer.expertise">Expertise</h4>
+        <a href="index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
+        <a href="index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Corporate &amp; Investment</a>
+        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="index.html#practices" data-i18n="common.footer.taxation">Taxation</a>
+        <a href="index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
-        <h4>Firm</h4>
-        <a href="DA About Us 2026.html">About Us</a>
-        <a href="DA About Us 2026.html#team">Our People</a>
-        <a href="DA About Us 2026.html#recognition">Recognition</a>
-        <a href="DA Insights 2026.html">Insights</a>
+        <h4 data-i18n="common.footer.firm">Firm</h4>
+        <a href="DA About Us 2026.html" data-i18n="common.footer.aboutUs">About Us</a>
+        <a href="DA About Us 2026.html#team" data-i18n="common.footer.ourPeople">Our People</a>
+        <a href="DA About Us 2026.html#recognition" data-i18n="common.footer.recognition">Recognition</a>
+        <a href="DA Insights 2026.html" data-i18n="common.footer.insights">Insights</a>
       </div>
       <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="DA Careers 2026.html">Careers</a>
-        <a href="index.html#contact">Contact Us</a>
+        <h4 data-i18n="common.footer.connect">Connect</h4>
+        <a href="DA Careers 2026.html" data-i18n="common.footer.careers">Careers</a>
+        <a href="index.html#contact" data-i18n="common.footer.contactUs">Contact Us</a>
         <a href="tel:+6622330055">+66 (0) 2233-0055</a>
         <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-copy" data-i18n-html="common.footer.copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="common.footer.terms">Terms of Use</a>
       </div>
     </div>
   </div>
@@ -913,6 +930,8 @@
     if (!wasOpen) card.classList.add('open');
   }
 </script>
+
+<script src="i18n/i18n.js"></script>
 
 </body>
 </html>

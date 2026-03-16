@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   /* ===== CUSTOM PROPERTIES ===== */
   :root {
@@ -50,6 +51,11 @@
     font-weight: 400;
     letter-spacing: -0.2px;
   }
+
+  body.lang-th { font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-th h1, body.lang-th h2, body.lang-th h3, body.lang-th h4 { font-family: 'Noto Sans Thai', 'Libre Baskerville', Georgia, serif; }
+  body.lang-zh { font-family: 'Noto Sans SC', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4 { font-family: 'Noto Sans SC', 'Libre Baskerville', Georgia, serif; }
 
   body::after {
     content: '';
@@ -107,9 +113,10 @@
     transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   nav.scrolled .nav-inner { height: 64px; }
-  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 2px; }
-  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.5px; line-height: 1; }
-  .nav-logo-sub { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; font-weight: 500; }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 3px; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.3px; line-height: 1; }
+  .nav-logo-amp { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 27px; display: inline-block; vertical-align: baseline; margin: 0 1px; }
+  .nav-logo-sub { font-family: 'Libre Baskerville', serif; font-size: 11px; color: var(--text-secondary); letter-spacing: 2.5px; font-weight: 400; text-align: center; }
   .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 400; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.3px; position: relative; transition: color 0.3s; }
   .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -117,6 +124,11 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
+  .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
+  .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+  .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+  .lang-option.active { color: var(--forest); background: var(--gold); }
+
   .nav-contact-btn {
     font-size: 12px; font-weight: 600; color: var(--forest); background: var(--gold); text-decoration: none;
     padding: 10px 28px; border-radius: 100px; letter-spacing: 0.8px; text-transform: uppercase;
@@ -334,7 +346,7 @@
   }
 </style>
 </head>
-<body>
+<body style="opacity:0;transition:opacity .3s" data-i18n-title="insights.meta.title" data-i18n-desc="insights.meta.desc">
 
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
@@ -344,17 +356,22 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
-      <span class="nav-logo-sub">Attorneys at Law</span>
+      <span class="nav-logo-sub" data-i18n="common.nav.subtitle">Attorneys At Law</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="DA About Us 2026.html">About</a></li>
-      <li><a href="index.html#practices">Expertise</a></li>
-      <li><a href="DA Insights 2026.html" class="active">Insights</a></li>
-      <li><a href="DA Careers 2026.html">Careers</a></li>
+      <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
+      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
+      <li><a href="DA Insights 2026.html" class="active" data-i18n="common.nav.insights">Insights</a></li>
+      <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
     </ul>
-    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span>Contact</span></a>
-    <button class="nav-menu-btn" aria-label="Open menu">
+    <div class="lang-switcher">
+      <button class="lang-option active" data-lang="en" title="English">EN</button>
+      <button class="lang-option" data-lang="th" title="ภาษาไทย">TH</button>
+      <button class="lang-option" data-lang="zh-CN" title="中文">CN</button>
+    </div>
+    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span data-i18n="common.nav.contact">Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu" data-i18n-aria-label="common.nav.openMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -366,9 +383,9 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-inner">
-    <div class="hero-label reveal">Insights</div>
-    <h1 class="reveal reveal-delay-1">Relevant Issues.<br><em>Tangible</em> Impact</h1>
-    <p class="hero-desc reveal reveal-delay-2">Legal updates, practical guidance, and thought leadership from our team — covering the developments that matter to businesses operating in Thailand.</p>
+    <div class="hero-label reveal" data-i18n="insights.hero.label">Insights</div>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="insights.hero.title">Relevant Issues.<br><em>Tangible</em> Impact</h1>
+    <p class="hero-desc reveal reveal-delay-2" data-i18n="insights.hero.desc">Legal updates, practical guidance, and thought leadership from our team — covering the developments that matter to businesses operating in Thailand.</p>
   </div>
 </section>
 
@@ -378,16 +395,16 @@
     <div class="featured-image"></div>
     <div class="featured-content">
       <div class="featured-badge">
-        <span class="featured-badge-label">Featured</span>
-        <span class="featured-badge-cat">Immigration</span>
+        <span class="featured-badge-label" data-i18n="insights.featured.badge">Featured</span>
+        <span class="featured-badge-cat" data-i18n="insights.featured.cat">Immigration</span>
       </div>
-      <h2><a href="#">Thailand's LTR Visa: A Practical Guide for Qualifying Applicants in 2026</a></h2>
-      <p class="featured-summary">A comprehensive walkthrough of the Long-Term Resident Visa programme — eligibility criteria, required documentation, processing timelines, and the tax advantages that make it one of Southeast Asia's most attractive residency options.</p>
+      <h2><a href="#" data-i18n="insights.featured.title">Thailand's LTR Visa: A Practical Guide for Qualifying Applicants in 2026</a></h2>
+      <p class="featured-summary" data-i18n="insights.featured.summary">A comprehensive walkthrough of the Long-Term Resident Visa programme — eligibility criteria, required documentation, processing timelines, and the tax advantages that make it one of Southeast Asia's most attractive residency options.</p>
       <div class="featured-meta">
-        <span class="featured-date">12 March 2026</span>
-        <span class="featured-read">8 min read</span>
+        <span class="featured-date" data-i18n="insights.featured.date">12 March 2026</span>
+        <span class="featured-read" data-i18n="insights.featured.readTime">8 min read</span>
       </div>
-      <a href="#" class="featured-link">
+      <a href="#" class="featured-link" data-i18n="insights.featured.readLink">
         Read article
         <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
@@ -399,16 +416,16 @@
 <div class="filter-section">
   <div class="filter-bar">
     <div class="filter-tabs">
-      <button class="filter-tab active" onclick="filterArticles(this, 'all')">All</button>
-      <button class="filter-tab" onclick="filterArticles(this, 'ip')">Intellectual Property</button>
-      <button class="filter-tab" onclick="filterArticles(this, 'immigration')">Immigration</button>
-      <button class="filter-tab" onclick="filterArticles(this, 'corporate')">Corporate</button>
-      <button class="filter-tab" onclick="filterArticles(this, 'litigation')">Litigation</button>
-      <button class="filter-tab" onclick="filterArticles(this, 'tax')">Tax</button>
+      <button class="filter-tab active" onclick="filterArticles(this, 'all')" data-i18n="insights.filter.all">All</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'ip')" data-i18n="insights.filter.ip">Intellectual Property</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'immigration')" data-i18n="insights.filter.immigration">Immigration</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'corporate')" data-i18n="insights.filter.corporate">Corporate</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'litigation')" data-i18n="insights.filter.litigation">Litigation</button>
+      <button class="filter-tab" onclick="filterArticles(this, 'tax')" data-i18n="insights.filter.tax">Tax</button>
     </div>
     <div class="filter-search">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" placeholder="Search insights..." oninput="searchArticles(this.value)">
+      <input type="text" placeholder="Search insights..." oninput="searchArticles(this.value)" data-i18n-placeholder="insights.filter.searchPlaceholder">
     </div>
   </div>
 </div>
@@ -420,12 +437,12 @@
     <div class="article-card reveal" data-category="ip" data-title="madrid protocol thailand trademark international registration">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Legal Update</div>
-        <h3 class="article-title"><a href="#">Madrid Protocol Designations into Thailand: What Applicants Need to Know</a></h3>
-        <p class="article-excerpt">Recent changes to the DIP's examination practices for international trademark registrations designating Thailand — and how they affect filing strategy for foreign brand owners.</p>
+        <div class="article-type" data-i18n="insights.article1.type">Legal Update</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article1.title">Madrid Protocol Designations into Thailand: What Applicants Need to Know</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article1.excerpt">Recent changes to the DIP's examination practices for international trademark registrations designating Thailand — and how they affect filing strategy for foreign brand owners.</p>
         <div class="article-footer">
-          <span class="article-date">5 March 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article1.date">5 March 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -433,12 +450,12 @@
     <div class="article-card reveal reveal-delay-1" data-category="corporate" data-title="boi promotion 2026 investment incentives thailand">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Thought Leadership</div>
-        <h3 class="article-title"><a href="#">BOI Investment Promotion in 2026: Updated Incentives and Eligible Activities</a></h3>
-        <p class="article-excerpt">An overview of the Board of Investment's revised promotion categories, enhanced tax incentives for targeted industries, and practical considerations for companies applying this year.</p>
+        <div class="article-type" data-i18n="insights.article2.type">Thought Leadership</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article2.title">BOI Investment Promotion in 2026: Updated Incentives and Eligible Activities</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article2.excerpt">An overview of the Board of Investment's revised promotion categories, enhanced tax incentives for targeted industries, and practical considerations for companies applying this year.</p>
         <div class="article-footer">
-          <span class="article-date">28 February 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article2.date">28 February 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -446,12 +463,12 @@
     <div class="article-card reveal reveal-delay-2" data-category="immigration" data-title="work permit digital dwp thailand employment">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Practical Guide</div>
-        <h3 class="article-title"><a href="#">Digital Work Permits: Transitioning from Paper to the DWP System</a></h3>
-        <p class="article-excerpt">Thailand's shift to digital work permits — what employers need to update, how the verification process works, and common issues we're seeing in practice.</p>
+        <div class="article-type" data-i18n="insights.article3.type">Practical Guide</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article3.title">Digital Work Permits: Transitioning from Paper to the DWP System</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article3.excerpt">Thailand's shift to digital work permits — what employers need to update, how the verification process works, and common issues we're seeing in practice.</p>
         <div class="article-footer">
-          <span class="article-date">20 February 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article3.date">20 February 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -459,12 +476,12 @@
     <div class="article-card reveal" data-category="litigation" data-title="cipitc intellectual property court thailand enforcement">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Case Commentary</div>
-        <h3 class="article-title"><a href="#">Enforcing IP Rights in the CIPITC: Recent Developments in Damages Awards</a></h3>
-        <p class="article-excerpt">An analysis of recent Central Intellectual Property and International Trade Court decisions on damages calculation in trademark infringement cases — and what they signal for rights holders.</p>
+        <div class="article-type" data-i18n="insights.article4.type">Case Commentary</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article4.title">Enforcing IP Rights in the CIPITC: Recent Developments in Damages Awards</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article4.excerpt">An analysis of recent Central Intellectual Property and International Trade Court decisions on damages calculation in trademark infringement cases — and what they signal for rights holders.</p>
         <div class="article-footer">
-          <span class="article-date">14 February 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article4.date">14 February 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -472,12 +489,12 @@
     <div class="article-card reveal reveal-delay-1" data-category="tax" data-title="transfer pricing thailand revenue department audit">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Legal Update</div>
-        <h3 class="article-title"><a href="#">Transfer Pricing in Thailand: Preparing for Revenue Department Audits</a></h3>
-        <p class="article-excerpt">With the Revenue Department increasing its focus on related-party transactions, here's what multinational groups operating in Thailand should have in place.</p>
+        <div class="article-type" data-i18n="insights.article5.type">Legal Update</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article5.title">Transfer Pricing in Thailand: Preparing for Revenue Department Audits</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article5.excerpt">With the Revenue Department increasing its focus on related-party transactions, here's what multinational groups operating in Thailand should have in place.</p>
         <div class="article-footer">
-          <span class="article-date">7 February 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article5.date">7 February 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -485,12 +502,12 @@
     <div class="article-card reveal reveal-delay-2" data-category="ip" data-title="patent prosecution highway pph thailand japan">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Practical Guide</div>
-        <h3 class="article-title"><a href="#">Using the Patent Prosecution Highway to Accelerate Thai Patent Grants</a></h3>
-        <p class="article-excerpt">A step-by-step guide to leveraging the PPH agreement between the Thai DIP and the Japan Patent Office — eligibility, documentation, and typical timelines.</p>
+        <div class="article-type" data-i18n="insights.article6.type">Practical Guide</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article6.title">Using the Patent Prosecution Highway to Accelerate Thai Patent Grants</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article6.excerpt">A step-by-step guide to leveraging the PPH agreement between the Thai DIP and the Japan Patent Office — eligibility, documentation, and typical timelines.</p>
         <div class="article-footer">
-          <span class="article-date">30 January 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article6.date">30 January 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -498,12 +515,12 @@
     <div class="article-card reveal" data-category="corporate" data-title="foreign business act fbl licence thailand market entry">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Thought Leadership</div>
-        <h3 class="article-title"><a href="#">Navigating the Foreign Business Act: When Do You Need an FBL?</a></h3>
-        <p class="article-excerpt">A practical breakdown of which business activities require a Foreign Business Licence in Thailand, common structuring approaches, and the application process.</p>
+        <div class="article-type" data-i18n="insights.article7.type">Thought Leadership</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article7.title">Navigating the Foreign Business Act: When Do You Need an FBL?</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article7.excerpt">A practical breakdown of which business activities require a Foreign Business Licence in Thailand, common structuring approaches, and the application process.</p>
         <div class="article-footer">
-          <span class="article-date">22 January 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article7.date">22 January 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -511,12 +528,12 @@
     <div class="article-card reveal reveal-delay-1" data-category="immigration" data-title="smart visa thailand targeted industries s-curve">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Legal Update</div>
-        <h3 class="article-title"><a href="#">Smart Visa Update: Expanded Categories and Streamlined Processing</a></h3>
-        <p class="article-excerpt">Thailand's Smart Visa programme has expanded its eligible industries and simplified the endorsement process — here's what qualifies and how to apply.</p>
+        <div class="article-type" data-i18n="insights.article8.type">Legal Update</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article8.title">Smart Visa Update: Expanded Categories and Streamlined Processing</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article8.excerpt">Thailand's Smart Visa programme has expanded its eligible industries and simplified the endorsement process — here's what qualifies and how to apply.</p>
         <div class="article-footer">
-          <span class="article-date">15 January 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article8.date">15 January 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -524,12 +541,12 @@
     <div class="article-card reveal reveal-delay-2" data-category="litigation" data-title="arbitration enforcement foreign awards new york convention thailand">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&q=80');"></div>
       <div class="article-body">
-        <div class="article-type">Case Commentary</div>
-        <h3 class="article-title"><a href="#">Enforcing Foreign Arbitral Awards in Thailand Under the New York Convention</a></h3>
-        <p class="article-excerpt">Key considerations for parties seeking to enforce international arbitral awards in Thai courts — procedural requirements, common grounds for challenge, and recent court trends.</p>
+        <div class="article-type" data-i18n="insights.article9.type">Case Commentary</div>
+        <h3 class="article-title"><a href="#" data-i18n="insights.article9.title">Enforcing Foreign Arbitral Awards in Thailand Under the New York Convention</a></h3>
+        <p class="article-excerpt" data-i18n="insights.article9.excerpt">Key considerations for parties seeking to enforce international arbitral awards in Thai courts — procedural requirements, common grounds for challenge, and recent court trends.</p>
         <div class="article-footer">
-          <span class="article-date">8 January 2026</span>
-          <a href="#" class="article-read-link">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <span class="article-date" data-i18n="insights.article9.date">8 January 2026</span>
+          <a href="#" class="article-read-link" data-i18n="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -538,31 +555,31 @@
 
   <!-- Trending -->
   <div class="trending-section reveal">
-    <h2 class="trending-title">Trending Topics</h2>
+    <h2 class="trending-title" data-i18n="insights.trending.title">Trending Topics</h2>
     <div class="trending-grid">
       <div class="trending-card reveal reveal-delay-1">
         <div class="trending-num">01</div>
-        <div class="trending-card-cat">Immigration</div>
-        <div class="trending-card-title"><a href="#">LTR Visa Programme</a></div>
-        <div class="trending-card-date">5 articles this quarter</div>
+        <div class="trending-card-cat" data-i18n="insights.trending.card1.cat">Immigration</div>
+        <div class="trending-card-title"><a href="#" data-i18n="insights.trending.card1.title">LTR Visa Programme</a></div>
+        <div class="trending-card-date" data-i18n="insights.trending.card1.count">5 articles this quarter</div>
       </div>
       <div class="trending-card reveal reveal-delay-2">
         <div class="trending-num">02</div>
-        <div class="trending-card-cat">Corporate</div>
-        <div class="trending-card-title"><a href="#">BOI Promotion Updates</a></div>
-        <div class="trending-card-date">3 articles this quarter</div>
+        <div class="trending-card-cat" data-i18n="insights.trending.card2.cat">Corporate</div>
+        <div class="trending-card-title"><a href="#" data-i18n="insights.trending.card2.title">BOI Promotion Updates</a></div>
+        <div class="trending-card-date" data-i18n="insights.trending.card2.count">3 articles this quarter</div>
       </div>
       <div class="trending-card reveal reveal-delay-3">
         <div class="trending-num">03</div>
-        <div class="trending-card-cat">IP</div>
-        <div class="trending-card-title"><a href="#">Thai Trademark Reform</a></div>
-        <div class="trending-card-date">4 articles this quarter</div>
+        <div class="trending-card-cat" data-i18n="insights.trending.card3.cat">IP</div>
+        <div class="trending-card-title"><a href="#" data-i18n="insights.trending.card3.title">Thai Trademark Reform</a></div>
+        <div class="trending-card-date" data-i18n="insights.trending.card3.count">4 articles this quarter</div>
       </div>
       <div class="trending-card reveal reveal-delay-4">
         <div class="trending-num">04</div>
-        <div class="trending-card-cat">Tax</div>
-        <div class="trending-card-title"><a href="#">Transfer Pricing Compliance</a></div>
-        <div class="trending-card-date">2 articles this quarter</div>
+        <div class="trending-card-cat" data-i18n="insights.trending.card4.cat">Tax</div>
+        <div class="trending-card-title"><a href="#" data-i18n="insights.trending.card4.title">Transfer Pricing Compliance</a></div>
+        <div class="trending-card-date" data-i18n="insights.trending.card4.count">2 articles this quarter</div>
       </div>
     </div>
   </div>
@@ -571,12 +588,12 @@
 <!-- ===== NEWSLETTER CTA ===== -->
 <div class="newsletter-section">
   <div class="newsletter-inner">
-    <div class="section-label reveal">Stay Informed</div>
-    <h2 class="reveal reveal-delay-1">Legal Updates, Delivered</h2>
-    <p class="newsletter-desc reveal reveal-delay-2">Subscribe to receive our latest insights, legal updates, and practical guides directly — typically once or twice a month, never spam.</p>
+    <div class="section-label reveal" data-i18n="insights.newsletter.label">Stay Informed</div>
+    <h2 class="reveal reveal-delay-1" data-i18n="insights.newsletter.title">Legal Updates, Delivered</h2>
+    <p class="newsletter-desc reveal reveal-delay-2" data-i18n="insights.newsletter.desc">Subscribe to receive our latest insights, legal updates, and practical guides directly — typically once or twice a month, never spam.</p>
     <div class="newsletter-form reveal reveal-delay-3">
-      <input type="email" placeholder="Your email address">
-      <button class="magnetic-wrap">Subscribe</button>
+      <input type="email" placeholder="Your email address" data-i18n-placeholder="insights.newsletter.emailPlaceholder">
+      <button class="magnetic-wrap" data-i18n="insights.newsletter.subscribe">Subscribe</button>
     </div>
   </div>
 </div>
@@ -587,38 +604,38 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">Dej-Udom & Associates</div>
-        <div class="footer-brand-sub">Attorneys at Law</div>
-        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+        <div class="footer-brand-sub" data-i18n="common.footer.brandSub">Attorneys at Law</div>
+        <p class="footer-desc" data-i18n="common.footer.desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
       </div>
       <div class="footer-col">
-        <h4>Expertise</h4>
-        <a href="index.html#practices">Intellectual Property</a>
-        <a href="index.html#practices">Immigration</a>
-        <a href="index.html#practices">Corporate & Investment</a>
-        <a href="index.html#practices">Litigation</a>
-        <a href="index.html#practices">Taxation</a>
-        <a href="index.html#practices">Notarial Services</a>
+        <h4 data-i18n="common.footer.expertise">Expertise</h4>
+        <a href="index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
+        <a href="index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Corporate &amp; Investment</a>
+        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="index.html#practices" data-i18n="common.footer.taxation">Taxation</a>
+        <a href="index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
-        <h4>Firm</h4>
-        <a href="DA About Us 2026.html">About Us</a>
-        <a href="DA About Us 2026.html#team">Our People</a>
-        <a href="DA About Us 2026.html#recognition">Recognition</a>
-        <a href="DA Insights 2026.html">Insights</a>
+        <h4 data-i18n="common.footer.firm">Firm</h4>
+        <a href="DA About Us 2026.html" data-i18n="common.footer.aboutUs">About Us</a>
+        <a href="DA About Us 2026.html#team" data-i18n="common.footer.ourPeople">Our People</a>
+        <a href="DA About Us 2026.html#recognition" data-i18n="common.footer.recognition">Recognition</a>
+        <a href="DA Insights 2026.html" data-i18n="common.footer.insights">Insights</a>
       </div>
       <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="DA Careers 2026.html">Careers</a>
-        <a href="index.html#contact">Contact Us</a>
+        <h4 data-i18n="common.footer.connect">Connect</h4>
+        <a href="DA Careers 2026.html" data-i18n="common.footer.careers">Careers</a>
+        <a href="index.html#contact" data-i18n="common.footer.contactUs">Contact Us</a>
         <a href="tel:+6622330055">+66 (0) 2233-0055</a>
         <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-copy" data-i18n-html="common.footer.copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="common.footer.terms">Terms of Use</a>
       </div>
     </div>
   </div>
@@ -704,6 +721,8 @@
     });
   }
 </script>
+
+<script src="i18n/i18n.js"></script>
 
 </body>
 </html>

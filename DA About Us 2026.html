@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   /* ===== CUSTOM PROPERTIES ===== */
   :root {
@@ -51,6 +52,11 @@
     font-weight: 400;
     letter-spacing: -0.2px;
   }
+
+  body.lang-th { font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-th h1, body.lang-th h2, body.lang-th h3, body.lang-th h4 { font-family: 'Noto Sans Thai', 'Libre Baskerville', Georgia, serif; }
+  body.lang-zh { font-family: 'Noto Sans SC', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4 { font-family: 'Noto Sans SC', 'Libre Baskerville', Georgia, serif; }
 
   /* ===== NOISE TEXTURE OVERLAY ===== */
   body::after {
@@ -149,22 +155,31 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    gap: 2px;
+    gap: 3px;
   }
   .nav-logo-name {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
     font-weight: 400;
     color: white;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     line-height: 1;
   }
+  .nav-logo-amp {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 27px;
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 1px;
+  }
   .nav-logo-sub {
-    font-size: 9px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 500;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 2.5px;
+    font-weight: 400;
+    text-align: center;
   }
   .nav-links {
     display: flex;
@@ -194,6 +209,11 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
+
+  .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
+  .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+  .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+  .lang-option.active { color: var(--forest); background: var(--gold); }
 
   .nav-contact-btn {
     font-size: 12px;
@@ -983,7 +1003,7 @@
   }
 </style>
 </head>
-<body>
+<body style="opacity:0;transition:opacity .3s" data-i18n-title="about.meta.title" data-i18n-desc="about.meta.desc">
 
 <!-- Custom Cursor -->
 <div class="cursor-dot"></div>
@@ -993,18 +1013,23 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <span class="nav-logo-name">Dej-Udom & Associates</span>
-      <span class="nav-logo-sub">Attorneys at Law</span>
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub" data-i18n="common.nav.subtitle">Attorneys At Law</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="DA About Us 2026.html" class="active">About</a></li>
-      <li><a href="index.html#practices">Expertise</a></li>
-      <li><a href="DA Insights 2026.html">Insights</a></li>
-      <li><a href="DA Careers 2026.html">Careers</a></li>
+      <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
+      <li><a href="DA About Us 2026.html" class="active" data-i18n="common.nav.about">About</a></li>
+      <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
+      <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
+      <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
     </ul>
-    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span>Contact</span></a>
-    <button class="nav-menu-btn" aria-label="Open menu">
+    <div class="lang-switcher">
+      <button class="lang-option active" data-lang="en" title="English">EN</button>
+      <button class="lang-option" data-lang="th" title="ภาษาไทย">TH</button>
+      <button class="lang-option" data-lang="zh-CN" title="中文">CN</button>
+    </div>
+    <a href="index.html#contact" class="nav-contact-btn magnetic-wrap"><span data-i18n="common.nav.contact">Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu" data-i18n-aria-label="common.nav.openMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1016,41 +1041,41 @@
   <div class="hero-orb hero-orb-1"></div>
   <div class="hero-orb hero-orb-2"></div>
   <div class="hero-inner">
-    <div class="hero-label reveal">About the Firm</div>
-    <h1 class="reveal reveal-delay-1">Bangkok's Multidisciplinary<br>Law Firm Since <em>1986</em></h1>
-    <p class="hero-desc reveal reveal-delay-2">Founded by Professor Dej-Udom Krairit, our firm has grown from a specialist intellectual property practice into one of Bangkok's established full-service law firms — advising multinational companies across six practice areas and two working languages.</p>
+    <div class="hero-label reveal" data-i18n="about.hero.label">About the Firm</div>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="about.hero.title">Bangkok's Multidisciplinary<br>Law Firm Since <em>1986</em></h1>
+    <p class="hero-desc reveal reveal-delay-2" data-i18n="about.hero.desc">Founded by Professor Dej-Udom Krairit, our firm has grown from a specialist intellectual property practice into one of Bangkok's established full-service law firms — advising multinational companies across six practice areas and two working languages.</p>
   </div>
 </section>
 
 <!-- ===== FIRM STORY ===== -->
 <div class="section">
-  <div class="section-label reveal">Our Story</div>
+  <div class="section-label reveal" data-i18n="about.story.label">Our Story</div>
   <div class="story-grid">
     <div class="story-narrative reveal reveal-delay-1">
-      <p>Professor Dej-Udom Krairit established the firm in 1986 with a single focus: providing rigorous intellectual property advice to international companies entering the Thai market. At a time when Thailand's IP framework was still developing, the firm built its reputation on technical depth and direct access to the regulatory bodies that shaped the system.</p>
-      <p>Over the following decades, the practice expanded in response to what clients actually needed. Companies that came for trademark protection soon needed corporate structuring, work permits for their expatriate staff, and eventually, representation in disputes. Rather than referring these matters out, the firm built dedicated departments — each led by practitioners with genuine depth in their area.</p>
-      <p>Today, Dej-Udom & Associates advises in Thai and English across intellectual property, immigration and relocation, corporate and investment law, litigation and dispute resolution, taxation, and notarial services. The approach hasn't changed: understand the client's business first, then provide advice that accounts for how Thai law actually works in practice.</p>
+      <p data-i18n="about.story.p1">Professor Dej-Udom Krairit established the firm in 1986 with a single focus: providing rigorous intellectual property advice to international companies entering the Thai market. At a time when Thailand's IP framework was still developing, the firm built its reputation on technical depth and direct access to the regulatory bodies that shaped the system.</p>
+      <p data-i18n="about.story.p2">Over the following decades, the practice expanded in response to what clients actually needed. Companies that came for trademark protection soon needed corporate structuring, work permits for their expatriate staff, and eventually, representation in disputes. Rather than referring these matters out, the firm built dedicated departments — each led by practitioners with genuine depth in their area.</p>
+      <p data-i18n="about.story.p3">Today, Dej-Udom & Associates advises in Thai and English across intellectual property, immigration and relocation, corporate and investment law, litigation and dispute resolution, taxation, and notarial services. The approach hasn't changed: understand the client's business first, then provide advice that accounts for how Thai law actually works in practice.</p>
     </div>
     <div class="timeline reveal reveal-delay-2">
       <div class="timeline-item">
         <div class="timeline-year">1986</div>
-        <div class="timeline-desc">Professor Dej-Udom Krairit founds the firm as a specialist intellectual property practice in Bangkok</div>
+        <div class="timeline-desc" data-i18n="about.timeline.1986">Professor Dej-Udom Krairit founds the firm as a specialist intellectual property practice in Bangkok</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">1995</div>
-        <div class="timeline-desc">Appointed sole Thai member of the International Lawyers Network (ILN), expanding cross-border capabilities</div>
+        <div class="timeline-desc" data-i18n="about.timeline.1995">Appointed sole Thai member of the International Lawyers Network (ILN), expanding cross-border capabilities</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2005</div>
-        <div class="timeline-desc">Expands into full-service operations — adding corporate, litigation, and immigration departments</div>
+        <div class="timeline-desc" data-i18n="about.timeline.2005">Expands into full-service operations — adding corporate, litigation, and immigration departments</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2018</div>
-        <div class="timeline-desc">Joins the ASEAN Attorneys Alliance, strengthening regional coverage across Southeast Asia</div>
+        <div class="timeline-desc" data-i18n="about.timeline.2018">Joins the ASEAN Attorneys Alliance, strengthening regional coverage across Southeast Asia</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2023</div>
-        <div class="timeline-desc">Appointed BOI Certified Agency for the Long-Term Resident (LTR) Visa programme — one of a limited number of authorised firms</div>
+        <div class="timeline-desc" data-i18n="about.timeline.2023">Appointed BOI Certified Agency for the Long-Term Resident (LTR) Visa programme — one of a limited number of authorised firms</div>
       </div>
     </div>
   </div>
@@ -1059,24 +1084,24 @@
 <!-- ===== VALUES ===== -->
 <div class="values-section">
   <div class="section">
-    <div class="section-label reveal">What Guides Us</div>
-    <h2 class="section-title reveal reveal-delay-1">Built on Principle</h2>
-    <p class="section-intro reveal reveal-delay-2">Three commitments that have defined our practice for nearly four decades — and that every member of the firm is held to.</p>
+    <div class="section-label reveal" data-i18n="about.values.label">What Guides Us</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="about.values.title">Built on Principle</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="about.values.intro">Three commitments that have defined our practice for nearly four decades — and that every member of the firm is held to.</p>
     <div class="values-grid">
       <div class="value-card reveal reveal-delay-1">
         <div class="value-number">01</div>
-        <h3>Client-First Counsel</h3>
-        <p>We start with the business problem, not the legal theory. Every engagement begins by understanding the client's industry context, commercial objectives, and risk tolerance — so the advice we give is actionable, not academic.</p>
+        <h3 data-i18n="about.values.card1.title">Client-First Counsel</h3>
+        <p data-i18n="about.values.card1.desc">We start with the business problem, not the legal theory. Every engagement begins by understanding the client's industry context, commercial objectives, and risk tolerance — so the advice we give is actionable, not academic.</p>
       </div>
       <div class="value-card reveal reveal-delay-2">
         <div class="value-number">02</div>
-        <h3>Excellence in Delivery</h3>
-        <p>Responsiveness, clarity, and follow-through. We meet deadlines, write in plain language, and keep clients informed at every stage. When something changes, we say so immediately — not after the fact.</p>
+        <h3 data-i18n="about.values.card2.title">Excellence in Delivery</h3>
+        <p data-i18n="about.values.card2.desc">Responsiveness, clarity, and follow-through. We meet deadlines, write in plain language, and keep clients informed at every stage. When something changes, we say so immediately — not after the fact.</p>
       </div>
       <div class="value-card reveal reveal-delay-3">
         <div class="value-number">03</div>
-        <h3>Thai Roots, Global Reach</h3>
-        <p>Deep understanding of Thai law and regulatory practice, combined with the international network to support clients operating across borders. Through ILN and the ASEAN Attorneys Alliance, we coordinate seamlessly across jurisdictions.</p>
+        <h3 data-i18n="about.values.card3.title">Thai Roots, Global Reach</h3>
+        <p data-i18n="about.values.card3.desc">Deep understanding of Thai law and regulatory practice, combined with the international network to support clients operating across borders. Through ILN and the ASEAN Attorneys Alliance, we coordinate seamlessly across jurisdictions.</p>
       </div>
     </div>
   </div>
@@ -1084,9 +1109,9 @@
 
 <!-- ===== LEADERSHIP TEAM ===== -->
 <div class="section" id="team">
-  <div class="section-label reveal">Our People</div>
-  <h2 class="section-title reveal reveal-delay-1">Leadership & Team</h2>
-  <p class="section-intro reveal reveal-delay-2">The people behind the practice — each bringing genuine depth in their area and a shared commitment to getting the detail right.</p>
+  <div class="section-label reveal" data-i18n="about.team.label">Our People</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n-html="about.team.title">Leadership &amp; Team</h2>
+  <p class="section-intro reveal reveal-delay-2" data-i18n="about.team.intro">The people behind the practice — each bringing genuine depth in their area and a shared commitment to getting the detail right.</p>
   <div class="team-grid">
     <div class="team-card reveal reveal-delay-1">
       <div class="team-photo">
@@ -1094,10 +1119,10 @@
       </div>
       <div class="team-info">
         <div class="team-name">Prof. Dej-Udom Krairit</div>
-        <div class="team-title">Founder & Managing Partner</div>
+        <div class="team-title" data-i18n="about.team.member1.title">Founder & Managing Partner</div>
         <div class="team-tags">
-          <span class="team-tag">IP</span>
-          <span class="team-tag">Corporate</span>
+          <span class="team-tag" data-i18n="common.practice.ip">IP</span>
+          <span class="team-tag" data-i18n="common.practice.corporate">Corporate</span>
         </div>
       </div>
     </div>
@@ -1107,10 +1132,10 @@
       </div>
       <div class="team-info">
         <div class="team-name">Shawn Krairit</div>
-        <div class="team-title">Director of Operations</div>
+        <div class="team-title" data-i18n="about.team.member2.title">Director of Operations</div>
         <div class="team-tags">
-          <span class="team-tag">Operations</span>
-          <span class="team-tag">Strategy</span>
+          <span class="team-tag" data-i18n="about.team.member2.tag1">Operations</span>
+          <span class="team-tag" data-i18n="about.team.member2.tag2">Strategy</span>
         </div>
       </div>
     </div>
@@ -1119,10 +1144,10 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Immigration</div>
+        <div class="team-name" data-i18n="about.team.member3.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member3.title">Head of Immigration</div>
         <div class="team-tags">
-          <span class="team-tag">Immigration</span>
+          <span class="team-tag" data-i18n="common.practice.immigration">Immigration</span>
           <span class="team-tag">LTR Visa</span>
         </div>
       </div>
@@ -1132,11 +1157,11 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Litigation</div>
+        <div class="team-name" data-i18n="about.team.member4.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member4.title">Head of Litigation</div>
         <div class="team-tags">
-          <span class="team-tag">Litigation</span>
-          <span class="team-tag">ADR</span>
+          <span class="team-tag" data-i18n="common.practice.litigation">Litigation</span>
+          <span class="team-tag" data-i18n="about.team.member4.tag2">ADR</span>
         </div>
       </div>
     </div>
@@ -1145,11 +1170,11 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Trademarks</div>
+        <div class="team-name" data-i18n="about.team.member5.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member5.title">Head of Trademarks</div>
         <div class="team-tags">
-          <span class="team-tag">Trademark</span>
-          <span class="team-tag">IP</span>
+          <span class="team-tag" data-i18n="about.team.member5.tag1">Trademark</span>
+          <span class="team-tag" data-i18n="common.practice.ip">IP</span>
         </div>
       </div>
     </div>
@@ -1158,11 +1183,11 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Patents</div>
+        <div class="team-name" data-i18n="about.team.member6.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member6.title">Head of Patents</div>
         <div class="team-tags">
-          <span class="team-tag">Patent</span>
-          <span class="team-tag">IP</span>
+          <span class="team-tag" data-i18n="about.team.member6.tag1">Patent</span>
+          <span class="team-tag" data-i18n="common.practice.ip">IP</span>
         </div>
       </div>
     </div>
@@ -1171,11 +1196,11 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Corporate</div>
+        <div class="team-name" data-i18n="about.team.member7.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member7.title">Head of Corporate</div>
         <div class="team-tags">
-          <span class="team-tag">Corporate</span>
-          <span class="team-tag">M&A</span>
+          <span class="team-tag" data-i18n="common.practice.corporate">Corporate</span>
+          <span class="team-tag" data-i18n="about.team.member7.tag2">M&amp;A</span>
         </div>
       </div>
     </div>
@@ -1184,10 +1209,10 @@
         <span class="team-photo-placeholder">—</span>
       </div>
       <div class="team-info">
-        <div class="team-name">Senior Attorney</div>
-        <div class="team-title">Head of Tax</div>
+        <div class="team-name" data-i18n="about.team.member8.name">Senior Attorney</div>
+        <div class="team-title" data-i18n="about.team.member8.title">Head of Tax</div>
         <div class="team-tags">
-          <span class="team-tag">Tax</span>
+          <span class="team-tag" data-i18n="common.practice.tax">Tax</span>
           <span class="team-tag">BOI</span>
         </div>
       </div>
@@ -1198,58 +1223,58 @@
 <!-- ===== RANKINGS & RECOGNITION ===== -->
 <div class="rankings-section" id="recognition">
   <div class="section">
-    <div class="section-label reveal">Recognition</div>
-    <h2 class="section-title reveal reveal-delay-1">Recognised Excellence</h2>
-    <p class="section-intro reveal reveal-delay-2">Ranked and recommended by the publications that matter in international legal practice.</p>
+    <div class="section-label reveal" data-i18n="about.rankings.label">Recognition</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="about.rankings.title">Recognised Excellence</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="about.rankings.intro">Ranked and recommended by the publications that matter in international legal practice.</p>
 
     <div class="rankings-scroll reveal reveal-delay-3">
       <div class="ranking-badge">
-        <div class="ranking-source">World Trademark Review</div>
-        <div class="ranking-title">WTR 1000</div>
-        <div class="ranking-detail">Recommended firm for trademark prosecution and strategy in Thailand</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge1.source">World Trademark Review</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge1.title">WTR 1000</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge1.detail">Recommended firm for trademark prosecution and strategy in Thailand</div>
       </div>
       <div class="ranking-badge">
-        <div class="ranking-source">IP Stars</div>
-        <div class="ranking-title">Managing IP</div>
-        <div class="ranking-detail">Recognised for patent and trademark practice in Thailand</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge2.source">IP Stars</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge2.title">Managing IP</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge2.detail">Recognised for patent and trademark practice in Thailand</div>
       </div>
       <div class="ranking-badge">
-        <div class="ranking-source">Patent Lawyer Magazine</div>
-        <div class="ranking-title">Top Patent Firms</div>
-        <div class="ranking-detail">Listed among leading patent practices in ASEAN</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge3.source">Patent Lawyer Magazine</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge3.title">Top Patent Firms</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge3.detail">Listed among leading patent practices in ASEAN</div>
       </div>
       <div class="ranking-badge">
-        <div class="ranking-source">International Lawyers Network</div>
-        <div class="ranking-title">Sole Thai Member</div>
-        <div class="ranking-detail">Exclusive Thai representative since 1995 — 90+ firms across 67 countries</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge4.source">International Lawyers Network</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge4.title">Sole Thai Member</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge4.detail">Exclusive Thai representative since 1995 — 90+ firms across 67 countries</div>
       </div>
       <div class="ranking-badge">
-        <div class="ranking-source">Google Reviews</div>
-        <div class="ranking-title">4.9 Star Rating</div>
-        <div class="ranking-detail">Highest-rated law firm in the Bangrak district for client satisfaction</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge5.source">Google Reviews</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge5.title">4.9 Star Rating</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge5.detail">Highest-rated law firm in the Bangrak district for client satisfaction</div>
       </div>
       <div class="ranking-badge">
-        <div class="ranking-source">Board of Investment</div>
-        <div class="ranking-title">BOI Certified Agency</div>
-        <div class="ranking-detail">Authorised to submit LTR Visa applications directly to the BOI</div>
+        <div class="ranking-source" data-i18n="about.rankings.badge6.source">Board of Investment</div>
+        <div class="ranking-title" data-i18n="about.rankings.badge6.title">BOI Certified Agency</div>
+        <div class="ranking-detail" data-i18n="about.rankings.badge6.detail">Authorised to submit LTR Visa applications directly to the BOI</div>
       </div>
     </div>
 
     <!-- Notable Matters -->
     <div class="notable-matters reveal">
-      <h3>Notable Matters</h3>
+      <h3 data-i18n="about.matters.title">Notable Matters</h3>
       <div class="matter-grid">
         <div class="matter-card reveal reveal-delay-1">
-          <div class="matter-text">Advised a Fortune 500 consumer goods company on its Thailand trademark portfolio — managing 200+ registrations across multiple classes</div>
-          <div class="matter-tag">Intellectual Property</div>
+          <div class="matter-text" data-i18n="about.matters.matter1.text">Advised a Fortune 500 consumer goods company on its Thailand trademark portfolio — managing 200+ registrations across multiple classes</div>
+          <div class="matter-tag" data-i18n="about.matters.matter1.tag">Intellectual Property</div>
         </div>
         <div class="matter-card reveal reveal-delay-2">
-          <div class="matter-text">Coordinated work permits and LTR Visas for a regional headquarters relocating 40+ expatriate employees to Bangkok</div>
-          <div class="matter-tag">Immigration</div>
+          <div class="matter-text" data-i18n="about.matters.matter2.text">Coordinated work permits and LTR Visas for a regional headquarters relocating 40+ expatriate employees to Bangkok</div>
+          <div class="matter-tag" data-i18n="about.matters.matter2.tag">Immigration</div>
         </div>
         <div class="matter-card reveal reveal-delay-3">
-          <div class="matter-text">Structured BOI-promoted investment for a Japanese manufacturer — from entity formation through to operational launch</div>
-          <div class="matter-tag">Corporate & Tax</div>
+          <div class="matter-text" data-i18n="about.matters.matter3.text">Structured BOI-promoted investment for a Japanese manufacturer — from entity formation through to operational launch</div>
+          <div class="matter-tag" data-i18n-html="about.matters.matter3.tag">Corporate &amp; Tax</div>
         </div>
       </div>
     </div>
@@ -1258,20 +1283,20 @@
 
 <!-- ===== NETWORK & AFFILIATIONS ===== -->
 <div class="section" id="network">
-  <div class="section-label reveal">Global Network</div>
-  <h2 class="section-title reveal reveal-delay-1">Regional Strength,<br>International Reach</h2>
+  <div class="section-label reveal" data-i18n="about.network.label">Global Network</div>
+  <h2 class="section-title reveal reveal-delay-1" data-i18n-html="about.network.title">Regional Strength,<br>International Reach</h2>
   <div class="network-grid">
     <div class="network-text reveal reveal-delay-2">
-      <p>As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our membership in the ASEAN Attorneys Alliance provides direct access to leading independent firms across every ASEAN jurisdiction.</p>
-      <p>This means clients dealing with cross-border matters — whether it's a multi-jurisdiction trademark filing, a regional corporate restructuring, or an employment dispute spanning several countries — get coordinated advice through a single point of contact in Bangkok.</p>
+      <p data-i18n="about.network.p1">As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our membership in the ASEAN Attorneys Alliance provides direct access to leading independent firms across every ASEAN jurisdiction.</p>
+      <p data-i18n="about.network.p2">This means clients dealing with cross-border matters — whether it's a multi-jurisdiction trademark filing, a regional corporate restructuring, or an employment dispute spanning several countries — get coordinated advice through a single point of contact in Bangkok.</p>
       <div class="network-badges">
         <div class="network-badge">
           <div class="network-badge-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <div>
-            <div class="network-badge-text">International Lawyers Network</div>
-            <div class="network-badge-sub">Sole Thai member since 1995</div>
+            <div class="network-badge-text" data-i18n="about.network.iln.name">International Lawyers Network</div>
+            <div class="network-badge-sub" data-i18n="about.network.iln.sub">Sole Thai member since 1995</div>
           </div>
         </div>
         <div class="network-badge">
@@ -1279,14 +1304,14 @@
             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <div>
-            <div class="network-badge-text">ASEAN Attorneys Alliance</div>
-            <div class="network-badge-sub">Regional coverage across 10 ASEAN states</div>
+            <div class="network-badge-text" data-i18n="about.network.asean.name">ASEAN Attorneys Alliance</div>
+            <div class="network-badge-sub" data-i18n="about.network.asean.sub">Regional coverage across 10 ASEAN states</div>
           </div>
         </div>
       </div>
     </div>
     <div class="network-map reveal reveal-delay-3">
-      <div class="map-label">ASEAN Network Coverage</div>
+      <div class="map-label" data-i18n="about.network.mapLabel">ASEAN Network Coverage</div>
       <div class="map-dots">
         <div class="map-dot active">
           <div class="map-dot-circle"></div>
@@ -1336,10 +1361,10 @@
 <!-- ===== CTA STRIP ===== -->
 <div class="cta-strip">
   <div class="cta-strip-inner">
-    <h2>Ready to discuss your legal needs?</h2>
+    <h2 data-i18n="about.cta.title">Ready to discuss your legal needs?</h2>
     <div class="cta-strip-btns">
-      <a href="index.html#contact" class="btn-gold magnetic-wrap">Contact Us</a>
-      <a href="index.html#practices" class="btn-outline magnetic-wrap">View Our Expertise</a>
+      <a href="index.html#contact" class="btn-gold magnetic-wrap" data-i18n="about.cta.contact">Contact Us</a>
+      <a href="index.html#practices" class="btn-outline magnetic-wrap" data-i18n="about.cta.expertise">View Our Expertise</a>
     </div>
   </div>
 </div>
@@ -1350,38 +1375,38 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">Dej-Udom & Associates</div>
-        <div class="footer-brand-sub">Attorneys at Law</div>
-        <p class="footer-desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
+        <div class="footer-brand-sub" data-i18n="common.footer.brandSub">Attorneys at Law</div>
+        <p class="footer-desc" data-i18n="common.footer.desc">Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation since 1986.</p>
       </div>
       <div class="footer-col">
-        <h4>Expertise</h4>
-        <a href="index.html#practices">Intellectual Property</a>
-        <a href="index.html#practices">Immigration</a>
-        <a href="index.html#practices">Corporate & Investment</a>
-        <a href="index.html#practices">Litigation</a>
-        <a href="index.html#practices">Taxation</a>
-        <a href="index.html#practices">Notarial Services</a>
+        <h4 data-i18n="common.footer.expertise">Expertise</h4>
+        <a href="index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
+        <a href="index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Corporate &amp; Investment</a>
+        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="index.html#practices" data-i18n="common.footer.taxation">Taxation</a>
+        <a href="index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
-        <h4>Firm</h4>
-        <a href="DA About Us 2026.html">About Us</a>
-        <a href="DA About Us 2026.html#team">Our People</a>
-        <a href="DA About Us 2026.html#recognition">Recognition</a>
-        <a href="DA Insights 2026.html">Insights</a>
+        <h4 data-i18n="common.footer.firm">Firm</h4>
+        <a href="DA About Us 2026.html" data-i18n="common.footer.aboutUs">About Us</a>
+        <a href="DA About Us 2026.html#team" data-i18n="common.footer.ourPeople">Our People</a>
+        <a href="DA About Us 2026.html#recognition" data-i18n="common.footer.recognition">Recognition</a>
+        <a href="DA Insights 2026.html" data-i18n="common.footer.insights">Insights</a>
       </div>
       <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="DA Careers 2026.html">Careers</a>
-        <a href="index.html#contact">Contact Us</a>
+        <h4 data-i18n="common.footer.connect">Connect</h4>
+        <a href="DA Careers 2026.html" data-i18n="common.footer.careers">Careers</a>
+        <a href="index.html#contact" data-i18n="common.footer.contactUs">Contact Us</a>
         <a href="tel:+6622330055">+66 (0) 2233-0055</a>
         <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-copy" data-i18n-html="common.footer.copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="common.footer.terms">Terms of Use</a>
       </div>
     </div>
   </div>
@@ -1438,6 +1463,8 @@
     revealObserver.observe(el);
   });
 </script>
+
+<script src="i18n/i18n.js"></script>
 
 </body>
 </html>

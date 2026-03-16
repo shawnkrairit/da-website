@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   /* ===== CUSTOM PROPERTIES ===== */
   :root {
@@ -51,6 +52,12 @@
     font-weight: 400;
     letter-spacing: -0.2px;
   }
+
+  /* ===== LANGUAGE-SPECIFIC FONTS ===== */
+  body.lang-th { font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-th h1, body.lang-th h2, body.lang-th h3, body.lang-th h4 { font-family: 'Noto Sans Thai', 'Libre Baskerville', Georgia, serif; }
+  body.lang-zh { font-family: 'Noto Sans SC', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4 { font-family: 'Noto Sans SC', 'Libre Baskerville', Georgia, serif; }
 
   /* ===== NOISE TEXTURE OVERLAY ===== */
   body::after {
@@ -159,22 +166,31 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    gap: 2px;
+    gap: 3px;
   }
   .nav-logo-name {
     font-family: 'Libre Baskerville', serif;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 400;
     color: white;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     line-height: 1;
   }
+  .nav-logo-amp {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 27px;
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 1px;
+  }
   .nav-logo-sub {
-    font-size: 9px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 500;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 11px;
+    color: var(--text-secondary);
+    letter-spacing: 2.5px;
+    font-weight: 400;
+    text-align: center;
   }
 
   .nav-links {
@@ -257,6 +273,12 @@
   .nav-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
   .nav-menu-btn.active span:nth-child(2) { opacity: 0; }
   .nav-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* ===== LANGUAGE SWITCHER ===== */
+  .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
+  .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+  .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+  .lang-option.active { color: var(--forest); background: var(--gold); }
 
   .nav-links.mobile-open {
     display: flex !important;
@@ -1569,7 +1591,7 @@
   }
 </style>
 </head>
-<body>
+<body style="opacity:0;transition:opacity .3s" data-i18n-title="home.meta.title" data-i18n-desc="home.meta.desc">
 
 <!-- Custom Cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -1580,17 +1602,22 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
       <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
-      <span class="nav-logo-sub">Attorneys at Law</span>
+      <span class="nav-logo-sub" data-i18n="common.nav.subtitle">Attorneys At Law</span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="DA About Us 2026.html">About</a></li>
-      <li><a href="#practices">Expertise</a></li>
-      <li><a href="DA Insights 2026.html">Insights</a></li>
-      <li><a href="DA Careers 2026.html">Careers</a></li>
+      <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
+      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li><a href="#practices" data-i18n="common.nav.expertise">Expertise</a></li>
+      <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
+      <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
     </ul>
-    <a href="#contact" class="nav-contact-btn"><span>Contact</span></a>
-    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Open menu">
+    <div class="lang-switcher">
+      <button class="lang-option active" data-lang="en" title="English">EN</button>
+      <button class="lang-option" data-lang="th" title="ภาษาไทย">TH</button>
+      <button class="lang-option" data-lang="zh-CN" title="中文">CN</button>
+    </div>
+    <a href="#contact" class="nav-contact-btn"><span data-i18n="common.nav.contact">Contact</span></a>
+    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Open menu" data-i18n-aria-label="common.nav.openMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1606,33 +1633,33 @@
 
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-eyebrow">Bangkok &middot; Since 1986</div>
-      <h1>Legal expertise<br><em>with a commercial edge</em></h1>
-      <p class="hero-desc">A partner-led law firm advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation.</p>
+      <div class="hero-eyebrow" data-i18n="home.hero.eyebrow">Bangkok &middot; Since 1986</div>
+      <h1 data-i18n-html="home.hero.title">Legal expertise<br><em>with a commercial edge</em></h1>
+      <p class="hero-desc" data-i18n="home.hero.desc">A partner-led law firm advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation.</p>
       <div class="hero-actions">
-        <a href="#practices" class="btn-primary">Explore Our Expertise <span class="arrow">&rarr;</span></a>
-        <a href="#contact" class="btn-ghost">Get in Touch</a>
+        <a href="#practices" class="btn-primary" data-i18n-html="home.hero.cta_primary">Explore Our Expertise <span class="arrow">&rarr;</span></a>
+        <a href="#contact" class="btn-ghost" data-i18n="home.hero.cta_secondary">Get in Touch</a>
       </div>
     </div>
 
     <div class="hero-metrics">
       <div class="hero-metric-card">
         <div class="hero-metric-number">40</div>
-        <div class="hero-metric-label">Years of Practice</div>
+        <div class="hero-metric-label" data-i18n="home.hero.metric1_label">Years of Practice</div>
       </div>
       <div class="hero-metrics-row">
         <div class="hero-metric-card">
           <div class="hero-metric-number">80%+</div>
-          <div class="hero-metric-label">Multinational Clients</div>
+          <div class="hero-metric-label" data-i18n="home.hero.metric2_label">Multinational Clients</div>
         </div>
         <div class="hero-metric-card">
           <div class="hero-metric-number">67</div>
-          <div class="hero-metric-label">Countries via ILN</div>
+          <div class="hero-metric-label" data-i18n="home.hero.metric3_label">Countries via ILN</div>
         </div>
       </div>
       <div class="hero-metric-card">
         <div class="hero-metric-number">40</div>
-        <div class="hero-metric-label">Licensed Attorneys</div>
+        <div class="hero-metric-label" data-i18n="home.hero.metric4_label">Licensed Attorneys</div>
       </div>
     </div>
   </div>
@@ -1641,23 +1668,23 @@
 <!-- ===== TRUST BAR ===== -->
 <div class="trust-bar">
   <div class="trust-track">
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 Recommended</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IP Stars &mdash; Managing IP</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Legal 500 Asia Pacific</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">BOI Certified Agency</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ILN Member Since 1995</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Google 4.9 Stars</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN Attorneys Alliance</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.wtr">WTR 1000 Recommended</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n-html="home.trust.ipstars">IP Stars &mdash; Managing IP</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.iln">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean">ASEAN Attorneys Alliance</span></div>
     <!-- Duplicate for seamless loop -->
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 Recommended</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IP Stars &mdash; Managing IP</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Legal 500 Asia Pacific</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">BOI Certified Agency</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ILN Member Since 1995</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">Google 4.9 Stars</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN Attorneys Alliance</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.wtr">WTR 1000 Recommended</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n-html="home.trust.ipstars">IP Stars &mdash; Managing IP</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.iln">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean">ASEAN Attorneys Alliance</span></div>
   </div>
 </div>
 
@@ -1666,18 +1693,18 @@
   <div class="values-grid">
     <div class="value-cell reveal">
       <div class="value-number">5</div>
-      <div class="value-title">Practice Areas</div>
-      <div class="value-desc">IP, immigration, corporate, litigation, and tax under one roof.</div>
+      <div class="value-title" data-i18n="home.values.v1_title">Practice Areas</div>
+      <div class="value-desc" data-i18n="home.values.v1_desc">IP, immigration, corporate, litigation, and tax under one roof.</div>
     </div>
     <div class="value-cell reveal reveal-delay-1">
       <div class="value-number">2</div>
-      <div class="value-title">Working Languages</div>
-      <div class="value-desc">Thai and English fluency across every filing and submission.</div>
+      <div class="value-title" data-i18n="home.values.v2_title">Working Languages</div>
+      <div class="value-desc" data-i18n="home.values.v2_desc">Thai and English fluency across every filing and submission.</div>
     </div>
     <div class="value-cell reveal reveal-delay-2">
       <div class="value-number">1</div>
-      <div class="value-title">BOI Certified Agency</div>
-      <div class="value-desc">Authorised to submit LTR Visa applications directly to BOI.</div>
+      <div class="value-title" data-i18n="home.values.v3_title">BOI Certified Agency</div>
+      <div class="value-desc" data-i18n="home.values.v3_desc">Authorised to submit LTR Visa applications directly to BOI.</div>
     </div>
   </div>
 </div>
@@ -1685,9 +1712,9 @@
 <!-- ===== PRACTICE AREAS ===== -->
 <div class="practices-bg" id="practices">
   <div class="section">
-    <div class="section-label reveal">Expertise</div>
-    <h2 class="section-title reveal reveal-delay-1">What We Do</h2>
-    <p class="section-intro reveal reveal-delay-2">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge.</p>
+    <div class="section-label reveal" data-i18n="home.practices.label">Expertise</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="home.practices.title">What We Do</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="home.practices.intro">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge.</p>
 
     <div class="practices-grid">
       <div class="practice-card reveal" onclick="openPracticeArea('ip')">
@@ -1695,9 +1722,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">01</div>
-          <h3>Intellectual Property</h3>
-          <p class="card-desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n="home.practices.ip.name">Intellectual Property</h3>
+          <p class="card-desc" data-i18n="home.practices.ip.desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.ip.cta">Explore practice &rarr;</span>
         </div>
       </div>
 
@@ -1706,9 +1733,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">02</div>
-          <h3>Immigration &amp; Relocation</h3>
-          <p class="card-desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n-html="home.practices.immigration.name">Immigration &amp; Relocation</h3>
+          <p class="card-desc" data-i18n="home.practices.immigration.desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.immigration.cta">Explore practice &rarr;</span>
         </div>
       </div>
 
@@ -1717,9 +1744,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">03</div>
-          <h3>Corporate &amp; Investment</h3>
-          <p class="card-desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, and ongoing regulatory compliance for businesses operating in Thailand.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n-html="home.practices.corporate.name">Corporate &amp; Investment</h3>
+          <p class="card-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, and ongoing regulatory compliance for businesses operating in Thailand.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.corporate.cta">Explore practice &rarr;</span>
         </div>
       </div>
 
@@ -1728,9 +1755,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">04</div>
-          <h3>Litigation &amp; Dispute Resolution</h3>
-          <p class="card-desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n-html="home.practices.litigation.name">Litigation &amp; Dispute Resolution</h3>
+          <p class="card-desc" data-i18n="home.practices.litigation.desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.litigation.cta">Explore practice &rarr;</span>
         </div>
       </div>
 
@@ -1739,9 +1766,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">05</div>
-          <h3>Taxation</h3>
-          <p class="card-desc">Corporate income tax, VAT, customs and excise, transfer pricing, double tax treaty application, and BOI tax incentives for inbound investments.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n="home.practices.tax.name">Taxation</h3>
+          <p class="card-desc" data-i18n="home.practices.tax.desc">Corporate income tax, VAT, customs and excise, transfer pricing, double tax treaty application, and BOI tax incentives for inbound investments.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.tax.cta">Explore practice &rarr;</span>
         </div>
       </div>
 
@@ -1750,9 +1777,9 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">06</div>
-          <h3>Notarial Services</h3>
-          <p class="card-desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</p>
-          <span class="card-arrow">Explore practice &rarr;</span>
+          <h3 data-i18n="home.practices.notarial.name">Notarial Services</h3>
+          <p class="card-desc" data-i18n="home.practices.notarial.desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</p>
+          <span class="card-arrow" data-i18n-html="home.practices.notarial.cta">Explore practice &rarr;</span>
         </div>
       </div>
     </div>
@@ -1765,62 +1792,62 @@
 <div class="pa-overlay" id="pa-ip">
   <div class="pa-backdrop" onclick="closePracticeArea('ip')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Intellectual Property</h2>
-      <p class="pa-overview">Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n="home.overlay.ip.title">Intellectual Property</h2>
+      <p class="pa-overview" data-i18n="home.overlay.ip.overview">Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation.</p>
     </div>
     <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'ip','trademark')">Trademark</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','patent')">Patent</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','overseas')">Overseas IP</button>
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'ip','trademark')" data-i18n="home.overlay.ip.tab_trademark">Trademark</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','patent')" data-i18n="home.overlay.ip.tab_patent">Patent</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','overseas')" data-i18n="home.overlay.ip.tab_overseas">Overseas IP</button>
     </div>
     <div class="pa-content">
       <div class="pa-sub-section active" id="ip-trademark">
-        <h3>Trademark</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.ip.trademark.title">Trademark</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.ip.trademark.body">
           <p>We advise on the full lifecycle of trademark protection under Thai law: clearance searches, filing, prosecution, opposition and cancellation proceedings, renewals, assignments, and licensing.</p>
           <p>Where brand owners face infringement, we coordinate enforcement through the Department of Intellectual Property, Thai Customs, and the Central Intellectual Property and International Trade Court.</p>
           <p>For companies entering the Thai market, we provide clearance opinions and filing strategies that account for the classification requirements and examination practices of the Thai DIP.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Registration and prosecution, opposition and cancellation, enforcement and anti-counterfeiting, customs recordals, licensing and assignments, passing off, IP commercialisation, portfolio management and renewals.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.ip.trademark.handles">Registration and prosecution, opposition and cancellation, enforcement and anti-counterfeiting, customs recordals, licensing and assignments, passing off, IP commercialisation, portfolio management and renewals.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Trademark%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Trademark%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="ip-patent">
-        <h3>Patent</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.ip.patent.title">Patent</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.ip.patent.body">
           <p>We advise on patent protection for inventions, industrial designs, and petty patents (utility models) under the Thai Patent Act.</p>
           <p>For invention patents, we handle drafting and filing of applications, prosecution through the DIP, responses to official actions, and maintenance of granted patents through the 20-year term. Thailand offers several mechanisms to accelerate examination — including ASPEC, the Patent Prosecution Highway (PPH) with the Japan Patent Office, and the Target Patent Fast-Track.</p>
           <p>For PCT national phase applications, we manage entry into the Thai national phase, coordinate Thai-language translation, and prosecute applications through examination.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Invention patents, design patents, petty patents, PCT national phase entry, patent prosecution, accelerated examination (ASPEC, PPH, Target Patent), annuity management, assignments and licence recordals.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.ip.patent.handles">Invention patents, design patents, petty patents, PCT national phase entry, patent prosecution, accelerated examination (ASPEC, PPH, Target Patent), annuity management, assignments and licence recordals.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Patent%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Patent%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="ip-overseas">
-        <h3>Overseas IP</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.ip.overseas.title">Overseas IP</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.ip.overseas.body">
           <p>For clients who need IP protection beyond Thailand, our overseas filing desk coordinates trademark and patent applications across ASEAN and internationally.</p>
           <p>Through our memberships in INTA, APAA, and the International Lawyers Network, we have direct access to vetted practitioners in over 50 countries.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.ip.overseas.handles">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
@@ -1832,59 +1859,59 @@
 <div class="pa-overlay" id="pa-immigration">
   <div class="pa-backdrop" onclick="closePracticeArea('immigration')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Immigration &amp; Relocation</h2>
-      <p class="pa-overview">Our Immigration Department advises on all aspects of employing foreign nationals in Thailand. Since March 2023, we are a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n-html="home.overlay.immigration.title">Immigration &amp; Relocation</h2>
+      <p class="pa-overview" data-i18n="home.overlay.immigration.overview">Our Immigration Department advises on all aspects of employing foreign nationals in Thailand. Since March 2023, we are a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
     </div>
     <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'immigration','workpermits')">Work Permits</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','visas')">Visas</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','ltr')">LTR Visa</button>
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'immigration','workpermits')" data-i18n="home.overlay.immigration.tab_workpermits">Work Permits</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','visas')" data-i18n="home.overlay.immigration.tab_visas">Visas</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','ltr')" data-i18n="home.overlay.immigration.tab_ltr">LTR Visa</button>
     </div>
     <div class="pa-content">
       <div class="pa-sub-section active" id="immigration-workpermits">
-        <h3>Work Permits</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.immigration.workpermits.title">Work Permits</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.immigration.workpermits.body">
           <p>We handle new work permit applications, renewals, amendments, and cancellations under both the BOI single-window system and the standard process through the Department of Employment.</p>
           <p>For BOI-promoted companies, applications are processed through TIESC using the online single-window system. For non-BOI companies, we handle applications through TIESC or the Employment Department directly.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">BOI and non-BOI work permit applications, renewals and amendments, Digital Work Permits (DWP), temporary and urgent work permits, work permit cancellations, change of employer, medical certificate coordination.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.immigration.workpermits.handles">BOI and non-BOI work permit applications, renewals and amendments, Digital Work Permits (DWP), temporary and urgent work permits, work permit cancellations, change of employer, medical certificate coordination.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Work%20Permit%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Work%20Permit%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="immigration-visas">
-        <h3>Visas</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.immigration.visas.title">Visas</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.immigration.visas.body">
           <p>We advise on the full range of visa categories available to foreign nationals in Thailand, including Non-Immigrant B visas, dependent visas, retirement visas, Smart Visa, and permanent residency applications.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Non-Immigrant B and O visas, visa extensions and renewals, dependent visas, retirement visas, Smart Visa, permanent residency, re-entry permits, 90-day reporting, transfer of endorsement, overseas visa support letters.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.immigration.visas.handles">Non-Immigrant B and O visas, visa extensions and renewals, dependent visas, retirement visas, Smart Visa, permanent residency, re-entry permits, 90-day reporting, transfer of endorsement, overseas visa support letters.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Visa%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="immigration-ltr">
-        <h3>Long-Term Resident (LTR) Visa</h3>
-        <div class="pa-body">
+        <h3 data-i18n="home.overlay.immigration.ltr.title">Long-Term Resident (LTR) Visa</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.immigration.ltr.body">
           <p>The LTR Visa is a 10-year visa programme administered by the BOI, available to four categories: wealthy global citizens, wealthy pensioners, work-from-Thailand professionals, and highly-skilled professionals.</p>
           <p>As a BOI Certified Agency, we manage the entire application process — from eligibility assessment through document preparation, submission, and obtaining the visa stamp and Digital Work Permit.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">LTR Visa eligibility assessment and pre-screening, application preparation and filing, coordination with the BOI LTR Unit, visa stamp and Digital Work Permit issuance, dependent applications, renewals, annual reporting.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.immigration.ltr.handles">LTR Visa eligibility assessment and pre-screening, application preparation and filing, coordination with the BOI LTR Unit, visa stamp and Digital Work Permit issuance, dependent applications, renewals, annual reporting.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=LTR%20Visa%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=LTR%20Visa%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
@@ -1896,58 +1923,58 @@
 <div class="pa-overlay" id="pa-corporate">
   <div class="pa-backdrop" onclick="closePracticeArea('corporate')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Corporate &amp; Investment</h2>
-      <p class="pa-overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n-html="home.overlay.corporate.title">Corporate &amp; Investment</h2>
+      <p class="pa-overview" data-i18n="home.overlay.corporate.overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand.</p>
     </div>
     <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')">Market Entry</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')">M&amp;A</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')">Compliance</button>
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')" data-i18n="home.overlay.corporate.tab_entry">Market Entry</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')" data-i18n-html="home.overlay.corporate.tab_ma">M&amp;A</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')" data-i18n="home.overlay.corporate.tab_compliance">Compliance</button>
     </div>
     <div class="pa-content">
       <div class="pa-sub-section active" id="corporate-entry">
-        <h3>Market Entry &amp; Formation</h3>
-        <div class="pa-body">
+        <h3 data-i18n-html="home.overlay.corporate.entry.title">Market Entry &amp; Formation</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.corporate.entry.body">
           <p>We advise on the most appropriate legal structure for entering the Thai market, taking into account the Foreign Business Act, BOI incentives, and your commercial objectives.</p>
           <p>This includes incorporation of Thai limited companies, registration of branch offices, joint venture structuring, and applications for Foreign Business Licences (FBL).</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Company incorporation, joint venture structuring, Foreign Business Licence applications, BOI promotion applications, IEAT privileges, factory licences, import/export permits, business licensing.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.corporate.entry.handles">Company incorporation, joint venture structuring, Foreign Business Licence applications, BOI promotion applications, IEAT privileges, factory licences, import/export permits, business licensing.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Market%20Entry%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Market%20Entry%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="corporate-ma">
-        <h3>Transactions &amp; M&amp;A</h3>
-        <div class="pa-body">
+        <h3 data-i18n-html="home.overlay.corporate.ma.title">Transactions &amp; M&amp;A</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.corporate.ma.body">
           <p>We advise on acquisitions, disposals, mergers, and corporate restructuring transactions in Thailand, covering the full transaction cycle from structuring through to completion.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Mergers and acquisitions, due diligence, share and asset purchase agreements, shareholders' agreements, corporate restructuring, joint venture agreements, regulatory approvals.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.corporate.ma.handles">Mergers and acquisitions, due diligence, share and asset purchase agreements, shareholders' agreements, corporate restructuring, joint venture agreements, regulatory approvals.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=M%26A%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=M%26A%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
       <div class="pa-sub-section" id="corporate-compliance">
-        <h3>Ongoing Compliance &amp; Licensing</h3>
-        <div class="pa-body">
+        <h3 data-i18n-html="home.overlay.corporate.compliance.title">Ongoing Compliance &amp; Licensing</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.corporate.compliance.body">
           <p>For companies already operating in Thailand, we provide ongoing corporate secretarial and regulatory compliance support, including annual returns, board administration, and BOI reporting.</p>
         </div>
         <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Corporate secretarial services, annual compliance filings, board and shareholder meeting administration, BOI compliance and reporting, licence renewals, regulatory advisory, monthly retainer arrangements.</div>
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.corporate.compliance.handles">Corporate secretarial services, annual compliance filings, board and shareholder meeting administration, BOI compliance and reporting, licence renewals, regulatory advisory, monthly retainer arrangements.</div>
         </div>
         <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="mailto:dej-udom@dejudom.com?subject=Compliance%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
@@ -1959,24 +1986,24 @@
 <div class="pa-overlay" id="pa-litigation">
   <div class="pa-backdrop" onclick="closePracticeArea('litigation')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Litigation &amp; Dispute Resolution</h2>
-      <p class="pa-overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n-html="home.overlay.litigation.title">Litigation &amp; Dispute Resolution</h2>
+      <p class="pa-overview" data-i18n="home.overlay.litigation.overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
     </div>
     <div class="pa-content-single">
-      <div class="pa-body">
+      <div class="pa-body" data-i18n-html="home.overlay.litigation.body">
         <p>The department represents clients from the Courts of First Instance through to the Supreme Court, with depth in commercial disputes, employment matters, IP and international trade cases, and tax disputes.</p>
         <p>For disputes involving international parties, we handle matters before the Thai Arbitration Institute and advise on enforcement of foreign arbitral awards under the New York Convention.</p>
         <p>Our approach: clear assessment of merits, likely timeline, and costs at the outset — pursuing resolution through the most practical route available.</p>
       </div>
       <div class="pa-handles">
-        <div class="handles-label">What We Handle</div>
-        <div class="handles-list">Civil and commercial litigation, criminal defence, labour and employment disputes, IP and international trade court, tax court, bankruptcy, domestic and international arbitration, mediation, enforcement of foreign judgments and arbitral awards.</div>
+        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+        <div class="handles-list" data-i18n="home.overlay.litigation.handles">Civil and commercial litigation, criminal defence, labour and employment disputes, IP and international trade court, tax court, bankruptcy, domestic and international arbitration, mediation, enforcement of foreign judgments and arbitral awards.</div>
       </div>
       <div class="pa-cta">
-        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
         <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
@@ -1987,24 +2014,24 @@
 <div class="pa-overlay" id="pa-tax">
   <div class="pa-backdrop" onclick="closePracticeArea('tax')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('tax')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('tax')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Taxation</h2>
-      <p class="pa-overview">We advise on all matters relating to taxation in Thailand, covering both planning and compliance for businesses and individuals.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n="home.overlay.tax.title">Taxation</h2>
+      <p class="pa-overview" data-i18n="home.overlay.tax.overview">We advise on all matters relating to taxation in Thailand, covering both planning and compliance for businesses and individuals.</p>
     </div>
     <div class="pa-content-single">
-      <div class="pa-body">
+      <div class="pa-body" data-i18n-html="home.overlay.tax.body">
         <p>Corporate side: structuring advice on corporate income tax, VAT, customs and excise, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments and advise on Thailand's double tax treaties (61 countries).</p>
         <p>Individual clients: personal income tax for expatriates, tax residency issues, and the reduced 17% flat rate under the LTR Visa programme.</p>
         <p>Our tax practice coordinates closely with corporate and immigration departments, particularly on BOI-promoted investments.</p>
       </div>
       <div class="pa-handles">
-        <div class="handles-label">What We Handle</div>
-        <div class="handles-list">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
+        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+        <div class="handles-list" data-i18n="home.overlay.tax.handles">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
       </div>
       <div class="pa-cta">
-        <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
         <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
@@ -2015,22 +2042,22 @@
 <div class="pa-overlay" id="pa-notarial">
   <div class="pa-backdrop" onclick="closePracticeArea('notarial')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('notarial')">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('notarial')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
-      <div class="pa-label">Practice Area</div>
-      <h2>Notarial Services</h2>
-      <p class="pa-overview">Licensed Notarial Services Attorneys providing full notarial services for domestic and international clients under the Lawyers Act B.E. 2528.</p>
+      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
+      <h2 data-i18n="home.overlay.notarial.title">Notarial Services</h2>
+      <p class="pa-overview" data-i18n="home.overlay.notarial.overview">Licensed Notarial Services Attorneys providing full notarial services for domestic and international clients under the Lawyers Act B.E. 2528.</p>
     </div>
     <div class="pa-content-single">
-      <div class="pa-body">
+      <div class="pa-body" data-i18n-html="home.overlay.notarial.body">
         <p>Relevant for foreign companies and individuals requiring notarised or certified documents for use in Thailand or other jurisdictions — including powers of attorney, certified copies, signature verification, and sworn statements.</p>
       </div>
       <div class="pa-handles">
-        <div class="handles-label">What We Handle</div>
-        <div class="handles-list">Certification of document copies, signature verification and authentication, recording of statements under oath, administration of oaths, ID verification, powers of attorney for foreign jurisdictions.</div>
+        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+        <div class="handles-list" data-i18n="home.overlay.notarial.handles">Certification of document copies, signature verification and authentication, recording of statements under oath, administration of oaths, ID verification, powers of attorney for foreign jurisdictions.</div>
       </div>
       <div class="pa-cta">
-        <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
         <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
@@ -2042,37 +2069,37 @@
   <div class="section">
     <div class="why-grid">
       <div>
-        <div class="section-label reveal">The Firm</div>
-        <h2 class="section-title reveal reveal-delay-1">Built for<br>Cross-Border Work</h2>
-        <p class="section-intro reveal reveal-delay-2">Over 80% of our clients are foreign companies or multinational firms. That concentration shapes how we work.</p>
+        <div class="section-label reveal" data-i18n="home.why.label">The Firm</div>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n-html="home.why.title">Built for<br>Cross-Border Work</h2>
+        <p class="section-intro reveal reveal-delay-2" data-i18n="home.why.intro">Over 80% of our clients are foreign companies or multinational firms. That concentration shapes how we work.</p>
       </div>
       <div class="why-list">
         <div class="why-item reveal">
           <div class="why-icon">40</div>
           <div>
-            <div class="why-title">Years of Practice</div>
-            <div class="why-desc">Four decades of institutional knowledge advising Fortune 500 companies and multinational enterprises since 1986.</div>
+            <div class="why-title" data-i18n="home.why.item1_title">Years of Practice</div>
+            <div class="why-desc" data-i18n="home.why.item1_desc">Four decades of institutional knowledge advising Fortune 500 companies and multinational enterprises since 1986.</div>
           </div>
         </div>
         <div class="why-item reveal reveal-delay-1">
           <div class="why-icon">67</div>
           <div>
-            <div class="why-title">Countries via ILN</div>
-            <div class="why-desc">Thailand's exclusive member of the International Lawyers Network since 1995, connecting clients to 6,000+ vetted practitioners worldwide.</div>
+            <div class="why-title" data-i18n="home.why.item2_title">Countries via ILN</div>
+            <div class="why-desc" data-i18n="home.why.item2_desc">Thailand's exclusive member of the International Lawyers Network since 1995, connecting clients to 6,000+ vetted practitioners worldwide.</div>
           </div>
         </div>
         <div class="why-item reveal reveal-delay-2">
           <div class="why-icon">8</div>
           <div>
-            <div class="why-title">Industry Sectors</div>
-            <div class="why-desc">Deep specialisation in manufacturing, automotive, life sciences, energy, technology, consumer, financial services, and international trade.</div>
+            <div class="why-title" data-i18n="home.why.item3_title">Industry Sectors</div>
+            <div class="why-desc" data-i18n="home.why.item3_desc">Deep specialisation in manufacturing, automotive, life sciences, energy, technology, consumer, financial services, and international trade.</div>
           </div>
         </div>
         <div class="why-item reveal reveal-delay-3">
           <div class="why-icon">2</div>
           <div>
-            <div class="why-title">Working Languages</div>
-            <div class="why-desc">Thai and English fluency across all practice areas ensures clarity in every legal communication, filing, and submission.</div>
+            <div class="why-title" data-i18n="home.why.item4_title">Working Languages</div>
+            <div class="why-desc" data-i18n="home.why.item4_desc">Thai and English fluency across all practice areas ensures clarity in every legal communication, filing, and submission.</div>
           </div>
         </div>
       </div>
@@ -2083,58 +2110,58 @@
 <!-- ===== INDUSTRIES ===== -->
 <div class="industries-section" id="industries">
   <div class="section">
-    <div class="section-label reveal">Industries</div>
-    <h2 class="section-title reveal reveal-delay-1">Sectors We Serve</h2>
-    <p class="section-intro reveal reveal-delay-2">Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand.</p>
+    <div class="section-label reveal" data-i18n="home.industries.label">Industries</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="home.industries.title">Sectors We Serve</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="home.industries.intro">Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand.</p>
 
     <div class="sectors-grid">
       <div class="sector-card reveal">
-        <div class="sector-name">Manufacturing</div>
-        <div class="sector-desc">BOI promotion applications for manufacturing projects, factory licensing under the Factory Act, import/export permits, labour compliance for factory workforces, and environmental regulatory approvals across Thailand's industrial estates.</div>
+        <div class="sector-name" data-i18n="home.industries.manufacturing.name">Manufacturing</div>
+        <div class="sector-desc" data-i18n="home.industries.manufacturing.desc">BOI promotion applications for manufacturing projects, factory licensing under the Factory Act, import/export permits, labour compliance for factory workforces, and environmental regulatory approvals across Thailand's industrial estates.</div>
       </div>
       <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name">Automotive &amp; EV</div>
-        <div class="sector-desc">Structuring investments under Thailand's EV incentive packages, BOI privileges for automotive parts and assembly, technology transfer agreements, supply chain joint ventures, and customs classification for components and finished vehicles.</div>
+        <div class="sector-name" data-i18n-html="home.industries.automotive.name">Automotive &amp; EV</div>
+        <div class="sector-desc" data-i18n="home.industries.automotive.desc">Structuring investments under Thailand's EV incentive packages, BOI privileges for automotive parts and assembly, technology transfer agreements, supply chain joint ventures, and customs classification for components and finished vehicles.</div>
       </div>
       <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name">Life Sciences &amp; Pharma</div>
-        <div class="sector-desc">Patent filing and prosecution for pharmaceutical inventions, FDA Thailand regulatory pathways, clinical trial agreements, pharmaceutical distribution licensing, and protection of proprietary formulations and trade secrets.</div>
+        <div class="sector-name" data-i18n-html="home.industries.lifesciences.name">Life Sciences &amp; Pharma</div>
+        <div class="sector-desc" data-i18n="home.industries.lifesciences.desc">Patent filing and prosecution for pharmaceutical inventions, FDA Thailand regulatory pathways, clinical trial agreements, pharmaceutical distribution licensing, and protection of proprietary formulations and trade secrets.</div>
       </div>
       <div class="sector-card reveal">
-        <div class="sector-name">Energy &amp; Utilities</div>
-        <div class="sector-desc">Power purchase agreements, Energy Regulatory Commission licensing, BOI incentives for renewable energy projects, concession structuring, and dispute resolution for infrastructure and energy sector contracts.</div>
+        <div class="sector-name" data-i18n-html="home.industries.energy.name">Energy &amp; Utilities</div>
+        <div class="sector-desc" data-i18n="home.industries.energy.desc">Power purchase agreements, Energy Regulatory Commission licensing, BOI incentives for renewable energy projects, concession structuring, and dispute resolution for infrastructure and energy sector contracts.</div>
       </div>
       <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name">Technology &amp; Fintech</div>
-        <div class="sector-desc">Smart Visa applications for tech professionals, data protection compliance under the PDPA, fintech licensing with the Bank of Thailand and SEC, software IP protection, and corporate structuring for digital businesses.</div>
+        <div class="sector-name" data-i18n-html="home.industries.technology.name">Technology &amp; Fintech</div>
+        <div class="sector-desc" data-i18n="home.industries.technology.desc">Smart Visa applications for tech professionals, data protection compliance under the PDPA, fintech licensing with the Bank of Thailand and SEC, software IP protection, and corporate structuring for digital businesses.</div>
       </div>
       <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name">Consumer &amp; Retail</div>
-        <div class="sector-desc">Trademark portfolio management for consumer brands, franchise and distribution agreements, retail licensing requirements, consumer protection compliance, and anti-counterfeiting enforcement through Thai Customs and the IP Court.</div>
+        <div class="sector-name" data-i18n-html="home.industries.consumer.name">Consumer &amp; Retail</div>
+        <div class="sector-desc" data-i18n="home.industries.consumer.desc">Trademark portfolio management for consumer brands, franchise and distribution agreements, retail licensing requirements, consumer protection compliance, and anti-counterfeiting enforcement through Thai Customs and the IP Court.</div>
       </div>
       <div class="sector-card reveal">
-        <div class="sector-name">Financial Services</div>
-        <div class="sector-desc">Foreign Business Licence applications for financial service providers, Bank of Thailand and SEC regulatory compliance, fund structuring, fintech joint ventures, and cross-border transaction advisory for regional banking clients.</div>
+        <div class="sector-name" data-i18n="home.industries.financial.name">Financial Services</div>
+        <div class="sector-desc" data-i18n="home.industries.financial.desc">Foreign Business Licence applications for financial service providers, Bank of Thailand and SEC regulatory compliance, fund structuring, fintech joint ventures, and cross-border transaction advisory for regional banking clients.</div>
       </div>
       <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name">International Trade</div>
-        <div class="sector-desc">Customs and excise advisory, free trade zone structuring, trade dispute resolution, export control compliance, and coordination with the Department of Foreign Trade on import/export licensing for controlled goods.</div>
+        <div class="sector-name" data-i18n="home.industries.trade.name">International Trade</div>
+        <div class="sector-desc" data-i18n="home.industries.trade.desc">Customs and excise advisory, free trade zone structuring, trade dispute resolution, export control compliance, and coordination with the Department of Foreign Trade on import/export licensing for controlled goods.</div>
       </div>
       <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name">Logistics &amp; Supply Chain</div>
-        <div class="sector-desc">Foreign Business Act structuring for logistics operators, warehouse and transport licensing, customs brokerage compliance, BOI privileges for international trading companies, and freight forwarding regulatory requirements.</div>
+        <div class="sector-name" data-i18n-html="home.industries.logistics.name">Logistics &amp; Supply Chain</div>
+        <div class="sector-desc" data-i18n="home.industries.logistics.desc">Foreign Business Act structuring for logistics operators, warehouse and transport licensing, customs brokerage compliance, BOI privileges for international trading companies, and freight forwarding regulatory requirements.</div>
       </div>
       <div class="sector-card reveal">
-        <div class="sector-name">Real Estate &amp; Infrastructure</div>
-        <div class="sector-desc">Foreign ownership structuring under the Land Code and Condominium Act, construction permits, EIA compliance, lease and concession agreements, and BOI promotion for infrastructure projects in designated zones.</div>
+        <div class="sector-name" data-i18n-html="home.industries.realestate.name">Real Estate &amp; Infrastructure</div>
+        <div class="sector-desc" data-i18n="home.industries.realestate.desc">Foreign ownership structuring under the Land Code and Condominium Act, construction permits, EIA compliance, lease and concession agreements, and BOI promotion for infrastructure projects in designated zones.</div>
       </div>
       <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name">Food &amp; Agriculture</div>
-        <div class="sector-desc">FDA product registration and labelling compliance, agricultural licensing, GI protection for Thai agricultural products, food safety regulatory requirements, and BOI incentives for food processing and cold chain operations.</div>
+        <div class="sector-name" data-i18n-html="home.industries.food.name">Food &amp; Agriculture</div>
+        <div class="sector-desc" data-i18n="home.industries.food.desc">FDA product registration and labelling compliance, agricultural licensing, GI protection for Thai agricultural products, food safety regulatory requirements, and BOI incentives for food processing and cold chain operations.</div>
       </div>
       <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name">Hospitality &amp; Tourism</div>
-        <div class="sector-desc">Hotel and tourism business licensing, Foreign Business Act compliance for hospitality operators, work permits for expatriate hotel management, TAT registration requirements, and liquor and entertainment licensing.</div>
+        <div class="sector-name" data-i18n-html="home.industries.hospitality.name">Hospitality &amp; Tourism</div>
+        <div class="sector-desc" data-i18n="home.industries.hospitality.desc">Hotel and tourism business licensing, Foreign Business Act compliance for hospitality operators, work permits for expatriate hotel management, TAT registration requirements, and liquor and entertainment licensing.</div>
       </div>
     </div>
   </div>
@@ -2143,40 +2170,40 @@
 <!-- ===== CREDENTIALS ===== -->
 <div class="credentials-section" id="credentials">
   <div class="section">
-    <div class="section-label reveal">Recognition</div>
-    <h2 class="section-title reveal reveal-delay-1">Rankings &amp; Memberships</h2>
-    <p class="section-intro reveal reveal-delay-2">Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand.</p>
+    <div class="section-label reveal" data-i18n="home.credentials.label">Recognition</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n-html="home.credentials.title">Rankings &amp; Memberships</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="home.credentials.intro">Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand.</p>
 
     <div class="credentials-track reveal reveal-delay-3">
       <div class="credential-card">
-        <div class="cred-source">World Trademark Review</div>
+        <div class="cred-source" data-i18n="home.credentials.c1_source">World Trademark Review</div>
         <div class="cred-name">WTR 1000</div>
-        <div class="cred-desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
+        <div class="cred-desc" data-i18n="home.credentials.c1_desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source">Legal 500</div>
-        <div class="cred-name">Asia Pacific</div>
-        <div class="cred-desc">Recommended for commercial legal services across multiple practice areas.</div>
+        <div class="cred-source" data-i18n="home.credentials.c2_source">Legal 500</div>
+        <div class="cred-name" data-i18n="home.credentials.c2_name">Asia Pacific</div>
+        <div class="cred-desc" data-i18n="home.credentials.c2_desc">Recommended for commercial legal services across multiple practice areas.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source">Managing IP</div>
-        <div class="cred-name">IP Stars</div>
-        <div class="cred-desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
+        <div class="cred-source" data-i18n="home.credentials.c3_source">Managing IP</div>
+        <div class="cred-name" data-i18n="home.credentials.c3_name">IP Stars</div>
+        <div class="cred-desc" data-i18n="home.credentials.c3_desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source">Asia Law</div>
-        <div class="cred-name">Top 100 Lawyers</div>
-        <div class="cred-desc">Prof. Dr. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
+        <div class="cred-source" data-i18n="home.credentials.c4_source">Asia Law</div>
+        <div class="cred-name" data-i18n="home.credentials.c4_name">Top 100 Lawyers</div>
+        <div class="cred-desc" data-i18n="home.credentials.c4_desc">Prof. Dr. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source">Board of Investment</div>
-        <div class="cred-name">BOI Certified</div>
-        <div class="cred-desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
+        <div class="cred-source" data-i18n="home.credentials.c5_source">Board of Investment</div>
+        <div class="cred-name" data-i18n="home.credentials.c5_name">BOI Certified</div>
+        <div class="cred-desc" data-i18n="home.credentials.c5_desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source">Google Reviews</div>
-        <div class="cred-name">4.9 Stars</div>
-        <div class="cred-desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
+        <div class="cred-source" data-i18n="home.credentials.c6_source">Google Reviews</div>
+        <div class="cred-name" data-i18n="home.credentials.c6_name">4.9 Stars</div>
+        <div class="cred-desc" data-i18n="home.credentials.c6_desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
       </div>
     </div>
   </div>
@@ -2185,30 +2212,30 @@
 <!-- ===== REPRESENTATIVE MATTERS ===== -->
 <div class="matters-section" id="matters">
   <div class="section">
-    <div class="section-label reveal">Experience</div>
-    <h2 class="section-title reveal reveal-delay-1">Representative Matters</h2>
-    <p class="section-intro reveal reveal-delay-2">Selected examples of recent work. Client names withheld for confidentiality.</p>
+    <div class="section-label reveal" data-i18n="home.matters.label">Experience</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="home.matters.title">Representative Matters</h2>
+    <p class="section-intro reveal reveal-delay-2" data-i18n="home.matters.intro">Selected examples of recent work. Client names withheld for confidentiality.</p>
 
     <div class="matters-list">
       <div class="matter-row reveal">
-        <div class="matter-area-tag">Corporate &amp; M&amp;A</div>
-        <div class="matter-desc">Advised a Fortune 500 manufacturer on a BOI-promoted greenfield investment in Thailand, securing maximum tax incentives and achieving operational status within 12 months.</div>
-        <div class="matter-team-tag">Corporate + Tax + Immigration</div>
+        <div class="matter-area-tag" data-i18n-html="home.matters.m1_area">Corporate &amp; M&amp;A</div>
+        <div class="matter-desc" data-i18n="home.matters.m1_desc">Advised a Fortune 500 manufacturer on a BOI-promoted greenfield investment in Thailand, securing maximum tax incentives and achieving operational status within 12 months.</div>
+        <div class="matter-team-tag" data-i18n="home.matters.m1_team">Corporate + Tax + Immigration</div>
       </div>
       <div class="matter-row reveal reveal-delay-1">
-        <div class="matter-area-tag">Intellectual Property</div>
-        <div class="matter-desc">Enforced trademark rights for a global consumer brand against counterfeiters across Thailand, coordinating customs seizures and civil litigation resulting in permanent injunctions.</div>
-        <div class="matter-team-tag">IP + Litigation</div>
+        <div class="matter-area-tag" data-i18n="home.matters.m2_area">Intellectual Property</div>
+        <div class="matter-desc" data-i18n="home.matters.m2_desc">Enforced trademark rights for a global consumer brand against counterfeiters across Thailand, coordinating customs seizures and civil litigation resulting in permanent injunctions.</div>
+        <div class="matter-team-tag" data-i18n="home.matters.m2_team">IP + Litigation</div>
       </div>
       <div class="matter-row reveal reveal-delay-2">
-        <div class="matter-area-tag">Immigration &amp; LTR</div>
-        <div class="matter-desc">Managed end-to-end LTR visa applications for a multinational technology company relocating senior executives and highly-skilled professionals to Bangkok, including family dependents.</div>
-        <div class="matter-team-tag">Immigration</div>
+        <div class="matter-area-tag" data-i18n-html="home.matters.m3_area">Immigration &amp; LTR</div>
+        <div class="matter-desc" data-i18n="home.matters.m3_desc">Managed end-to-end LTR visa applications for a multinational technology company relocating senior executives and highly-skilled professionals to Bangkok, including family dependents.</div>
+        <div class="matter-team-tag" data-i18n="home.matters.m3_team">Immigration</div>
       </div>
       <div class="matter-row reveal reveal-delay-3">
-        <div class="matter-area-tag">Litigation</div>
-        <div class="matter-desc">Represented a European energy company in a high-value commercial arbitration dispute before the Thai Arbitration Institute, achieving a favourable award on all claims.</div>
-        <div class="matter-team-tag">Litigation</div>
+        <div class="matter-area-tag" data-i18n="home.matters.m4_area">Litigation</div>
+        <div class="matter-desc" data-i18n="home.matters.m4_desc">Represented a European energy company in a high-value commercial arbitration dispute before the Thai Arbitration Institute, achieving a favourable award on all claims.</div>
+        <div class="matter-team-tag" data-i18n="home.matters.m4_team">Litigation</div>
       </div>
     </div>
   </div>
@@ -2217,14 +2244,14 @@
 <!-- ===== INTERNATIONAL NETWORK ===== -->
 <div class="network-section" id="network">
   <div class="section">
-    <div class="section-label reveal">Global Reach</div>
-    <h2 class="section-title reveal reveal-delay-1">Regional Strength,<br>International Reach</h2>
+    <div class="section-label reveal" data-i18n="home.network.label">Global Reach</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n-html="home.network.title">Regional Strength,<br>International Reach</h2>
 
     <div class="network-layout">
       <div>
         <div class="network-text reveal reveal-delay-2">
-          <p>As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our ASEAN Attorneys Alliance membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
-          <p>Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
+          <p data-i18n="home.network.text1">As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our ASEAN Attorneys Alliance membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
+          <p data-i18n="home.network.text2">Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
         </div>
         <div class="network-badges reveal reveal-delay-3">
           <div class="network-badge">
@@ -2232,8 +2259,8 @@
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </div>
             <div>
-              <div class="network-badge-name">International Lawyers Network</div>
-              <div class="network-badge-sub">Sole Thai member &middot; 90+ firms &middot; 67 countries</div>
+              <div class="network-badge-name" data-i18n="home.network.iln_name">International Lawyers Network</div>
+              <div class="network-badge-sub" data-i18n-html="home.network.iln_sub">Sole Thai member &middot; 90+ firms &middot; 67 countries</div>
             </div>
           </div>
           <div class="network-badge">
@@ -2241,55 +2268,55 @@
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-              <div class="network-badge-name">ASEAN Attorneys Alliance</div>
-              <div class="network-badge-sub">Regional coverage across 10 ASEAN states</div>
+              <div class="network-badge-name" data-i18n="home.network.asean_name">ASEAN Attorneys Alliance</div>
+              <div class="network-badge-sub" data-i18n="home.network.asean_sub">Regional coverage across 10 ASEAN states</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="network-map-visual reveal reveal-delay-3">
-        <div class="map-title">ASEAN Network Coverage</div>
+        <div class="map-title" data-i18n="home.network.map_title">ASEAN Network Coverage</div>
         <div class="map-dots-grid">
           <div class="map-dot-item active">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Thailand</div>
+            <div class="map-dot-name" data-i18n="home.network.country_thailand">Thailand</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Vietnam</div>
+            <div class="map-dot-name" data-i18n="home.network.country_vietnam">Vietnam</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Singapore</div>
+            <div class="map-dot-name" data-i18n="home.network.country_singapore">Singapore</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Malaysia</div>
+            <div class="map-dot-name" data-i18n="home.network.country_malaysia">Malaysia</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Indonesia</div>
+            <div class="map-dot-name" data-i18n="home.network.country_indonesia">Indonesia</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Philippines</div>
+            <div class="map-dot-name" data-i18n="home.network.country_philippines">Philippines</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Cambodia</div>
+            <div class="map-dot-name" data-i18n="home.network.country_cambodia">Cambodia</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Myanmar</div>
+            <div class="map-dot-name" data-i18n="home.network.country_myanmar">Myanmar</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Laos</div>
+            <div class="map-dot-name" data-i18n="home.network.country_laos">Laos</div>
           </div>
           <div class="map-dot-item">
             <div class="map-dot-circle"></div>
-            <div class="map-dot-name">Brunei</div>
+            <div class="map-dot-name" data-i18n="home.network.country_brunei">Brunei</div>
           </div>
         </div>
       </div>
@@ -2302,9 +2329,9 @@
   <div class="section">
     <div class="cta-grid">
       <div class="cta-text">
-        <div class="section-label reveal">Get Started</div>
-        <h2 class="reveal reveal-delay-1">Talk to Us</h2>
-        <p class="reveal reveal-delay-2">Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.</p>
+        <div class="section-label reveal" data-i18n="home.contact.label">Get Started</div>
+        <h2 class="reveal reveal-delay-1" data-i18n="home.contact.title">Talk to Us</h2>
+        <p class="reveal reveal-delay-2" data-i18n="home.contact.desc">Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.</p>
         <div class="cta-contact-info reveal reveal-delay-3">
           <div class="cta-contact-row">
             <div class="icon-circle">&#9742;</div>
@@ -2316,48 +2343,48 @@
           </div>
           <div class="cta-contact-row">
             <div class="icon-circle">&#9679;</div>
-            <a href="#">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500</a>
+            <a href="#" data-i18n="home.contact.address">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500</a>
           </div>
         </div>
       </div>
       <div class="cta-form reveal reveal-delay-2">
-        <h3>Send an Enquiry</h3>
+        <h3 data-i18n="home.contact.form_title">Send an Enquiry</h3>
         <div class="form-row">
           <div class="form-field">
-            <label>Name</label>
-            <input type="text" placeholder="Your name">
+            <label data-i18n="home.contact.form_name">Name</label>
+            <input type="text" placeholder="Your name" data-i18n-placeholder="home.contact.form_name_placeholder">
           </div>
           <div class="form-field">
-            <label>Company</label>
-            <input type="text" placeholder="Company name">
+            <label data-i18n="home.contact.form_company">Company</label>
+            <input type="text" placeholder="Company name" data-i18n-placeholder="home.contact.form_company_placeholder">
           </div>
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com">
+            <label data-i18n="home.contact.form_email">Email</label>
+            <input type="email" placeholder="your@email.com" data-i18n-placeholder="home.contact.form_email_placeholder">
           </div>
           <div class="form-field">
-            <label>Practice Area</label>
+            <label data-i18n="home.contact.form_practice">Practice Area</label>
             <select>
-              <option value="">Select practice area</option>
-              <option>Intellectual Property</option>
-              <option>Immigration &amp; Relocation</option>
-              <option>Corporate &amp; Investment</option>
-              <option>Litigation &amp; Disputes</option>
-              <option>Taxation</option>
-              <option>Notarial Services</option>
-              <option>Other</option>
+              <option value="" data-i18n="home.contact.form_select_default">Select practice area</option>
+              <option data-i18n="home.contact.form_select_ip">Intellectual Property</option>
+              <option data-i18n-html="home.contact.form_select_immigration">Immigration &amp; Relocation</option>
+              <option data-i18n-html="home.contact.form_select_corporate">Corporate &amp; Investment</option>
+              <option data-i18n-html="home.contact.form_select_litigation">Litigation &amp; Disputes</option>
+              <option data-i18n="home.contact.form_select_tax">Taxation</option>
+              <option data-i18n="home.contact.form_select_notarial">Notarial Services</option>
+              <option data-i18n="home.contact.form_select_other">Other</option>
             </select>
           </div>
         </div>
         <div class="form-row">
           <div class="form-field full">
-            <label>Message</label>
-            <textarea placeholder="Brief description of your matter"></textarea>
+            <label data-i18n="home.contact.form_message">Message</label>
+            <textarea placeholder="Brief description of your matter" data-i18n-placeholder="home.contact.form_message_placeholder"></textarea>
           </div>
         </div>
-        <button class="form-submit" type="button">Send Enquiry</button>
+        <button class="form-submit" type="button" data-i18n="home.contact.form_submit">Send Enquiry</button>
       </div>
     </div>
   </div>
@@ -2369,38 +2396,38 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand-name">Dej-Udom &amp; Associates</div>
-        <div class="footer-brand-sub">Attorneys at Law</div>
-        <p class="footer-desc">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangrak, Bangkok 10500, Thailand</p>
+        <div class="footer-brand-sub" data-i18n="common.footer.subtitle">Attorneys at Law</div>
+        <p class="footer-desc" data-i18n="common.footer.address">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangrak, Bangkok 10500, Thailand</p>
       </div>
       <div class="footer-col">
-        <h4>Expertise</h4>
-        <a href="javascript:void(0)" onclick="openPracticeArea('ip')">Intellectual Property</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('immigration')">Immigration &amp; Relocation</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')">Corporate &amp; Investment</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('litigation')">Litigation &amp; Disputes</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('tax')">Taxation</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('notarial')">Notarial Services</a>
+        <h4 data-i18n="common.footer.col_expertise">Expertise</h4>
+        <a href="javascript:void(0)" onclick="openPracticeArea('ip')" data-i18n="common.footer.link_ip">Intellectual Property</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('immigration')" data-i18n-html="common.footer.link_immigration">Immigration &amp; Relocation</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')" data-i18n-html="common.footer.link_corporate">Corporate &amp; Investment</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('litigation')" data-i18n-html="common.footer.link_litigation">Litigation &amp; Disputes</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('tax')" data-i18n="common.footer.link_tax">Taxation</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('notarial')" data-i18n="common.footer.link_notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
-        <h4>The Firm</h4>
-        <a href="DA About Us 2026.html">About Us</a>
-        <a href="DA About Us 2026.html#team">Our People</a>
-        <a href="DA About Us 2026.html#recognition">Recognition</a>
-        <a href="DA Insights 2026.html">Insights</a>
+        <h4 data-i18n="common.footer.col_firm">The Firm</h4>
+        <a href="DA About Us 2026.html" data-i18n="common.footer.link_about">About Us</a>
+        <a href="DA About Us 2026.html#team" data-i18n="common.footer.link_people">Our People</a>
+        <a href="DA About Us 2026.html#recognition" data-i18n="common.footer.link_recognition">Recognition</a>
+        <a href="DA Insights 2026.html" data-i18n="common.footer.link_insights">Insights</a>
       </div>
       <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="DA Careers 2026.html">Careers</a>
-        <a href="#contact">Contact Us</a>
+        <h4 data-i18n="common.footer.col_connect">Connect</h4>
+        <a href="DA Careers 2026.html" data-i18n="common.footer.link_careers">Careers</a>
+        <a href="#contact" data-i18n="common.footer.link_contact">Contact Us</a>
         <a href="tel:+6622330055">+66 (0) 2233-0055</a>
         <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2026 Dej-Udom &amp; Associates. All rights reserved.</div>
+      <div class="footer-copy" data-i18n-html="common.footer.copyright">&copy; 2026 Dej-Udom &amp; Associates. All rights reserved.</div>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="common.footer.terms">Terms of Use</a>
       </div>
     </div>
   </div>
@@ -2530,6 +2557,8 @@
     });
   }
 </script>
+
+<script src="i18n/i18n.js"></script>
 
 </body>
 </html>
