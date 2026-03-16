@@ -135,8 +135,19 @@
 
   /* ===== HERO ===== */
   .hero {
-    position: relative; min-height: 75vh; display: flex; align-items: center;
+    position: relative; padding: 180px 48px 100px;
     overflow: hidden; background: var(--forest-deep);
+  }
+
+  /* Hero background image */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/careers-bg.jpg') center center / cover no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+    filter: saturate(0.3) brightness(0.8);
   }
   .hero-gradient {
     position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -150,7 +161,8 @@
   .hero-orb-1 { width: 400px; height: 400px; background: rgba(26, 122, 58, 0.12); top: 10%; right: 15%; }
   .hero-orb-2 { width: 300px; height: 300px; background: rgba(212, 168, 83, 0.06); bottom: 10%; left: 10%; animation-delay: -4s; }
   @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(20px, -30px) scale(1.05); } 66% { transform: translate(-15px, 20px) scale(0.95); } }
-  .hero-inner { max-width: 1400px; margin: 0 auto; padding: 180px 48px 120px; position: relative; z-index: 2; }
+  .hero-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero .reveal { opacity: 1; transform: none; }
   .hero-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
   .hero-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
   .hero h1 { font-size: clamp(40px, 5.5vw, 64px); color: white; line-height: 1.1; margin-bottom: 32px; max-width: 700px; }
@@ -400,8 +412,8 @@
     .nav-links { display: none; }
     .nav-menu-btn { display: flex; }
     .nav-inner { padding: 0 24px; }
+    .hero { padding: 160px 24px 80px; }
     .hero h1 { font-size: 36px; }
-    .hero-inner { padding: 160px 24px 100px; }
     .section { padding: 100px 24px; }
     .section-title { font-size: 32px; }
     .why-grid { grid-template-columns: 1fr; }
