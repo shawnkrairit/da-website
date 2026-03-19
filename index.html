@@ -5,6 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dej-Udom & Associates — Attorneys at Law, Bangkok</title>
 <meta name="description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Dej-Udom & Associates — Attorneys at Law, Bangkok">
+<meta property="og:description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dejudomlaw.com">
+<meta property="og:site_name" content="Dej-Udom & Associates">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="th_TH">
+<meta property="og:locale:alternate" content="zh_CN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dej-Udom & Associates — Attorneys at Law, Bangkok">
+<meta name="twitter:description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Dej-Udom & Associates Ltd.",
+  "alternateName": "สำนักกฎหมาย เดชอุดม แอนด์ แอสโซซิเอทส์",
+  "url": "https://www.dejudomlaw.com",
+  "telephone": "+66-2233-0055",
+  "email": "dej-udom@dejudom.com",
+  "foundingDate": "1986",
+  "founder": {
+    "@type": "Person",
+    "name": "Prof. Dej-Udom Krairit",
+    "jobTitle": "Founder & Managing Partner"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Charn Issara Tower 1, 2nd Floor, 942/69 Rama IV Road, Suriyawong, Bangrak",
+    "addressLocality": "Bangkok",
+    "postalCode": "10500",
+    "addressCountry": "TH"
+  },
+  "areaServed": ["Thailand", "ASEAN"],
+  "knowsLanguage": ["en", "th", "zh"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Legal Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Intellectual Property"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Immigration & Relocation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Incorporation & Corporate Matters"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Litigation & Dispute Resolution"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Notarial Services"}}
+    ]
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -1744,8 +1799,8 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">03</div>
-          <h3 data-i18n-html="home.practices.corporate.name">Corporate &amp; Investment</h3>
-          <p class="card-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, and ongoing regulatory compliance for businesses operating in Thailand.</p>
+          <h3 data-i18n-html="home.practices.corporate.name">Incorporation &amp; Corporate Matters</h3>
+          <p class="card-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, taxation, and ongoing regulatory compliance for businesses operating in Thailand.</p>
           <span class="card-arrow" data-i18n-html="home.practices.corporate.cta">Explore practice &rarr;</span>
         </div>
       </div>
@@ -1761,22 +1816,11 @@
         </div>
       </div>
 
-      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('tax')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">05</div>
-          <h3 data-i18n="home.practices.tax.name">Taxation</h3>
-          <p class="card-desc" data-i18n="home.practices.tax.desc">Corporate income tax, VAT, customs and excise, transfer pricing, double tax treaty application, and BOI tax incentives for inbound investments.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.tax.cta">Explore practice &rarr;</span>
-        </div>
-      </div>
-
-      <div class="practice-card reveal reveal-delay-2" onclick="openPracticeArea('notarial')">
+      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('notarial')">
         <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=75')"></div>
         <div class="card-overlay"></div>
         <div class="card-content">
-          <div class="card-number">06</div>
+          <div class="card-number">05</div>
           <h3 data-i18n="home.practices.notarial.name">Notarial Services</h3>
           <p class="card-desc" data-i18n="home.practices.notarial.desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</p>
           <span class="card-arrow" data-i18n-html="home.practices.notarial.cta">Explore practice &rarr;</span>
@@ -1926,13 +1970,14 @@
     <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
       <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.corporate.title">Corporate &amp; Investment</h2>
-      <p class="pa-overview" data-i18n="home.overlay.corporate.overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand.</p>
+      <h2 data-i18n-html="home.overlay.corporate.title">Incorporation &amp; Corporate Matters</h2>
+      <p class="pa-overview" data-i18n="home.overlay.corporate.overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand — including taxation planning and compliance.</p>
     </div>
     <div class="pa-subnav">
       <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')" data-i18n="home.overlay.corporate.tab_entry">Market Entry</button>
       <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')" data-i18n-html="home.overlay.corporate.tab_ma">M&amp;A</button>
       <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')" data-i18n="home.overlay.corporate.tab_compliance">Compliance</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','tax')" data-i18n="home.overlay.corporate.tab_tax">Taxation</button>
     </div>
     <div class="pa-content">
       <div class="pa-sub-section active" id="corporate-entry">
@@ -1978,6 +2023,22 @@
           <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
         </div>
       </div>
+      <div class="pa-sub-section" id="corporate-tax">
+        <h3 data-i18n="home.overlay.corporate.tax.title">Taxation</h3>
+        <div class="pa-body" data-i18n-html="home.overlay.corporate.tax.body">
+          <p>Corporate side: structuring advice on corporate income tax, VAT, customs and excise, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments and advise on Thailand's double tax treaties (61 countries).</p>
+          <p>Individual clients: personal income tax for expatriates, tax residency issues, and the reduced 17% flat rate under the LTR Visa programme.</p>
+          <p>Our tax practice coordinates closely with corporate and immigration departments, particularly on BOI-promoted investments.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list" data-i18n="home.overlay.corporate.tax.handles">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -2010,33 +2071,6 @@
   </div>
 </div>
 
-<!-- TAXATION -->
-<div class="pa-overlay" id="pa-tax">
-  <div class="pa-backdrop" onclick="closePracticeArea('tax')"></div>
-  <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('tax')" data-i18n-aria-label="home.overlay.close">&times;</button>
-    <div class="pa-header">
-      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n="home.overlay.tax.title">Taxation</h2>
-      <p class="pa-overview" data-i18n="home.overlay.tax.overview">We advise on all matters relating to taxation in Thailand, covering both planning and compliance for businesses and individuals.</p>
-    </div>
-    <div class="pa-content-single">
-      <div class="pa-body" data-i18n-html="home.overlay.tax.body">
-        <p>Corporate side: structuring advice on corporate income tax, VAT, customs and excise, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments and advise on Thailand's double tax treaties (61 countries).</p>
-        <p>Individual clients: personal income tax for expatriates, tax residency issues, and the reduced 17% flat rate under the LTR Visa programme.</p>
-        <p>Our tax practice coordinates closely with corporate and immigration departments, particularly on BOI-promoted investments.</p>
-      </div>
-      <div class="pa-handles">
-        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-        <div class="handles-list" data-i18n="home.overlay.tax.handles">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
-      </div>
-      <div class="pa-cta">
-        <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- NOTARIAL -->
 <div class="pa-overlay" id="pa-notarial">
@@ -2397,22 +2431,21 @@
       <div>
         <div class="footer-brand-name">Dej-Udom &amp; Associates</div>
         <div class="footer-brand-sub" data-i18n="common.footer.subtitle">Attorneys at Law</div>
-        <p class="footer-desc" data-i18n="common.footer.address">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangrak, Bangkok 10500, Thailand</p>
+        <p class="footer-desc" data-i18n="common.footer.address">Charn Issara Tower 1, 2nd Floor, 942/69 Rama IV Road, Suriyawong, Bangrak, Bangkok 10500, Thailand</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="common.footer.col_expertise">Expertise</h4>
         <a href="javascript:void(0)" onclick="openPracticeArea('ip')" data-i18n="common.footer.link_ip">Intellectual Property</a>
         <a href="javascript:void(0)" onclick="openPracticeArea('immigration')" data-i18n-html="common.footer.link_immigration">Immigration &amp; Relocation</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')" data-i18n-html="common.footer.link_corporate">Corporate &amp; Investment</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')" data-i18n-html="common.footer.link_corporate">Incorporation &amp; Corporate Matters</a>
         <a href="javascript:void(0)" onclick="openPracticeArea('litigation')" data-i18n-html="common.footer.link_litigation">Litigation &amp; Disputes</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('tax')" data-i18n="common.footer.link_tax">Taxation</a>
         <a href="javascript:void(0)" onclick="openPracticeArea('notarial')" data-i18n="common.footer.link_notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
         <h4 data-i18n="common.footer.col_firm">The Firm</h4>
-        <a href="DA About Us 2026.html" data-i18n="common.footer.link_about">About Us</a>
-        <a href="DA About Us 2026.html#team" data-i18n="common.footer.link_people">Our People</a>
-        <a href="DA About Us 2026.html#recognition" data-i18n="common.footer.link_recognition">Recognition</a>
+        <a href="DA About Us 2026.html#founder" data-i18n="common.footer.link_founder">Our Founder</a>
+        <a href="DA About Us 2026.html#team" data-i18n="common.footer.link_people">Our Team</a>
+        <a href="DA About Us 2026.html#publications" data-i18n="common.footer.link_publications">Publications</a>
         <a href="DA Insights 2026.html" data-i18n="common.footer.link_insights">Insights</a>
       </div>
       <div class="footer-col">
@@ -2420,7 +2453,7 @@
         <a href="DA Careers 2026.html" data-i18n="common.footer.link_careers">Careers</a>
         <a href="#contact" data-i18n="common.footer.link_contact">Contact Us</a>
         <a href="tel:+6622330055">+66 (0) 2233-0055</a>
-        <a href="mailto:info@dejudomlaw.com">info@dejudomlaw.com</a>
+        <a href="mailto:dej-udom@dejudom.com">dej-udom@dejudom.com</a>
       </div>
     </div>
     <div class="footer-bottom">
