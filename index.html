@@ -991,18 +991,19 @@
     margin: 0;
   }
 
-  /* ===== CREDENTIALS — horizontal scroll ===== */
-  .credentials-section { background: var(--forest-deep); }
+  /* ===== CREDENTIALS — auto-scroll banner ===== */
+  .credentials-section { background: var(--forest-deep); overflow: hidden; }
   .credentials-track {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 16px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    width: max-content;
+    animation: credScroll 35s linear infinite;
   }
-  .credentials-track::-webkit-scrollbar { display: none; }
+  .credentials-track:hover { animation-play-state: paused; }
+  @keyframes credScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
   .credential-card {
     flex: 0 0 280px;
@@ -2306,35 +2307,128 @@
     <p class="section-intro reveal reveal-delay-2" data-i18n="home.credentials.intro">Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand.</p>
 
     <div class="credentials-track reveal reveal-delay-3">
+      <!-- Rankings -->
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c1_source">World Trademark Review</div>
+        <div class="cred-source">World Trademark Review</div>
         <div class="cred-name">WTR 1000</div>
-        <div class="cred-desc" data-i18n="home.credentials.c1_desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
+        <div class="cred-desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c2_source">Legal 500</div>
-        <div class="cred-name" data-i18n="home.credentials.c2_name">Asia Pacific</div>
-        <div class="cred-desc" data-i18n="home.credentials.c2_desc">Recommended for commercial legal services across multiple practice areas.</div>
+        <div class="cred-source">Legal 500</div>
+        <div class="cred-name">Asia Pacific</div>
+        <div class="cred-desc">Recommended for commercial legal services across multiple practice areas.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c3_source">Managing IP</div>
-        <div class="cred-name" data-i18n="home.credentials.c3_name">IP Stars</div>
-        <div class="cred-desc" data-i18n="home.credentials.c3_desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
+        <div class="cred-source">Managing IP</div>
+        <div class="cred-name">IP Stars</div>
+        <div class="cred-desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c4_source">Asia Law</div>
-        <div class="cred-name" data-i18n="home.credentials.c4_name">Top 100 Lawyers</div>
-        <div class="cred-desc" data-i18n="home.credentials.c4_desc">Prof. Dr. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
+        <div class="cred-source">Asia Law</div>
+        <div class="cred-name">Top 100 Lawyers</div>
+        <div class="cred-desc">Prof. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c5_source">Board of Investment</div>
-        <div class="cred-name" data-i18n="home.credentials.c5_name">BOI Certified</div>
-        <div class="cred-desc" data-i18n="home.credentials.c5_desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
+        <div class="cred-source">Board of Investment</div>
+        <div class="cred-name">BOI Certified</div>
+        <div class="cred-desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
       </div>
       <div class="credential-card">
-        <div class="cred-source" data-i18n="home.credentials.c6_source">Google Reviews</div>
-        <div class="cred-name" data-i18n="home.credentials.c6_name">4.9 Stars</div>
-        <div class="cred-desc" data-i18n="home.credentials.c6_desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
+        <div class="cred-source">Google Reviews</div>
+        <div class="cred-name">4.9 Stars</div>
+        <div class="cred-desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
+      </div>
+      <!-- Memberships -->
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">INTA</div>
+        <div class="cred-desc">International Trademark Association — Member since 1997.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">APAA</div>
+        <div class="cred-desc">Asian Patent Attorneys Association — Active member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">AIPPI</div>
+        <div class="cred-desc">International Association for the Protection of Intellectual Property — Thailand National Group.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">ASEAN IPA</div>
+        <div class="cred-desc">ASEAN Intellectual Property Association — Corporate Member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">IPBA</div>
+        <div class="cred-desc">Inter-Pacific Bar Association — Member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">WTR 1000</div>
+        <div class="cred-desc">World Trademark Review 1000 — Recommended firm.</div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="credential-card">
+        <div class="cred-source">World Trademark Review</div>
+        <div class="cred-name">WTR 1000</div>
+        <div class="cred-desc">Recognised for trademark filing, prosecution, and enforcement in Thailand.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Legal 500</div>
+        <div class="cred-name">Asia Pacific</div>
+        <div class="cred-desc">Recommended for commercial legal services across multiple practice areas.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Managing IP</div>
+        <div class="cred-name">IP Stars</div>
+        <div class="cred-desc">Ranked for patent and trademark practice across prosecution, enforcement, and transactions.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Asia Law</div>
+        <div class="cred-name">Top 100 Lawyers</div>
+        <div class="cred-desc">Prof. Dej-Udom Krairit recognised among Asia Law's Top 100 Lawyers in Thailand.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Board of Investment</div>
+        <div class="cred-name">BOI Certified</div>
+        <div class="cred-desc">Authorised to submit LTR Visa applications directly to the BOI.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Google Reviews</div>
+        <div class="cred-name">4.9 Stars</div>
+        <div class="cred-desc">Highest-rated law firm in the Bangrak district for client satisfaction.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">INTA</div>
+        <div class="cred-desc">International Trademark Association — Member since 1997.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">APAA</div>
+        <div class="cred-desc">Asian Patent Attorneys Association — Active member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">AIPPI</div>
+        <div class="cred-desc">International Association for the Protection of Intellectual Property — Thailand National Group.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">ASEAN IPA</div>
+        <div class="cred-desc">ASEAN Intellectual Property Association — Corporate Member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">IPBA</div>
+        <div class="cred-desc">Inter-Pacific Bar Association — Member.</div>
+      </div>
+      <div class="credential-card">
+        <div class="cred-source">Membership</div>
+        <div class="cred-name">WTR 1000</div>
+        <div class="cred-desc">World Trademark Review 1000 — Recommended firm.</div>
       </div>
     </div>
   </div>
