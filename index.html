@@ -599,13 +599,11 @@
     animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
   }
   .hero-metric-card {
-    padding: 36px;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius);
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: left;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
@@ -613,33 +611,36 @@
   .hero-metric-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 100%;
-    background: linear-gradient(180deg, var(--gold), transparent);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
     opacity: 0;
     transition: opacity 0.4s;
   }
+  .hero-metric-card:hover::before {
+    opacity: 1;
+  }
   .hero-metric-card:hover {
     border-color: rgba(212, 168, 83, 0.2);
-    transform: translateX(4px);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
   }
-  .hero-metric-card:hover::before { opacity: 1; }
   .hero-metric-number {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 52px;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 3rem;
     font-weight: 400;
-    color: white;
+    color: var(--text-primary);
     line-height: 1;
-    margin-bottom: 8px;
-    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
   }
   .hero-metric-label {
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-muted);
+    font-weight: 500;
   }
 
   .hero-metrics-row {
@@ -1216,13 +1217,12 @@
     gap: 16px;
   }
   .cta-contact-row .icon-circle {
-    width: 44px; height: 44px;
+    width: 48px; height: 48px;
     border-radius: 50%;
-    border: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
     color: var(--gold);
     flex-shrink: 0;
     transition: all 0.3s;
@@ -2408,15 +2408,15 @@
         <p class="reveal reveal-delay-2" data-i18n="home.contact.desc">Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.</p>
         <div class="cta-contact-info reveal reveal-delay-3">
           <div class="cta-contact-row">
-            <div class="icon-circle">&#9742;</div>
+            <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <a href="tel:+6622330055">+66 (0) 2233-0055</a>
           </div>
           <div class="cta-contact-row">
-            <div class="icon-circle">&#9993;</div>
+            <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <a href="mailto:dej-udom@dejudom.com">dej-udom@dejudom.com</a>
           </div>
           <div class="cta-contact-row">
-            <div class="icon-circle">&#9679;</div>
+            <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <a href="#" data-i18n="home.contact.address">Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500</a>
           </div>
         </div>

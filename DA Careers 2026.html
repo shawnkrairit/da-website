@@ -246,6 +246,7 @@
   .section-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
   .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
   .section-title { font-size: clamp(32px, 4vw, 48px); color: var(--text-primary); margin-bottom: 20px; line-height: 1.15; }
+  .section-title em { font-style: italic; color: var(--gold); }
   .section-intro { font-size: 16px; color: var(--text-secondary); line-height: 1.8; max-width: 640px; margin-bottom: 72px; }
 
   /* ===== WHY D&A ===== */
@@ -274,26 +275,72 @@
   .why-card h3 { font-size: 18px; color: var(--text-primary); font-weight: 700; margin-bottom: 12px; }
   .why-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
 
-  /* ===== CAREER PATHWAY ===== */
-  .pathway-section { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-  .pathway-steps {
-    display: flex; gap: 16px; flex-wrap: nowrap; overflow-x: auto;
-    padding-bottom: 16px; scroll-snap-type: x mandatory;
+  /* ===== CAREER TIMELINE ===== */
+  .timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 3rem auto 0;
+    padding-left: 60px;
   }
-  .pathway-step {
-    flex: 1; min-width: 180px; text-align: center; position: relative; scroll-snap-align: start;
-    padding: 40px 20px; background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: var(--radius); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), var(--gold), transparent);
   }
-  .pathway-step:hover { border-color: rgba(212, 168, 83, 0.15); transform: translateY(-4px); }
-  .pathway-circle {
-    width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--gold);
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
-    background: var(--forest-mid);
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
   }
-  .pathway-circle-num { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--gold); }
-  .pathway-title { font-family: 'Libre Baskerville', serif; font-size: 15px; color: var(--text-primary); font-weight: 700; margin-bottom: 8px; }
-  .pathway-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-marker {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .timeline-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    background: var(--forest-deep);
+    position: relative;
+    z-index: 1;
+  }
+  .timeline-period {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .timeline-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
 
   /* ===== LIFE AT D&A ===== */
   .life-grid {
@@ -323,62 +370,7 @@
   .life-quote-author { font-size: 13px; font-weight: 600; color: var(--text-primary); }
   .life-quote-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
-  /* ===== OPEN POSITIONS ===== */
-  .positions-section { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-  .positions-list { display: flex; flex-direction: column; gap: 12px; }
-  .position-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: border-color 0.4s;
-  }
-  .position-card:hover { border-color: rgba(212, 168, 83, 0.15); }
-  .position-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 28px 36px; cursor: pointer; user-select: none;
-  }
-  .position-left { display: flex; align-items: center; gap: 20px; flex: 1; }
-  .position-title { font-family: 'Libre Baskerville', serif; font-size: 18px; color: var(--text-primary); font-weight: 400; }
-  .position-meta { display: flex; gap: 12px; align-items: center; }
-  .position-dept { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 14px; border-radius: 100px; background: var(--gold-muted); color: var(--gold); }
-  .position-level { font-size: 12px; color: var(--text-muted); }
-  .position-arrow {
-    width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.04);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    transition: background 0.3s, transform 0.3s;
-  }
-  .position-arrow svg { width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.2s; }
-  .position-card.open .position-arrow { transform: rotate(180deg); background: var(--gold-muted); }
-  .position-card.open .position-arrow svg { stroke: var(--gold); }
-  .position-body { display: none; padding: 0 36px 36px; border-top: 1px solid var(--border-subtle); margin-top: -1px; }
-  .position-card.open .position-body { display: block; padding-top: 28px; }
-  .position-body h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; margin-top: 28px; }
-  .position-body h4:first-child { margin-top: 0; }
-  .position-body p, .position-body li { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
-  .position-body ul { list-style: none; padding: 0; }
-  .position-body ul li { position: relative; padding-left: 20px; margin-bottom: 8px; }
-  .position-body ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); opacity: 0.4; }
-  .position-apply {
-    display: inline-block; margin-top: 32px; font-size: 13px; font-weight: 600; padding: 12px 32px;
-    border-radius: 100px; text-decoration: none; letter-spacing: 0.5px;
-    background: var(--gold); color: var(--forest); border: none; cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .position-apply:hover { background: var(--gold-light); transform: translateY(-2px); }
-
-  .unsolicited-card {
-    background: rgba(255,255,255,0.02); border: 1px dashed var(--border-light);
-    border-radius: var(--radius); padding: 56px; text-align: center; margin-top: 16px;
-  }
-  .unsolicited-card h3 { font-size: 22px; color: var(--text-primary); margin-bottom: 14px; }
-  .unsolicited-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; max-width: 480px; margin: 0 auto 32px; }
-  .unsolicited-card a {
-    display: inline-block; font-size: 13px; font-weight: 500; padding: 12px 32px; border-radius: 100px;
-    text-decoration: none; letter-spacing: 0.5px; border: 1px solid var(--border-light); color: var(--text-primary);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .unsolicited-card a:hover { border-color: var(--gold); color: var(--gold); }
+  /* (Open positions section removed — replaced with general invitation) */
 
   /* ===== APPLICATION PROCESS ===== */
   .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -467,7 +459,8 @@
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1024px) {
     .why-grid { grid-template-columns: repeat(2, 1fr); }
-    .pathway-steps { flex-wrap: wrap; }
+    .timeline { padding-left: 50px; }
+    .timeline-marker { left: -50px; }
     .life-grid { grid-template-columns: 1fr; }
     .life-photo.tall { grid-row: span 1; min-height: 280px; }
     .process-steps { grid-template-columns: repeat(2, 1fr); }
@@ -483,7 +476,8 @@
     .section { padding: 100px 24px; }
     .section-title { font-size: 32px; }
     .why-grid { grid-template-columns: 1fr; }
-    .position-left { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .timeline { padding-left: 40px; }
+    .timeline-marker { left: -40px; }
     .form-row { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; }
@@ -588,46 +582,80 @@
   </div>
 </div>
 
-<!-- ===== CAREER PATHWAY ===== -->
-<div class="pathway-section">
-  <div class="section">
-    <div class="section-label reveal" data-i18n="careers.pathway.label">Your Path</div>
-    <h2 class="section-title reveal reveal-delay-1" data-i18n-html="careers.pathway.title">Career Progression at D&amp;A</h2>
-    <p class="section-intro reveal reveal-delay-2" data-i18n="careers.pathway.intro">A transparent, structured pathway from your first day to partnership — with clear milestones and development support at every stage.</p>
-    <div class="pathway-steps reveal reveal-delay-3">
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">1</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step1.title">Intern</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step1.desc">Foundation training, research assignments, court observation</div>
+<!-- ===== CAREER PROGRESSION TIMELINE ===== -->
+<section class="section" id="pathway">
+  <div class="section-label reveal">Career Progression</div>
+  <h2 class="section-title reveal reveal-delay-1">Your Path at <em>Dej-Udom &amp; Associates</em></h2>
+  <p class="section-intro reveal reveal-delay-2">We invest in our people's growth. Here is a typical career trajectory at D&amp;A.</p>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-marker">
+        <div class="timeline-number">1</div>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">2</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step2.title">Junior Associate</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step2.desc">Supervised client work, drafting, and filings</div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 0–1</div>
+        <h3 class="timeline-title">Legal Intern</h3>
+        <p class="timeline-desc">Gain hands-on experience across practice areas. Work alongside senior attorneys on live matters. Develop foundational legal research and drafting skills.</p>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">3</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step3.title">Associate</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step3.desc">Independent matter management, client relationships</div>
+    </div>
+
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-marker">
+        <div class="timeline-number">2</div>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">4</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step4.title">Senior Associate</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step4.desc">Team leadership, complex matters, business development</div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 1–3</div>
+        <h3 class="timeline-title">Junior Associate</h3>
+        <p class="timeline-desc">Take ownership of smaller matters. Begin client interaction under partner supervision. Specialise in your chosen practice area.</p>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">5</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step5.title">Of Counsel</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step5.desc">Specialist advisory, mentoring, strategic input</div>
+    </div>
+
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-marker">
+        <div class="timeline-number">3</div>
       </div>
-      <div class="pathway-step">
-        <div class="pathway-circle"><span class="pathway-circle-num">6</span></div>
-        <div class="pathway-title" data-i18n="careers.pathway.step6.title">Partner</div>
-        <div class="pathway-desc" data-i18n="careers.pathway.step6.desc">Firm leadership, practice development, strategic direction</div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 3–6</div>
+        <h3 class="timeline-title">Associate</h3>
+        <p class="timeline-desc">Manage client relationships independently. Lead case strategy and coordinate with opposing counsel. Mentor junior team members.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-marker">
+        <div class="timeline-number">4</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 6–10</div>
+        <h3 class="timeline-title">Senior Associate</h3>
+        <p class="timeline-desc">Handle complex cross-border matters. Contribute to firm publications and thought leadership. Play a key role in business development.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal reveal-delay-1">
+      <div class="timeline-marker">
+        <div class="timeline-number">5</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 10–15</div>
+        <h3 class="timeline-title">Counsel</h3>
+        <p class="timeline-desc">Recognised expertise in your practice area. Advise on firm strategy and training programmes. Represent the firm at industry events and conferences.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal reveal-delay-2">
+      <div class="timeline-marker">
+        <div class="timeline-number">6</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-period">Year 15+</div>
+        <h3 class="timeline-title">Partner</h3>
+        <p class="timeline-desc">Lead practice areas and shape the firm's direction. Drive strategic client relationships at the highest level. Contribute to the firm's legacy and reputation.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ===== LIFE AT D&A ===== -->
 <div class="section">
@@ -653,20 +681,18 @@
   </div>
 </div>
 
-<!-- ===== JOIN OUR TEAM ===== -->
-<div class="positions-section" id="positions">
-  <div class="section">
-    <div class="section-label reveal" data-i18n="careers.invitation.label">Join Us</div>
-    <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.invitation.title">We Welcome Outstanding Talent</h2>
-    <p class="section-intro reveal reveal-delay-2" data-i18n="careers.invitation.intro">We welcome applications from qualified legal professionals, business-services specialists, and interns interested in joining our team.</p>
+<!-- ===== JOIN US ===== -->
+<section class="section" id="apply">
+  <div class="section-label reveal">Join Us</div>
+  <h2 class="section-title reveal reveal-delay-1">We Welcome Your <em>Application</em></h2>
 
-    <div class="unsolicited-card reveal reveal-delay-3">
-      <h3 data-i18n="careers.invitation.heading">Build Your Career With Us</h3>
-      <p data-i18n="careers.invitation.desc">Whether you are an experienced practitioner or a recent graduate, we encourage you to reach out. We are always looking for talented individuals who share our commitment to excellence and integrity in legal practice.</p>
-      <a href="#apply" class="magnetic-wrap" data-i18n="careers.invitation.cta">Submit Your Application</a>
-    </div>
+  <div style="max-width:700px;margin:2rem auto 0;text-align:center;" class="reveal reveal-delay-2">
+    <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;">We are always interested in hearing from qualified legal professionals who share our commitment to excellence. Whether you are an experienced practitioner or a recent graduate, we welcome applications from candidates across all practice areas.</p>
+    <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.7;">To apply, please send your CV and a brief cover note to:</p>
+    <a href="mailto:careers@dejudomlaw.com" style="display:inline-block;margin-top:1rem;padding:12px 32px;background:var(--gold);color:var(--forest);border-radius:100px;text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:0.5px;transition:all .3s;">careers@dejudomlaw.com</a>
+    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:1.5rem;">All applications are treated in strict confidence.</p>
   </div>
-</div>
+</section>
 
 <!-- ===== APPLICATION PROCESS ===== -->
 <div class="section">
@@ -698,13 +724,13 @@
 </div>
 
 <!-- ===== APPLICATION FORM ===== -->
-<div class="apply-section" id="apply">
+<div class="apply-section" id="apply-form">
   <div class="section">
     <div class="apply-grid">
       <div class="apply-text reveal">
         <div class="section-label" data-i18n="careers.apply.label">Get in Touch</div>
         <h2 data-i18n="careers.apply.title">Interested? Let's Talk</h2>
-        <p data-i18n="careers.apply.desc">Whether you're applying for a specific role or just exploring opportunities, we'd like to hear from you. Send us your details and we'll be in touch.</p>
+        <p data-i18n="careers.apply.desc">We welcome enquiries from qualified professionals at all levels. Send us your details and we'll be in touch.</p>
         <div class="apply-contact-row">
           <div class="apply-contact-icon">
             <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -758,19 +784,6 @@
             <label data-i18n="careers.form.phone">Phone</label>
             <input type="tel" placeholder="+66" data-i18n-placeholder="careers.form.phonePlaceholder">
           </div>
-        </div>
-        <div class="form-group">
-          <label data-i18n="careers.form.areaOfInterest">Area of Interest</label>
-          <select>
-            <option value="" disabled selected data-i18n="careers.form.selectArea">Select an area</option>
-            <option value="ip" data-i18n="careers.form.optionIP">IP</option>
-            <option value="immigration" data-i18n="careers.form.optionImmigration">Immigration</option>
-            <option value="corporate" data-i18n="careers.form.optionCorporate">Corporate</option>
-            <option value="litigation" data-i18n="careers.form.optionLitigation">Litigation</option>
-            <option value="notarial" data-i18n="careers.form.optionNotarial">Notarial Services</option>
-            <option value="operations" data-i18n="careers.form.optionOperations">Operations</option>
-            <option value="general" data-i18n="careers.form.optionGeneral">General</option>
-          </select>
         </div>
         <div class="form-group">
           <label data-i18n="careers.form.uploadCV">Upload CV</label>
@@ -853,7 +866,7 @@
         requestAnimationFrame(animateRing);
       }
       animateRing();
-      document.querySelectorAll('a, button, .why-card, .pathway-step, .position-card, .process-step, .magnetic-wrap').forEach(function(el) {
+      document.querySelectorAll('a, button, .why-card, .timeline-item, .process-step, .magnetic-wrap').forEach(function(el) {
         el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
         el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
       });
