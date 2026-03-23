@@ -223,6 +223,14 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
+
+  .nav-dropdown { position: relative; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
+  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
+  .dropdown-menu a::after { display: none; }
+
   .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
   .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
   .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
@@ -303,12 +311,13 @@
 
   /* ===== FILTER BAR ===== */
   .filter-section {
-    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
-    background: var(--forest-mid);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
   }
   .filter-bar {
-    max-width: 1400px; margin: 0 auto; padding: 24px 48px;
     display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border-subtle);
   }
   .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter-tab {
@@ -386,8 +395,7 @@
 
   /* ===== NEWSLETTER CTA ===== */
   .newsletter-section {
-    background: var(--forest-mid); padding: 100px 48px;
-    border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+    padding: 100px 48px;
   }
   .newsletter-inner { max-width: 720px; margin: 0 auto; text-align: center; }
   .newsletter-inner .section-label { justify-content: center; }
@@ -471,7 +479,14 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
-      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li class="nav-dropdown">
+              <a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a>
+              <div class="dropdown-menu">
+                <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
+                <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
+                <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
+              </div>
+            </li>
       <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
       <li><a href="DA Insights 2026.html" class="active" data-i18n="common.nav.insights">Insights</a></li>
       <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
@@ -509,14 +524,14 @@
         <span class="featured-badge-label" data-i18n="insights.featured.badge">Featured</span>
         <span class="featured-badge-cat" data-i18n="insights.featured.cat">Immigration</span>
       </div>
-      <h2><a href="#" data-i18n="insights.featured.title">Thailand's LTR Visa: A Practical Guide for Qualifying Applicants in 2026</a></h2>
+      <h2><a href="insights/ltr-visa-guide-2026.html" data-i18n="insights.featured.title">Thailand's LTR Visa: A Practical Guide for Qualifying Applicants in 2026</a></h2>
       <p class="featured-summary" data-i18n="insights.featured.summary">A comprehensive walkthrough of the Long-Term Resident Visa programme — eligibility criteria, required documentation, processing timelines, and the tax advantages that make it one of Southeast Asia's most attractive residency options.</p>
       <div class="featured-author" data-i18n="insights.featured.author">By Prof. Dej-Udom Krairit</div>
       <div class="featured-meta">
         <span class="featured-date" data-i18n="insights.featured.date">12 March 2026</span>
         <span class="featured-read" data-i18n="insights.featured.readTime">8 min read</span>
       </div>
-      <a href="#" class="featured-link" data-i18n-html="insights.featured.readLink">
+      <a href="insights/ltr-visa-guide-2026.html" class="featured-link" data-i18n-html="insights.featured.readLink">
         Read article
         <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
@@ -524,8 +539,8 @@
   </div>
 </div>
 
-<!-- ===== FILTER BAR ===== -->
-<div class="filter-section">
+<!-- ===== ARTICLES ===== -->
+<div class="articles-section">
   <div class="filter-bar">
     <div class="filter-tabs">
       <button class="filter-tab active" onclick="filterArticles(this, 'all')" data-i18n="insights.filter.all">All</button>
@@ -539,22 +554,18 @@
       <input type="text" placeholder="Search insights..." oninput="searchArticles(this.value)" data-i18n-placeholder="insights.filter.searchPlaceholder">
     </div>
   </div>
-</div>
-
-<!-- ===== ARTICLES GRID ===== -->
-<div class="articles-section">
   <div class="articles-grid" id="articlesGrid">
 
     <div class="article-card reveal" data-category="ip" data-title="madrid protocol thailand trademark international registration">
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80');"></div>
       <div class="article-body">
         <div class="article-type" data-i18n="insights.article1.type">Legal Update</div>
-        <h3 class="article-title"><a href="#" data-i18n="insights.article1.title">Madrid Protocol Designations into Thailand: What Applicants Need to Know</a></h3>
+        <h3 class="article-title"><a href="insights/madrid-protocol-thailand.html" data-i18n="insights.article1.title">Madrid Protocol Designations into Thailand: What Applicants Need to Know</a></h3>
         <p class="article-excerpt" data-i18n="insights.article1.excerpt">Recent changes to the DIP's examination practices for international trademark registrations designating Thailand — and how they affect filing strategy for foreign brand owners.</p>
         <div class="article-author" data-i18n="insights.article1.author">By Prof. Dej-Udom Krairit</div>
         <div class="article-footer">
           <span class="article-date" data-i18n="insights.article1.date">5 March 2026</span>
-          <a href="#" class="article-read-link" data-i18n-html="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <a href="insights/madrid-protocol-thailand.html" class="article-read-link" data-i18n-html="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -563,12 +574,12 @@
       <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80');"></div>
       <div class="article-body">
         <div class="article-type" data-i18n="insights.article2.type">Thought Leadership</div>
-        <h3 class="article-title"><a href="#" data-i18n="insights.article2.title">BOI Investment Promotion in 2026: Updated Incentives and Eligible Activities</a></h3>
+        <h3 class="article-title"><a href="insights/boi-investment-2026.html" data-i18n="insights.article2.title">BOI Investment Promotion in 2026: Updated Incentives and Eligible Activities</a></h3>
         <p class="article-excerpt" data-i18n="insights.article2.excerpt">An overview of the Board of Investment's revised promotion categories, enhanced tax incentives for targeted industries, and practical considerations for companies applying this year.</p>
         <div class="article-author" data-i18n="insights.article2.author">By Attorney Name (Corporate)</div>
         <div class="article-footer">
           <span class="article-date" data-i18n="insights.article2.date">28 February 2026</span>
-          <a href="#" class="article-read-link" data-i18n-html="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+          <a href="insights/boi-investment-2026.html" class="article-read-link" data-i18n-html="insights.common.read">Read <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -731,8 +742,8 @@
         <h4 data-i18n="common.footer.expertise">Expertise</h4>
         <a href="index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
         <a href="index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
-        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Incorporation &amp; Corporate Matters</a>
-        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Corporate &amp; Commercial</a>
+        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation, Mediation &amp; ADR</a>
         <a href="index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
       </div>
       <div class="footer-col">

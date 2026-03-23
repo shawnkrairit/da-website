@@ -244,6 +244,13 @@
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
 
+  .nav-dropdown { position: relative; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
+  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
+  .dropdown-menu a::after { display: none; }
+
   .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
   .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
   .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
@@ -652,12 +659,18 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
   }
+  .team-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
   .team-card {
     background: var(--glass);
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--glass-border);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
   }
   .team-card:hover {
     transform: translateY(-6px);
@@ -728,7 +741,6 @@
 
   /* ===== PUBLICATIONS SECTION ===== */
   .publications-section {
-    background: var(--forest-mid);
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
   }
@@ -821,7 +833,6 @@
 
   /* ===== CTA STRIP ===== */
   .cta-strip {
-    background: var(--forest-mid);
     padding: 72px 48px;
     border-top: 1px solid var(--border-subtle);
   }
@@ -995,7 +1006,14 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
-      <li><a href="DA About Us 2026.html" class="active" data-i18n="common.nav.about">About</a></li>
+      <li class="nav-dropdown">
+              <a href="DA About Us 2026.html" class="active" data-i18n="common.nav.about">About</a>
+              <div class="dropdown-menu">
+                <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
+                <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
+                <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
+              </div>
+            </li>
       <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
       <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
       <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
@@ -1065,8 +1083,8 @@
             <div class="recognition-badge-name" data-i18n="about.rankings.badge3.title">Top Patent Firms</div>
           </div>
           <div class="recognition-badge-item">
-            <div class="recognition-badge-source" data-i18n="about.rankings.badge4.source">International Lawyers Network</div>
-            <div class="recognition-badge-name" data-i18n="about.rankings.badge4.title">Sole Thai Member</div>
+            <div class="recognition-badge-source" data-i18n="about.rankings.badge4.source">ASEAN Network</div>
+            <div class="recognition-badge-name" data-i18n="about.rankings.badge4.title">Thailand Member</div>
           </div>
           <div class="recognition-badge-item">
             <div class="recognition-badge-source" data-i18n="about.rankings.badge5.source">Google Reviews</div>
@@ -1087,7 +1105,7 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-year">1995</div>
-        <div class="timeline-desc" data-i18n="about.founder.timeline.1995">Appointed sole Thai member of the International Lawyers Network (ILN), expanding cross-border capabilities</div>
+        <div class="timeline-desc" data-i18n="about.founder.timeline.1995">Expands cross-border capabilities through INTA and APAA memberships, strengthening international IP network</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2005</div>
@@ -1095,7 +1113,7 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2018</div>
-        <div class="timeline-desc" data-i18n="about.founder.timeline.2018">Joins the ASEAN Attorneys Alliance, strengthening regional coverage across Southeast Asia</div>
+        <div class="timeline-desc" data-i18n="about.founder.timeline.2018">Strengthens regional coverage across Southeast Asia through expanded professional network partnerships</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2023</div>
@@ -1124,6 +1142,7 @@
   <div class="team-grid">
 
     <!-- 1. Prof. Dej-Udom Krairit — Real -->
+    <a href="team/prof-dej-udom-krairit.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-1" data-departments="ip corporate">
       <div class="team-photo">
         <span class="team-photo-placeholder">DK</span>
@@ -1138,8 +1157,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 2. Shawn Krairit — Real -->
+    <a href="team/shawn-krairit.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-2" data-departments="operations">
       <div class="team-photo">
         <span class="team-photo-placeholder">SK</span>
@@ -1154,8 +1175,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 3. Placeholder — IP: Head of Trademarks [TO BE UPDATED] -->
+    <a href="team/attorney-3.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-3" data-departments="ip">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1171,8 +1194,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 4. Placeholder — IP: Head of Patents [TO BE UPDATED] -->
+    <a href="team/attorney-4.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-4" data-departments="ip">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1188,8 +1213,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 5. Placeholder — IP: Senior IP Attorney [TO BE UPDATED] -->
+    <a href="team/attorney-5.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-1" data-departments="ip">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1204,8 +1231,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 6. Placeholder — IP: IP Associate [TO BE UPDATED] -->
+    <a href="team/attorney-6.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-2" data-departments="ip">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1220,8 +1249,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 7. Placeholder — Immigration: Head of Immigration [TO BE UPDATED] -->
+    <a href="team/attorney-7.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-3" data-departments="immigration">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1237,8 +1268,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 8. Placeholder — Immigration: Senior Immigration Attorney [TO BE UPDATED] -->
+    <a href="team/attorney-8.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-4" data-departments="immigration">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1253,8 +1286,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 9. Placeholder — Immigration: Immigration Associate [TO BE UPDATED] -->
+    <a href="team/attorney-9.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-1" data-departments="immigration">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1269,8 +1304,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 10. Placeholder — Immigration: Immigration Coordinator [TO BE UPDATED] -->
+    <a href="team/attorney-10.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-2" data-departments="immigration">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1285,8 +1322,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 11. Placeholder — Corporate: Head of Corporate [TO BE UPDATED] -->
+    <a href="team/attorney-11.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-3" data-departments="corporate">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1302,8 +1341,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 12. Placeholder — Corporate: Senior Corporate Attorney [TO BE UPDATED] -->
+    <a href="team/attorney-12.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-4" data-departments="corporate">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1318,8 +1359,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 13. Placeholder — Corporate: Corporate Associate [TO BE UPDATED] -->
+    <a href="team/attorney-13.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-1" data-departments="corporate">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1334,8 +1377,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 14. Placeholder — Litigation: Head of Litigation [TO BE UPDATED] -->
+    <a href="team/attorney-14.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-2" data-departments="litigation">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1351,8 +1396,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 15. Placeholder — Litigation: Senior Litigation Attorney [TO BE UPDATED] -->
+    <a href="team/attorney-15.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-3" data-departments="litigation">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1367,8 +1414,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 16. Placeholder — Litigation: Litigation Associate [TO BE UPDATED] -->
+    <a href="team/attorney-16.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-4" data-departments="litigation">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1383,8 +1432,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 17. Placeholder — Notarial Services: Head of Notarial Services [TO BE UPDATED] -->
+    <a href="team/attorney-17.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-1" data-departments="notarial">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1399,8 +1450,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 18. Placeholder — Notarial Services: Notarial Associate [TO BE UPDATED] -->
+    <a href="team/attorney-18.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-2" data-departments="notarial">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1415,8 +1468,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 19. Placeholder — IP: IP Paralegal [TO BE UPDATED] -->
+    <a href="team/attorney-19.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-3" data-departments="ip">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1431,8 +1486,10 @@
         </div>
       </div>
     </div>
+    </a>
 
     <!-- 20. Placeholder — Corporate: Legal Secretary [TO BE UPDATED] -->
+    <a href="team/attorney-20.html" class="team-card-link">
     <div class="team-card reveal reveal-delay-4" data-departments="corporate">
       <div class="team-photo">
         <span class="team-photo-placeholder">&mdash;</span>
@@ -1447,6 +1504,7 @@
         </div>
       </div>
     </div>
+    </a>
 
   </div>
 </div>
@@ -1565,9 +1623,9 @@
       <div class="footer-col">
         <h4 data-i18n="common.footer.col_expertise">Expertise</h4>
         <a href="index.html#practices" data-i18n="common.footer.link_ip">Intellectual Property</a>
-        <a href="index.html#practices" data-i18n-html="common.footer.link_immigration">Immigration &amp; Relocation</a>
-        <a href="index.html#practices" data-i18n-html="common.footer.link_corporate">Incorporation &amp; Corporate Matters</a>
-        <a href="index.html#practices" data-i18n-html="common.footer.link_litigation">Litigation &amp; Disputes</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.link_immigration">Immigration</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.link_corporate">Corporate &amp; Commercial</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.link_litigation">Litigation, Mediation &amp; ADR</a>
         <a href="index.html#practices" data-i18n="common.footer.link_notarial">Notarial Services</a>
       </div>
       <div class="footer-col">

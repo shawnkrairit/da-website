@@ -51,9 +51,9 @@
     "name": "Legal Services",
     "itemListElement": [
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Intellectual Property"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Immigration & Relocation"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Incorporation & Corporate Matters"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Litigation & Dispute Resolution"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Immigration"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Corporate & Commercial"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Litigation, Mediation & ADR"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Notarial Services"}}
     ]
   }
@@ -274,6 +274,13 @@
   }
   .nav-links a:hover { color: var(--text-primary); }
   .nav-links a:hover::after { width: 100%; }
+
+  .nav-dropdown { position: relative; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
+  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
+  .dropdown-menu a::after { display: none; }
 
   .nav-contact-btn {
     font-size: 12px;
@@ -1076,60 +1083,53 @@
 
   /* Network map visualization */
   .network-map-visual {
-    padding: 48px;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    background: var(--glass);
-    backdrop-filter: blur(16px);
+    margin-top: 48px;
   }
-  .map-title {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-muted);
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .map-dots-grid {
+  .country-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
-  .map-dot-item {
-    text-align: center;
-    padding: 20px 8px;
-    border-radius: var(--radius-sm);
-    transition: all 0.3s;
-    cursor: default;
+  .country-card-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
   }
-  .map-dot-item:hover { background: rgba(212, 168, 83, 0.06); }
-  .map-dot-circle {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--gold);
-    margin: 0 auto 10px;
-    opacity: 0.4;
-    transition: all 0.3s;
+  .country-card-link:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
   }
-  .map-dot-item:hover .map-dot-circle {
-    opacity: 1;
-    transform: scale(1.3);
-    box-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+  .country-card-link.home-market {
+    border-color: rgba(212, 168, 83, 0.3);
+    background: rgba(212, 168, 83, 0.06);
   }
-  .map-dot-item.active .map-dot-circle {
-    width: 14px; height: 14px;
-    opacity: 1;
-    box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.15);
+  .country-flag-img {
+    width: 40px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    flex-shrink: 0;
   }
-  .map-dot-name {
-    font-size: 11px;
+  .country-card-name {
+    font-size: 14px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
   }
-  .map-dot-item.active .map-dot-name { color: var(--gold); }
+  .country-card-link.home-market .country-card-name { color: var(--gold); }
+  .country-card-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
 
   /* ===== CONTACT CTA ===== */
   .cta-section {
@@ -1428,7 +1428,7 @@
   }
 
   .pa-header {
-    background: linear-gradient(180deg, var(--forest-mid) 0%, var(--forest) 100%);
+    background: transparent;
     padding: 72px 48px 48px;
     position: relative;
     overflow: hidden;
@@ -1636,12 +1636,12 @@
     .pa-subnav { padding: 0 24px; overflow-x: auto; }
     .pa-content, .pa-content-single { padding: 32px 24px; }
     .pa-close { top: 16px; right: 16px; }
-    .map-dots-grid { grid-template-columns: repeat(3, 1fr); }
+    .country-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 480px) {
     .hero-metric-number { font-size: 40px; }
-    .map-dots-grid { grid-template-columns: repeat(2, 1fr); }
+    .country-grid { grid-template-columns: 1fr; }
     .credential-card { flex: 0 0 260px; }
   }
 </style>
@@ -1661,7 +1661,14 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
-      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li class="nav-dropdown">
+              <a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a>
+              <div class="dropdown-menu">
+                <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
+                <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
+                <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
+              </div>
+            </li>
       <li><a href="#practices" data-i18n="common.nav.expertise">Expertise</a></li>
       <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
       <li><a href="DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
@@ -1688,7 +1695,7 @@
 
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-eyebrow" data-i18n="home.hero.eyebrow">Bangkok &middot; Since 1986</div>
+      <div class="hero-eyebrow" data-i18n="home.hero.eyebrow">Bangkok, Thailand — Est. 1986</div>
       <h1 data-i18n-html="home.hero.title">Legal expertise<br><em>with a commercial edge</em></h1>
       <p class="hero-desc" data-i18n="home.hero.desc">A partner-led law firm advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation.</p>
       <div class="hero-actions">
@@ -1708,12 +1715,12 @@
           <div class="hero-metric-label" data-i18n="home.hero.metric2_label">Multinational Clients</div>
         </div>
         <div class="hero-metric-card">
-          <div class="hero-metric-number">67</div>
-          <div class="hero-metric-label" data-i18n="home.hero.metric3_label">Countries via ILN</div>
+          <div class="hero-metric-number">11</div>
+          <div class="hero-metric-label" data-i18n="home.hero.metric3_label">ASEAN Countries</div>
         </div>
       </div>
       <div class="hero-metric-card">
-        <div class="hero-metric-number">40</div>
+        <div class="hero-metric-number">20+</div>
         <div class="hero-metric-label" data-i18n="home.hero.metric4_label">Licensed Attorneys</div>
       </div>
     </div>
@@ -1728,18 +1735,24 @@
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.iln">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.inta">INTA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.apaa">APAA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.ipba">IPBA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.aippi">AIPPI Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean_ipa">ASEAN IPA Member</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean">ASEAN Attorneys Alliance</span></div>
     <!-- Duplicate for seamless loop -->
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.wtr">WTR 1000 Recommended</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n-html="home.trust.ipstars">IP Stars &mdash; Managing IP</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.iln">ILN Member Since 1995</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.inta">INTA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.apaa">APAA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.ipba">IPBA Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.aippi">AIPPI Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean_ipa">ASEAN IPA Member</span></div>
     <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean">ASEAN Attorneys Alliance</span></div>
   </div>
 </div>
 
@@ -1788,7 +1801,7 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">02</div>
-          <h3 data-i18n-html="home.practices.immigration.name">Immigration &amp; Relocation</h3>
+          <h3 data-i18n-html="home.practices.immigration.name">Immigration</h3>
           <p class="card-desc" data-i18n="home.practices.immigration.desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</p>
           <span class="card-arrow" data-i18n-html="home.practices.immigration.cta">Explore practice &rarr;</span>
         </div>
@@ -1799,7 +1812,7 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">03</div>
-          <h3 data-i18n-html="home.practices.corporate.name">Incorporation &amp; Corporate Matters</h3>
+          <h3 data-i18n-html="home.practices.corporate.name">Corporate &amp; Commercial</h3>
           <p class="card-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, taxation, and ongoing regulatory compliance for businesses operating in Thailand.</p>
           <span class="card-arrow" data-i18n-html="home.practices.corporate.cta">Explore practice &rarr;</span>
         </div>
@@ -1810,7 +1823,7 @@
         <div class="card-overlay"></div>
         <div class="card-content">
           <div class="card-number">04</div>
-          <h3 data-i18n-html="home.practices.litigation.name">Litigation &amp; Dispute Resolution</h3>
+          <h3 data-i18n-html="home.practices.litigation.name">Litigation, Mediation &amp; ADR</h3>
           <p class="card-desc" data-i18n="home.practices.litigation.desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</p>
           <span class="card-arrow" data-i18n-html="home.practices.litigation.cta">Explore practice &rarr;</span>
         </div>
@@ -1884,11 +1897,11 @@
         <h3 data-i18n="home.overlay.ip.overseas.title">Overseas IP</h3>
         <div class="pa-body" data-i18n-html="home.overlay.ip.overseas.body">
           <p>For clients who need IP protection beyond Thailand, our overseas filing desk coordinates trademark and patent applications across ASEAN and internationally.</p>
-          <p>Through our memberships in INTA, APAA, and the International Lawyers Network, we have direct access to vetted practitioners in over 50 countries.</p>
+          <p>Through our memberships in INTA and AIPPI, we coordinate international IP protection strategies across multiple jurisdictions.</p>
         </div>
         <div class="pa-handles">
           <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.ip.overseas.handles">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
+          <div class="handles-list" data-i18n="home.overlay.ip.overseas.handles">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through INTA and AIPPI networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
         </div>
         <div class="pa-cta">
           <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
@@ -1906,7 +1919,7 @@
     <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
       <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.immigration.title">Immigration &amp; Relocation</h2>
+      <h2 data-i18n-html="home.overlay.immigration.title">Immigration</h2>
       <p class="pa-overview" data-i18n="home.overlay.immigration.overview">Our Immigration Department advises on all aspects of employing foreign nationals in Thailand. Since March 2023, we are a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
     </div>
     <div class="pa-subnav">
@@ -1970,7 +1983,7 @@
     <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
       <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.corporate.title">Incorporation &amp; Corporate Matters</h2>
+      <h2 data-i18n-html="home.overlay.corporate.title">Corporate &amp; Commercial</h2>
       <p class="pa-overview" data-i18n="home.overlay.corporate.overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand — including taxation planning and compliance.</p>
     </div>
     <div class="pa-subnav">
@@ -2050,7 +2063,7 @@
     <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')" data-i18n-aria-label="home.overlay.close">&times;</button>
     <div class="pa-header">
       <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.litigation.title">Litigation &amp; Dispute Resolution</h2>
+      <h2 data-i18n-html="home.overlay.litigation.title">Litigation, Mediation &amp; ADR</h2>
       <p class="pa-overview" data-i18n="home.overlay.litigation.overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
     </div>
     <div class="pa-content-single">
@@ -2116,10 +2129,10 @@
           </div>
         </div>
         <div class="why-item reveal reveal-delay-1">
-          <div class="why-icon">67</div>
+          <div class="why-icon">11</div>
           <div>
-            <div class="why-title" data-i18n="home.why.item2_title">Countries via ILN</div>
-            <div class="why-desc" data-i18n="home.why.item2_desc">Thailand's exclusive member of the International Lawyers Network since 1995, connecting clients to 6,000+ vetted practitioners worldwide.</div>
+            <div class="why-title" data-i18n="home.why.item2_title">ASEAN Countries</div>
+            <div class="why-desc" data-i18n="home.why.item2_desc">Through the ASEAN Network, we provide coordinated legal support across all 11 ASEAN member states.</div>
           </div>
         </div>
         <div class="why-item reveal reveal-delay-2">
@@ -2284,74 +2297,68 @@
     <div class="network-layout">
       <div>
         <div class="network-text reveal reveal-delay-2">
-          <p data-i18n="home.network.text1">As the sole Thai member of the International Lawyers Network since 1995, we connect clients to vetted legal practitioners in over 90 firms across 67 countries. For work within Southeast Asia, our ASEAN Attorneys Alliance membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
+          <p data-i18n="home.network.text1">Through our memberships in INTA, AIPPI, ASEAN IPA, and IPBA, we maintain strong professional networks across Asia Pacific and globally. Our ASEAN Network membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
           <p data-i18n="home.network.text2">Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
         </div>
         <div class="network-badges reveal reveal-delay-3">
           <div class="network-badge">
             <div class="network-badge-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div>
-              <div class="network-badge-name" data-i18n="home.network.iln_name">International Lawyers Network</div>
-              <div class="network-badge-sub" data-i18n-html="home.network.iln_sub">Sole Thai member &middot; 90+ firms &middot; 67 countries</div>
-            </div>
-          </div>
-          <div class="network-badge">
-            <div class="network-badge-icon">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-              <div class="network-badge-name" data-i18n="home.network.asean_name">ASEAN Attorneys Alliance</div>
-              <div class="network-badge-sub" data-i18n="home.network.asean_sub">Regional coverage across 10 ASEAN states</div>
+              <div class="network-badge-name" data-i18n="home.network.asean_name">ASEAN Network</div>
+              <div class="network-badge-sub" data-i18n="home.network.asean_sub">Regional coverage across 11 ASEAN countries</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="network-map-visual reveal reveal-delay-3">
-        <div class="map-title" data-i18n="home.network.map_title">ASEAN Network Coverage</div>
-        <div class="map-dots-grid">
-          <div class="map-dot-item active">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_thailand">Thailand</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_vietnam">Vietnam</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_singapore">Singapore</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_malaysia">Malaysia</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_indonesia">Indonesia</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_philippines">Philippines</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_cambodia">Cambodia</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_myanmar">Myanmar</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_laos">Laos</div>
-          </div>
-          <div class="map-dot-item">
-            <div class="map-dot-circle"></div>
-            <div class="map-dot-name" data-i18n="home.network.country_brunei">Brunei</div>
-          </div>
+        <div class="country-grid">
+          <a href="asean/thailand.html" class="country-card-link home-market">
+            <img src="https://flagcdn.com/w80/th.png" alt="Thailand" class="country-flag-img">
+            <div><div class="country-card-name">Thailand</div><div class="country-card-sub">Home market</div></div>
+          </a>
+          <a href="asean/vietnam.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/vn.png" alt="Vietnam" class="country-flag-img">
+            <div><div class="country-card-name">Vietnam</div><div class="country-card-sub">Hanoi</div></div>
+          </a>
+          <a href="asean/singapore.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/sg.png" alt="Singapore" class="country-flag-img">
+            <div><div class="country-card-name">Singapore</div><div class="country-card-sub">Singapore</div></div>
+          </a>
+          <a href="asean/indonesia.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/id.png" alt="Indonesia" class="country-flag-img">
+            <div><div class="country-card-name">Indonesia</div><div class="country-card-sub">Jakarta</div></div>
+          </a>
+          <a href="asean/malaysia.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/my.png" alt="Malaysia" class="country-flag-img">
+            <div><div class="country-card-name">Malaysia</div><div class="country-card-sub">Kuala Lumpur</div></div>
+          </a>
+          <a href="asean/philippines.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/ph.png" alt="Philippines" class="country-flag-img">
+            <div><div class="country-card-name">Philippines</div><div class="country-card-sub">Manila</div></div>
+          </a>
+          <a href="asean/cambodia.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/kh.png" alt="Cambodia" class="country-flag-img">
+            <div><div class="country-card-name">Cambodia</div><div class="country-card-sub">Phnom Penh</div></div>
+          </a>
+          <a href="asean/myanmar.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/mm.png" alt="Myanmar" class="country-flag-img">
+            <div><div class="country-card-name">Myanmar</div><div class="country-card-sub">Naypyidaw</div></div>
+          </a>
+          <a href="asean/laos.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/la.png" alt="Laos" class="country-flag-img">
+            <div><div class="country-card-name">Laos</div><div class="country-card-sub">Vientiane</div></div>
+          </a>
+          <a href="asean/brunei.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/bn.png" alt="Brunei" class="country-flag-img">
+            <div><div class="country-card-name">Brunei</div><div class="country-card-sub">Bandar Seri Begawan</div></div>
+          </a>
+          <a href="asean/timor-leste.html" class="country-card-link">
+            <img src="https://flagcdn.com/w80/tl.png" alt="Timor-Leste" class="country-flag-img">
+            <div><div class="country-card-name">Timor-Leste</div><div class="country-card-sub">Dili</div></div>
+          </a>
         </div>
       </div>
     </div>
@@ -2403,9 +2410,9 @@
             <select>
               <option value="" data-i18n="home.contact.form_select_default">Select practice area</option>
               <option data-i18n="home.contact.form_select_ip">Intellectual Property</option>
-              <option data-i18n-html="home.contact.form_select_immigration">Immigration &amp; Relocation</option>
-              <option data-i18n-html="home.contact.form_select_corporate">Corporate &amp; Investment</option>
-              <option data-i18n-html="home.contact.form_select_litigation">Litigation &amp; Disputes</option>
+              <option data-i18n="home.contact.form_select_immigration">Immigration</option>
+              <option data-i18n-html="home.contact.form_select_corporate">Corporate &amp; Commercial</option>
+              <option data-i18n-html="home.contact.form_select_litigation">Litigation, Mediation &amp; ADR</option>
               <option data-i18n="home.contact.form_select_tax">Taxation</option>
               <option data-i18n="home.contact.form_select_notarial">Notarial Services</option>
               <option data-i18n="home.contact.form_select_other">Other</option>
@@ -2436,9 +2443,9 @@
       <div class="footer-col">
         <h4 data-i18n="common.footer.col_expertise">Expertise</h4>
         <a href="javascript:void(0)" onclick="openPracticeArea('ip')" data-i18n="common.footer.link_ip">Intellectual Property</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('immigration')" data-i18n-html="common.footer.link_immigration">Immigration &amp; Relocation</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')" data-i18n-html="common.footer.link_corporate">Incorporation &amp; Corporate Matters</a>
-        <a href="javascript:void(0)" onclick="openPracticeArea('litigation')" data-i18n-html="common.footer.link_litigation">Litigation &amp; Disputes</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('immigration')" data-i18n-html="common.footer.link_immigration">Immigration</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('corporate')" data-i18n-html="common.footer.link_corporate">Corporate &amp; Commercial</a>
+        <a href="javascript:void(0)" onclick="openPracticeArea('litigation')" data-i18n-html="common.footer.link_litigation">Litigation, Mediation &amp; ADR</a>
         <a href="javascript:void(0)" onclick="openPracticeArea('notarial')" data-i18n="common.footer.link_notarial">Notarial Services</a>
       </div>
       <div class="footer-col">

@@ -138,6 +138,14 @@
   .nav-links a:hover::after { width: 100%; }
   .nav-links a.active { color: var(--text-primary); }
   .nav-links a.active::after { width: 100%; }
+
+  .nav-dropdown { position: relative; }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
+  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
+  .dropdown-menu a::after { display: none; }
+
   .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
   .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
   .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
@@ -234,7 +242,7 @@
   .why-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
 
   /* ===== CAREER PATHWAY ===== */
-  .pathway-section { background: var(--forest-mid); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .pathway-section { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
   .pathway-steps {
     display: flex; gap: 16px; flex-wrap: nowrap; overflow-x: auto;
     padding-bottom: 16px; scroll-snap-type: x mandatory;
@@ -283,7 +291,7 @@
   .life-quote-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
 
   /* ===== OPEN POSITIONS ===== */
-  .positions-section { background: var(--forest-mid); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .positions-section { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
   .positions-list { display: flex; flex-direction: column; gap: 12px; }
   .position-card {
     background: var(--glass);
@@ -357,7 +365,7 @@
   .process-step p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
 
   /* ===== APPLICATION FORM ===== */
-  .apply-section { background: var(--forest-mid); border-top: 1px solid var(--border-subtle); }
+  .apply-section { border-top: 1px solid var(--border-subtle); }
   .apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .apply-text .section-label { color: var(--gold); }
   .apply-text h2 { font-size: 36px; color: var(--text-primary); margin-bottom: 24px; line-height: 1.2; }
@@ -464,7 +472,14 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
-      <li><a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a></li>
+      <li class="nav-dropdown">
+              <a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a>
+              <div class="dropdown-menu">
+                <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
+                <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
+                <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
+              </div>
+            </li>
       <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
       <li><a href="DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
       <li><a href="DA Careers 2026.html" class="active" data-i18n="common.nav.careers">Careers</a></li>
@@ -535,7 +550,7 @@
         <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       </div>
       <h3 data-i18n="careers.why.card5.title">Continuous Learning</h3>
-      <p data-i18n="careers.why.card5.desc">Annual CPD budget, international conference attendance, and secondment opportunities through our ILN and ASEAN network.</p>
+      <p data-i18n="careers.why.card5.desc">Annual CPD budget, international conference attendance, and secondment opportunities through our ASEAN and INTA network.</p>
     </div>
   </div>
 </div>
@@ -755,8 +770,8 @@
         <h4 data-i18n="common.footer.expertise">Expertise</h4>
         <a href="index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
         <a href="index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
-        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Incorporation &amp; Corporate Matters</a>
-        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="index.html#practices" data-i18n-html="common.footer.corporate">Corporate &amp; Commercial</a>
+        <a href="index.html#practices" data-i18n="common.footer.litigation">Litigation, Mediation &amp; ADR</a>
         <a href="index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
       </div>
       <div class="footer-col">
