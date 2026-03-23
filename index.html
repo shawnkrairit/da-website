@@ -737,6 +737,26 @@
     margin-bottom: 72px;
   }
 
+  /* ===== SECTION BACKGROUND IMAGE PATTERN ===== */
+  .section-with-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-with-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: 0;
+  }
+  .section-with-bg > * { position: relative; z-index: 1; }
+  .section-with-bg.bg-practices::before { background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=60'); }
+  .section-with-bg.bg-industries::before { background-image: url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=60'); }
+  .section-with-bg.bg-matters::before { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=60'); }
+  .section-with-bg.bg-contact::before { background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=60'); }
+
   /* ===== PRACTICE AREAS (Bento grid) ===== */
   .practices-bg {
     background: transparent;
@@ -1893,7 +1913,7 @@
 </div>
 
 <!-- ===== PRACTICE AREAS ===== -->
-<div class="practices-bg" id="practices">
+<div class="practices-bg section-with-bg bg-practices" id="practices">
   <div class="section">
     <div class="section-label reveal" data-i18n="home.practices.label">Expertise</div>
     <h2 class="section-title reveal reveal-delay-1" data-i18n="home.practices.title">What We Do</h2>
@@ -2309,7 +2329,7 @@
 </div>
 
 <!-- ===== INDUSTRIES ===== -->
-<div class="industries-section" id="industries">
+<div class="industries-section section-with-bg bg-industries" id="industries">
   <div class="section">
     <div class="section-label reveal" data-i18n="home.industries.label">Industries</div>
     <h2 class="section-title reveal reveal-delay-1" data-i18n="home.industries.title">Sectors We Serve</h2>
@@ -2525,7 +2545,7 @@
 </div>
 
 <!-- ===== REPRESENTATIVE MATTERS ===== -->
-<div class="matters-section" id="matters">
+<div class="matters-section section-with-bg bg-matters" id="matters">
   <div class="section">
     <div class="section-label reveal" data-i18n="home.matters.label">Experience</div>
     <h2 class="section-title reveal reveal-delay-1" data-i18n="home.matters.title">Representative Matters</h2>
@@ -2623,7 +2643,7 @@
 </div>
 
 <!-- ===== CONTACT CTA ===== -->
-<div class="cta-section" id="contact">
+<div class="cta-section section-with-bg bg-contact" id="contact">
   <div class="section">
     <div class="cta-grid">
       <div class="cta-text">
