@@ -937,32 +937,58 @@
   }
   .sectors-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 2.5rem;
   }
-  .sector-card {
-    padding: 36px 32px;
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius);
-    background: var(--glass);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  .sector-item {
+    background: var(--forest-deep);
+    cursor: pointer;
+    transition: background 0.3s;
   }
-  .sector-card:hover {
-    border-color: rgba(212, 168, 83, 0.2);
-    transform: translateY(-3px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.2), 0 8px 32px rgba(212, 168, 83, 0.08);
+  .sector-item:hover { background: rgba(10, 26, 15, 0.8); }
+  .sector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
   }
   .sector-name {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 18px;
-    color: white;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
   }
-  .sector-desc {
-    font-size: 13px;
+  .sector-arrow {
+    color: var(--text-muted);
+    transition: transform 0.3s, color 0.3s;
+    flex-shrink: 0;
+  }
+  .sector-item.open .sector-arrow {
+    transform: rotate(180deg);
+    color: var(--gold);
+  }
+  .sector-item.open .sector-name { color: var(--gold); }
+  .sector-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s;
+    padding: 0 1.5rem;
+  }
+  .sector-item.open .sector-detail {
+    max-height: 200px;
+    padding: 0 1.5rem 1.25rem;
+  }
+  .sector-detail p {
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    line-height: 1.75;
+    line-height: 1.7;
+    margin: 0;
   }
 
   /* ===== CREDENTIALS — horizontal scroll ===== */
@@ -1061,8 +1087,8 @@
   .network-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
+    gap: 48px;
+    align-items: center;
   }
   .network-text p {
     font-size: 16px;
@@ -1629,7 +1655,7 @@
     .hero-inner { grid-template-columns: 1fr; gap: 60px; }
     .hero-metrics { max-width: 600px; }
     .practices-grid { grid-template-columns: repeat(2, 1fr); }
-    .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+    .sectors-grid { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 1024px) {
@@ -1657,6 +1683,7 @@
     .practices-grid { grid-template-columns: 1fr; }
     .practice-card { min-height: 280px; }
     .sectors-grid { grid-template-columns: 1fr; }
+
 
     .values-grid { grid-template-columns: 1fr; }
     .value-cell { border-right: none; border-bottom: 1px solid var(--border-subtle); }
@@ -1766,29 +1793,19 @@
 <!-- ===== TRUST BAR ===== -->
 <div class="trust-bar">
   <div class="trust-track">
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.wtr">WTR 1000 Recommended</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n-html="home.trust.ipstars">IP Stars &mdash; Managing IP</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.inta">INTA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.apaa">APAA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.ipba">IPBA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.aippi">AIPPI Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean_ipa">ASEAN IPA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">INTA — Member since 1997</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">APAA — Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">AIPPI — Thailand National Group</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN IPA — Corporate Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IPBA — Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 — Recommended</span></div>
     <!-- Duplicate for seamless loop -->
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.wtr">WTR 1000 Recommended</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n-html="home.trust.ipstars">IP Stars &mdash; Managing IP</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.legal500">Legal 500 Asia Pacific</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.boi">BOI Certified Agency</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asialaw">Asia Law Top 100</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.inta">INTA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.apaa">APAA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.ipba">IPBA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.aippi">AIPPI Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.asean_ipa">ASEAN IPA Member</span></div>
-    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text" data-i18n="home.trust.google">Google 4.9 Stars</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">INTA — Member since 1997</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">APAA — Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">AIPPI — Thailand National Group</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">ASEAN IPA — Corporate Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">IPBA — Member</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span class="trust-text">WTR 1000 — Recommended</span></div>
   </div>
 </div>
 
@@ -2198,53 +2215,84 @@
     <p class="section-intro reveal reveal-delay-2" data-i18n="home.industries.intro">Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand.</p>
 
     <div class="sectors-grid">
-      <div class="sector-card reveal">
-        <div class="sector-name" data-i18n="home.industries.manufacturing.name">Manufacturing</div>
-        <div class="sector-desc" data-i18n="home.industries.manufacturing.desc">BOI promotion applications for manufacturing projects, factory licensing under the Factory Act, import/export permits, labour compliance for factory workforces, and environmental regulatory approvals across Thailand's industrial estates.</div>
+      <div class="sector-item reveal" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Manufacturing</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Advising multinational manufacturers on BOI investment promotion, factory licensing, employment compliance, IP protection for industrial designs, and cross-border supply chain agreements across ASEAN.</p>
+        </div>
       </div>
-      <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name" data-i18n-html="home.industries.automotive.name">Automotive &amp; EV</div>
-        <div class="sector-desc" data-i18n="home.industries.automotive.desc">Structuring investments under Thailand's EV incentive packages, BOI privileges for automotive parts and assembly, technology transfer agreements, supply chain joint ventures, and customs classification for components and finished vehicles.</div>
+
+      <div class="sector-item reveal reveal-delay-1" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Automotive</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Supporting automotive OEMs and suppliers with regulatory compliance, joint venture structuring, distributor agreements, and EV-related incentive applications under Thailand's investment promotion framework.</p>
+        </div>
       </div>
-      <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name" data-i18n-html="home.industries.lifesciences.name">Life Sciences &amp; Pharma</div>
-        <div class="sector-desc" data-i18n="home.industries.lifesciences.desc">Patent filing and prosecution for pharmaceutical inventions, FDA Thailand regulatory pathways, clinical trial agreements, pharmaceutical distribution licensing, and protection of proprietary formulations and trade secrets.</div>
+
+      <div class="sector-item reveal reveal-delay-2" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Life Sciences &amp; Healthcare</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Guiding pharmaceutical companies, medical device firms, and healthcare providers through Thai FDA registration, clinical trial agreements, patent protection, and market access strategies.</p>
+        </div>
       </div>
-      <div class="sector-card reveal">
-        <div class="sector-name" data-i18n-html="home.industries.energy.name">Energy &amp; Utilities</div>
-        <div class="sector-desc" data-i18n="home.industries.energy.desc">Power purchase agreements, Energy Regulatory Commission licensing, BOI incentives for renewable energy projects, concession structuring, and dispute resolution for infrastructure and energy sector contracts.</div>
+
+      <div class="sector-item reveal" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Energy &amp; Infrastructure</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Advising on power purchase agreements, renewable energy licensing, EPC contracts, and infrastructure concession arrangements under Thai energy regulations.</p>
+        </div>
       </div>
-      <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name" data-i18n-html="home.industries.technology.name">Technology &amp; Fintech</div>
-        <div class="sector-desc" data-i18n="home.industries.technology.desc">Smart Visa applications for tech professionals, data protection compliance under the PDPA, fintech licensing with the Bank of Thailand and SEC, software IP protection, and corporate structuring for digital businesses.</div>
+
+      <div class="sector-item reveal reveal-delay-1" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Technology &amp; Digital</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Supporting tech companies with PDPA compliance, software licensing, SaaS agreements, digital platform regulations, and intellectual property protection in Thailand's growing digital economy.</p>
+        </div>
       </div>
-      <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name" data-i18n-html="home.industries.consumer.name">Consumer &amp; Retail</div>
-        <div class="sector-desc" data-i18n="home.industries.consumer.desc">Trademark portfolio management for consumer brands, franchise and distribution agreements, retail licensing requirements, consumer protection compliance, and anti-counterfeiting enforcement through Thai Customs and the IP Court.</div>
+
+      <div class="sector-item reveal reveal-delay-2" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Consumer &amp; Retail</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Assisting consumer brands with trademark portfolios, franchise agreements, distribution networks, and regulatory compliance for product labelling and consumer protection in Thailand.</p>
+        </div>
       </div>
-      <div class="sector-card reveal">
-        <div class="sector-name" data-i18n="home.industries.financial.name">Financial Services</div>
-        <div class="sector-desc" data-i18n="home.industries.financial.desc">Foreign Business Licence applications for financial service providers, Bank of Thailand and SEC regulatory compliance, fund structuring, fintech joint ventures, and cross-border transaction advisory for regional banking clients.</div>
+
+      <div class="sector-item reveal" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">Financial Services</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Advising banks, insurance companies, and fintech platforms on Thai financial regulations, licensing requirements, AML compliance, and cross-border financial transactions.</p>
+        </div>
       </div>
-      <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name" data-i18n="home.industries.trade.name">International Trade</div>
-        <div class="sector-desc" data-i18n="home.industries.trade.desc">Customs and excise advisory, free trade zone structuring, trade dispute resolution, export control compliance, and coordination with the Department of Foreign Trade on import/export licensing for controlled goods.</div>
-      </div>
-      <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name" data-i18n-html="home.industries.logistics.name">Logistics &amp; Supply Chain</div>
-        <div class="sector-desc" data-i18n="home.industries.logistics.desc">Foreign Business Act structuring for logistics operators, warehouse and transport licensing, customs brokerage compliance, BOI privileges for international trading companies, and freight forwarding regulatory requirements.</div>
-      </div>
-      <div class="sector-card reveal">
-        <div class="sector-name" data-i18n-html="home.industries.realestate.name">Real Estate &amp; Infrastructure</div>
-        <div class="sector-desc" data-i18n="home.industries.realestate.desc">Foreign ownership structuring under the Land Code and Condominium Act, construction permits, EIA compliance, lease and concession agreements, and BOI promotion for infrastructure projects in designated zones.</div>
-      </div>
-      <div class="sector-card reveal reveal-delay-1">
-        <div class="sector-name" data-i18n-html="home.industries.food.name">Food &amp; Agriculture</div>
-        <div class="sector-desc" data-i18n="home.industries.food.desc">FDA product registration and labelling compliance, agricultural licensing, GI protection for Thai agricultural products, food safety regulatory requirements, and BOI incentives for food processing and cold chain operations.</div>
-      </div>
-      <div class="sector-card reveal reveal-delay-2">
-        <div class="sector-name" data-i18n-html="home.industries.hospitality.name">Hospitality &amp; Tourism</div>
-        <div class="sector-desc" data-i18n="home.industries.hospitality.desc">Hotel and tourism business licensing, Foreign Business Act compliance for hospitality operators, work permits for expatriate hotel management, TAT registration requirements, and liquor and entertainment licensing.</div>
+
+      <div class="sector-item reveal reveal-delay-1" onclick="toggleSector(this)">
+        <div class="sector-header">
+          <h3 class="sector-name">International Trade</h3>
+          <svg class="sector-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="sector-detail">
+          <p>Supporting importers and exporters with customs regulations, trade compliance, anti-dumping investigations, and FTA utilisation across ASEAN and Asia Pacific markets.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2335,14 +2383,6 @@
         <div class="network-text reveal reveal-delay-2">
           <p data-i18n="home.network.text1">Through our memberships in INTA, AIPPI, ASEAN IPA, and IPBA, we maintain strong professional networks across Asia Pacific and globally. Our ASEAN Network membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
           <p data-i18n="home.network.text2">Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
-        </div>
-        <div class="network-badges reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="network-badge-name">INTA</div><div class="network-badge-sub">Member since 1997</div></div></div>
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="network-badge-name">APAA</div><div class="network-badge-sub">Member</div></div></div>
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="network-badge-name">AIPPI</div><div class="network-badge-sub">Thailand National Group</div></div></div>
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="network-badge-name">ASEAN IPA</div><div class="network-badge-sub">Corporate Member</div></div></div>
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div><div class="network-badge-name">IPBA</div><div class="network-badge-sub">Member</div></div></div>
-          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="network-badge-name">WTR 1000</div><div class="network-badge-sub">Recommended</div></div></div>
         </div>
       </div>
 
@@ -2628,6 +2668,11 @@
         btn.style.transform = '';
       });
     });
+  }
+
+  // ===== Sector toggle =====
+  function toggleSector(el) {
+    el.classList.toggle('open');
   }
 </script>
 
