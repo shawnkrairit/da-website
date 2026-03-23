@@ -744,6 +744,66 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
+  /* Practice area list rows */
+  .practice-list {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border-light);
+  }
+  .practice-row {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    gap: 1.5rem;
+  }
+  .practice-row:hover {
+    padding-left: 1rem;
+    border-bottom-color: rgba(212, 168, 83, 0.2);
+  }
+  .practice-row:hover .practice-row-num { color: var(--gold); }
+  .practice-row:hover .practice-row-name { color: var(--gold); }
+  .practice-row:hover .practice-row-arrow { opacity: 1; transform: translateX(0); color: var(--gold); }
+  .practice-row:hover .practice-row-desc { max-height: 80px; opacity: 1; margin-top: 6px; }
+  .practice-row-num {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    min-width: 32px;
+    transition: color 0.3s;
+  }
+  .practice-row-text { flex: 1; }
+  .practice-row-name {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+  .practice-row-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, margin 0.3s;
+  }
+  .practice-row-arrow {
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .practice-row-name { font-size: 1rem; }
+    .practice-row:hover { padding-left: 0.5rem; }
+    .practice-row-desc { max-height: none !important; opacity: 1 !important; margin-top: 4px !important; font-size: 0.8rem; }
+    .practice-row-arrow { opacity: 1 !important; transform: none !important; }
+  }
+
   .practices-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -993,16 +1053,17 @@
 
   /* ===== CREDENTIALS — auto-scroll banner ===== */
   .credentials-section { background: var(--forest-deep); overflow: hidden; }
+  .credentials-track-wrapper { overflow: hidden; }
   .credentials-track {
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: credScroll 35s linear infinite;
+    animation: credScroll 45s linear infinite;
   }
   .credentials-track:hover { animation-play-state: paused; }
   @keyframes credScroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(calc(-50% - 10px)); }
   }
 
   .credential-card {
@@ -1838,60 +1899,50 @@
     <h2 class="section-title reveal reveal-delay-1" data-i18n="home.practices.title">What We Do</h2>
     <p class="section-intro reveal reveal-delay-2" data-i18n="home.practices.intro">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge.</p>
 
-    <div class="practices-grid">
-      <div class="practice-card reveal" onclick="openPracticeArea('ip')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">01</div>
-          <h3 data-i18n="home.practices.ip.name">Intellectual Property</h3>
-          <p class="card-desc" data-i18n="home.practices.ip.desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.ip.cta">Explore practice &rarr;</span>
+    <div class="practice-list">
+      <div class="practice-row reveal" onclick="openPracticeArea('ip')">
+        <div class="practice-row-num">01</div>
+        <div class="practice-row-text">
+          <div class="practice-row-name" data-i18n="home.practices.ip.name">Intellectual Property</div>
+          <div class="practice-row-desc" data-i18n="home.practices.ip.desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</div>
         </div>
+        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('immigration')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">02</div>
-          <h3 data-i18n-html="home.practices.immigration.name">Immigration</h3>
-          <p class="card-desc" data-i18n="home.practices.immigration.desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.immigration.cta">Explore practice &rarr;</span>
+      <div class="practice-row reveal reveal-delay-1" onclick="openPracticeArea('immigration')">
+        <div class="practice-row-num">02</div>
+        <div class="practice-row-text">
+          <div class="practice-row-name" data-i18n="home.practices.immigration.name">Immigration</div>
+          <div class="practice-row-desc" data-i18n="home.practices.immigration.desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</div>
         </div>
+        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-card reveal reveal-delay-2" onclick="openPracticeArea('corporate')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">03</div>
-          <h3 data-i18n-html="home.practices.corporate.name">Corporate &amp; Commercial</h3>
-          <p class="card-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, taxation, and ongoing regulatory compliance for businesses operating in Thailand.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.corporate.cta">Explore practice &rarr;</span>
+      <div class="practice-row reveal reveal-delay-2" onclick="openPracticeArea('corporate')">
+        <div class="practice-row-num">03</div>
+        <div class="practice-row-text">
+          <div class="practice-row-name" data-i18n="home.practices.corporate.name">Corporate &amp; Commercial</div>
+          <div class="practice-row-desc" data-i18n="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, taxation, and ongoing regulatory compliance for businesses operating in Thailand.</div>
         </div>
+        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-card reveal" onclick="openPracticeArea('litigation')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">04</div>
-          <h3 data-i18n-html="home.practices.litigation.name">Litigation, Mediation &amp; ADR</h3>
-          <p class="card-desc" data-i18n="home.practices.litigation.desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.litigation.cta">Explore practice &rarr;</span>
+      <div class="practice-row reveal" onclick="openPracticeArea('litigation')">
+        <div class="practice-row-num">04</div>
+        <div class="practice-row-text">
+          <div class="practice-row-name" data-i18n="home.practices.litigation.name">Litigation, Mediation &amp; ADR</div>
+          <div class="practice-row-desc" data-i18n="home.practices.litigation.desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</div>
         </div>
+        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-card reveal reveal-delay-1" onclick="openPracticeArea('notarial')">
-        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=75')"></div>
-        <div class="card-overlay"></div>
-        <div class="card-content">
-          <div class="card-number">05</div>
-          <h3 data-i18n="home.practices.notarial.name">Notarial Services</h3>
-          <p class="card-desc" data-i18n="home.practices.notarial.desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</p>
-          <span class="card-arrow" data-i18n-html="home.practices.notarial.cta">Explore practice &rarr;</span>
+      <div class="practice-row reveal reveal-delay-1" onclick="openPracticeArea('notarial')">
+        <div class="practice-row-num">05</div>
+        <div class="practice-row-text">
+          <div class="practice-row-name" data-i18n="home.practices.notarial.name">Notarial Services</div>
+          <div class="practice-row-desc" data-i18n="home.practices.notarial.desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</div>
         </div>
+        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
     </div>
   </div>
