@@ -245,11 +245,44 @@
   .nav-links a.active::after { width: 100%; }
 
   .nav-dropdown { position: relative; }
-  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
-  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
-  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
-  .dropdown-menu a::after { display: none; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: rgba(10, 26, 15, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px 0;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 1000;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 24px;
+    color: rgba(232, 228, 221, 0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    text-align: center;
+    transition: color 0.2s, background 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-dropdown-menu a:hover {
+    color: #d4a853;
+    background: rgba(212, 168, 83, 0.06);
+  }
+  .nav-dropdown-menu a::after { display: none; }
 
   .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
   .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
@@ -1008,7 +1041,7 @@
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
       <li class="nav-dropdown">
               <a href="DA About Us 2026.html" class="active" data-i18n="common.nav.about">About</a>
-              <div class="dropdown-menu">
+              <div class="nav-dropdown-menu">
                 <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
                 <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
                 <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>

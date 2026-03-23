@@ -93,6 +93,8 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
+  a { transition: color 0.3s ease; }
+
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
     background: var(--forest-deep);
@@ -276,11 +278,44 @@
   .nav-links a:hover::after { width: 100%; }
 
   .nav-dropdown { position: relative; }
-  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); background: var(--forest-deep); border: 1px solid var(--border-light); border-radius: 8px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
-  .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-  .dropdown-menu a { display: block; padding: 10px 20px; font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; text-align: center; }
-  .dropdown-menu a:hover { color: var(--gold); background: rgba(212,168,83,0.06); }
-  .dropdown-menu a::after { display: none; }
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: rgba(10, 26, 15, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 8px 0;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 1000;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 24px;
+    color: rgba(232, 228, 221, 0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    text-align: center;
+    transition: color 0.2s, background 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-dropdown-menu a:hover {
+    color: #d4a853;
+    background: rgba(212, 168, 83, 0.06);
+  }
+  .nav-dropdown-menu a::after { display: none; }
 
   .nav-contact-btn {
     font-size: 12px;
@@ -703,9 +738,9 @@
 
   /* ===== PRACTICE AREAS (Bento grid) ===== */
   .practices-bg {
-    background: var(--forest);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .practices-grid {
@@ -731,7 +766,7 @@
   .practice-card:hover {
     border-color: rgba(212, 168, 83, 0.3);
     transform: translateY(-4px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3), 0 8px 32px rgba(212, 168, 83, 0.08);
   }
 
   .practice-card .card-bg {
@@ -895,9 +930,9 @@
 
   /* ===== INDUSTRIES (pill cloud) ===== */
   .industries-section {
-    background: var(--forest);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .sectors-grid {
     display: grid;
@@ -914,7 +949,7 @@
   .sector-card:hover {
     border-color: rgba(212, 168, 83, 0.2);
     transform: translateY(-3px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.2), 0 8px 32px rgba(212, 168, 83, 0.08);
   }
   .sector-name {
     font-family: 'Libre Baskerville', serif;
@@ -955,6 +990,7 @@
   .credential-card:hover {
     border-color: rgba(212, 168, 83, 0.3);
     transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(212, 168, 83, 0.08);
   }
   .cred-source {
     font-size: 10px;
@@ -981,9 +1017,9 @@
 
   /* ===== REPRESENTATIVE MATTERS — clean list ===== */
   .matters-section {
-    background: var(--forest);
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .matters-list { display: flex; flex-direction: column; }
   .matter-row {
@@ -1105,7 +1141,7 @@
   .country-card-link:hover {
     border-color: rgba(212, 168, 83, 0.3);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2), 0 8px 32px rgba(212, 168, 83, 0.08);
   }
   .country-card-link.home-market {
     border-color: rgba(212, 168, 83, 0.3);
@@ -1133,8 +1169,8 @@
 
   /* ===== CONTACT CTA ===== */
   .cta-section {
-    background: var(--forest);
-    border-top: 1px solid var(--border-subtle);
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.06);
     position: relative;
     overflow: hidden;
   }
@@ -1663,7 +1699,7 @@
       <li><a href="index.html" data-i18n="common.nav.home">Home</a></li>
       <li class="nav-dropdown">
               <a href="DA About Us 2026.html" data-i18n="common.nav.about">About</a>
-              <div class="dropdown-menu">
+              <div class="nav-dropdown-menu">
                 <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
                 <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
                 <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
@@ -2300,16 +2336,13 @@
           <p data-i18n="home.network.text1">Through our memberships in INTA, AIPPI, ASEAN IPA, and IPBA, we maintain strong professional networks across Asia Pacific and globally. Our ASEAN Network membership provides direct access to leading firms across every ASEAN jurisdiction.</p>
           <p data-i18n="home.network.text2">Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok.</p>
         </div>
-        <div class="network-badges reveal reveal-delay-3">
-          <div class="network-badge">
-            <div class="network-badge-icon">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div>
-              <div class="network-badge-name" data-i18n="home.network.asean_name">ASEAN Network</div>
-              <div class="network-badge-sub" data-i18n="home.network.asean_sub">Regional coverage across 11 ASEAN countries</div>
-            </div>
-          </div>
+        <div class="network-badges reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="network-badge-name">INTA</div><div class="network-badge-sub">Member since 1997</div></div></div>
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="network-badge-name">APAA</div><div class="network-badge-sub">Member</div></div></div>
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="network-badge-name">AIPPI</div><div class="network-badge-sub">Thailand National Group</div></div></div>
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="network-badge-name">ASEAN IPA</div><div class="network-badge-sub">Corporate Member</div></div></div>
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><div><div class="network-badge-name">IPBA</div><div class="network-badge-sub">Member</div></div></div>
+          <div class="network-badge"><div class="network-badge-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="network-badge-name">WTR 1000</div><div class="network-badge-sub">Recommended</div></div></div>
         </div>
       </div>
 
