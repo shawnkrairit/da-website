@@ -531,6 +531,25 @@
     .footer-bottom { flex-direction: column; gap: 12px; }
     footer { padding: 60px 24px 36px; }
   }
+
+  /* ===== SECTION BACKGROUND IMAGE PATTERN ===== */
+  .section-with-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-with-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: 0;
+  }
+  .section-with-bg > * { position: relative; z-index: 1; }
+  .section-with-bg.bg-careers-hero::before { background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=60'); }
+  .section-with-bg.bg-timeline::before { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=60'); }
+  .section-with-bg.bg-life::before { background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=60'); }
 </style>
 </head>
 <body style="opacity:0;transition:opacity .3s" data-i18n-title="careers.meta.title" data-i18n-desc="careers.meta.desc">
@@ -631,7 +650,7 @@
 </div>
 
 <!-- ===== CAREER PROGRESSION TIMELINE ===== -->
-<section class="section" id="pathway">
+<section class="section section-with-bg bg-timeline" id="pathway">
   <div class="section-label reveal">Career Progression</div>
   <h2 class="section-title reveal reveal-delay-1">Your Path at Dej-Udom &amp; Associates</h2>
   <p class="section-intro reveal reveal-delay-2">We invest in our people's growth. Here is a typical career trajectory at D&amp;A.</p>
@@ -730,7 +749,7 @@
 </div>
 
 <!-- ===== APPLICATION PROCESS ===== -->
-<div class="section">
+<div class="section section-with-bg bg-life">
   <div class="section-label reveal" data-i18n="careers.process.label">How It Works</div>
   <h2 class="section-title reveal reveal-delay-1" data-i18n="careers.process.title">Our Process</h2>
   <p class="section-intro reveal reveal-delay-2" data-i18n="careers.process.intro">A straightforward, respectful process — we value your time and aim to move quickly.</p>

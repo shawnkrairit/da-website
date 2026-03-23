@@ -499,6 +499,24 @@
     .footer-bottom { flex-direction: column; gap: 12px; }
     footer { padding: 60px 24px 36px; }
   }
+
+  /* ===== SECTION BACKGROUND IMAGE PATTERN ===== */
+  .section-with-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-with-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    z-index: 0;
+  }
+  .section-with-bg > * { position: relative; z-index: 1; }
+  .section-with-bg.bg-featured::before { background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=60'); }
+  .section-with-bg.bg-newsletter::before { background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=60'); }
 </style>
 </head>
 <body style="opacity:0;transition:opacity .3s" data-i18n-title="insights.meta.title" data-i18n-desc="insights.meta.desc">
@@ -552,7 +570,7 @@
 </section>
 
 <!-- ===== FEATURED ARTICLE ===== -->
-<div class="featured-section">
+<div class="featured-section section-with-bg bg-featured">
   <div class="featured-card reveal">
     <div class="featured-image"></div>
     <div class="featured-content">
@@ -753,7 +771,7 @@
 </div>
 
 <!-- ===== NEWSLETTER CTA ===== -->
-<div class="newsletter-section">
+<div class="newsletter-section section-with-bg bg-newsletter">
   <div class="newsletter-inner">
     <div class="section-label reveal" data-i18n="insights.newsletter.label">Stay Informed</div>
     <h2 class="reveal reveal-delay-1" data-i18n="insights.newsletter.title">Legal Updates, Delivered</h2>
