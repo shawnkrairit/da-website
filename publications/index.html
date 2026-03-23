@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — Dej-Udom & Associates, Attorneys at Law</title>
+<meta name="description" content="Formal articles and legal analysis authored by the attorneys of Dej-Udom & Associates, covering intellectual property, immigration, corporate law, and dispute resolution in Thailand.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Publications — Dej-Udom & Associates, Attorneys at Law">
+<meta property="og:description" content="Formal articles and legal analysis authored by the attorneys of Dej-Udom & Associates.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.dejudomlaw.com/publications">
+<meta property="og:site_name" content="Dej-Udom & Associates">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Publications — Dej-Udom & Associates, Attorneys at Law">
+<meta name="twitter:description" content="Formal articles and legal analysis authored by the attorneys of Dej-Udom & Associates.">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Publications — Dej-Udom & Associates",
+  "url": "https://www.dejudomlaw.com/publications",
+  "publisher": {
+    "@type": "LegalService",
+    "name": "Dej-Udom & Associates Ltd."
+  },
+  "description": "Formal articles and legal analysis authored by the attorneys of Dej-Udom & Associates."
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== CUSTOM PROPERTIES ===== */
+  :root {
+    --forest: #0a1a0f;
+    --forest-deep: #050d08;
+    --forest-mid: #0f2918;
+    --emerald: #1a7a3a;
+    --emerald-dim: #145a2a;
+    --gold: #d4a853;
+    --gold-light: #e0c07a;
+    --gold-muted: rgba(212, 168, 83, 0.15);
+    --cream: #f5f2ec;
+    --warm-white: #faf8f5;
+    --text-primary: #e8e4dd;
+    --text-secondary: rgba(232, 228, 221, 0.55);
+    --text-muted: rgba(232, 228, 221, 0.3);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --glass: rgba(10, 26, 15, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --radius: 12px;
+    --radius-sm: 6px;
+    --radius-lg: 20px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--forest-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+  }
+
+  body.lang-th { font-family: 'Noto Sans Thai', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-th h1, body.lang-th h2, body.lang-th h3, body.lang-th h4 { font-family: 'Noto Sans Thai', 'Libre Baskerville', Georgia, serif; }
+  body.lang-zh { font-family: 'Noto Sans SC', 'Plus Jakarta Sans', -apple-system, sans-serif; }
+  body.lang-zh h1, body.lang-zh h2, body.lang-zh h3, body.lang-zh h4 { font-family: 'Noto Sans SC', 'Libre Baskerville', Georgia, serif; }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  .cursor-dot {
+    position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 10000; transition: transform 0.15s ease; mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed; width: 36px; height: 36px; border: 1.5px solid var(--gold); border-radius: 50%;
+    pointer-events: none; z-index: 10000; transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; opacity: 0.5;
+  }
+  .cursor-ring.hover { width: 56px; height: 56px; border-color: var(--gold-light); opacity: 0.3; }
+  @media (pointer: coarse) { .cursor-dot, .cursor-ring { display: none; } }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled {
+    background: rgba(5, 13, 8, 0.85);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 48px; height: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  nav.scrolled .nav-inner { height: 64px; }
+  .nav-logo { display: flex; flex-direction: column; text-decoration: none; gap: 3px; }
+  .nav-logo-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 400; color: white; letter-spacing: 0.3px; line-height: 1; }
+  .nav-logo-amp { font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 27px; display: inline-block; vertical-align: baseline; margin: 0 1px; }
+  .nav-logo-sub { font-family: 'Libre Baskerville', serif; font-size: 11px; color: var(--text-secondary); letter-spacing: 2.5px; font-weight: 400; text-align: center; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 400; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.3px; position: relative; transition: color 0.3s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-menu {
+    position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px);
+    background: rgba(10, 26, 15, 0.95); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px;
+    padding: 8px 0; min-width: 180px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 1000;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+  }
+  .nav-dropdown-menu a {
+    display: block; padding: 10px 24px; color: rgba(232, 228, 221, 0.7);
+    text-decoration: none; font-size: 0.82rem; font-weight: 400; text-align: center;
+    transition: color 0.2s, background 0.2s; letter-spacing: 0.3px;
+  }
+  .nav-dropdown-menu a:hover { color: #d4a853; background: rgba(212, 168, 83, 0.06); }
+  .nav-dropdown-menu a::after { display: none; }
+
+  .lang-switcher { display: flex; gap: 4px; margin-right: 16px; padding: 3px; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid var(--border-subtle); }
+  .lang-option { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 6px 10px; border: none; border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s ease; }
+  .lang-option:hover { color: var(--text-secondary); background: rgba(255,255,255,0.04); }
+  .lang-option.active { color: var(--forest); background: var(--gold); }
+
+  .nav-contact-btn {
+    font-size: 12px; font-weight: 600; color: var(--forest); background: var(--gold); text-decoration: none;
+    padding: 10px 28px; border-radius: 100px; letter-spacing: 0.8px; text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
+  }
+  .nav-contact-btn::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--gold-light); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: inherit; }
+  .nav-contact-btn:hover::before { transform: scaleX(1); transform-origin: left; }
+  .nav-contact-btn span { position: relative; z-index: 1; }
+  .nav-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 6px; }
+  .nav-menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--text-primary); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform-origin: center; }
+  .nav-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-menu-btn.active span:nth-child(2) { opacity: 0; }
+  .nav-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  .nav-links.mobile-open { display: flex !important; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: rgba(5, 13, 8, 0.97); backdrop-filter: blur(24px); padding: 32px 48px; gap: 24px; border-bottom: 1px solid var(--border-subtle); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; padding: 180px 48px 100px;
+    background: var(--forest-deep); overflow: hidden;
+  }
+  .hero-gradient {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26, 122, 58, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212, 168, 83, 0.04) 0%, transparent 60%);
+    z-index: 1;
+  }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; animation: orbFloat 12s ease-in-out infinite; }
+  .hero-orb-1 { width: 350px; height: 350px; background: rgba(26, 122, 58, 0.1); top: 15%; right: 20%; }
+  .hero-orb-2 { width: 250px; height: 250px; background: rgba(212, 168, 83, 0.05); bottom: 15%; left: 15%; animation-delay: -4s; }
+  @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(20px, -30px) scale(1.05); } 66% { transform: translate(-15px, 20px) scale(0.95); } }
+  .hero-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero .reveal { opacity: 1; transform: none; }
+  .hero-label { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+  .hero-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+  .hero h1 { font-size: clamp(40px, 5vw, 56px); color: white; line-height: 1.1; margin-bottom: 24px; max-width: 600px; }
+  .hero-desc { font-size: 17px; color: var(--text-secondary); line-height: 1.85; max-width: 560px; }
+
+  /* ===== FILTER BAR ===== */
+  .filter-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  .filter-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 16px 0; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky; top: 72px; z-index: 10;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    margin-bottom: 48px;
+  }
+  .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-tab {
+    font-size: 12px; font-weight: 500; padding: 8px 20px; border-radius: 100px;
+    border: 1px solid var(--border-light); background: transparent; color: var(--text-secondary);
+    cursor: pointer; transition: all 0.3s; letter-spacing: 0.3px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .filter-tab:hover { border-color: var(--gold); color: var(--text-primary); }
+  .filter-tab.active { background: var(--gold); color: var(--forest); border-color: var(--gold); font-weight: 600; }
+  .filter-search { position: relative; flex-shrink: 0; }
+  .filter-search input {
+    padding: 10px 16px 10px 40px; border: 1px solid var(--border-light); border-radius: var(--radius-sm);
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: var(--text-primary);
+    background: rgba(255,255,255,0.04); width: 260px; outline: none; transition: border-color 0.3s;
+  }
+  .filter-search input:focus { border-color: var(--gold); }
+  .filter-search input::placeholder { color: var(--text-muted); }
+  .filter-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ===== PUBLICATIONS GRID ===== */
+  .pub-section { max-width: 1400px; margin: 0 auto; padding: 0 48px 140px; }
+  .pub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .pub-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 2rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    background: var(--glass);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pub-card:hover {
+    border-color: rgba(212, 168, 83, 0.3);
+    transform: translateY(-4px);
+  }
+  .pub-card-category {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .pub-card-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  .pub-card-excerpt {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .pub-card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .pub-card-author { color: var(--gold); }
+  .pub-card-read {
+    font-size: 0.8rem;
+    color: var(--gold);
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .pub-card:hover .pub-card-read { opacity: 1; }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-section {
+    padding: 100px 48px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .newsletter-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .section-label {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 28px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+  }
+  .newsletter-inner h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 16px; line-height: 1.3; }
+  .newsletter-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 40px; }
+  .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+  .newsletter-form input {
+    flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-light); border-radius: 100px;
+    color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.3s;
+  }
+  .newsletter-form input:focus { border-color: var(--gold); }
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+  .newsletter-form button {
+    padding: 14px 32px; background: var(--gold); color: var(--forest); border: none;
+    border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px;
+    font-weight: 600; letter-spacing: 0.5px; cursor: pointer; flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .newsletter-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--forest-deep); padding: 80px 48px 48px; border-top: 1px solid var(--border-subtle); }
+  .footer-inner { max-width: 1400px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border-subtle); }
+  .footer-brand-name { font-family: 'Libre Baskerville', serif; font-size: 20px; color: white; margin-bottom: 4px; }
+  .footer-brand-sub { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
+  .footer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.8; max-width: 340px; }
+  .footer-col h4 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .footer-col a { display: block; font-size: 13px; color: var(--text-muted); text-decoration: none; padding: 5px 0; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+  .footer-copy { font-size: 12px; color: rgba(232, 228, 221, 0.15); }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: rgba(232, 228, 221, 0.15); text-decoration: none; transition: color 0.3s; }
+  .footer-legal a:hover { color: var(--text-secondary); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .pub-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: flex; }
+    .nav-inner { padding: 0 24px; }
+    .hero { padding: 160px 24px 80px; }
+    .hero h1 { font-size: 36px; }
+    .filter-section { padding: 0 24px; }
+    .filter-bar { flex-direction: column; align-items: flex-start; }
+    .filter-search input { width: 100%; }
+    .pub-section { padding: 0 24px 100px; }
+    .pub-grid { grid-template-columns: 1fr; }
+    .newsletter-section { padding: 72px 24px; }
+    .newsletter-form { flex-direction: column; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    footer { padding: 60px 24px 36px; }
+  }
+</style>
+</head>
+<body style="opacity:0;transition:opacity .3s" data-i18n-title="publications.meta.title" data-i18n-desc="publications.meta.desc">
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <span class="nav-logo-name">Dej-Udom &amp; Associates</span>
+      <span class="nav-logo-sub" data-i18n="common.nav.subtitle">Attorneys At Law</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html" data-i18n="common.nav.home">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="../DA About Us 2026.html" data-i18n="common.nav.about">About</a>
+        <div class="nav-dropdown-menu">
+          <a href="../DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
+          <a href="../DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
+          <a href="../DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
+        </div>
+      </li>
+      <li><a href="../index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
+      <li><a href="../DA Insights 2026.html" data-i18n="common.nav.insights">Insights</a></li>
+      <li><a href="../DA Careers 2026.html" data-i18n="common.nav.careers">Careers</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-option active" data-lang="en" title="English">EN</button>
+      <button class="lang-option" data-lang="th" title="ภาษาไทย">TH</button>
+      <button class="lang-option" data-lang="zh-CN" title="中文">CN</button>
+    </div>
+    <a href="../index.html#contact" class="nav-contact-btn magnetic-wrap"><span data-i18n="common.nav.contact">Contact</span></a>
+    <button class="nav-menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-label reveal">Publications</div>
+    <h1 class="reveal reveal-delay-1">Legal Writing &amp; Commentary</h1>
+    <p class="hero-desc reveal reveal-delay-2">Formal articles and legal analysis authored by the attorneys of Dej-Udom &amp; Associates. These publications reflect the firm's expertise across intellectual property, immigration, corporate law, and dispute resolution in Thailand.</p>
+  </div>
+</section>
+
+<!-- ===== FILTER & PUBLICATIONS ===== -->
+<div class="pub-section">
+  <div class="filter-bar">
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="filterPublications(this, 'all')">All</button>
+      <button class="filter-tab" onclick="filterPublications(this, 'ip')">Intellectual Property</button>
+      <button class="filter-tab" onclick="filterPublications(this, 'immigration')">Immigration</button>
+      <button class="filter-tab" onclick="filterPublications(this, 'corporate')">Corporate</button>
+      <button class="filter-tab" onclick="filterPublications(this, 'litigation')">Litigation</button>
+    </div>
+    <div class="filter-search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search publications..." oninput="searchPublications(this.value)">
+    </div>
+  </div>
+
+  <div class="pub-grid" id="pubGrid">
+
+    <a href="thai-trademark-enforcement-2026.html" class="pub-card reveal" data-category="ip" data-title="trademark enforcement strategies thailand practitioner perspective">
+      <div class="pub-card-category">Intellectual Property</div>
+      <h3 class="pub-card-title">Trademark Enforcement Strategies in Thailand: A Practitioner's Perspective</h3>
+      <p class="pub-card-excerpt">An analysis of effective enforcement approaches for trademark owners operating in Thailand, covering administrative, civil, and criminal remedies.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">March 2026</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+    <a href="#" class="pub-card reveal reveal-delay-1" data-category="ip" data-title="patent prosecution asean comparative analysis">
+      <div class="pub-card-category">Intellectual Property</div>
+      <h3 class="pub-card-title">Patent Prosecution in ASEAN: Comparative Analysis</h3>
+      <p class="pub-card-excerpt">A comparative review of patent prosecution procedures across ASEAN member states, examining timelines, substantive examination standards, and strategies for accelerating grants.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">February 2026</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+    <a href="#" class="pub-card reveal reveal-delay-2" data-category="immigration" data-title="thailand ltr visa legal framework practical considerations">
+      <div class="pub-card-category">Immigration</div>
+      <h3 class="pub-card-title">Thailand's LTR Visa: Legal Framework and Practical Considerations</h3>
+      <p class="pub-card-excerpt">A detailed examination of the Long-Term Resident Visa programme's legal basis, eligibility requirements, and practical implications for qualifying applicants.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">January 2026</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+    <a href="#" class="pub-card reveal" data-category="corporate" data-title="boi investment promotion recent amendments implications">
+      <div class="pub-card-category">Corporate</div>
+      <h3 class="pub-card-title">BOI Investment Promotion: Recent Amendments and Implications</h3>
+      <p class="pub-card-excerpt">An overview of recent amendments to the Board of Investment's promotion framework, analysing their impact on foreign investment structuring and incentive eligibility.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">December 2025</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+    <a href="#" class="pub-card reveal reveal-delay-1" data-category="litigation" data-title="cross-border commercial arbitration thailand">
+      <div class="pub-card-category">Litigation</div>
+      <h3 class="pub-card-title">Cross-Border Commercial Arbitration in Thailand</h3>
+      <p class="pub-card-excerpt">An examination of Thailand's arbitration framework for cross-border commercial disputes, including procedural considerations, enforcement mechanisms, and recent trends.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">November 2025</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+    <a href="#" class="pub-card reveal reveal-delay-2" data-category="immigration" data-title="digital work permits thailand modernisation immigration processing">
+      <div class="pub-card-category">Immigration</div>
+      <h3 class="pub-card-title">Digital Work Permits: Thailand's Modernisation of Immigration Processing</h3>
+      <p class="pub-card-excerpt">An analysis of Thailand's transition to digital work permits, examining the regulatory framework, implementation challenges, and practical guidance for employers.</p>
+      <div class="pub-card-meta">
+        <span class="pub-card-author">Prof. Dej-Udom Krairit</span>
+        <span class="pub-card-date">October 2025</span>
+      </div>
+      <div class="pub-card-read">Read publication &rarr;</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ===== SUBSCRIBE ===== -->
+<div class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="section-label reveal">Stay Informed</div>
+    <h2 class="reveal reveal-delay-1">Legal Updates, Delivered</h2>
+    <p class="newsletter-desc reveal reveal-delay-2">Subscribe to receive our latest publications and legal updates directly — typically once or twice a month, never spam.</p>
+    <form class="newsletter-form reveal reveal-delay-3" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed!';this.querySelector('button').style.background='#1a7a3a';">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Dej-Udom & Associates</div>
+        <div class="footer-brand-sub" data-i18n="common.footer.brandSub">Attorneys at Law</div>
+        <p class="footer-desc" data-i18n="common.footer.address">Charn Issara Tower 1, 2nd Floor, 942/69 Rama IV Road, Suriyawong, Bangrak, Bangkok 10500, Thailand</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="common.footer.expertise">Expertise</h4>
+        <a href="../index.html#practices" data-i18n="common.footer.ip">Intellectual Property</a>
+        <a href="../index.html#practices" data-i18n="common.footer.immigration">Immigration</a>
+        <a href="../index.html#practices" data-i18n-html="common.footer.corporate">Incorporation &amp; Corporate Matters</a>
+        <a href="../index.html#practices" data-i18n="common.footer.litigation">Litigation</a>
+        <a href="../index.html#practices" data-i18n="common.footer.notarial">Notarial Services</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="common.footer.firm">Firm</h4>
+        <a href="../DA About Us 2026.html#founder" data-i18n="common.footer.ourFounder">Our Founder</a>
+        <a href="../DA About Us 2026.html#team" data-i18n="common.footer.ourTeam">Our Team</a>
+        <a href="../DA About Us 2026.html#publications" data-i18n="common.footer.publications">Publications</a>
+        <a href="../DA About Us 2026.html#recognition" data-i18n="common.footer.recognition">Recognition</a>
+        <a href="../DA Insights 2026.html" data-i18n="common.footer.insights">Insights</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="common.footer.connect">Connect</h4>
+        <a href="../DA Careers 2026.html" data-i18n="common.footer.careers">Careers</a>
+        <a href="../index.html#contact" data-i18n="common.footer.contactUs">Contact Us</a>
+        <a href="tel:+6622330055">+66 (0) 2233-0055</a>
+        <a href="mailto:dej-udom@dejudom.com">dej-udom@dejudom.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-i18n-html="common.footer.copy">&copy; 2026 Dej-Udom & Associates. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#" data-i18n="common.footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="common.footer.terms">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Custom Cursor
+  (function() {
+    if (window.matchMedia('(pointer: fine)').matches) {
+      var dot = document.querySelector('.cursor-dot');
+      var ring = document.querySelector('.cursor-ring');
+      var mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx - 4 + 'px';
+        dot.style.top = my - 4 + 'px';
+      });
+      function animateRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = rx - 18 + 'px';
+        ring.style.top = ry - 18 + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button, .pub-card').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { ring.classList.add('hover'); });
+        el.addEventListener('mouseleave', function() { ring.classList.remove('hover'); });
+      });
+    }
+  })();
+
+  // Nav scroll
+  window.addEventListener('scroll', function() {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  document.querySelector('.nav-menu-btn').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('mobile-open');
+  });
+
+  // Reveal on scroll
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+  // Filter publications
+  function filterPublications(btn, category) {
+    document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-card').forEach(function(card) {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Search publications
+  function searchPublications(query) {
+    var q = query.toLowerCase().trim();
+    if (q.length > 0) {
+      document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelector('.filter-tab').classList.add('active');
+    }
+    document.querySelectorAll('.pub-card').forEach(function(card) {
+      var title = card.dataset.title || '';
+      var text = card.querySelector('.pub-card-title').textContent.toLowerCase();
+      var excerpt = card.querySelector('.pub-card-excerpt').textContent.toLowerCase();
+      if (q.length === 0 || title.indexOf(q) > -1 || text.indexOf(q) > -1 || excerpt.indexOf(q) > -1) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Body fade in
+  document.body.style.opacity = '1';
+</script>
+
+<script src="../i18n/i18n.js"></script>
+
+</body>
+</html>
