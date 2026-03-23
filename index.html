@@ -2171,20 +2171,49 @@
       <h2 data-i18n-html="home.overlay.litigation.title">Litigation, Mediation &amp; ADR</h2>
       <p class="pa-overview" data-i18n="home.overlay.litigation.overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
     </div>
-    <div class="pa-content-single">
-      <div class="pa-body" data-i18n-html="home.overlay.litigation.body">
-        <p>The department represents clients from the Courts of First Instance through to the Supreme Court, with depth in commercial disputes, employment matters, IP and international trade cases, and tax disputes.</p>
-        <p>For disputes involving international parties, we handle matters before the Thai Arbitration Institute and advise on enforcement of foreign arbitral awards under the New York Convention.</p>
-        <p>Our approach: clear assessment of merits, likely timeline, and costs at the outset — pursuing resolution through the most practical route available.</p>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'litigation','civil')">Litigation</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'litigation','arbitration')">Arbitration</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'litigation','mediation')">Mediation</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="litigation-civil">
+        <h3>Civil &amp; Commercial Litigation</h3>
+        <div class="pa-body">
+          <p>We represent clients from the Courts of First Instance through to the Supreme Court, handling high-value commercial disputes, contract claims, shareholder disputes, and debt recovery proceedings. Our team has particular depth in employment matters, IP and international trade cases, and tax disputes before the specialised courts.</p>
+          <p>For foreign clients unfamiliar with the Thai court system, we provide clear guidance on procedure, realistic assessments of timeline and cost, and strategic advice on whether litigation is the most effective path to resolution.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list">Civil and commercial litigation, shareholder and joint venture disputes, contract enforcement, debt recovery, employment and labour disputes, IP infringement proceedings, international trade court matters, tax court disputes, criminal defence for business-related offences, bankruptcy and restructuring.</div>
+        </div>
       </div>
-      <div class="pa-handles">
-        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-        <div class="handles-list" data-i18n="home.overlay.litigation.handles">Civil and commercial litigation, criminal defence, labour and employment disputes, IP and international trade court, tax court, bankruptcy, domestic and international arbitration, mediation, enforcement of foreign judgments and arbitral awards.</div>
+      <div class="pa-sub-section" id="litigation-arbitration">
+        <h3>Domestic &amp; International Arbitration</h3>
+        <div class="pa-body">
+          <p>For disputes involving international parties or cross-border transactions, arbitration is often the preferred forum. We handle matters before the Thai Arbitration Institute (TAI), the Thailand Arbitration Center (THAC), and advise on proceedings under ICC, SIAC, and HKIAC rules.</p>
+          <p>We also advise on the enforcement of foreign arbitral awards in Thailand under the New York Convention, and assist foreign clients seeking to enforce Thai arbitral awards in other jurisdictions. Our approach prioritises efficiency and cost-effectiveness while protecting our clients' commercial interests.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list">Domestic arbitration (TAI, THAC), international arbitration (ICC, SIAC, HKIAC rules), enforcement of foreign arbitral awards under the New York Convention, arbitration clause drafting and review, interim measures and emergency arbitration, investor-state disputes.</div>
+        </div>
       </div>
-      <div class="pa-cta">
-        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      <div class="pa-sub-section" id="litigation-mediation">
+        <h3>Mediation &amp; Alternative Dispute Resolution</h3>
+        <div class="pa-body">
+          <p>Not every dispute requires a courtroom. We advise clients on mediation and other forms of alternative dispute resolution where a negotiated settlement is more practical, cost-effective, or commercially desirable than formal proceedings.</p>
+          <p>Our team acts as counsel in mediation proceedings and also assists in structuring settlement agreements that are enforceable across jurisdictions. For ongoing commercial relationships where preserving the partnership matters, mediation often achieves better outcomes than adversarial processes.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list">Court-annexed mediation, private mediation, negotiated settlements, dispute prevention advisory, settlement agreement drafting, multi-party dispute coordination, pre-litigation negotiation strategy.</div>
+        </div>
       </div>
+    </div>
+    <div class="pa-cta" style="padding:0 48px 48px;">
+      <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
+      <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
     </div>
   </div>
 </div>
@@ -2200,14 +2229,34 @@
       <h2 data-i18n="home.overlay.notarial.title">Notarial Services</h2>
       <p class="pa-overview" data-i18n="home.overlay.notarial.overview">Licensed Notarial Services Attorneys providing full notarial services for domestic and international clients under the Lawyers Act B.E. 2528.</p>
     </div>
-    <div class="pa-content-single">
-      <div class="pa-body" data-i18n-html="home.overlay.notarial.body">
-        <p>Relevant for foreign companies and individuals requiring notarised or certified documents for use in Thailand or other jurisdictions — including powers of attorney, certified copies, signature verification, and sworn statements.</p>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'notarial','certification')">Document Certification</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'notarial','authentication')">Authentication</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="notarial-certification">
+        <h3>Document Certification &amp; Notarisation</h3>
+        <div class="pa-body">
+          <p>Our licensed Notarial Services Attorneys certify and notarise documents for use in Thailand and foreign jurisdictions. This includes certification of true copies, notarisation of signatures, powers of attorney, and sworn statements required for corporate filings, immigration applications, or cross-border transactions.</p>
+          <p>We regularly handle bulk notarisation for multinational companies requiring certified documents across multiple jurisdictions simultaneously.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list">Certification of document copies, notarisation of signatures, powers of attorney for foreign jurisdictions, sworn statements and statutory declarations, corporate document certification for government filings.</div>
+        </div>
       </div>
-      <div class="pa-handles">
-        <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-        <div class="handles-list" data-i18n="home.overlay.notarial.handles">Certification of document copies, signature verification and authentication, recording of statements under oath, administration of oaths, ID verification, powers of attorney for foreign jurisdictions.</div>
+      <div class="pa-sub-section" id="notarial-authentication">
+        <h3>Signature Authentication &amp; Oaths</h3>
+        <div class="pa-body">
+          <p>We provide signature verification and authentication services, administration of oaths, and identity verification for individuals and corporate representatives. These services are essential for foreign nationals executing legal documents in Thailand or Thai nationals preparing documents for use abroad.</p>
+          <p>Our office can accommodate urgent requests and high-volume requirements for corporate clients with regular notarisation needs.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
+          <div class="handles-list">Signature verification and authentication, recording of statements under oath, administration of oaths, identity verification, witness attestation, apostille coordination for documents used internationally.</div>
+        </div>
       </div>
+    </div>
       <div class="pa-cta">
         <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
         <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
