@@ -21,6 +21,70 @@
 <meta name="twitter:title" content="Dej-Udom & Associates — Attorneys at Law, Bangkok">
 <meta name="twitter:description" content="Full-service law firm in Bangkok advising multinational companies on intellectual property, immigration, corporate law, litigation, and taxation across Thailand and ASEAN since 1986.">
 
+<!-- Canonical URL -->
+<link rel="canonical" href="https://www.dejudom.com/">
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dejudom.com/"}
+  ]
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What practice areas does Dej-Udom & Associates cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide full-service legal representation across five core areas: Intellectual Property (trademarks, patents, overseas IP), Immigration (work permits, visas, LTR visas), Corporate & Commercial (market entry, M&A, compliance, taxation), Litigation, Mediation & ADR, and Notarial Services. With 40 years of practice in Bangkok, we advise multinational companies operating across Thailand and the ASEAN region."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to register a trademark in Thailand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A straightforward trademark registration in Thailand typically takes 12 to 18 months from filing to registration. The process involves filing, examination by the Department of Intellectual Property (DIP), publication for opposition, and issuance of the registration certificate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the LTR Visa and who qualifies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Long-Term Resident (LTR) Visa is a 10-year visa introduced by the Thai government for four categories of foreign nationals: Wealthy Global Citizens, Wealthy Pensioners, Work-from-Thailand Professionals, and Highly-Skilled Professionals. Benefits include a 17% flat income tax rate, exemption from the 4:1 Thai-to-foreign worker ratio, and 90-day reporting extended to annual reporting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a foreign company set up a business in Thailand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Foreign companies can establish a presence in Thailand through several structures: a Thai Limited Company, a Branch Office, a Representative Office, or through BOI (Board of Investment) promoted activities which offer tax incentives and permit majority foreign ownership."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Dej-Udom & Associates handle cases outside Thailand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While our offices are in Bangkok, we advise clients on legal matters across all 11 ASEAN jurisdictions through our regional network of partner firms. We coordinate cross-border IP portfolios, multi-country immigration matters, and regional corporate transactions through a single point of contact."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
@@ -1276,6 +1340,138 @@
     margin-top: 2px;
   }
 
+  /* ===== FAQ SECTION ===== */
+  .faq-section {
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .faq-list {
+    max-width: 800px;
+    margin: 48px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .faq-question {
+    padding: 24px 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color 0.3s ease;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-question::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  details[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-answer {
+    padding: 0 0 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 720px;
+  }
+
+  /* ===== NEWSLETTER SECTION ===== */
+  .newsletter-section {
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .newsletter-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 24px 0;
+  }
+  .newsletter-inner h2 {
+    font-size: clamp(28px, 3vw, 36px);
+    margin-bottom: 12px;
+  }
+  .newsletter-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+  }
+  .newsletter-input-group {
+    display: flex;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .newsletter-input-group input {
+    flex: 1;
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .newsletter-input-group input:focus {
+    border-color: var(--gold);
+  }
+  .newsletter-input-group input::placeholder {
+    color: var(--text-muted);
+  }
+  .newsletter-input-group button {
+    padding: 14px 28px;
+    background: var(--gold);
+    color: var(--forest-deep);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+  .newsletter-input-group button:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+  .newsletter-input-group button:active {
+    transform: translateY(0);
+  }
+  .newsletter-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
   /* ===== CONTACT CTA ===== */
   .cta-section {
     background: transparent;
@@ -1780,6 +1976,9 @@
     .hero-metric-number { font-size: 40px; }
     .country-grid { grid-template-columns: 1fr; }
     .credential-card { flex: 0 0 260px; }
+    .newsletter-input-group { flex-direction: column; }
+    .newsletter-input-group button { width: 100%; }
+    .faq-question { font-size: 15px; }
   }
 </style>
 </head>
@@ -2630,6 +2829,56 @@
           </a>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FAQ SECTION (SEO) ===== -->
+<div class="faq-section" id="faq">
+  <div class="section">
+    <div class="section-label reveal">Common Questions</div>
+    <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details class="faq-item reveal reveal-delay-1">
+        <summary class="faq-question">What practice areas does Dej-Udom &amp; Associates cover?</summary>
+        <div class="faq-answer">We provide full-service legal representation across five core areas: Intellectual Property (trademarks, patents, overseas IP), Immigration (work permits, visas, LTR visas), Corporate &amp; Commercial (market entry, M&amp;A, compliance, taxation), Litigation, Mediation &amp; ADR, and Notarial Services. With 40 years of practice in Bangkok, we advise multinational companies operating across Thailand and the ASEAN region.</div>
+      </details>
+      <details class="faq-item reveal reveal-delay-2">
+        <summary class="faq-question">How long does it take to register a trademark in Thailand?</summary>
+        <div class="faq-answer">A straightforward trademark registration in Thailand typically takes 12 to 18 months from filing to registration. The process involves filing, examination by the Department of Intellectual Property (DIP), publication for opposition, and issuance of the registration certificate. Our IP team manages over 3,000 trademark matters annually and can advise on the fastest path for your situation.</div>
+      </details>
+      <details class="faq-item reveal reveal-delay-3">
+        <summary class="faq-question">What is the LTR Visa and who qualifies?</summary>
+        <div class="faq-answer">The Long-Term Resident (LTR) Visa is a 10-year visa introduced by the Thai government for four categories of foreign nationals: Wealthy Global Citizens, Wealthy Pensioners, Work-from-Thailand Professionals, and Highly-Skilled Professionals. Benefits include a 17% flat income tax rate, exemption from the 4:1 Thai-to-foreign worker ratio, and 90-day reporting extended to annual reporting. Our immigration team handles the full application process.</div>
+      </details>
+      <details class="faq-item reveal reveal-delay-4">
+        <summary class="faq-question">Can a foreign company set up a business in Thailand?</summary>
+        <div class="faq-answer">Yes. Foreign companies can establish a presence in Thailand through several structures: a Thai Limited Company, a Branch Office, a Representative Office, or through BOI (Board of Investment) promoted activities which offer tax incentives and permit majority foreign ownership. Our corporate team advises on the optimal structure based on your business activity, investment level, and long-term goals in the Thai and ASEAN markets.</div>
+      </details>
+      <details class="faq-item reveal reveal-delay-5">
+        <summary class="faq-question">Does Dej-Udom &amp; Associates handle cases outside Thailand?</summary>
+        <div class="faq-answer">While our offices are in Bangkok, we advise clients on legal matters across all 11 ASEAN jurisdictions through our regional network of partner firms. We coordinate cross-border IP portfolios, multi-country immigration matters, and regional corporate transactions through a single point of contact. Our ASEAN country guides cover Thailand, Vietnam, Singapore, Indonesia, Malaysia, Philippines, Cambodia, Myanmar, Laos, Brunei, and Timor-Leste.</div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NEWSLETTER SIGNUP ===== -->
+<div class="newsletter-section" id="newsletter">
+  <div class="section">
+    <div class="newsletter-inner reveal">
+      <div class="newsletter-text">
+        <h2>Stay Informed</h2>
+        <p>Receive quarterly legal updates on Thai business law, IP developments, immigration changes, and ASEAN regulatory trends — written by our attorneys.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('button').style.background='var(--emerald)'; this.querySelector('button').disabled=true;">
+        <div class="newsletter-input-group">
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input type="email" id="newsletter-email" placeholder="your@email.com" required aria-label="Email address for newsletter">
+          <button type="submit">Subscribe</button>
+        </div>
+        <p class="newsletter-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
+      </form>
     </div>
   </div>
 </div>

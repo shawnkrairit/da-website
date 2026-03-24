@@ -1,0 +1,37 @@
+# Dej-Udom & Associates — Attorneys at Law, Bangkok
+# https://www.dejudom.com
+
+User-agent: *
+Allow: /
+
+# Crawl rate
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.dejudom.com/sitemap.xml
+
+# Block archive pages (old versions)
+Disallow: /archive/
+
+# Block internal tooling
+Disallow: /.claude/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Allow AI crawlers for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
