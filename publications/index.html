@@ -321,35 +321,6 @@
   }
   .pub-card:hover .pub-card-read { opacity: 1; }
 
-  /* ===== NEWSLETTER ===== */
-  .newsletter-section {
-    padding: 100px 48px;
-    border-top: 1px solid var(--border-subtle);
-  }
-  .newsletter-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-  .section-label {
-    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 4px; color: var(--gold); margin-bottom: 28px;
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-  }
-  .newsletter-inner h2 { font-size: 34px; color: var(--text-primary); margin-bottom: 16px; line-height: 1.3; }
-  .newsletter-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 40px; }
-  .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
-  .newsletter-form input {
-    flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border-light); border-radius: 100px;
-    color: var(--text-primary); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
-    outline: none; transition: border-color 0.3s;
-  }
-  .newsletter-form input:focus { border-color: var(--gold); }
-  .newsletter-form input::placeholder { color: var(--text-muted); }
-  .newsletter-form button {
-    padding: 14px 32px; background: var(--gold); color: var(--forest); border: none;
-    border-radius: 100px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px;
-    font-weight: 600; letter-spacing: 0.5px; cursor: pointer; flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .newsletter-form button:hover { background: var(--gold-light); transform: translateY(-2px); }
 
   /* ===== FOOTER ===== */
   footer { background: var(--forest-deep); padding: 80px 48px 48px; border-top: 1px solid var(--border-subtle); }
@@ -383,8 +354,6 @@
     .filter-search input { width: 100%; }
     .pub-section { padding: 0 24px 100px; }
     .pub-grid { grid-template-columns: 1fr; }
-    .newsletter-section { padding: 72px 24px; }
-    .newsletter-form { flex-direction: column; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; }
     footer { padding: 60px 24px 36px; }
@@ -528,18 +497,6 @@
   </div>
 </div>
 
-<!-- ===== SUBSCRIBE ===== -->
-<div class="newsletter-section">
-  <div class="newsletter-inner">
-    <div class="section-label reveal">Stay Informed</div>
-    <h2 class="reveal reveal-delay-1">Legal Updates, Delivered</h2>
-    <p class="newsletter-desc reveal reveal-delay-2">Subscribe to receive our latest publications and legal updates directly — typically once or twice a month, never spam.</p>
-    <form class="newsletter-form reveal reveal-delay-3" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed!';this.querySelector('button').style.background='#1a7a3a';">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>

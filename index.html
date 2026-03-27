@@ -1389,77 +1389,6 @@
     max-width: 720px;
   }
 
-  /* ===== NEWSLETTER SECTION ===== */
-  .newsletter-section {
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .newsletter-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 24px 0;
-  }
-  .newsletter-inner h2 {
-    font-size: clamp(28px, 3vw, 36px);
-    margin-bottom: 12px;
-  }
-  .newsletter-text p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-  }
-  .newsletter-input-group {
-    display: flex;
-    gap: 12px;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-  .newsletter-input-group input {
-    flex: 1;
-    padding: 14px 20px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius);
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  .newsletter-input-group input:focus {
-    border-color: var(--gold);
-  }
-  .newsletter-input-group input::placeholder {
-    color: var(--text-muted);
-  }
-  .newsletter-input-group button {
-    padding: 14px 28px;
-    background: var(--gold);
-    color: var(--forest-deep);
-    border: none;
-    border-radius: var(--radius);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    white-space: nowrap;
-  }
-  .newsletter-input-group button:hover {
-    background: var(--gold-light);
-    transform: translateY(-1px);
-  }
-  .newsletter-input-group button:active {
-    transform: translateY(0);
-  }
-  .newsletter-note {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 12px;
-  }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -1976,8 +1905,6 @@
     .hero-metric-number { font-size: 40px; }
     .country-grid { grid-template-columns: 1fr; }
     .credential-card { flex: 0 0 260px; }
-    .newsletter-input-group { flex-direction: column; }
-    .newsletter-input-group button { width: 100%; }
     .faq-question { font-size: 15px; }
   }
 </style>
@@ -2863,25 +2790,6 @@
   </div>
 </div>
 
-<!-- ===== NEWSLETTER SIGNUP ===== -->
-<div class="newsletter-section" id="newsletter">
-  <div class="section">
-    <div class="newsletter-inner reveal">
-      <div class="newsletter-text">
-        <h2>Stay Informed</h2>
-        <p>Receive quarterly legal updates on Thai business law, IP developments, immigration changes, and ASEAN regulatory trends — written by our attorneys.</p>
-      </div>
-      <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('button').style.background='var(--emerald)'; this.querySelector('button').disabled=true;">
-        <div class="newsletter-input-group">
-          <label for="newsletter-email" class="sr-only">Email address</label>
-          <input type="email" id="newsletter-email" placeholder="your@email.com" required aria-label="Email address for newsletter">
-          <button type="submit">Subscribe</button>
-        </div>
-        <p class="newsletter-note">No spam. Unsubscribe anytime. We respect your privacy.</p>
-      </form>
-    </div>
-  </div>
-</div>
 
 <!-- ===== CONTACT CTA ===== -->
 <div class="cta-section section-with-bg bg-contact" id="contact">
