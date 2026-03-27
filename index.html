@@ -874,12 +874,7 @@
   }
   .practice-tile:hover .practice-tile-icon-wrap { background: rgba(212,168,83,0.15); }
   .practice-tile-body { flex: 1; min-width: 0; }
-  .practice-tile-num {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 3px; color: rgba(212,168,83,0.4);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    text-transform: uppercase; margin-bottom: 5px;
-  }
+  .practice-tile-num { display: none; }
   .practice-tile-name {
     font-family: 'Libre Baskerville', serif;
     font-size: 1rem; color: var(--text-primary);
@@ -1668,8 +1663,8 @@
   .pa-panel {
     position: absolute;
     top: 0; right: 0;
-    width: 65%;
-    max-width: 860px;
+    width: 80%;
+    max-width: 1100px;
     height: 100%;
     background: var(--forest);
     overflow-y: auto;
@@ -1737,7 +1732,6 @@
     font-size: 15px;
     color: var(--text-secondary);
     line-height: 1.8;
-    max-width: 540px;
   }
 
   .pa-subnav {
@@ -1864,6 +1858,162 @@
 
   body.overlay-open { overflow: hidden; }
 
+  /* --- Practice Area Overlay: Services Grid --- */
+  .pa-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .pa-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+  .pa-service-item {
+    padding: 24px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: var(--radius);
+    cursor: default;
+    transition: border-color 0.35s, background 0.35s, box-shadow 0.35s;
+  }
+  .pa-service-item:hover {
+    border-color: rgba(212,168,83,0.3);
+    background: rgba(212,168,83,0.04);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .pa-service-item .service-num { display: none; }
+  .pa-service-item .service-name {
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    line-height: 1.3;
+    transition: color 0.3s;
+  }
+  .pa-service-item:hover .service-name { color: var(--gold); }
+  .pa-service-item .service-detail {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease,
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-top 0.3s ease;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 0;
+  }
+  .pa-service-item:hover .service-detail {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 12px;
+  }
+
+  /* --- Practice Area Overlay: FAQ Accordion --- */
+  .pa-faq-list { margin-bottom: 48px; }
+  .pa-faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .pa-faq-item:last-child { border-bottom: none; }
+  .pa-faq-item summary {
+    padding: 20px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: color 0.3s;
+  }
+  .pa-faq-item summary::-webkit-details-marker { display: none; }
+  .pa-faq-item summary::after {
+    content: '+';
+    font-size: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .pa-faq-item[open] summary::after {
+    content: '−';
+  }
+  .pa-faq-item summary:hover { color: var(--gold); }
+  .pa-faq-item .pa-faq-answer {
+    padding: 0 0 20px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* --- Practice Area Overlay: Case Studies --- */
+  .pa-cases { margin-bottom: 48px; }
+  .pa-case-item {
+    background: rgba(212, 168, 83, 0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+  .pa-case-item:last-child { margin-bottom: 0; }
+  .pa-case-item .case-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+  .pa-case-item .case-title {
+    font-size: 15px;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .pa-case-item .case-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .pa-case-item .case-outcome {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    background: rgba(212, 168, 83, 0.08);
+    border-radius: 100px;
+    display: inline-block;
+  }
+
+  /* --- Practice Area Overlay: Section Spacing --- */
+  .pa-section {
+    padding: 0 48px;
+    margin-bottom: 8px;
+  }
+  .pa-section:last-of-type { margin-bottom: 0; }
+  .pa-divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 0 48px 40px;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1200px) {
     .hero-inner { grid-template-columns: 1fr; gap: 60px; }
@@ -1879,7 +2029,7 @@
     .matter-row { grid-template-columns: 1fr; gap: 8px; }
     .matter-team-tag { text-align: left; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
-    .pa-panel { width: 80%; }
+    .pa-panel { width: 90%; }
   }
 
   @media (max-width: 768px) {
@@ -1913,6 +2063,9 @@
     .pa-subnav { padding: 0 24px; overflow-x: auto; }
     .pa-content, .pa-content-single { padding: 32px 24px; }
     .pa-close { top: 16px; right: 16px; }
+    .pa-section { padding: 0 24px; }
+    .pa-divider { margin: 0 24px 32px; }
+    .pa-services-grid { grid-template-columns: 1fr; }
     .country-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -2096,7 +2249,7 @@
       <!-- 04 Litigation -->
       <div class="practice-tile reveal" onclick="openPracticeArea('litigation')">
         <div class="practice-tile-icon-wrap">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M4 15l4.5-8 4.5 8"/><path d="M15 15l4.5-8 4.5 8"/><path d="M3 19h9"/><path d="M12 19h9"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 7h20"/><path d="M5 7L3 13c0 1.1 1.3 2 3 2s3-.9 3-2L7 7"/><path d="M17 7l-2 6c0 1.1 1.3 2 3 2s3-.9 3-2l-2-6"/><circle cx="12" cy="3" r="1"/></svg>
         </div>
         <div class="practice-tile-body">
           <div class="practice-tile-num">04</div>
@@ -2194,64 +2347,43 @@
 <div class="pa-overlay" id="pa-ip">
   <div class="pa-backdrop" onclick="closePracticeArea('ip')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')" data-i18n-aria-label="home.overlay.close">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('ip')">&times;</button>
     <div class="pa-header">
-      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n="home.overlay.ip.title">Intellectual Property</h2>
-      <p class="pa-overview" data-i18n="home.overlay.ip.overview">Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation.</p>
+      <div class="pa-label">Practice Area</div>
+      <h2>Intellectual Property</h2>
+      <p class="pa-overview">Thailand's intellectual property regime, administered by the Department of Intellectual Property (DIP) under the Ministry of Commerce, provides substantive protections across the full spectrum of IP rights. Dej-Udom &amp; Associates has been recognised internationally for its intellectual property practice, maintaining a distinguished record in both prosecution and enforcement. Our IP division handles thousands of trademark applications annually and prosecutes infringement actions through the Central Intellectual Property and International Trade Court (IP&amp;IT Court).</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'ip','trademark')" data-i18n="home.overlay.ip.tab_trademark">Trademark</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','patent')" data-i18n="home.overlay.ip.tab_patent">Patent</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'ip','overseas')" data-i18n="home.overlay.ip.tab_overseas">Overseas IP</button>
+
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Trademark Registration &amp; Prosecution</div><div class="service-detail">Filing, prosecution, and maintenance of trademark applications before the DIP. Opposition and cancellation proceedings. Madrid Protocol designations.</div></div>
+        <div class="pa-service-item"><div class="service-name">Patent &amp; Design Protection</div><div class="service-detail">Invention patents, petty patents, and industrial design registrations. Patent prosecution, office action responses, and annuity management.</div></div>
+        <div class="pa-service-item"><div class="service-name">Copyright Protection</div><div class="service-detail">Copyright registration and recordation at the DIP Copyright Office. Software licensing and digital content protection.</div></div>
+        <div class="pa-service-item"><div class="service-name">Trade Secret &amp; Confidential Information</div><div class="service-detail">Trade secret protection programmes, NDA drafting and enforcement, employee invention policies.</div></div>
+        <div class="pa-service-item"><div class="service-name">IP Enforcement &amp; Litigation</div><div class="service-detail">Civil and criminal enforcement through the IP&amp;IT Court. Customs recordation and border measures. Raid actions coordinated with ECD and DSI.</div></div>
+        <div class="pa-service-item"><div class="service-name">IP Licensing &amp; Commercialisation</div><div class="service-detail">Licence agreements, technology transfer agreements, franchise agreements, and royalty structuring.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="ip-trademark">
-        <h3 data-i18n="home.overlay.ip.trademark.title">Trademark</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.ip.trademark.body">
-          <p>We advise on the full lifecycle of trademark protection under Thai law: clearance searches, filing, prosecution, opposition and cancellation proceedings, renewals, assignments, and licensing.</p>
-          <p>Where brand owners face infringement, we coordinate enforcement through the Department of Intellectual Property, Thai Customs, and the Central Intellectual Property and International Trade Court.</p>
-          <p>For companies entering the Thai market, we provide clearance opinions and filing strategies that account for the classification requirements and examination practices of the Thai DIP.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.ip.trademark.handles">Registration and prosecution, opposition and cancellation, enforcement and anti-counterfeiting, customs recordals, licensing and assignments, passing off, IP commercialisation, portfolio management and renewals.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Trademark%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>How long does trademark registration take in Thailand?</summary><div class="pa-faq-answer">A straightforward registration typically takes 12–18 months. The trademark is valid for 10 years from filing and renewable indefinitely.</div></details>
+        <details class="pa-faq-item"><summary>Can a foreign company own a trademark in Thailand?</summary><div class="pa-faq-answer">Yes. Foreign entities may own Thai trademarks directly. The applicant must appoint a registered Thai agent. No local entity is required.</div></details>
+        <details class="pa-faq-item"><summary>What protection does a patent provide?</summary><div class="pa-faq-answer">An invention patent grants 20-year exclusive rights. A petty patent provides 6 years (extendable to 10). An industrial design patent provides 10 years.</div></details>
+        <details class="pa-faq-item"><summary>How do I enforce my trademark against counterfeit goods?</summary><div class="pa-faq-answer">Options include criminal complaints through the ECD or DSI, civil actions before the IP&amp;IT Court, and border measures through Thai Customs recordation.</div></details>
+        <details class="pa-faq-item"><summary>Is copyright registration required?</summary><div class="pa-faq-answer">No. Copyright arises automatically. However, DIP recordation is strongly recommended as prima facie evidence of ownership.</div></details>
+        <details class="pa-faq-item"><summary>Does Thailand participate in international IP treaties?</summary><div class="pa-faq-answer">Yes. Thailand is a member of WIPO, the Paris Convention, PCT, Madrid Protocol, Berne Convention, and TRIPS under the WTO.</div></details>
       </div>
-      <div class="pa-sub-section" id="ip-patent">
-        <h3 data-i18n="home.overlay.ip.patent.title">Patent</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.ip.patent.body">
-          <p>We advise on patent protection for inventions, industrial designs, and petty patents (utility models) under the Thai Patent Act.</p>
-          <p>For invention patents, we handle drafting and filing of applications, prosecution through the DIP, responses to official actions, and maintenance of granted patents through the 20-year term. Thailand offers several mechanisms to accelerate examination — including ASPEC, the Patent Prosecution Highway (PPH) with the Japan Patent Office, and the Target Patent Fast-Track.</p>
-          <p>For PCT national phase applications, we manage entry into the Thai national phase, coordinate Thai-language translation, and prosecute applications through examination.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.ip.patent.handles">Invention patents, design patents, petty patents, PCT national phase entry, patent prosecution, accelerated examination (ASPEC, PPH, Target Patent), annuity management, assignments and licence recordals.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Patent%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="ip-overseas">
-        <h3 data-i18n="home.overlay.ip.overseas.title">Overseas IP</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.ip.overseas.body">
-          <p>For clients who need IP protection beyond Thailand, our overseas filing desk coordinates trademark and patent applications across ASEAN and internationally.</p>
-          <p>Through our memberships in INTA and AIPPI, we coordinate international IP protection strategies across multiple jurisdictions.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.ip.overseas.handles">Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through INTA and AIPPI networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Overseas%20IP%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+
+
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=IP%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2261,141 +2393,82 @@
 <div class="pa-overlay" id="pa-immigration">
   <div class="pa-backdrop" onclick="closePracticeArea('immigration')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')" data-i18n-aria-label="home.overlay.close">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('immigration')">&times;</button>
     <div class="pa-header">
-      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.immigration.title">Immigration</h2>
-      <p class="pa-overview" data-i18n="home.overlay.immigration.overview">Our Immigration Department advises on all aspects of employing foreign nationals in Thailand. Since March 2023, we are a BOI Certified Agency for the Long-Term Resident (LTR) Visa.</p>
+      <div class="pa-label">Practice Area</div>
+      <h2>Immigration &amp; Work Permits</h2>
+      <p class="pa-overview">Thailand's immigration framework, principally governed by the Immigration Act B.E. 2522 (1979) and the Working of Aliens Act B.E. 2551 (2008), imposes layered requirements upon foreign nationals seeking to live and work in the Kingdom. Dej-Udom &amp; Associates maintains a dedicated immigration department staffed by practitioners who manage hundreds of visa and work permit applications annually. We serve as the interface between our clients and the relevant Thai authorities — including the Office of the Immigration Bureau, the Department of Employment, and the One-Stop Service Centre (OSSC) for BOI-promoted companies.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'immigration','workpermits')" data-i18n="home.overlay.immigration.tab_workpermits">Work Permits</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','visas')" data-i18n="home.overlay.immigration.tab_visas">Visas</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'immigration','ltr')" data-i18n="home.overlay.immigration.tab_ltr">LTR Visa</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Non-Immigrant B Visa</div><div class="service-detail">Applications, extensions, and annual renewals for business-purpose entry and stay. Coordination with Thai consulates abroad and Immigration Division 1.</div></div>
+        <div class="pa-service-item"><div class="service-name">Work Permit Applications</div><div class="service-detail">TT.1 new applications, TT.3 renewals, and TT.5 amendments through the Department of Employment and e-WP online system.</div></div>
+        <div class="pa-service-item"><div class="service-name">BOI &amp; OSSC Processing</div><div class="service-detail">Expedited immigration processing for Board of Investment promoted companies through the One-Stop Service Centre at Chamchuri Square.</div></div>
+        <div class="pa-service-item"><div class="service-name">Long-Term Resident (LTR) Visa</div><div class="service-detail">Qualification assessment and application support for the 10-year LTR visa under the four qualifying categories.</div></div>
+        <div class="pa-service-item"><div class="service-name">Destination Thailand Visa (DTV)</div><div class="service-detail">Applications for digital nomads and remote workers under the DTV programme introduced in 2024.</div></div>
+        <div class="pa-service-item"><div class="service-name">90-Day Reporting &amp; Re-Entry Permits</div><div class="service-detail">Ongoing compliance management including TM.47 notifications, single and multiple re-entry permits, and address change notifications.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="immigration-workpermits">
-        <h3 data-i18n="home.overlay.immigration.workpermits.title">Work Permits</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.immigration.workpermits.body">
-          <p>We handle new work permit applications, renewals, amendments, and cancellations under both the BOI single-window system and the standard process through the Department of Employment.</p>
-          <p>For BOI-promoted companies, applications are processed through TIESC using the online single-window system. For non-BOI companies, we handle applications through TIESC or the Employment Department directly.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.immigration.workpermits.handles">BOI and non-BOI work permit applications, renewals and amendments, Digital Work Permits (DWP), temporary and urgent work permits, work permit cancellations, change of employer, medical certificate coordination.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Work%20Permit%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>What documents are required for a Thai work permit application?</summary><div class="pa-faq-answer">A work permit application (Form WP.1 or TT.1) requires the applicant's passport with valid Non-Immigrant visa, educational credentials authenticated by the Thai Embassy, medical certificate from a licensed Thai hospital, employer's corporate documents (company registration, shareholder list, VAT registration, PND.1 withholding tax filings, Social Security Fund registration), and photographs.</div></details>
+        <details class="pa-faq-item"><summary>How long does it take to obtain a Non-Immigrant B visa and work permit?</summary><div class="pa-faq-answer">The Non-B visa is typically issued within 3–5 working days at a Thai consulate abroad. The work permit application takes approximately 7–10 working days. For BOI-promoted companies utilising the OSSC, the combined process can be completed within 3–5 working days. Total timeline is generally 4–8 weeks.</div></details>
+        <details class="pa-faq-item"><summary>Can I change employers without leaving Thailand?</summary><div class="pa-faq-answer">Yes. A job change requires cancellation of the existing work permit by the former employer, application for a new work permit by the new employer, and transfer of the visa endorsement. This must be coordinated carefully to avoid gaps in legal status. The process typically takes 5–10 working days.</div></details>
+        <details class="pa-faq-item"><summary>What is the foreign-to-Thai employee ratio requirement?</summary><div class="pa-faq-answer">The employer must employ four Thai nationals for each foreign work permit holder and maintain a minimum registered capital of THB 2 million per foreign employee. BOI-promoted companies are exempt from these ratios.</div></details>
+        <details class="pa-faq-item"><summary>What happens to my visa if my work permit is cancelled?</summary><div class="pa-faq-answer">The foreign national's permission to stay is typically revoked, and the individual is granted a 7-day period (up to 30 days at discretion) to depart the Kingdom or secure alternative legal status.</div></details>
+        <details class="pa-faq-item"><summary>Does Thailand offer a digital nomad visa?</summary><div class="pa-faq-answer">Yes. The Destination Thailand Visa (DTV), introduced on 1 June 2024, permits a stay of up to 180 days (extendable once) for remote workers and digital nomads.</div></details>
       </div>
-      <div class="pa-sub-section" id="immigration-visas">
-        <h3 data-i18n="home.overlay.immigration.visas.title">Visas</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.immigration.visas.body">
-          <p>We advise on the full range of visa categories available to foreign nationals in Thailand, including Non-Immigrant B visas, dependent visas, retirement visas, Smart Visa, and permanent residency applications.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.immigration.visas.handles">Non-Immigrant B and O visas, visa extensions and renewals, dependent visas, retirement visas, Smart Visa, permanent residency, re-entry permits, 90-day reporting, transfer of endorsement, overseas visa support letters.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Visa%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="immigration-ltr">
-        <h3 data-i18n="home.overlay.immigration.ltr.title">Long-Term Resident (LTR) Visa</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.immigration.ltr.body">
-          <p>The LTR Visa is a 10-year visa programme administered by the BOI, available to four categories: wealthy global citizens, wealthy pensioners, work-from-Thailand professionals, and highly-skilled professionals.</p>
-          <p>As a BOI Certified Agency, we manage the entire application process — from eligibility assessment through document preparation, submission, and obtaining the visa stamp and Digital Work Permit.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.immigration.ltr.handles">LTR Visa eligibility assessment and pre-screening, application preparation and filing, coordination with the BOI LTR Unit, visa stamp and Digital Work Permit issuance, dependent applications, renewals, annual reporting.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=LTR%20Visa%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Immigration%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CORPORATE -->
+<!-- CORPORATE & M&A -->
 <div class="pa-overlay" id="pa-corporate">
   <div class="pa-backdrop" onclick="closePracticeArea('corporate')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')" data-i18n-aria-label="home.overlay.close">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('corporate')">&times;</button>
     <div class="pa-header">
-      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.corporate.title">Corporate &amp; Commercial</h2>
-      <p class="pa-overview" data-i18n="home.overlay.corporate.overview">Our Corporate Department advises multinational corporations, joint ventures, SMEs, and entrepreneurs on establishing and operating businesses in Thailand — including taxation planning and compliance.</p>
+      <div class="pa-label">Practice Area</div>
+      <h2>Corporate &amp; M&amp;A</h2>
+      <p class="pa-overview">Foreign investment in Thailand operates within a regulatory framework shaped by the Civil and Commercial Code, the Foreign Business Act B.E. 2542, and sector-specific legislation. Dej-Udom &amp; Associates has guided foreign investors through Thai corporate law since 1986 — from initial market entry structuring through ongoing governance to complex M&amp;A transactions. We place particular emphasis on compliance with the Foreign Business Act, whose enforcement has intensified significantly in 2024–2026.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'corporate','entry')" data-i18n="home.overlay.corporate.tab_entry">Market Entry</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','ma')" data-i18n-html="home.overlay.corporate.tab_ma">M&amp;A</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','compliance')" data-i18n="home.overlay.corporate.tab_compliance">Compliance</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'corporate','tax')" data-i18n="home.overlay.corporate.tab_tax">Taxation</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Company Incorporation</div><div class="service-detail">Formation of private limited companies, partnerships, and representative offices. Shareholder agreements and regulatory filings.</div></div>
+        <div class="pa-service-item"><div class="service-name">Foreign Business Licence (FBL)</div><div class="service-detail">Applications under Lists 2 and 3 of the Foreign Business Act. Strategic analysis including Treaty of Amity route.</div></div>
+        <div class="pa-service-item"><div class="service-name">Mergers &amp; Acquisitions</div><div class="service-detail">Buy-side and sell-side advisory, legal due diligence, share and asset purchase agreements.</div></div>
+        <div class="pa-service-item"><div class="service-name">Joint Ventures</div><div class="service-detail">JV structuring, negotiation, documentation. Shareholder agreements with deadlock resolution and exit mechanisms.</div></div>
+        <div class="pa-service-item"><div class="service-name">Corporate Governance &amp; Compliance</div><div class="service-detail">Board governance advisory, statutory compliance, anti-corruption policies, and whistleblower frameworks.</div></div>
+        <div class="pa-service-item"><div class="service-name">Corporate Restructuring</div><div class="service-detail">Group restructuring, demergers, amalgamations, dissolution and liquidation proceedings.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="corporate-entry">
-        <h3 data-i18n-html="home.overlay.corporate.entry.title">Market Entry &amp; Formation</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.corporate.entry.body">
-          <p>We advise on the most appropriate legal structure for entering the Thai market, taking into account the Foreign Business Act, BOI incentives, and your commercial objectives.</p>
-          <p>This includes incorporation of Thai limited companies, registration of branch offices, joint venture structuring, and applications for Foreign Business Licences (FBL).</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.corporate.entry.handles">Company incorporation, joint venture structuring, Foreign Business Licence applications, BOI promotion applications, IEAT privileges, factory licences, import/export permits, business licensing.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Market%20Entry%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>Can a foreigner own 100% of a Thai company?</summary><div class="pa-faq-answer">It depends on the activity. 100% ownership is achievable through BOI promotion, a Foreign Business Licence, the US-Thailand Treaty of Amity, or unrestricted activities.</div></details>
+        <details class="pa-faq-item"><summary>What is the minimum capital requirement?</summary><div class="pa-faq-answer">No statutory minimum for a standard company. THB 2 million per foreign work permit holder is required. BOI companies must meet prescribed thresholds.</div></details>
+        <details class="pa-faq-item"><summary>What are the consequences of nominee shareholders?</summary><div class="pa-faq-answer">Nominee arrangements are illegal. In 2024–2025, authorities targeted 46,000+ companies with hundreds of prosecutions and dissolution orders.</div></details>
+        <details class="pa-faq-item"><summary>How long does incorporation take?</summary><div class="pa-faq-answer">Approximately 2–4 weeks. From 2026, fully digitised through DBD Biz Regist. FBL adds 3–6 months; BOI adds 60–90 days.</div></details>
+        <details class="pa-faq-item"><summary>What ongoing compliance obligations exist?</summary><div class="pa-faq-answer">Audited financial statements, CIT returns, withholding tax returns, AGMs, DBD filings, VAT registration, and Social Security contributions.</div></details>
       </div>
-      <div class="pa-sub-section" id="corporate-ma">
-        <h3 data-i18n-html="home.overlay.corporate.ma.title">Transactions &amp; M&amp;A</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.corporate.ma.body">
-          <p>We advise on acquisitions, disposals, mergers, and corporate restructuring transactions in Thailand, covering the full transaction cycle from structuring through to completion.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.corporate.ma.handles">Mergers and acquisitions, due diligence, share and asset purchase agreements, shareholders' agreements, corporate restructuring, joint venture agreements, regulatory approvals.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=M%26A%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="corporate-compliance">
-        <h3 data-i18n-html="home.overlay.corporate.compliance.title">Ongoing Compliance &amp; Licensing</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.corporate.compliance.body">
-          <p>For companies already operating in Thailand, we provide ongoing corporate secretarial and regulatory compliance support, including annual returns, board administration, and BOI reporting.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.corporate.compliance.handles">Corporate secretarial services, annual compliance filings, board and shareholder meeting administration, BOI compliance and reporting, licence renewals, regulatory advisory, monthly retainer arrangements.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Compliance%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="corporate-tax">
-        <h3 data-i18n="home.overlay.corporate.tax.title">Taxation</h3>
-        <div class="pa-body" data-i18n-html="home.overlay.corporate.tax.body">
-          <p>Corporate side: structuring advice on corporate income tax, VAT, customs and excise, specific business tax, withholding tax, and transfer pricing. We assist with tax planning for inbound investments and advise on Thailand's double tax treaties (61 countries).</p>
-          <p>Individual clients: personal income tax for expatriates, tax residency issues, and the reduced 17% flat rate under the LTR Visa programme.</p>
-          <p>Our tax practice coordinates closely with corporate and immigration departments, particularly on BOI-promoted investments.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list" data-i18n="home.overlay.corporate.tax.handles">Corporate income tax, VAT advisory, customs and excise, withholding tax, transfer pricing, double tax treaties, tax audit defence, personal income tax for expatriates, BOI tax incentives, cross-border tax structuring.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Taxation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Corporate%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2405,59 +2478,43 @@
 <div class="pa-overlay" id="pa-litigation">
   <div class="pa-backdrop" onclick="closePracticeArea('litigation')"></div>
   <div class="pa-panel">
-    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')" data-i18n-aria-label="home.overlay.close">&times;</button>
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('litigation')">&times;</button>
     <div class="pa-header">
-      <div class="pa-label" data-i18n="home.overlay.label">Practice Area</div>
-      <h2 data-i18n-html="home.overlay.litigation.title">Litigation, Mediation &amp; ADR</h2>
-      <p class="pa-overview" data-i18n="home.overlay.litigation.overview">Our Litigation Department handles complex, high-value disputes across Thailand's civil, criminal, and specialised courts — as well as arbitration and mediation.</p>
+      <div class="pa-label">Practice Area</div>
+      <h2>Litigation, Mediation &amp; ADR</h2>
+      <p class="pa-overview">The Thai judicial system comprises courts of first instance, the Court of Appeal, and the Supreme Court (Dika Court), supplemented by specialised tribunals including the IP&amp;IT Court, Labour Court, Tax Court, and Administrative Court. Dej-Udom &amp; Associates has maintained an active litigation practice since establishment, combining deep courtroom experience with strategic case management. For resolution outside court, Thailand offers well-developed ADR mechanisms under the Arbitration Act B.E. 2545.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'litigation','civil')">Litigation</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'litigation','arbitration')">Arbitration</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'litigation','mediation')">Mediation</button>
-    </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="litigation-civil">
-        <h3>Civil &amp; Commercial Litigation</h3>
-        <div class="pa-body">
-          <p>We represent clients from the Courts of First Instance through to the Supreme Court, handling high-value commercial disputes, contract claims, shareholder disputes, and debt recovery proceedings. Our team has particular depth in employment matters, IP and international trade cases, and tax disputes before the specialised courts.</p>
-          <p>For foreign clients unfamiliar with the Thai court system, we provide clear guidance on procedure, realistic assessments of timeline and cost, and strategic advice on whether litigation is the most effective path to resolution.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list">Civil and commercial litigation, shareholder and joint venture disputes, contract enforcement, debt recovery, employment and labour disputes, IP infringement proceedings, international trade court matters, tax court disputes, criminal defence for business-related offences, bankruptcy and restructuring.</div>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="litigation-arbitration">
-        <h3>Domestic &amp; International Arbitration</h3>
-        <div class="pa-body">
-          <p>For disputes involving international parties or cross-border transactions, arbitration is often the preferred forum. We handle matters before the Thai Arbitration Institute (TAI), the Thailand Arbitration Center (THAC), and advise on proceedings under ICC, SIAC, and HKIAC rules.</p>
-          <p>We also advise on the enforcement of foreign arbitral awards in Thailand under the New York Convention, and assist foreign clients seeking to enforce Thai arbitral awards in other jurisdictions. Our approach prioritises efficiency and cost-effectiveness while protecting our clients' commercial interests.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list">Domestic arbitration (TAI, THAC), international arbitration (ICC, SIAC, HKIAC rules), enforcement of foreign arbitral awards under the New York Convention, arbitration clause drafting and review, interim measures and emergency arbitration, investor-state disputes.</div>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="litigation-mediation">
-        <h3>Mediation &amp; Alternative Dispute Resolution</h3>
-        <div class="pa-body">
-          <p>Not every dispute requires a courtroom. We advise clients on mediation and other forms of alternative dispute resolution where a negotiated settlement is more practical, cost-effective, or commercially desirable than formal proceedings.</p>
-          <p>Our team acts as counsel in mediation proceedings and also assists in structuring settlement agreements that are enforceable across jurisdictions. For ongoing commercial relationships where preserving the partnership matters, mediation often achieves better outcomes than adversarial processes.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label" data-i18n="home.overlay.handles_label">What We Handle</div>
-          <div class="handles-list">Court-annexed mediation, private mediation, negotiated settlements, dispute prevention advisory, settlement agreement drafting, multi-party dispute coordination, pre-litigation negotiation strategy.</div>
-        </div>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Commercial Litigation</div><div class="service-detail">Contract disputes, shareholder disputes, director liability, and debt recovery.</div></div>
+        <div class="pa-service-item"><div class="service-name">International Arbitration</div><div class="service-detail">Representation under ICC, SIAC, HKIAC, JCAA, and UNCITRAL rules. New York Convention enforcement.</div></div>
+        <div class="pa-service-item"><div class="service-name">Domestic Arbitration</div><div class="service-detail">Thai Arbitration Institute proceedings and ad hoc arbitration.</div></div>
+        <div class="pa-service-item"><div class="service-name">IP Litigation</div><div class="service-detail">Infringement actions before the IP&amp;IT Court. Criminal prosecution of IP infringement.</div></div>
+        <div class="pa-service-item"><div class="service-name">Employment Disputes</div><div class="service-detail">Wrongful termination, severance disputes, and non-compete enforcement before the Labour Court.</div></div>
+        <div class="pa-service-item"><div class="service-name">Mediation &amp; Negotiation</div><div class="service-detail">Court-annexed and private mediation. Multi-party dispute resolution.</div></div>
       </div>
     </div>
-    <div class="pa-cta" style="padding:0 48px 48px;">
-      <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
-      <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>How long does commercial litigation take?</summary><div class="pa-faq-answer">First instance: 1–3 years. Appeal: 1–2 years additional. Supreme Court: 2–3 years additional. IP&amp;IT and Labour Courts: 8–18 months.</div></details>
+        <details class="pa-faq-item"><summary>Can foreign arbitral awards be enforced?</summary><div class="pa-faq-answer">Yes. Thailand is a New York Convention signatory. Enforcement must be filed within three years.</div></details>
+        <details class="pa-faq-item"><summary>What are the advantages of arbitration?</summary><div class="pa-faq-answer">English-language proceedings, party-selected arbitrators, finality, confidentiality, and cross-border enforcement via the New York Convention.</div></details>
+        <details class="pa-faq-item"><summary>What remedies are available?</summary><div class="pa-faq-answer">Monetary damages, specific performance, injunctions, declaratory relief, rescission, and asset attachment.</div></details>
+        <details class="pa-faq-item"><summary>Must proceedings be in Thai?</summary><div class="pa-faq-answer">Yes. All filings, evidence, and arguments in Thai. Foreign documents require certified translation.</div></details>
+      </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Litigation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
     </div>
   </div>
 </div>
-
 
 <!-- NOTARIAL -->
 <div class="pa-overlay" id="pa-notarial">
@@ -2513,58 +2570,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>Employment &amp; Labour Law</h2>
-      <p class="pa-overview">Strategic employment advisory encompassing the full lifecycle of the employer-employee relationship — from contracts and HR policies through termination, Labour Court litigation, and workforce restructuring under the Thai Labour Protection Act.</p>
+      <p class="pa-overview">Thai employment law is principally governed by the Labour Protection Act B.E. 2541 (1998), as amended in 2019, together with the Labour Relations Act, Social Security Act, and related legislation. Dej-Udom &amp; Associates advises employers across all facets — from structuring employment relationships and drafting contracts through compliance management to termination and post-employment restrictions. Thai employment law is fundamentally protective of employees, and the Labour Court consistently demonstrates a pro-employee orientation.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'employment','contracts')">Contracts &amp; Policies</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'employment','termination')">Termination &amp; Disputes</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'employment','restructuring')">Workforce Restructuring</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Employment Contracts &amp; Policies</div><div class="service-detail">Employment contracts, work rules, handbooks, and HR policy manuals. Bilingual Thai-English documentation.</div></div>
+        <div class="pa-service-item"><div class="service-name">Termination &amp; Severance</div><div class="service-detail">Lawful termination procedures, statutory severance calculation, and termination for cause under Section 119.</div></div>
+        <div class="pa-service-item"><div class="service-name">Labour Disputes &amp; Litigation</div><div class="service-detail">Representation before the Labour Court in wrongful termination and wage disputes.</div></div>
+        <div class="pa-service-item"><div class="service-name">Social Security &amp; Provident Fund</div><div class="service-detail">SSF registration, workmen's compensation, and provident fund administration.</div></div>
+        <div class="pa-service-item"><div class="service-name">Non-Compete &amp; Confidentiality</div><div class="service-detail">Drafting and enforcement of non-competition agreements under Thai Supreme Court jurisprudence.</div></div>
+        <div class="pa-service-item"><div class="service-name">Workforce Restructuring</div><div class="service-detail">Redundancy programmes, mass termination, business transfers, and Section 75 notifications.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="employment-contracts">
-        <h3>Employment Contracts &amp; HR Policies</h3>
-        <div class="pa-body">
-          <p>We draft and review employment agreements, work rules, employee handbooks, and HR policy manuals for companies operating in Thailand. All documentation is prepared in bilingual Thai-English format to ensure enforceability before the Labour Court.</p>
-          <p>For multinational employers, we reconcile global HR standards with mandatory Thai statutory requirements — including the Labour Protection Act's provisions on working hours, leave entitlements, social security, and disciplinary procedures.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Employment contracts (fixed-term and indefinite), work rules and employee handbooks, HR policy manuals, non-compete and confidentiality agreements, social security registration, provident fund advisory, expat compensation structuring, offer letters and executive service agreements.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Employment%20Law%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>What severance pay is required upon termination?</summary><div class="pa-faq-answer">30 days' wages (120 days–1 year); 90 days' (1–3 years); 180 days' (3–6 years); 240 days' (6–10 years); 300 days' (10–20 years); 400 days' (20+ years). Plus special severance of 15 days/year for 6+ years of service.</div></details>
+        <details class="pa-faq-item"><summary>Can employers terminate without cause?</summary><div class="pa-faq-answer">Yes, but with advance notice and full statutory severance. The Labour Court may order reinstatement if termination is found unfair.</div></details>
+        <details class="pa-faq-item"><summary>Are non-compete agreements enforceable?</summary><div class="pa-faq-answer">Yes, if reasonable in scope, duration (1–2 years), and geography. Thai courts do not narrow overbroad clauses — they strike them down entirely.</div></details>
+        <details class="pa-faq-item"><summary>What are statutory leave entitlements?</summary><div class="pa-faq-answer">Annual leave (6 days minimum), sick leave (30 paid days), personal leave (3 paid days), maternity (98 days), plus 13 traditional holidays and weekly rest.</div></details>
+        <details class="pa-faq-item"><summary>What happens to employees in a business sale?</summary><div class="pa-faq-answer">Under Section 13, the buyer assumes all obligations. The transfer cannot diminish rights. Employees refusing transfer receive severance from the seller.</div></details>
       </div>
-      <div class="pa-sub-section" id="employment-termination">
-        <h3>Termination, Severance &amp; Labour Court</h3>
-        <div class="pa-body">
-          <p>Thai employment law is fundamentally protective of employees. The Labour Court demonstrates a consistent pro-employee orientation. We advise employers on lawful termination procedures, statutory severance calculation, and the grounds for termination without severance under Section 119 of the Labour Protection Act.</p>
-          <p>Statutory severance ranges from 30 days (120 days–1 year of service) to 400 days (over 20 years), with an additional special severance of 15 days per year for employees with 6+ years of service. We also represent employers before the Labour Court in wrongful termination and wage disputes.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Termination procedures and notices, statutory severance calculation, termination for cause (Section 119), Labour Court representation, wrongful termination defence, wage disputes, non-compete enforcement, redundancy and layoff programmes, settlement negotiations.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Termination%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="employment-restructuring">
-        <h3>Workforce Restructuring</h3>
-        <div class="pa-body">
-          <p>Business transfers, factory closures, and downsizing in Thailand require careful compliance with the Labour Protection Act. Section 75 requires 60 days' notice to the Labour Department for temporary work suspension. Business transfers under Section 13 impose automatic assumption of all obligations by the buyer.</p>
-          <p>We advise on structuring compliant redundancy programmes that minimise litigation risk while achieving the employer's commercial objectives — including mass termination, partial closure, outsourcing, and post-M&amp;A integration.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Mass redundancy programmes, Section 75 notifications, business transfer compliance (Section 13), factory and operations closure, post-M&amp;A workforce integration, outsourcing structuring, voluntary separation schemes, employment audit and gap remediation.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Workforce%20Restructuring%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Employment%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2578,58 +2612,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>Data Privacy &amp; PDPA</h2>
-      <p class="pa-overview">End-to-end PDPA compliance advisory — from gap analysis and programme design through DPO services, breach response, and cross-border transfer frameworks. Thailand's PDPA has been in full force since 1 June 2022, with enforcement actively increasing.</p>
+      <p class="pa-overview">Thailand's PDPA B.E. 2562 (2019), in full force since 1 June 2022, establishes obligations for data controllers and processors, grants data subjects enforceable rights, and imposes fines up to THB 5 million, criminal penalties, and civil liability. The PDPC has progressively issued subordinate regulations on consent, data breach notification, DPO appointment, and cross-border transfers. Dej-Udom &amp; Associates provides end-to-end PDPA advisory — from gap analysis through DPO support and breach response.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'pdpa','compliance')">PDPA Compliance</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'pdpa','dpo')">DPO Services</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'pdpa','breach')">Breach Response</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">PDPA Compliance Programme Design</div><div class="service-detail">Gap analysis, compliance roadmaps, privacy policies, ROPA, and lawful basis assessments.</div></div>
+        <div class="pa-service-item"><div class="service-name">Data Protection Officer (DPO) Services</div><div class="service-detail">DPO appointment advisory, outsourced DPO services, and PDPC interface management.</div></div>
+        <div class="pa-service-item"><div class="service-name">Data Breach Response</div><div class="service-detail">Incident response planning, PDPC notification within 72 hours, and remediation programmes.</div></div>
+        <div class="pa-service-item"><div class="service-name">Cross-Border Data Transfer</div><div class="service-detail">Transfer mechanism assessment including adequacy, BCRs, and standard contractual clauses.</div></div>
+        <div class="pa-service-item"><div class="service-name">Privacy Impact Assessment</div><div class="service-detail">DPIAs for high-risk processing, legitimate interest assessments, and balancing tests.</div></div>
+        <div class="pa-service-item"><div class="service-name">PDPA Training &amp; Awareness</div><div class="service-detail">Organisation-wide training, department workshops, and board-level governance briefings.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="pdpa-compliance">
-        <h3>PDPA Compliance Programme Design</h3>
-        <div class="pa-body">
-          <p>Thailand's PDPA imposes obligations on any organisation collecting or processing personal data of individuals in Thailand — regardless of where the organisation is established. Penalties reach THB 5 million in administrative fines, with criminal penalties of up to one year imprisonment and civil liability of up to 2× actual damages.</p>
-          <p>We provide gap analysis against PDPA requirements, design compliance roadmaps, draft privacy policies and Records of Processing Activities (ROPA), establish lawful basis frameworks, and implement consent management systems tailored to your operations.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">PDPA gap analysis, compliance roadmap and programme design, privacy policies and notices, Records of Processing Activities (ROPA), lawful basis assessment, consent management, vendor and processor agreements, data subject rights procedures, Privacy Impact Assessments (DPIA), PDPA training and awareness.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=PDPA%20Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>Does the PDPA apply to foreign companies?</summary><div class="pa-faq-answer">Yes. The PDPA applies to any organisation collecting or processing personal data of individuals in Thailand, regardless of where the organisation is established.</div></details>
+        <details class="pa-faq-item"><summary>When must a DPO be appointed?</summary><div class="pa-faq-answer">Since December 2023, required where core activities involve large-scale processing requiring regular monitoring, or large-scale processing of sensitive data.</div></details>
+        <details class="pa-faq-item"><summary>What are the penalties for non-compliance?</summary><div class="pa-faq-answer">Administrative fines up to THB 5 million; criminal penalties up to 1 year/THB 1 million; civil liability with punitive damages up to 2x actual damages. Personal officer liability applies.</div></details>
+        <details class="pa-faq-item"><summary>How does the PDPA differ from the GDPR?</summary><div class="pa-faq-answer">Key differences: broader lawful bases, no formal data portability, different cross-border rules, criminal penalties, and still-developing subordinate regulations.</div></details>
+        <details class="pa-faq-item"><summary>What should be done in a data breach?</summary><div class="pa-faq-answer">Assess severity, notify PDPC within 72 hours, notify affected data subjects if high risk, and document the breach and remedial actions.</div></details>
       </div>
-      <div class="pa-sub-section" id="pdpa-dpo">
-        <h3>Data Protection Officer (DPO) Services</h3>
-        <div class="pa-body">
-          <p>Since December 2023, the PDPA requires DPO appointment where core activities involve large-scale processing requiring regular monitoring, or large-scale processing of sensitive personal data. We advise on whether appointment is required and provide outsourced DPO services for organisations that lack the internal capability.</p>
-          <p>Our outsourced DPO service covers ongoing compliance monitoring, handling data subject requests, acting as the interface with the PDPC, managing internal awareness, and advising on high-risk processing activities.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">DPO appointment advisory and eligibility assessment, outsourced DPO services, PDPC interface management, data subject request handling, annual compliance review, DPO register maintenance, employee data rights procedures, high-risk processing oversight.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=DPO%20Services%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="pdpa-breach">
-        <h3>Breach Response &amp; Cross-Border Transfers</h3>
-        <div class="pa-body">
-          <p>A personal data breach must be notified to the PDPC within 72 hours of discovery. Where there is high risk to data subjects, affected individuals must also be notified. We provide incident response planning, 72-hour PDPC notification support, and post-breach remediation programmes.</p>
-          <p>For organisations transferring personal data outside Thailand, we assess adequacy, advise on binding corporate rules (BCRs), and structure standard contractual clauses (SCCs) compliant with the PDPC's cross-border transfer regulations.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Incident response planning, 72-hour PDPC breach notification, data subject notification assessment, breach remediation, cross-border transfer mechanism assessment, adequacy determinations, BCR advisory, standard contractual clauses, PDPA litigation defence, regulatory investigation support.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Data%20Breach%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=PDPA%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2643,58 +2654,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>Taxation</h2>
-      <p class="pa-overview">Strategic tax advisory for domestic and cross-border transactions — integrating the Thai Revenue Code with Thailand's 60+ double taxation agreements to optimise structures and manage risk. Significant changes to foreign-sourced income taxation took effect 1 January 2024.</p>
+      <p class="pa-overview">Thailand's tax system imposes CIT at 20%, personal income tax up to 35%, VAT at 7%, specific business tax, and stamp duty. A fundamental shift occurred on 1 January 2024 restructuring foreign-sourced income taxation — Thai tax residents who bring foreign income into Thailand are now assessable regardless of when earned. Dej-Udom &amp; Associates provides strategic tax advisory integrating domestic law with 60+ double taxation agreements.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'taxation','corporate')">Corporate Tax</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'taxation','transfer')">Transfer Pricing</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'taxation','international')">International Tax</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Corporate Tax Planning</div><div class="service-detail">Tax-efficient structuring, profit repatriation, BOI incentives, and PE risk management.</div></div>
+        <div class="pa-service-item"><div class="service-name">Transfer Pricing</div><div class="service-detail">Documentation, arm's length analysis, advance pricing agreements, and defence of assessments.</div></div>
+        <div class="pa-service-item"><div class="service-name">International Tax &amp; Treaty Planning</div><div class="service-detail">Cross-border structuring with 60+ DTAs, withholding tax optimisation, and holding structures.</div></div>
+        <div class="pa-service-item"><div class="service-name">Tax Disputes &amp; Controversy</div><div class="service-detail">Assessment appeals, Tax Court litigation, and negotiated settlements.</div></div>
+        <div class="pa-service-item"><div class="service-name">VAT &amp; Indirect Taxes</div><div class="service-detail">VAT compliance, specific business tax, customs duty, and excise matters.</div></div>
+        <div class="pa-service-item"><div class="service-name">Personal Tax &amp; Expatriate Tax</div><div class="service-detail">Residency analysis, 2024 foreign income rules, and expatriate compensation structuring.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="taxation-corporate">
-        <h3>Corporate Tax Planning &amp; Compliance</h3>
-        <div class="pa-body">
-          <p>Thailand imposes corporate income tax (CIT) at 20%, with reduced rates for SMEs and BOI-promoted companies receiving up to 13 years' full exemption. We advise on tax-efficient structuring of Thai operations, profit repatriation via dividends and intercompany charges, and permanent establishment risk management for foreign companies operating in Thailand.</p>
-          <p>Since 1 January 2024, Thai tax residents are assessable on foreign-sourced income remitted to Thailand regardless of when earned — reversing the previous year-of-income rule. We advise expatriates and companies on the implications of this change.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">CIT planning and structuring, BOI tax incentives, PE risk management, profit repatriation, VAT compliance, specific business tax, withholding tax, stamp duty, personal income tax for expatriates, foreign income tax (2024 rules), Tax Court appeals, Revenue Department audits.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Tax%20Planning%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>What is the corporate income tax rate?</summary><div class="pa-faq-answer">Standard 20%. SMEs: 0% on first THB 300,000, 15% thereafter. BOI companies: up to 13 years' exemption.</div></details>
+        <details class="pa-faq-item"><summary>How are foreign companies taxed?</summary><div class="pa-faq-answer">Branches/PEs: 20% on Thai-sourced income plus 10% profit remittance tax. Subsidiaries: worldwide income with DTA-reduced withholding on dividends.</div></details>
+        <details class="pa-faq-item"><summary>What are transfer pricing requirements?</summary><div class="pa-faq-answer">Companies with related-party transactions exceeding THB 200M/year must file disclosure forms and prepare full documentation.</div></details>
+        <details class="pa-faq-item"><summary>How has foreign income taxation changed?</summary><div class="pa-faq-answer">Since 1 January 2024, Thai tax residents are assessable on remitted foreign income regardless of when earned.</div></details>
+        <details class="pa-faq-item"><summary>Can DTAs reduce withholding tax?</summary><div class="pa-faq-answer">Yes. 60+ DTAs typically reduce dividends to 5–10%, interest to 10–15%, and royalties to 5–15%.</div></details>
       </div>
-      <div class="pa-sub-section" id="taxation-transfer">
-        <h3>Transfer Pricing</h3>
-        <div class="pa-body">
-          <p>Companies with related-party transactions exceeding THB 200 million per year are required to file disclosure forms and prepare full transfer pricing documentation demonstrating arm's length pricing. The Revenue Department has significantly increased transfer pricing assessments in 2024–2026.</p>
-          <p>We prepare transfer pricing documentation, conduct arm's length analysis, assist with advance pricing agreement (APA) submissions, and defend assessments before the Revenue Department and Tax Court.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Transfer pricing documentation and policy, arm's length analysis (comparable searches), disclosure form preparation, advance pricing agreements (APA), Revenue Department examination defence, Tax Court litigation, management fee and royalty structuring, intercompany agreement review.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Transfer%20Pricing%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="taxation-international">
-        <h3>International Tax &amp; Treaty Planning</h3>
-        <div class="pa-body">
-          <p>Thailand has over 60 double taxation agreements (DTAs), typically reducing dividend withholding to 5–10%, interest to 10–15%, and royalties to 5–15%. We advise on DTA-based structuring for ASEAN holding structures, regional headquarters, and inbound investment from major trading partners.</p>
-          <p>For multinational groups, we assist with regional tax structuring through Thailand's International Business Centre (IBC) regime, which offers reduced tax rates on qualifying income and enhanced DTA benefits.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">DTA analysis and treaty planning, withholding tax optimisation, IBC regime advisory, holding structure design, cross-border dividend and royalty flows, permanent establishment analysis, BEPS compliance, substance requirements, offshore income management (2024 rules), expatriate tax planning.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=International%20Tax%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Tax%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2708,58 +2696,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>Real Estate &amp; Property</h2>
-      <p class="pa-overview">Navigating Thailand's property ownership framework for foreign investors — from condominium freehold to commercial leasehold and land use compliance. The regulatory environment has tightened significantly, including the Supreme Court's 2025 ruling invalidating 30+30+30 lease structures.</p>
+      <p class="pa-overview">Thailand's property law, anchored by the Land Code B.E. 2497, Condominium Act B.E. 2522, and the Civil and Commercial Code, imposes fundamental restrictions on foreign land ownership while providing defined investment pathways. The environment has tightened in 2024–2026 — the Supreme Court's March 2025 decision invalidated "30+30+30" lease structures, and nominee enforcement targeted 46,000+ companies. Dej-Udom &amp; Associates advises on transactions structured within Thai law.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'realestate','acquisition')">Acquisition</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'realestate','leasehold')">Leasehold &amp; Commercial</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'realestate','diligence')">Due Diligence</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Condominium Acquisition</div><div class="service-detail">Foreign freehold within the 49% quota, Tor Tor 3 compliance, and Land Department registration.</div></div>
+        <div class="pa-service-item"><div class="service-name">Leasehold Structuring</div><div class="service-detail">Long-term leases post-2025 Supreme Court ruling, commercial leases, and renewal strategies.</div></div>
+        <div class="pa-service-item"><div class="service-name">Property Due Diligence</div><div class="service-detail">Title search, encumbrances, zoning, environmental assessments, and building permits.</div></div>
+        <div class="pa-service-item"><div class="service-name">Commercial Property</div><div class="service-detail">Office and retail leases, industrial property, and logistics facility structuring.</div></div>
+        <div class="pa-service-item"><div class="service-name">Construction &amp; Development</div><div class="service-detail">Construction contracts, EIA compliance, permits, and project finance.</div></div>
+        <div class="pa-service-item"><div class="service-name">Property Disputes</div><div class="service-detail">Boundary disputes, lease termination, construction defects, and Land Department proceedings.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="realestate-acquisition">
-        <h3>Condominium &amp; Property Acquisition</h3>
-        <div class="pa-body">
-          <p>Foreign nationals may acquire condominium units in freehold ownership within the statutory 49% foreign quota. We advise on Tor Tor 3 (FET) compliance for remittance of foreign funds, unit transfer documentation, mortgage structuring, and common area rights under the Condominium Act.</p>
-          <p>For those seeking land exposure, we advise on lawful structures — including BOI-promoted land rights for qualifying investments, long-term leasehold (up to 30 years, with careful structuring post the 2025 Supreme Court ruling), and company-held land structures that comply with the Foreign Business Act and Land Code.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Condominium purchase and transfer, foreign quota verification, FET compliance (Tor Tor 3), mortgage and security documentation, off-plan purchase agreements, property sale and purchase agreements, BOI land rights advisory, usufruct and superficies structures.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Property%20Acquisition%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>Can foreigners own land in Thailand?</summary><div class="pa-faq-answer">Generally no. Narrow exceptions: THB 40M+ investment under Section 96 bis, BOI-promoted companies, Industrial Estates, and US Treaty of Amity. Nominee structures are illegal.</div></details>
+        <details class="pa-faq-item"><summary>Can foreigners own condominiums?</summary><div class="pa-faq-answer">Yes. Freehold ownership if building's foreign quota is under 49% and funds are remitted from abroad (Tor Tor 3 form required).</div></details>
+        <details class="pa-faq-item"><summary>What happened to "30+30+30" leases?</summary><div class="pa-faq-answer">The Supreme Court's March 2025 decision confirmed renewals beyond 30 years are not enforceable against subsequent landowners.</div></details>
+        <details class="pa-faq-item"><summary>What due diligence is needed?</summary><div class="pa-faq-answer">Title verification, encumbrance search, zoning, building permits, environmental assessment, access roads, foreign quota check, and litigation review.</div></details>
+        <details class="pa-faq-item"><summary>What are transfer costs?</summary><div class="pa-faq-answer">Transfer fee (2%), specific business tax (3.3% if under 5 years) or stamp duty (0.5% if over 5 years), and withholding income tax.</div></details>
       </div>
-      <div class="pa-sub-section" id="realestate-leasehold">
-        <h3>Leasehold &amp; Commercial Property</h3>
-        <div class="pa-body">
-          <p>Thailand permits leasehold terms of up to 30 years, renewable by contract. Following the Supreme Court's March 2025 decision, "30+30+30" lease structures (relying on pre-agreed renewal obligations) are no longer reliable. We advise on compliant leasehold structuring, including registration of initial 30-year terms at the Land Department.</p>
-          <p>For commercial property, we advise on office, retail, industrial, and hotel lease agreements — including fit-out, reinstatement, rent review mechanisms, subletting rights, and termination provisions.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Leasehold structuring (post-2025 Supreme Court ruling), 30-year lease registration, commercial lease negotiation and drafting, industrial estate lease agreements, hotel and resort property, fit-out and reinstatement obligations, lease assignment and subletting, property dispute resolution.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Leasehold%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="realestate-diligence">
-        <h3>Property Due Diligence</h3>
-        <div class="pa-body">
-          <p>Before any property transaction, we conduct comprehensive legal due diligence on title, encumbrances, zoning, building permits, and environmental compliance. We examine Land Department records, verify the Chanote (Nor Sor 4 Jor) title, and check for mortgages, servitudes, and restriction notifications.</p>
-          <p>For development projects, we advise on construction permits, EIA requirements, building control compliance, and contractor agreements under the Construction Control Act.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Title search and verification (Chanote, Nor Sor 3 Gor), encumbrance and mortgage review, zoning and land use checks, building permit verification, EIA compliance, nominee ownership risk assessment, construction and development agreements, property litigation and dispute resolution.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Property%20Due%20Diligence%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Property%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2773,58 +2738,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>Banking &amp; Finance</h2>
-      <p class="pa-overview">Regulatory and transactional advisory across banking, securities, fintech, digital assets, and structured finance — navigating Thailand's evolving financial regulatory framework under the Bank of Thailand (BOT), Securities and Exchange Commission (SEC), and Ministry of Finance.</p>
+      <p class="pa-overview">Thailand's financial services framework is supervised by three regulators: the Bank of Thailand (BOT), the Securities and Exchange Commission (SEC), and the Office of Insurance Commission (OIC). The landscape has transformed in 2024–2026 with virtual banking licences, the BOT's Programmable Payment Sandbox, and stricter foreign exchange documentation. Dej-Udom &amp; Associates advises on regulatory compliance, transactions, and market entry at the intersection of financial regulation, corporate law, and foreign investment.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'banking','regulatory')">Banking Regulation</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'banking','securities')">Securities &amp; Capital Markets</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'banking','fintech')">Fintech &amp; Digital Assets</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">Banking Regulatory Compliance</div><div class="service-detail">Licensing, BOT filings, capital adequacy, and AML/CFT frameworks.</div></div>
+        <div class="pa-service-item"><div class="service-name">Securities &amp; Capital Markets</div><div class="service-detail">Securities offerings, IPO advisory, fund formation, and SEC compliance.</div></div>
+        <div class="pa-service-item"><div class="service-name">Fintech &amp; Digital Assets</div><div class="service-detail">Digital asset licensing, e-payment licensing, sandbox participation, and blockchain advisory.</div></div>
+        <div class="pa-service-item"><div class="service-name">Foreign Exchange &amp; Capital Controls</div><div class="service-detail">BOT forex regulations, Tor Tor 3 compliance, and capital repatriation documentation.</div></div>
+        <div class="pa-service-item"><div class="service-name">Project &amp; Structured Finance</div><div class="service-detail">Project finance documentation, security packages, and syndicated lending.</div></div>
+        <div class="pa-service-item"><div class="service-name">Lending &amp; Security</div><div class="service-detail">Loan documentation, mortgages, pledges, Business Security Act, and enforcement.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="banking-regulatory">
-        <h3>Banking Regulatory Compliance</h3>
-        <div class="pa-body">
-          <p>Thailand's banking system is regulated by the Bank of Thailand under the Financial Institution Business Act B.E. 2551. We advise financial institutions on regulatory licensing requirements, BOT notifications and compliance, foreign exchange controls under the Exchange Control Act, and capital adequacy requirements.</p>
-          <p>For foreign financial institutions entering Thailand, we advise on representative office, branch, and subsidiary structures, BOT approval processes, and operational compliance with Thai banking regulations.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">BOT licensing and approvals, financial institution regulatory compliance, foreign exchange control compliance, correspondent banking arrangements, payment system operator licensing, credit card and personal loan business licensing, anti-money laundering (AML) compliance, financial regulatory investigations.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Banking%20Regulation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>What licences are needed for fintech?</summary><div class="pa-faq-answer">E-payment: BOT licence. Digital asset exchange: SEC licence. P2P lending: BOT sandbox. Insurtech: OIC regulation.</div></details>
+        <details class="pa-faq-item"><summary>Can foreign banks operate in Thailand?</summary><div class="pa-faq-answer">Through existing licensed branches (no new licences since 2008), subsidiary banks, or representative offices. Virtual banking is a new 2025 pathway.</div></details>
+        <details class="pa-faq-item"><summary>What foreign exchange controls apply?</summary><div class="pa-faq-answer">Foreign currency over USD 50,000 must be converted/deposited within 360 days. Outward remittance needs documentation. Inbound investment requires Tor Tor 3.</div></details>
+        <details class="pa-faq-item"><summary>How are digital assets regulated?</summary><div class="pa-faq-answer">Under the 2018 Emergency Decree, supervised by the SEC. All digital asset businesses need SEC licensing.</div></details>
+        <details class="pa-faq-item"><summary>What are virtual banking regulations?</summary><div class="pa-faq-answer">Three licences approved mid-2025. Operations expected 2026 under restricted initial phase. Branchless, technology-driven models for financial inclusion.</div></details>
       </div>
-      <div class="pa-sub-section" id="banking-securities">
-        <h3>Securities &amp; Capital Markets</h3>
-        <div class="pa-body">
-          <p>Thailand's capital markets are regulated by the Securities and Exchange Commission under the Securities and Exchange Act B.E. 2535. We advise on public offerings, listed company compliance, investment management licensing, and cross-border securities transactions.</p>
-          <p>For foreign portfolio investors, we advise on BOT custodian requirements, foreign investment limits, and repatriation of investment proceeds. For project finance and structured transactions, we advise on security structures, syndicated lending, and offshore financing arrangements.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">SEC registration and approval, public offering documentation, listed company compliance, investment management licensing, securities offering in Thailand, cross-border investment structuring, project finance documentation, syndicated lending, bond issuance, security creation and enforcement.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Securities%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="banking-fintech">
-        <h3>Fintech &amp; Digital Assets</h3>
-        <div class="pa-body">
-          <p>Thailand's digital asset regulatory framework — comprising the Emergency Decree on Digital Asset Businesses B.E. 2561 and SEC regulations — covers cryptocurrency exchanges, digital asset brokers, dealers, advisors, and fund managers. We advise on SEC licensing, token offering compliance, and operational requirements.</p>
-          <p>For payment service providers and e-money operators, we advise on BOT Payment Systems Act licensing, e-money issuance, and PDPA compliance for financial data processing.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">Digital asset exchange and broker licensing (SEC), token offering (ICO portal) compliance, cryptocurrency business structuring, e-money operator licensing (BOT), payment service provider compliance, sandbox programme advisory, AML/CFT for digital asset businesses, PDPA compliance for fintech.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=Fintech%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=Banking%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
@@ -2838,58 +2780,35 @@
     <div class="pa-header">
       <div class="pa-label">Practice Area</div>
       <h2>BOI &amp; Investment Promotion</h2>
-      <p class="pa-overview">End-to-end advisory on Board of Investment (BOI) promotion — from initial strategy and application through post-promotion compliance, OSSC immigration services, and audit defence. Dej-Udom &amp; Associates is a BOI Certified Agency for LTR Visa submissions.</p>
+      <p class="pa-overview">The BOI, under the Investment Promotion Act B.E. 2520, confers CIT exemptions up to 13 years, import duty exemptions, 100% foreign ownership, land ownership permission, and expedited OSSC processing. The current framework categorises activities into groups A1+ through A4, with enhanced incentives for EEC investments. Dej-Udom &amp; Associates manages the full BOI lifecycle: pre-application analysis, application, approval, and post-promotion compliance.</p>
     </div>
-    <div class="pa-subnav">
-      <button class="pa-subnav-btn active" onclick="switchTab(event,'boi','application')">BOI Application</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'boi','compliance')">Post-Promotion</button>
-      <button class="pa-subnav-btn" onclick="switchTab(event,'boi','eec')">EEC &amp; Special Zones</button>
+    <div class="pa-section">
+      <div class="pa-section-title">Our Services</div>
+      <div class="pa-services-grid">
+        <div class="pa-service-item"><div class="service-name">BOI Application Strategy</div><div class="service-detail">Feasibility analysis, activity classification, incentive optimisation, and business plan preparation.</div></div>
+        <div class="pa-service-item"><div class="service-name">BOI Application &amp; Approval</div><div class="service-detail">Application preparation, review panel presentations, condition negotiation, and certificate issuance.</div></div>
+        <div class="pa-service-item"><div class="service-name">Post-Promotion Compliance</div><div class="service-detail">Annual reporting (Bor.1), CIT exemption management, import duties, and machine lists.</div></div>
+        <div class="pa-service-item"><div class="service-name">OSSC Immigration Services</div><div class="service-detail">Expedited work permits and visas through the One-Stop Service Centre.</div></div>
+        <div class="pa-service-item"><div class="service-name">EEC &amp; Special Zone Incentives</div><div class="service-detail">Enhanced incentives for Eastern Economic Corridor and special economic zones.</div></div>
+        <div class="pa-service-item"><div class="service-name">BOI Audit Defence &amp; Amendment</div><div class="service-detail">Audit defence, condition amendments, activity scope changes, and disputes.</div></div>
+      </div>
     </div>
-    <div class="pa-content">
-      <div class="pa-sub-section active" id="boi-application">
-        <h3>BOI Application Strategy &amp; Approval</h3>
-        <div class="pa-body">
-          <p>BOI promotion under the Investment Promotion Act B.E. 2520 provides significant incentives — including CIT exemption for up to 13 years, import duty exemptions, and foreign land ownership rights — for qualifying businesses in targeted sectors such as manufacturing, technology, R&amp;D, and services.</p>
-          <p>We advise on eligibility assessment, activity classification under the BOI's promoted categories, application strategy (Category A1 through B2), conditions negotiation, and approval processing. Applications for targeted industries — including next-generation automotive, smart electronics, biotechnology, and digital economy — receive priority treatment.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">BOI eligibility assessment, activity and category classification, application preparation and filing, BOI conditions negotiation, project commencement approval, machine importation exemptions, raw material import duty exemptions, IBC promotion applications, IEAT Zone applications.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=BOI%20Application%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    <div class="pa-divider"></div>
+    <div class="pa-section">
+      <div class="pa-section-title">Frequently Asked Questions</div>
+      <div class="pa-faq-list">
+        <details class="pa-faq-item"><summary>What are the main BOI benefits?</summary><div class="pa-faq-answer">CIT exemption 3–13 years, 50% CIT reduction for 5 more years, import duty exemptions, 100% foreign ownership, land ownership, OSSC immigration, and forex remittance.</div></details>
+        <details class="pa-faq-item"><summary>How long does the BOI application take?</summary><div class="pa-faq-answer">60–90 working days for review. Six months to accept and satisfy pre-operation conditions.</div></details>
+        <details class="pa-faq-item"><summary>What businesses qualify?</summary><div class="pa-faq-answer">Activities across agriculture, manufacturing, technology, services, and infrastructure. Maximum incentives for digital tech, biotech, EV, aerospace, and medical devices.</div></details>
+        <details class="pa-faq-item"><summary>Can BOI companies employ unlimited foreign workers?</summary><div class="pa-faq-answer">Exempt from the 4:1 ratio, but positions must be approved in the application. Technology transfer plans may be required.</div></details>
+        <details class="pa-faq-item"><summary>What if compliance fails?</summary><div class="pa-faq-answer">Suspension or revocation triggers repayment of all tax benefits plus surcharges. Audits have intensified.</div></details>
       </div>
-      <div class="pa-sub-section" id="boi-compliance">
-        <h3>Post-Promotion Compliance &amp; OSSC</h3>
-        <div class="pa-body">
-          <p>BOI-promoted companies must comply with ongoing conditions — including production commencement reporting, machine importation within prescribed periods, annual performance reports, and capital investment requirements. Failure to comply risks revocation of promotion and tax benefit clawback.</p>
-          <p>As a BOI Certified Agency, we provide expedited immigration processing through the One-Stop Service Centre (OSSC) at Chamchuri Square — combining visa extension and work permit renewal in a single visit, typically within 3–5 working days.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">BOI annual performance reports, promotion condition compliance, machine importation and disposal management, OSSC immigration processing (visa + work permit), BOI employee headcount notifications, promotion amendment applications, promotion transfer on M&amp;A, BOI audit support and defence.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=BOI%20Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
-      </div>
-      <div class="pa-sub-section" id="boi-eec">
-        <h3>EEC &amp; Special Economic Zones</h3>
-        <div class="pa-body">
-          <p>The Eastern Economic Corridor (EEC) — comprising Chonburi, Rayong, and Chachoengsao — offers enhanced incentives beyond standard BOI promotion for targeted S-curve industries: next-generation automotive, smart electronics, advanced agriculture, medical devices, biofuels, digital economy, aerospace, and robotics.</p>
-          <p>EEC benefits include CIT exemption for up to 15 years (vs 13 for standard BOI), enhanced foreign land ownership rights, and streamlined government approvals through the EEC one-stop service. We also advise on IEAT industrial estate privileges and Special Economic Zones at border areas.</p>
-        </div>
-        <div class="pa-handles">
-          <div class="handles-label">What We Handle</div>
-          <div class="handles-list">EEC promotion eligibility and application, S-curve industry classification, EEC one-stop service coordination, IEAT industrial estate applications and compliance, Special Economic Zone (SEZ) advisory, EEC land ownership structuring, targeted industry incentive maximisation, EEC visa and work permit via OSSC.</div>
-        </div>
-        <div class="pa-cta">
-          <a href="mailto:dej-udom@dejudom.com?subject=EEC%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
-          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
-        </div>
+    </div>
+    </div>
+    <div class="pa-section" style="padding-bottom: 48px;">
+      <div class="pa-cta" style="margin-top: 0;">
+        <a href="mailto:dej-udom@dejudom.com?subject=BOI%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+        <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
       </div>
     </div>
   </div>
