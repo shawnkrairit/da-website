@@ -828,64 +828,79 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  /* Practice area list rows */
-  .practice-list {
-    margin-top: 2.5rem;
-    border-top: 1px solid var(--border-light);
-  }
-  .practice-row {
-    display: flex;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border-subtle);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    gap: 1.5rem;
-  }
-  .practice-row:hover {
-    padding-left: 1rem;
-    border-bottom-color: rgba(212, 168, 83, 0.2);
-  }
-  .practice-row:hover .practice-row-num { color: var(--gold); }
-  .practice-row:hover .practice-row-name { color: var(--gold); }
-  .practice-row:hover .practice-row-arrow { opacity: 1; transform: translateX(0); color: var(--gold); }
-  .practice-row:hover .practice-row-desc { max-height: 80px; opacity: 1; margin-top: 6px; }
-  .practice-row-num {
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    min-width: 32px;
-    transition: color 0.3s;
-  }
-  .practice-row-text { flex: 1; }
-  .practice-row-name {
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    transition: color 0.3s;
-    font-weight: 400;
-  }
-  .practice-row-desc {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-height: 0;
-    opacity: 0;
+  /* ===== PRACTICE AREAS — 2-col tile grid ===== */
+  .practice-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s, margin 0.3s;
   }
-  .practice-row-arrow {
-    color: var(--text-muted);
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s;
+  .practice-tile {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 2rem 2.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: background 0.3s cubic-bezier(0.16,1,0.3,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .practice-tile::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .practice-tile:hover { background: rgba(212,168,83,0.04); }
+  .practice-tile:hover::before { transform: scaleY(1); }
+  .practice-tile:nth-child(even) { border-right: none; }
+  .practice-tile:nth-last-child(-n+2) { border-bottom: none; }
+  .practice-tile-icon-wrap {
     flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: rgba(212,168,83,0.08);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    transition: background 0.3s;
   }
-  @media (max-width: 768px) {
-    .practice-row-name { font-size: 1rem; }
-    .practice-row:hover { padding-left: 0.5rem; }
-    .practice-row-desc { max-height: none !important; opacity: 1 !important; margin-top: 4px !important; font-size: 0.8rem; }
-    .practice-row-arrow { opacity: 1 !important; transform: none !important; }
+  .practice-tile:hover .practice-tile-icon-wrap { background: rgba(212,168,83,0.15); }
+  .practice-tile-body { flex: 1; min-width: 0; }
+  .practice-tile-num {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; color: rgba(212,168,83,0.4);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase; margin-bottom: 5px;
+  }
+  .practice-tile-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1rem; color: var(--text-primary);
+    margin-bottom: 6px; line-height: 1.3;
+    transition: color 0.3s;
+  }
+  .practice-tile:hover .practice-tile-name { color: var(--gold); }
+  .practice-tile-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; }
+  .practice-tile-arrow {
+    flex-shrink: 0; align-self: center;
+    color: transparent;
+    transform: translateX(-8px);
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .practice-tile:hover .practice-tile-arrow { color: var(--gold); transform: translateX(0); }
+  @media (max-width: 900px) {
+    .practice-tile-grid { grid-template-columns: 1fr; }
+    .practice-tile:nth-child(even) { border-right: none; }
+    .practice-tile:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .practice-tile:last-child { border-bottom: none; }
+    .practice-tile { padding: 1.5rem; }
   }
 
   .practices-grid {
@@ -2037,51 +2052,138 @@
     <h2 class="section-title reveal reveal-delay-1" data-i18n="home.practices.title">What We Do</h2>
     <p class="section-intro reveal reveal-delay-2" data-i18n="home.practices.intro">Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge.</p>
 
-    <div class="practice-list">
-      <div class="practice-row reveal" onclick="openPracticeArea('ip')">
-        <div class="practice-row-num">01</div>
-        <div class="practice-row-text">
-          <div class="practice-row-name" data-i18n="home.practices.ip.name">Intellectual Property</div>
-          <div class="practice-row-desc" data-i18n="home.practices.ip.desc">Trademark, patent, and copyright protection across Thailand and ASEAN — from filing and registration through to enforcement, licensing, and commercialisation.</div>
+    <div class="practice-tile-grid">
+
+      <!-- 01 Immigration & Work Permits -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('immigration')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/><circle cx="16" cy="16" r="3"/><path d="M18 18l1.5 1.5"/></svg>
         </div>
-        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">01</div>
+          <div class="practice-tile-name">Immigration &amp; Work Permits</div>
+          <div class="practice-tile-desc">Visas, work permits, LTR Visa, BOI &amp; OSSC processing, 90-day reporting and re-entry permits for foreign nationals in Thailand.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-row reveal reveal-delay-1" onclick="openPracticeArea('immigration')">
-        <div class="practice-row-num">02</div>
-        <div class="practice-row-text">
-          <div class="practice-row-name" data-i18n="home.practices.immigration.name">Immigration</div>
-          <div class="practice-row-desc" data-i18n="home.practices.immigration.desc">Work permits, visas, and the Long-Term Resident (LTR) Visa programme. BOI Certified Agency for direct LTR submissions.</div>
+      <!-- 02 Intellectual Property -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('ip')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">02</div>
+          <div class="practice-tile-name">Intellectual Property</div>
+          <div class="practice-tile-desc">Trademark, patent, copyright &amp; trade secrets — registration, enforcement, licensing and ASEAN portfolio management.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-row reveal reveal-delay-2" onclick="openPracticeArea('corporate')">
-        <div class="practice-row-num">03</div>
-        <div class="practice-row-text">
-          <div class="practice-row-name" data-i18n-html="home.practices.corporate.name">Corporate &amp; Commercial</div>
-          <div class="practice-row-desc" data-i18n-html="home.practices.corporate.desc">Market entry structuring, M&amp;A, BOI promotion applications, joint ventures, taxation, and ongoing regulatory compliance for businesses operating in Thailand.</div>
+      <!-- 03 Corporate & M&A -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('corporate')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M4 21V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13"/><path d="M9 21v-4h6v4"/><path d="M9 11h.01"/><path d="M15 11h.01"/><path d="M9 15h.01"/><path d="M15 15h.01"/></svg>
         </div>
-        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">03</div>
+          <div class="practice-tile-name">Corporate &amp; M&amp;A</div>
+          <div class="practice-tile-desc">Market entry, company formation, Foreign Business Licence, mergers &amp; acquisitions, joint ventures and corporate governance.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-row reveal" onclick="openPracticeArea('litigation')">
-        <div class="practice-row-num">04</div>
-        <div class="practice-row-text">
-          <div class="practice-row-name" data-i18n-html="home.practices.litigation.name">Litigation, Mediation &amp; ADR</div>
-          <div class="practice-row-desc" data-i18n="home.practices.litigation.desc">Complex commercial disputes across Thailand's civil, criminal, and specialised courts. Domestic and international arbitration and mediation.</div>
+      <!-- 04 Litigation -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('litigation')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M4 15l4.5-8 4.5 8"/><path d="M15 15l4.5-8 4.5 8"/><path d="M3 19h9"/><path d="M12 19h9"/></svg>
         </div>
-        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">04</div>
+          <div class="practice-tile-name">Litigation, Mediation &amp; ADR</div>
+          <div class="practice-tile-desc">Commercial litigation across Thai courts, domestic and international arbitration, and structured mediation.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
 
-      <div class="practice-row reveal reveal-delay-1" onclick="openPracticeArea('notarial')">
-        <div class="practice-row-num">05</div>
-        <div class="practice-row-text">
-          <div class="practice-row-name" data-i18n="home.practices.notarial.name">Notarial Services</div>
-          <div class="practice-row-desc" data-i18n="home.practices.notarial.desc">Document certification, signature authentication, sworn statements, and powers of attorney for use in Thailand and foreign jurisdictions.</div>
+      <!-- 05 Employment & Labour Law -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('employment')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <svg class="practice-row-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">05</div>
+          <div class="practice-tile-name">Employment &amp; Labour Law</div>
+          <div class="practice-tile-desc">Employment contracts, termination &amp; severance, Labour Court litigation, non-compete enforcement and workforce restructuring.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </div>
+
+      <!-- 06 Data Privacy & PDPA -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('pdpa')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">06</div>
+          <div class="practice-tile-name">Data Privacy &amp; PDPA</div>
+          <div class="practice-tile-desc">PDPA compliance programmes, DPO services, breach response, cross-border data transfers and privacy impact assessments.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- 07 Taxation -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('taxation')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="9" y1="15" x2="15" y2="11"/><circle cx="9.5" cy="11.5" r="1.25"/><circle cx="14.5" cy="14.5" r="1.25"/></svg>
+        </div>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">07</div>
+          <div class="practice-tile-name">Taxation</div>
+          <div class="practice-tile-desc">Corporate tax planning, transfer pricing, international tax &amp; DTA planning, tax disputes, VAT and expatriate tax structuring.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- 08 Real Estate & Property -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('realestate')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">08</div>
+          <div class="practice-tile-name">Real Estate &amp; Property</div>
+          <div class="practice-tile-desc">Condominium acquisition, leasehold structuring, property due diligence, commercial property and construction matters.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- 09 Banking & Finance -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('banking')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 10 12 3 19 10"/><line x1="6" y1="10" x2="6" y2="21"/><line x1="10" y1="10" x2="10" y2="21"/><line x1="14" y1="10" x2="14" y2="21"/><line x1="18" y1="10" x2="18" y2="21"/></svg>
+        </div>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">09</div>
+          <div class="practice-tile-name">Banking &amp; Finance</div>
+          <div class="practice-tile-desc">Banking regulatory compliance, securities, fintech &amp; digital assets, foreign exchange controls and structured finance.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
+      <!-- 10 BOI & Investment Promotion -->
+      <div class="practice-tile reveal" onclick="openPracticeArea('boi')">
+        <div class="practice-tile-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="practice-tile-body">
+          <div class="practice-tile-num">10</div>
+          <div class="practice-tile-name">BOI &amp; Investment Promotion</div>
+          <div class="practice-tile-desc">BOI application strategy, post-promotion compliance, OSSC immigration, EEC &amp; special zone incentives and audit defence.</div>
+        </div>
+        <svg class="practice-tile-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2398,6 +2500,396 @@
       <div class="pa-cta">
         <a href="mailto:dej-udom@dejudom.com?subject=Notarial%20Enquiry" class="pa-cta-btn primary" data-i18n="home.overlay.cta_discuss">Discuss Your Matter</a>
         <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYMENT & LABOUR LAW -->
+<div class="pa-overlay" id="pa-employment">
+  <div class="pa-backdrop" onclick="closePracticeArea('employment')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('employment')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Employment &amp; Labour Law</h2>
+      <p class="pa-overview">Strategic employment advisory encompassing the full lifecycle of the employer-employee relationship — from contracts and HR policies through termination, Labour Court litigation, and workforce restructuring under the Thai Labour Protection Act.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'employment','contracts')">Contracts &amp; Policies</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'employment','termination')">Termination &amp; Disputes</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'employment','restructuring')">Workforce Restructuring</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="employment-contracts">
+        <h3>Employment Contracts &amp; HR Policies</h3>
+        <div class="pa-body">
+          <p>We draft and review employment agreements, work rules, employee handbooks, and HR policy manuals for companies operating in Thailand. All documentation is prepared in bilingual Thai-English format to ensure enforceability before the Labour Court.</p>
+          <p>For multinational employers, we reconcile global HR standards with mandatory Thai statutory requirements — including the Labour Protection Act's provisions on working hours, leave entitlements, social security, and disciplinary procedures.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Employment contracts (fixed-term and indefinite), work rules and employee handbooks, HR policy manuals, non-compete and confidentiality agreements, social security registration, provident fund advisory, expat compensation structuring, offer letters and executive service agreements.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Employment%20Law%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="employment-termination">
+        <h3>Termination, Severance &amp; Labour Court</h3>
+        <div class="pa-body">
+          <p>Thai employment law is fundamentally protective of employees. The Labour Court demonstrates a consistent pro-employee orientation. We advise employers on lawful termination procedures, statutory severance calculation, and the grounds for termination without severance under Section 119 of the Labour Protection Act.</p>
+          <p>Statutory severance ranges from 30 days (120 days–1 year of service) to 400 days (over 20 years), with an additional special severance of 15 days per year for employees with 6+ years of service. We also represent employers before the Labour Court in wrongful termination and wage disputes.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Termination procedures and notices, statutory severance calculation, termination for cause (Section 119), Labour Court representation, wrongful termination defence, wage disputes, non-compete enforcement, redundancy and layoff programmes, settlement negotiations.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Termination%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="employment-restructuring">
+        <h3>Workforce Restructuring</h3>
+        <div class="pa-body">
+          <p>Business transfers, factory closures, and downsizing in Thailand require careful compliance with the Labour Protection Act. Section 75 requires 60 days' notice to the Labour Department for temporary work suspension. Business transfers under Section 13 impose automatic assumption of all obligations by the buyer.</p>
+          <p>We advise on structuring compliant redundancy programmes that minimise litigation risk while achieving the employer's commercial objectives — including mass termination, partial closure, outsourcing, and post-M&amp;A integration.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Mass redundancy programmes, Section 75 notifications, business transfer compliance (Section 13), factory and operations closure, post-M&amp;A workforce integration, outsourcing structuring, voluntary separation schemes, employment audit and gap remediation.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Workforce%20Restructuring%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA PRIVACY & PDPA -->
+<div class="pa-overlay" id="pa-pdpa">
+  <div class="pa-backdrop" onclick="closePracticeArea('pdpa')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('pdpa')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Data Privacy &amp; PDPA</h2>
+      <p class="pa-overview">End-to-end PDPA compliance advisory — from gap analysis and programme design through DPO services, breach response, and cross-border transfer frameworks. Thailand's PDPA has been in full force since 1 June 2022, with enforcement actively increasing.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'pdpa','compliance')">PDPA Compliance</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'pdpa','dpo')">DPO Services</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'pdpa','breach')">Breach Response</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="pdpa-compliance">
+        <h3>PDPA Compliance Programme Design</h3>
+        <div class="pa-body">
+          <p>Thailand's PDPA imposes obligations on any organisation collecting or processing personal data of individuals in Thailand — regardless of where the organisation is established. Penalties reach THB 5 million in administrative fines, with criminal penalties of up to one year imprisonment and civil liability of up to 2× actual damages.</p>
+          <p>We provide gap analysis against PDPA requirements, design compliance roadmaps, draft privacy policies and Records of Processing Activities (ROPA), establish lawful basis frameworks, and implement consent management systems tailored to your operations.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">PDPA gap analysis, compliance roadmap and programme design, privacy policies and notices, Records of Processing Activities (ROPA), lawful basis assessment, consent management, vendor and processor agreements, data subject rights procedures, Privacy Impact Assessments (DPIA), PDPA training and awareness.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=PDPA%20Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="pdpa-dpo">
+        <h3>Data Protection Officer (DPO) Services</h3>
+        <div class="pa-body">
+          <p>Since December 2023, the PDPA requires DPO appointment where core activities involve large-scale processing requiring regular monitoring, or large-scale processing of sensitive personal data. We advise on whether appointment is required and provide outsourced DPO services for organisations that lack the internal capability.</p>
+          <p>Our outsourced DPO service covers ongoing compliance monitoring, handling data subject requests, acting as the interface with the PDPC, managing internal awareness, and advising on high-risk processing activities.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">DPO appointment advisory and eligibility assessment, outsourced DPO services, PDPC interface management, data subject request handling, annual compliance review, DPO register maintenance, employee data rights procedures, high-risk processing oversight.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=DPO%20Services%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="pdpa-breach">
+        <h3>Breach Response &amp; Cross-Border Transfers</h3>
+        <div class="pa-body">
+          <p>A personal data breach must be notified to the PDPC within 72 hours of discovery. Where there is high risk to data subjects, affected individuals must also be notified. We provide incident response planning, 72-hour PDPC notification support, and post-breach remediation programmes.</p>
+          <p>For organisations transferring personal data outside Thailand, we assess adequacy, advise on binding corporate rules (BCRs), and structure standard contractual clauses (SCCs) compliant with the PDPC's cross-border transfer regulations.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Incident response planning, 72-hour PDPC breach notification, data subject notification assessment, breach remediation, cross-border transfer mechanism assessment, adequacy determinations, BCR advisory, standard contractual clauses, PDPA litigation defence, regulatory investigation support.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Data%20Breach%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAXATION -->
+<div class="pa-overlay" id="pa-taxation">
+  <div class="pa-backdrop" onclick="closePracticeArea('taxation')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('taxation')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Taxation</h2>
+      <p class="pa-overview">Strategic tax advisory for domestic and cross-border transactions — integrating the Thai Revenue Code with Thailand's 60+ double taxation agreements to optimise structures and manage risk. Significant changes to foreign-sourced income taxation took effect 1 January 2024.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'taxation','corporate')">Corporate Tax</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'taxation','transfer')">Transfer Pricing</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'taxation','international')">International Tax</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="taxation-corporate">
+        <h3>Corporate Tax Planning &amp; Compliance</h3>
+        <div class="pa-body">
+          <p>Thailand imposes corporate income tax (CIT) at 20%, with reduced rates for SMEs and BOI-promoted companies receiving up to 13 years' full exemption. We advise on tax-efficient structuring of Thai operations, profit repatriation via dividends and intercompany charges, and permanent establishment risk management for foreign companies operating in Thailand.</p>
+          <p>Since 1 January 2024, Thai tax residents are assessable on foreign-sourced income remitted to Thailand regardless of when earned — reversing the previous year-of-income rule. We advise expatriates and companies on the implications of this change.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">CIT planning and structuring, BOI tax incentives, PE risk management, profit repatriation, VAT compliance, specific business tax, withholding tax, stamp duty, personal income tax for expatriates, foreign income tax (2024 rules), Tax Court appeals, Revenue Department audits.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Tax%20Planning%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="taxation-transfer">
+        <h3>Transfer Pricing</h3>
+        <div class="pa-body">
+          <p>Companies with related-party transactions exceeding THB 200 million per year are required to file disclosure forms and prepare full transfer pricing documentation demonstrating arm's length pricing. The Revenue Department has significantly increased transfer pricing assessments in 2024–2026.</p>
+          <p>We prepare transfer pricing documentation, conduct arm's length analysis, assist with advance pricing agreement (APA) submissions, and defend assessments before the Revenue Department and Tax Court.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Transfer pricing documentation and policy, arm's length analysis (comparable searches), disclosure form preparation, advance pricing agreements (APA), Revenue Department examination defence, Tax Court litigation, management fee and royalty structuring, intercompany agreement review.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Transfer%20Pricing%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="taxation-international">
+        <h3>International Tax &amp; Treaty Planning</h3>
+        <div class="pa-body">
+          <p>Thailand has over 60 double taxation agreements (DTAs), typically reducing dividend withholding to 5–10%, interest to 10–15%, and royalties to 5–15%. We advise on DTA-based structuring for ASEAN holding structures, regional headquarters, and inbound investment from major trading partners.</p>
+          <p>For multinational groups, we assist with regional tax structuring through Thailand's International Business Centre (IBC) regime, which offers reduced tax rates on qualifying income and enhanced DTA benefits.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">DTA analysis and treaty planning, withholding tax optimisation, IBC regime advisory, holding structure design, cross-border dividend and royalty flows, permanent establishment analysis, BEPS compliance, substance requirements, offshore income management (2024 rules), expatriate tax planning.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=International%20Tax%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REAL ESTATE & PROPERTY -->
+<div class="pa-overlay" id="pa-realestate">
+  <div class="pa-backdrop" onclick="closePracticeArea('realestate')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('realestate')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Real Estate &amp; Property</h2>
+      <p class="pa-overview">Navigating Thailand's property ownership framework for foreign investors — from condominium freehold to commercial leasehold and land use compliance. The regulatory environment has tightened significantly, including the Supreme Court's 2025 ruling invalidating 30+30+30 lease structures.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'realestate','acquisition')">Acquisition</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'realestate','leasehold')">Leasehold &amp; Commercial</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'realestate','diligence')">Due Diligence</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="realestate-acquisition">
+        <h3>Condominium &amp; Property Acquisition</h3>
+        <div class="pa-body">
+          <p>Foreign nationals may acquire condominium units in freehold ownership within the statutory 49% foreign quota. We advise on Tor Tor 3 (FET) compliance for remittance of foreign funds, unit transfer documentation, mortgage structuring, and common area rights under the Condominium Act.</p>
+          <p>For those seeking land exposure, we advise on lawful structures — including BOI-promoted land rights for qualifying investments, long-term leasehold (up to 30 years, with careful structuring post the 2025 Supreme Court ruling), and company-held land structures that comply with the Foreign Business Act and Land Code.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Condominium purchase and transfer, foreign quota verification, FET compliance (Tor Tor 3), mortgage and security documentation, off-plan purchase agreements, property sale and purchase agreements, BOI land rights advisory, usufruct and superficies structures.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Property%20Acquisition%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="realestate-leasehold">
+        <h3>Leasehold &amp; Commercial Property</h3>
+        <div class="pa-body">
+          <p>Thailand permits leasehold terms of up to 30 years, renewable by contract. Following the Supreme Court's March 2025 decision, "30+30+30" lease structures (relying on pre-agreed renewal obligations) are no longer reliable. We advise on compliant leasehold structuring, including registration of initial 30-year terms at the Land Department.</p>
+          <p>For commercial property, we advise on office, retail, industrial, and hotel lease agreements — including fit-out, reinstatement, rent review mechanisms, subletting rights, and termination provisions.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Leasehold structuring (post-2025 Supreme Court ruling), 30-year lease registration, commercial lease negotiation and drafting, industrial estate lease agreements, hotel and resort property, fit-out and reinstatement obligations, lease assignment and subletting, property dispute resolution.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Leasehold%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="realestate-diligence">
+        <h3>Property Due Diligence</h3>
+        <div class="pa-body">
+          <p>Before any property transaction, we conduct comprehensive legal due diligence on title, encumbrances, zoning, building permits, and environmental compliance. We examine Land Department records, verify the Chanote (Nor Sor 4 Jor) title, and check for mortgages, servitudes, and restriction notifications.</p>
+          <p>For development projects, we advise on construction permits, EIA requirements, building control compliance, and contractor agreements under the Construction Control Act.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Title search and verification (Chanote, Nor Sor 3 Gor), encumbrance and mortgage review, zoning and land use checks, building permit verification, EIA compliance, nominee ownership risk assessment, construction and development agreements, property litigation and dispute resolution.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Property%20Due%20Diligence%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANKING & FINANCE -->
+<div class="pa-overlay" id="pa-banking">
+  <div class="pa-backdrop" onclick="closePracticeArea('banking')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('banking')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>Banking &amp; Finance</h2>
+      <p class="pa-overview">Regulatory and transactional advisory across banking, securities, fintech, digital assets, and structured finance — navigating Thailand's evolving financial regulatory framework under the Bank of Thailand (BOT), Securities and Exchange Commission (SEC), and Ministry of Finance.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'banking','regulatory')">Banking Regulation</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'banking','securities')">Securities &amp; Capital Markets</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'banking','fintech')">Fintech &amp; Digital Assets</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="banking-regulatory">
+        <h3>Banking Regulatory Compliance</h3>
+        <div class="pa-body">
+          <p>Thailand's banking system is regulated by the Bank of Thailand under the Financial Institution Business Act B.E. 2551. We advise financial institutions on regulatory licensing requirements, BOT notifications and compliance, foreign exchange controls under the Exchange Control Act, and capital adequacy requirements.</p>
+          <p>For foreign financial institutions entering Thailand, we advise on representative office, branch, and subsidiary structures, BOT approval processes, and operational compliance with Thai banking regulations.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">BOT licensing and approvals, financial institution regulatory compliance, foreign exchange control compliance, correspondent banking arrangements, payment system operator licensing, credit card and personal loan business licensing, anti-money laundering (AML) compliance, financial regulatory investigations.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Banking%20Regulation%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="banking-securities">
+        <h3>Securities &amp; Capital Markets</h3>
+        <div class="pa-body">
+          <p>Thailand's capital markets are regulated by the Securities and Exchange Commission under the Securities and Exchange Act B.E. 2535. We advise on public offerings, listed company compliance, investment management licensing, and cross-border securities transactions.</p>
+          <p>For foreign portfolio investors, we advise on BOT custodian requirements, foreign investment limits, and repatriation of investment proceeds. For project finance and structured transactions, we advise on security structures, syndicated lending, and offshore financing arrangements.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">SEC registration and approval, public offering documentation, listed company compliance, investment management licensing, securities offering in Thailand, cross-border investment structuring, project finance documentation, syndicated lending, bond issuance, security creation and enforcement.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Securities%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="banking-fintech">
+        <h3>Fintech &amp; Digital Assets</h3>
+        <div class="pa-body">
+          <p>Thailand's digital asset regulatory framework — comprising the Emergency Decree on Digital Asset Businesses B.E. 2561 and SEC regulations — covers cryptocurrency exchanges, digital asset brokers, dealers, advisors, and fund managers. We advise on SEC licensing, token offering compliance, and operational requirements.</p>
+          <p>For payment service providers and e-money operators, we advise on BOT Payment Systems Act licensing, e-money issuance, and PDPA compliance for financial data processing.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">Digital asset exchange and broker licensing (SEC), token offering (ICO portal) compliance, cryptocurrency business structuring, e-money operator licensing (BOT), payment service provider compliance, sandbox programme advisory, AML/CFT for digital asset businesses, PDPA compliance for fintech.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=Fintech%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOI & INVESTMENT PROMOTION -->
+<div class="pa-overlay" id="pa-boi">
+  <div class="pa-backdrop" onclick="closePracticeArea('boi')"></div>
+  <div class="pa-panel">
+    <button class="pa-close" aria-label="Close" onclick="closePracticeArea('boi')">&times;</button>
+    <div class="pa-header">
+      <div class="pa-label">Practice Area</div>
+      <h2>BOI &amp; Investment Promotion</h2>
+      <p class="pa-overview">End-to-end advisory on Board of Investment (BOI) promotion — from initial strategy and application through post-promotion compliance, OSSC immigration services, and audit defence. Dej-Udom &amp; Associates is a BOI Certified Agency for LTR Visa submissions.</p>
+    </div>
+    <div class="pa-subnav">
+      <button class="pa-subnav-btn active" onclick="switchTab(event,'boi','application')">BOI Application</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'boi','compliance')">Post-Promotion</button>
+      <button class="pa-subnav-btn" onclick="switchTab(event,'boi','eec')">EEC &amp; Special Zones</button>
+    </div>
+    <div class="pa-content">
+      <div class="pa-sub-section active" id="boi-application">
+        <h3>BOI Application Strategy &amp; Approval</h3>
+        <div class="pa-body">
+          <p>BOI promotion under the Investment Promotion Act B.E. 2520 provides significant incentives — including CIT exemption for up to 13 years, import duty exemptions, and foreign land ownership rights — for qualifying businesses in targeted sectors such as manufacturing, technology, R&amp;D, and services.</p>
+          <p>We advise on eligibility assessment, activity classification under the BOI's promoted categories, application strategy (Category A1 through B2), conditions negotiation, and approval processing. Applications for targeted industries — including next-generation automotive, smart electronics, biotechnology, and digital economy — receive priority treatment.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">BOI eligibility assessment, activity and category classification, application preparation and filing, BOI conditions negotiation, project commencement approval, machine importation exemptions, raw material import duty exemptions, IBC promotion applications, IEAT Zone applications.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=BOI%20Application%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="boi-compliance">
+        <h3>Post-Promotion Compliance &amp; OSSC</h3>
+        <div class="pa-body">
+          <p>BOI-promoted companies must comply with ongoing conditions — including production commencement reporting, machine importation within prescribed periods, annual performance reports, and capital investment requirements. Failure to comply risks revocation of promotion and tax benefit clawback.</p>
+          <p>As a BOI Certified Agency, we provide expedited immigration processing through the One-Stop Service Centre (OSSC) at Chamchuri Square — combining visa extension and work permit renewal in a single visit, typically within 3–5 working days.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">BOI annual performance reports, promotion condition compliance, machine importation and disposal management, OSSC immigration processing (visa + work permit), BOI employee headcount notifications, promotion amendment applications, promotion transfer on M&amp;A, BOI audit support and defence.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=BOI%20Compliance%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
+      </div>
+      <div class="pa-sub-section" id="boi-eec">
+        <h3>EEC &amp; Special Economic Zones</h3>
+        <div class="pa-body">
+          <p>The Eastern Economic Corridor (EEC) — comprising Chonburi, Rayong, and Chachoengsao — offers enhanced incentives beyond standard BOI promotion for targeted S-curve industries: next-generation automotive, smart electronics, advanced agriculture, medical devices, biofuels, digital economy, aerospace, and robotics.</p>
+          <p>EEC benefits include CIT exemption for up to 15 years (vs 13 for standard BOI), enhanced foreign land ownership rights, and streamlined government approvals through the EEC one-stop service. We also advise on IEAT industrial estate privileges and Special Economic Zones at border areas.</p>
+        </div>
+        <div class="pa-handles">
+          <div class="handles-label">What We Handle</div>
+          <div class="handles-list">EEC promotion eligibility and application, S-curve industry classification, EEC one-stop service coordination, IEAT industrial estate applications and compliance, Special Economic Zone (SEZ) advisory, EEC land ownership structuring, targeted industry incentive maximisation, EEC visa and work permit via OSSC.</div>
+        </div>
+        <div class="pa-cta">
+          <a href="mailto:dej-udom@dejudom.com?subject=EEC%20Enquiry" class="pa-cta-btn primary">Discuss Your Matter</a>
+          <a href="tel:+6622330055" class="pa-cta-btn secondary">+66 (0) 2233-0055</a>
+        </div>
       </div>
     </div>
   </div>
