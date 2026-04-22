@@ -34,6 +34,16 @@
             "eyebrow": "Expertise",
             "title": "What We Do",
             "description": "Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge."
+        },
+        "crossBorderSection": {
+            "eyebrow": "The Firm",
+            "title": "Built for<br></br>Cross-Border Work",
+            "description": "Over 80% of our clients are foreign companies or multinational firms. That concentration shapes how we work."
+        },
+        "sectorsWeServeSection": {
+            "eyebrow": "Industries",
+            "title": "Sectors We Serve",
+            "description": "Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand."
         }
     },
     "NotFound": {

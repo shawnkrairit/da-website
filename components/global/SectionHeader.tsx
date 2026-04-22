@@ -8,7 +8,7 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.2, 1]
 type Props = {
     eyebrow: string
     title: ReactNode
-    description?: string
+    description?: ReactNode
 }
 
 function SectionHeader({ eyebrow, title, description }: Props) {

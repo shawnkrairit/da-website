@@ -1,4 +1,6 @@
+import CrossBorderWork from "@/components/homepage/CrossBorderWork";
 import HeroSection from "@/components/homepage/HeroSection";
+import SectorsWeServe from "@/components/homepage/SectorsWeServe";
 import TrustBar from "@/components/homepage/TrustBar";
 import WhatWeDo from "@/components/homepage/WhatWeDo";
 import { getTranslations } from "next-intl/server";
@@ -28,6 +30,10 @@ async function UserHomePage() {
             </div>
 
             <WhatWeDo/>
+
+            <CrossBorderWork/>
+
+            <SectorsWeServe/>
         </div>
     );
 }

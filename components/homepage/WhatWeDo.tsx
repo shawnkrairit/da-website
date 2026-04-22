@@ -18,7 +18,7 @@ async function WhatWeDo() {
             <div className="absolute inset-0 z-0">
                 <Image
                     src={r2('client/legal-discussion.jpg')}
-                    alt=""
+                    alt="What We Do"
                     fill
                     className="object-cover object-center opacity-15 brightness-75 saturate-[0.3]"
                     priority

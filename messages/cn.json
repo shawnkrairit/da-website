@@ -33,6 +33,16 @@
             "eyebrow": "专业领域",
             "title": "业务范围",
             "description": "提供全方位的商业法律服务，由合伙人深度参与并拥有深厚的行业知识背景。"
+        },
+        "crossBorderSection": {
+            "eyebrow": "律所概况",
+            "title": "深耕跨国<br></br>法律业务",
+            "description": "我们 80% 以上的客户为外资企业或跨国公司。这种高度集中的业务背景塑造了我们独特的作业模式。"
+        },
+        "sectorsWeServeSection": {
+            "eyebrow": "行业领域",
+            "title": "服务领域",
+            "description": "凭借多年深耕泰国各行业监管环境、商业压力及政府对接点的经验，为您提供具有实操性的法律建议。"
         }
     },
     "NotFound": {
