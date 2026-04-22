@@ -1,5 +1,6 @@
 import CrossBorderWork from "@/components/homepage/CrossBorderWork";
 import HeroSection from "@/components/homepage/HeroSection";
+import Ranking from "@/components/homepage/Ranking";
 import SectorsWeServe from "@/components/homepage/SectorsWeServe";
 import TrustBar from "@/components/homepage/TrustBar";
 import WhatWeDo from "@/components/homepage/WhatWeDo";
@@ -34,6 +35,8 @@ async function UserHomePage() {
             <CrossBorderWork/>
 
             <SectorsWeServe/>
+
+            <Ranking/>
         </div>
     );
 }

@@ -44,6 +44,11 @@
             "eyebrow": "Industries",
             "title": "Sectors We Serve",
             "description": "Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand."
+        },
+        "ranking": {
+            "eyebrow": "Recognition",
+            "title": "Rankings & Memberships",
+            "description": "Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand."
         }
     },
     "NotFound": {
