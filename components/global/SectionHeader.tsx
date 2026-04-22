@@ -30,7 +30,7 @@ function SectionHeader({ eyebrow, title, description }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, ease: EASE, delay: 0.25 }}
-                className="font-heading text-5xl font-semibold"
+                className="font-heading text-5xl font-semibold leading-16"
             >
                 {title}
             </motion.h2>

@@ -45,10 +45,15 @@
             "title": "Sectors We Serve",
             "description": "Practical legal counsel shaped by years of working within each sector's regulatory landscape, commercial pressures, and government touchpoints in Thailand."
         },
-        "ranking": {
+        "rankingSection": {
             "eyebrow": "Recognition",
             "title": "Rankings & Memberships",
             "description": "Recognised by international legal directories for IP, commercial law, and dispute resolution in Thailand."
+        },
+        "globalReachSection": {
+            "eyebrow": "Global Reach",
+            "title": "Regional Strength,<br></br>International Reach",
+            "description": "Through our memberships in INTA, APAA, AIPPI, ASEAN IPA, and IPBA, we maintain strong professional networks across Asia Pacific and globally. Our regional partnerships provide direct access to leading firms across every ASEAN jurisdiction.<br></br>Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok."
         }
     },
     "NotFound": {

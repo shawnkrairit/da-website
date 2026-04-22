@@ -1,4 +1,5 @@
 import CrossBorderWork from "@/components/homepage/CrossBorderWork";
+import GlobalReach from "@/components/homepage/GlobalReach";
 import HeroSection from "@/components/homepage/HeroSection";
 import Ranking from "@/components/homepage/Ranking";
 import SectorsWeServe from "@/components/homepage/SectorsWeServe";
@@ -37,6 +38,8 @@ async function UserHomePage() {
             <SectorsWeServe/>
 
             <Ranking/>
+
+            <GlobalReach/>
         </div>
     );
 }
