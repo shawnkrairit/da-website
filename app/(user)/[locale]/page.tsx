@@ -4,7 +4,7 @@ async function UserHomePage() {
     const t = await getTranslations('HomePage')
     return (
         <div>
-            <h1>{t('title')}</h1>;
+            <h1 className="text-red-500">{t('title')}</h1>;
         </div>
     );
 }
