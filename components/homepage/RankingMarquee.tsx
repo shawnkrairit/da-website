@@ -4,17 +4,18 @@ import { motion, useMotionValue, useAnimationFrame } from 'motion/react'
 import { useRef, useState } from 'react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { CREDENTIALS } from '@/data/rankings'
+import type { LocaleKey } from '@/data/practices'
 
 const TRACK = [...CREDENTIALS, ...CREDENTIALS]
 
-function RankingMarquee() {
+function RankingMarquee({ locale }: { locale: LocaleKey }) {
     const [hovered, setHovered] = useState(false)
     const x = useMotionValue(0)
     const trackRef = useRef<HTMLDivElement>(null)
     const speed = useRef(0.035)
 
     useAnimationFrame((_, delta) => {
-        const target = hovered ? 0.008 : 0.035
+        const target = hovered ? 0.008 : 0.02
         speed.current += (target - speed.current) * 0.05
         const half = (trackRef.current?.offsetWidth ?? 0) / 2
         const next = x.get() - delta * speed.current
@@ -43,7 +44,7 @@ function RankingMarquee() {
                         </CardHeader>
                         <CardContent className="px-5 pb-5">
                             <p className="text-sm text-text-secondary leading-relaxed">
-                                {c.description}
+                                {c.description[locale]}
                             </p>
                         </CardContent>
                     </Card>

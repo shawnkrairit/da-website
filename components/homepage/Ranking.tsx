@@ -1,9 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
+import type { LocaleKey } from "@/data/practices";
 import SectionHeader from "../global/SectionHeader";
 import RankingMarquee from "./RankingMarquee";
 
 async function Ranking() {
-    const t = await getTranslations('HomePage.ranking')
+    const [t, rawLocale] = await Promise.all([
+        getTranslations('HomePage.ranking'),
+        getLocale(),
+    ])
+    const locale = (rawLocale as LocaleKey) in { en: 1, th: 1, cn: 1 } ? rawLocale as LocaleKey : 'en'
 
     return (
         <section className="flex w-full flex-col items-center gap-16 overflow-hidden py-26">
@@ -15,7 +20,7 @@ async function Ranking() {
                 />
             </div>
 
-            <RankingMarquee />
+            <RankingMarquee locale={locale} />
         </section>
     );
 }
