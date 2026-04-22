@@ -5,6 +5,17 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-forest: #0a1a0f;
+  --color-forest-deep: #050d08;
+  --color-forest-mid: #0f2918;
+  --color-emerald: #1a7a3a;
+  --color-emerald-dim: #145a2a;
+  --color-gold: #d4a853;
+  --color-gold-light: #e0c07a;
+  --color-gold-muted: rgba(212, 168, 83, 0.15);
+  --color-text-primary: #e8e4dd;
+  --color-text-secondary: rgba(232, 228, 221, 0.55);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans-thai), var(--font-noto-sans-sc), sans-serif;
@@ -49,7 +60,7 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: var(--color-forest-deep);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -83,7 +94,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -115,7 +126,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
+} */
 
 @layer base {
   * {

@@ -1,5 +1,20 @@
 {
+    "Global": {
+        "Header": {
+            "Home": "Home",
+            "About": "About",
+            "Expertise": "Expertise",
+            "Insights": "Insights",
+            "Careers": "Careers",
+            "Contact": "Contact"
+        }
+    },
     "HomePage": {
         "title": "Homepage"
+    },
+    "NotFound": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for doesn't exist or has been moved.",
+        "back": "Back to Home"
     }
 }

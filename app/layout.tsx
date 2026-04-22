@@ -29,8 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${libre.variable} ${noto_sans_thai.variable} ${noto_sans_sc.variable} h-full antialiased`}
+      className={`${libre.variable} ${noto_sans_thai.variable} ${noto_sans_sc.variable} h-full antialiased bg-forest-deep`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
