@@ -22,10 +22,14 @@ function LocaleSwitcher() {
                     key={cur}
                     onClick={() => switchLocale(cur)}
                     variant={ locale === cur ? "default" : "link"}
-                    className={
-                        locale === cur 
-                            ? "bg-gold text-forest-deep"
-                            : "text-text-secondary hover:text-gold"
+                    className={`
+                        ${
+                            locale === cur 
+                                ? "bg-gold text-forest-deep"
+                                : "text-text-secondary hover:text-gold"
+                        }
+                        text-lg lg:text-sm
+                        `
                     }
                 > 
                     {cur.toUpperCase()}

@@ -20,6 +20,19 @@
             "multinational": "跨国客户",
             "asean_countries": "东盟国家",
             "licensed_attorneys": "持牌律师"
+        },
+        "statistics": {
+            "practiceAreas": "专业领域",
+            "practiceAreas_content": "涵盖知识产权、移民、公司法、诉讼及税务的一站式法律服务。",
+            "workingLang": "工作语言",
+            "workingLang_content": "各类文件申报与提交均精通泰语及英语。",
+            "boi": "泰投委 (BOI) 认证代理机构",
+            "boi_content" : "获授权可直接向泰国投资促进委员会提交长期居留 (LTR) 签证申请。"
+        },
+        "whatWeDoSection": {
+            "eyebrow": "专业领域",
+            "title": "业务范围",
+            "description": "提供全方位的商业法律服务，由合伙人深度参与并拥有深厚的行业知识背景。"
         }
     },
     "NotFound": {

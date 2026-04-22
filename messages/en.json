@@ -21,6 +21,19 @@
             "multinational": "multinational clients",
             "asean_countries": "ASEAN countries",
             "licensed_attorneys": "licensed attorneys"
+        },
+        "statistics": {
+            "practiceAreas": "Practice Areas",
+            "practiceAreas_content": "IP, immigration, corporate, litigation, and tax under one roof.",
+            "workingLang": "Working Languages",
+            "workingLang_content": "Thai and English fluency across every filing and submission.",
+            "boi": "BOI Certified Agency",
+            "boi_content" : "Authorised to submit LTR Visa applications directly to BOI."
+        },
+        "whatWeDoSection": {
+            "eyebrow": "Expertise",
+            "title": "What We Do",
+            "description": "Full-spectrum commercial legal services with hands-on partner involvement and deep industry knowledge."
         }
     },
     "NotFound": {
