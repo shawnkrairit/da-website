@@ -21,7 +21,7 @@ Represents individual lawyers and staff at the firm.
 | `order` | number | no | Display order in grid |
 | `slug` | text | no | Auto-generated from name |
 
-**Departments taxonomy** (shared across EN/TH, not localized):
+**Departments taxonomy** (shared across EN/TH and CN, not localized):
 - `intellectual-property`
 - `immigration`
 - `corporate`

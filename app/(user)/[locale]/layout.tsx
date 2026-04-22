@@ -19,8 +19,10 @@ export default async function LocaleLayout({children, params}: Props) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <Header/>
-      {children}
+      <div className='flex flex-col w-full'>
+        <Header/>
+        {children}
+      </div>
     </NextIntlClientProvider>
   );
 }

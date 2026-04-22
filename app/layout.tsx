@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Libre_Baskerville, Noto_Sans_SC, Noto_Sans_Thai } from "next/font/google";
+import { Libre_Baskerville, Noto_Sans_SC, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
 const libre = Libre_Baskerville({
@@ -20,6 +20,7 @@ const noto_sans_sc = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: "Dej-Udom & Associates - Thailand Law Firm in Bangkok | Corporate, IP & Immigration Lawyers",
   description: "Independent Bangkok law firm providing corporate, immigration, intellectual property, tax and dispute resolution legal services for international clients in Thailand.",
+  icons: 'favicon.png'
 };
 
 export default function RootLayout({
@@ -29,9 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${libre.variable} ${noto_sans_thai.variable} ${noto_sans_sc.variable} h-full antialiased bg-forest-deep`}
+      className={`light ${libre.variable} ${noto_sans_thai.variable} ${noto_sans_sc.variable} h-full antialiased bg-forest-deep`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }

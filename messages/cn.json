@@ -10,7 +10,17 @@
         }
     },
     "HomePage": {
-        "title": "Homepage ฉ์"
+        "title": "首页",
+        "heroSection": {
+            "eyebrow": "泰国曼谷 — 创立于 1986 年",
+            "description": "合伙人主导的律师事务所，为跨国企业及外国投资者提供知识产权、移民、公司法、诉讼及税务领域的法律服务。",
+            "explore_button": "探索我们的专业领域",
+            "getintouch_button": "联系我们",
+            "yearsOfPractice": "年执业经验",
+            "multinational": "跨国客户",
+            "asean_countries": "东盟国家",
+            "licensed_attorneys": "持牌律师"
+        }
     },
     "NotFound": {
         "title": "页面未找到",

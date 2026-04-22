@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dej-Udom & Associates — Official Website
 
-## Getting Started
+Law firm website for Dej-Udom & Associates, a full-service commercial law firm based in Bangkok, Thailand, specialising in intellectual property, immigration, corporate law, litigation, and related practice areas.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Bilingual (EN/TH) marketing and informational website built with Next.js App Router. Content is managed directly in code — no CMS. The site serves as the firm's primary digital presence for international and domestic clients.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Bilingual routing via next-intl (English default, Thai under `/th/` and Simplified Chinese under `/cn/`)
+- Attorney profiles with department filtering
+- Insights — editorial blog for SEO and thought leadership
+- Publications — firm-published books and legal commentary with PDF viewer
+- Contact and careers application forms with file upload
+- Admin dashboard for reading form submissions and managing content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Next.js 15** App Router
+- **Tailwind CSS** + shadcn/ui
+- **next-intl** for i18n routing and static translations
+- **PostgreSQL** for form submissions and dynamic data
+- **Cloudflare R2** for media and file storage
+- **Railway** for hosting and database
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Static content lives in `messages/en.json`, `messages/th.json` and `messages/cn.json`. Dynamic content (attorneys, insights, publications) is managed via the admin dashboard at `/admin`.

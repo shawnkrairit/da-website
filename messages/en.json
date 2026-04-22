@@ -10,7 +10,18 @@
         }
     },
     "HomePage": {
-        "title": "Homepage"
+        "title": "Homepage",
+        "description": "",
+        "heroSection": {
+            "eyebrow": "Bangkok, Thailand — Est. 1986",
+            "description": "A partner-led law firm advising multinational companies and foreign investors across intellectual property, immigration, corporate law, litigation, and taxation.",
+            "explore_button": "Explore Our Expertise",
+            "getintouch_button": "Get in Touch",
+            "yearsOfPractice": "years of practice",
+            "multinational": "multinational clients",
+            "asean_countries": "ASEAN countries",
+            "licensed_attorneys": "licensed attorneys"
+        }
     },
     "NotFound": {
         "title": "Page Not Found",
