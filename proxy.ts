@@ -8,6 +8,10 @@ const intlMiddleware = createIntlMiddleware(routing);
 export default async function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
+    if (pathname.startsWith("/api")) {
+        return NextResponse.next();
+    }
+
     if (pathname.startsWith("/admin")) {
         const publicAdminRoutes = ["/admin/login", "/admin/signup", "/admin/forgot-password"];
         if (publicAdminRoutes.includes(pathname)) {

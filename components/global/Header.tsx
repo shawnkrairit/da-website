@@ -7,7 +7,12 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
     { href: '/',          key: 'Header.Home' },
@@ -17,9 +22,16 @@ const NAV_LINKS = [
     { href: '/careers',   key: 'Header.Careers' },
 ] as const;
 
+const ABOUT_SECTIONS = [
+    { href: '/about#founder', label: 'Our Founder' },
+    { href: '/about#people',  label: 'Our People' },
+    { href: '/about#publications', label: 'Publications' },
+];
+
 function Header() {
     const t = useTranslations('Global');
     const [open, setOpen] = useState(false);
+    const [aboutOpen, setAboutOpen] = useState(false);
 
     return (
         <header className="fixed inset-x-0 top-0 z-50 w-full bg-forest-deep/80 backdrop-blur-md">
@@ -39,13 +51,52 @@ function Header() {
 
                 {/* Desktop nav */}
                 <nav className="hidden lg:flex items-center gap-6 text-sm text-text-secondary">
-                    {NAV_LINKS.map(({ href, key }) => (
-                        <Link key={href} href={href}>
-                            <Button variant="link" className="text-text-secondary hover:text-gold decoration-gold cursor-pointer">
-                                {t(key)}
-                            </Button>
-                        </Link>
-                    ))}
+                    {NAV_LINKS.map(({ href, key }) => {
+                        if (key === 'Header.About') {
+                            return (
+                                <DropdownMenu key={href} open={aboutOpen} onOpenChange={setAboutOpen}>
+                                    <DropdownMenuTrigger asChild>
+                                        <div
+                                            onMouseEnter={() => setAboutOpen(true)}
+                                            onMouseLeave={() => setAboutOpen(false)}
+                                        >
+                                            <Link href={href}>
+                                                <Button variant="link" className="text-text-secondary hover:text-gold decoration-gold cursor-pointer">
+                                                    {t(key)}
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent
+                                        onMouseEnter={() => setAboutOpen(true)}
+                                        onMouseLeave={() => setAboutOpen(false)}
+                                        className="bg-forest-deep border-white/8 min-w-44"
+                                        align="center"
+                                    >
+                                        {ABOUT_SECTIONS.map(({ href, label }) => (
+                                            <DropdownMenuItem
+                                                key={href}
+                                                asChild
+                                                className="py-2 justify-center text-text-secondary data-highlighted:bg-forest-mid data-highlighted:text-text-secondary"
+                                            >
+                                                <Link href={href} className="cursor-pointer text-center w-full">
+                                                    {label}
+                                                </Link>
+                                            </DropdownMenuItem>
+                                        ))}
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            )
+                        }
+
+                        return (
+                            <Link key={href} href={href}>
+                                <Button variant="link" className="text-text-secondary hover:text-gold decoration-gold cursor-pointer">
+                                    {t(key)}
+                                </Button>
+                            </Link>
+                        )
+                    })}
                 </nav>
 
                 {/* Desktop right */}
@@ -82,6 +133,17 @@ function Header() {
                             </Button>
                         </Link>
                     ))}
+
+                    {/* About sub-links on mobile */}
+                    <div className="flex flex-col items-center gap-1 pb-2">
+                        {ABOUT_SECTIONS.map(({ href, label }) => (
+                            <Link key={href} href={href} onClick={() => setOpen(false)}>
+                                <Button variant="link" className="text-text-secondary/60 hover:text-gold cursor-pointer text-sm">
+                                    {label}
+                                </Button>
+                            </Link>
+                        ))}
+                    </div>
 
                     {/* Divider */}
                     <div className="my-3 h-px bg-white/6" />

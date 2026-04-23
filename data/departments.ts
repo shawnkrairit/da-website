@@ -1,0 +1,43 @@
+import type { LocaleKey } from './practices'
+
+export const DEPARTMENTS: Record<LocaleKey, string[]> = {
+    en: [
+        'Intellectual Property',
+        'Immigration & Work Permits',
+        'Corporate & M&A',
+        'Litigation & Disputes',
+        'Employment & Labour Law',
+        'Data Privacy & PDPA',
+        'Taxation',
+        'Real Estate & Property',
+        'Banking & Finance',
+        'BOI & Investment Promotion',
+        'Other',
+    ],
+    th: [
+        'ทรัพย์สินทางปัญญา',
+        'การตรวจคนเข้าเมืองและใบอนุญาตทำงาน',
+        'กฎหมายบริษัทและการควบรวมกิจการ',
+        'การดำเนินคดีและการระงับข้อพิพาท',
+        'กฎหมายแรงงานและการจ้างงาน',
+        'ความเป็นส่วนตัวของข้อมูลและ PDPA',
+        'ภาษีอากร',
+        'อสังหาริมทรัพย์และทรัพย์สิน',
+        'การธนาคารและการเงิน',
+        'BOI และการส่งเสริมการลงทุน',
+        'อื่นๆ',
+    ],
+    cn: [
+        '知识产权',
+        '移民与工作许可',
+        '公司法与并购',
+        '诉讼与争议解决',
+        '劳动与雇佣法',
+        '数据隐私与 PDPA',
+        '税务',
+        '房地产与不动产',
+        '银行与金融',
+        'BOI 与投资促进',
+        '其他',
+    ],
+}

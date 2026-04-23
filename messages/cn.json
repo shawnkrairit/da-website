@@ -53,7 +53,36 @@
             "eyebrow": "全球资源",
             "title": "立足区域优势<br></br>触达国际视野",
             "description": "作为 INTA、APAA、AIPPI、ASEAN IPA 及 IPBA 的成员，我们在亚太地区乃至全球范围内维持着强有力的专业网络。依托区域合作伙伴关系，我们可直接对接东盟各国顶尖律所。对于处理跨境事务的客户，我们通过曼谷的统一联络点提供协同一致的法律建议。"
+        },
+        "faqSection": {
+            "eyebrow": "常见问题",
+            "title": "常见问题 解答"
+        },
+        "talkToUsSection": {
+            "eyebrow": "立即开始",
+            "title": "与我们取得联系",
+            "description": "无论您是初次进入泰国市场、在东盟范围内管理知识产权组合，还是为员工办理曼谷调任——我们的团队都能为您提供最具实操价值的法律建议。",
+            "phone": "+66 (0) 2233-0055",
+            "email": "dej-udom@dejudom.com",
+            "address": "Charn Issara Tower I 大厦二楼，942/69 Rama IV Road，曼谷 10500"
         }
+    },
+    "ContactForm": {
+        "title": "发送咨询",
+        "name": "姓名",
+        "namePlaceholder": "您的姓名",
+        "company": "公司",
+        "companyPlaceholder": "公司名称",
+        "email": "电子邮件",
+        "emailPlaceholder": "your@email.com",
+        "practiceArea": "业务领域",
+        "practiceAreaPlaceholder": "选择业务领域",
+        "message": "留言",
+        "messagePlaceholder": "请简述您的事项",
+        "submit": "发送咨询",
+        "submitting": "发送中…",
+        "success": "您的咨询已发送，我们将尽快与您联系。",
+        "error": "出现错误，请重试或直接发送电子邮件联系我们。"
     },
     "NotFound": {
         "title": "页面未找到",

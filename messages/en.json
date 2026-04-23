@@ -54,7 +54,36 @@
             "eyebrow": "Global Reach",
             "title": "Regional Strength,<br></br>International Reach",
             "description": "Through our memberships in INTA, APAA, AIPPI, ASEAN IPA, and IPBA, we maintain strong professional networks across Asia Pacific and globally. Our regional partnerships provide direct access to leading firms across every ASEAN jurisdiction.<br></br>Clients dealing with cross-border matters get coordinated advice through a single point of contact in Bangkok."
+        },
+        "faqSection": {
+            "eyebrow": "Common Questions",
+            "title": "Frequently Asked Questions"
+        },
+        "talkToUsSection": {
+            "eyebrow": "Get Started",
+            "title": "Talk To Us",
+            "description": "Whether you are entering the Thai market, managing an IP portfolio across ASEAN, or relocating employees to Bangkok — our team can advise on the most practical path forward.",
+            "phone": "+66 (0) 2233-0055",
+            "email": "dej-udom@dejudom.com",
+            "address": "Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500"
         }
+    },
+    "ContactForm": {
+        "title": "Send an Enquiry",
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "company": "Company",
+        "companyPlaceholder": "Company name",
+        "email": "Email",
+        "emailPlaceholder": "your@email.com",
+        "practiceArea": "Practice Area",
+        "practiceAreaPlaceholder": "Select practice area",
+        "message": "Message",
+        "messagePlaceholder": "Brief description of your matter",
+        "submit": "Send Enquiry",
+        "submitting": "Sending…",
+        "success": "Your enquiry has been sent. We will be in touch shortly.",
+        "error": "Something went wrong. Please try again or email us directly."
     },
     "NotFound": {
         "title": "Page Not Found",

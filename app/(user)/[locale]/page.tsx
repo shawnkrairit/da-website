@@ -1,8 +1,10 @@
 import CrossBorderWork from "@/components/homepage/CrossBorderWork";
+import FAQ from "@/components/homepage/FAQ";
 import GlobalReach from "@/components/homepage/GlobalReach";
 import HeroSection from "@/components/homepage/HeroSection";
 import Ranking from "@/components/homepage/Ranking";
 import SectorsWeServe from "@/components/homepage/SectorsWeServe";
+import TalkToUs from "@/components/homepage/TalkToUs";
 import TrustBar from "@/components/homepage/TrustBar";
 import WhatWeDo from "@/components/homepage/WhatWeDo";
 import { getTranslations } from "next-intl/server";
@@ -40,6 +42,10 @@ async function UserHomePage() {
             <Ranking/>
 
             <GlobalReach/>
+
+            <FAQ/>
+
+            <TalkToUs/>
         </div>
     );
 }

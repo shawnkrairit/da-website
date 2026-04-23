@@ -70,3 +70,15 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+model Attorney {
+  id    String  @id
+  slug  String  @unique
+  fullNameTh  String
+  fullNameEn  String
+  title       String
+  biographyTh String
+  biographyEn String
+  education   String[]
+  // Add Chinese
+}
