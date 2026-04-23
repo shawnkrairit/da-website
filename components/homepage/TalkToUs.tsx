@@ -1,5 +1,4 @@
-import type { LocaleKey } from "@/data/practices";
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import SectionHeader from "@/components/global/SectionHeader";
 import Image from "next/image";
 import { r2 } from "@/lib/image";
@@ -7,11 +6,7 @@ import ContactForm from "../form/ContactForm";
 import { PhoneIcon, MailIcon, MapPinIcon } from "lucide-react";
 
 async function TalkToUs() {
-    const [t, rawLocale] = await Promise.all([
-        getTranslations('HomePage.talkToUsSection'),
-        getLocale(),
-    ])
-    const locale = (rawLocale as LocaleKey) in { en: 1, th: 1, cn: 1 } ? rawLocale as LocaleKey : 'en'
+    const t = await getTranslations('HomePage.talkToUsSection')
 
     return (
         <section className="relative flex w-full justify-center overflow-hidden bg-forest-deep">

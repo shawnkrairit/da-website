@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
@@ -76,17 +78,18 @@ export function ForgotPasswordForm({ className, ...props }: React.ComponentProps
                             )}
                             <FieldDescription className="text-center">
                                 Remember your password?{" "}
-                                <a href="/admin/login" className="underline underline-offset-4">
+                                <Link href="/admin/login" className="underline underline-offset-4">
                                     Back to login
-                                </a>
+                                </Link>
                             </FieldDescription>
                         </FieldGroup>
                     </form>
                     <div className="relative hidden bg-muted md:block">
-                        <img
+                        <Image
                             src="https://placehold.co/600x800"
                             alt=""
-                            className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                            fill
+                            className="object-cover dark:brightness-[0.2] dark:grayscale"
                         />
                     </div>
                 </CardContent>
