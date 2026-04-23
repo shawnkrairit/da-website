@@ -20,6 +20,17 @@ const noto_sans_sc = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: "Dej-Udom & Associates - Thailand Law Firm in Bangkok | Corporate, IP & Immigration Lawyers",
   description: "Independent Bangkok law firm providing corporate, immigration, intellectual property, tax and dispute resolution legal services for international clients in Thailand.",
+  icons: {
+    icon: [
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icons/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [
+      { url: "/icons/apple-icon.png" },
+    ],
+  },
 };
 
 export default function RootLayout({
