@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id            String    @id
+  id            String    @id @default(uuid())
   name          String
   email         String
   emailVerified Boolean   @default(false)
@@ -24,7 +24,7 @@ model User {
 }
 
 model Session {
-  id        String   @id
+  id        String   @id @default(uuid())
   expiresAt DateTime
   token     String
   createdAt DateTime @default(now())
@@ -40,7 +40,7 @@ model Session {
 }
 
 model Account {
-  id                    String    @id
+  id                    String    @id @default(uuid())
   accountId             String
   providerId            String
   userId                String
@@ -60,7 +60,7 @@ model Account {
 }
 
 model Verification {
-  id         String   @id
+  id         String   @id @default(uuid())
   identifier String
   value      String
   expiresAt  DateTime
@@ -72,13 +72,89 @@ model Verification {
 }
 
 model Attorney {
-  id    String  @id
-  slug  String  @unique
-  fullNameTh  String
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  email       String?
+  phone       String?
+  imageUrl    String?
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
   fullNameEn  String
-  title       String
-  biographyTh String
+  fullNameTh  String
+  fullNameCn  String
+
+  titleEn     String
+  titleTh     String
+  titleCn     String
+
   biographyEn String
+  biographyTh String
+  biographyCn String
+
+  // Credentials are kept in English (LL.B., LL.M., Thai Barrister, etc.)
   education   String[]
-  // Add Chinese
+
+  departments AttorneyDepartment[]
+  insights    Insight[]
+
+  @@map("attorney")
+}
+
+model Department {
+  id      String  @id @default(uuid())
+  slug    String  @unique
+  order   Int     @default(0)
+
+  nameEn  String
+  nameTh  String
+  nameCn  String
+
+  attorneys AttorneyDepartment[]
+  insights  InsightDepartment[]
+
+  @@map("department")
+}
+
+model AttorneyDepartment {
+  attorneyId   String
+  departmentId String
+  attorney     Attorney   @relation(fields: [attorneyId], references: [id], onDelete: Cascade)
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@id([attorneyId, departmentId])
+  @@map("attorney_department")
+}
+
+model Insight {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  publishedAt DateTime?
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  title       String
+  excerpt     String
+  body        String   // markdown
+
+  authorId    String?
+  author      Attorney?           @relation(fields: [authorId], references: [id])
+
+  departments InsightDepartment[]
+
+  @@index([publishedAt])
+  @@map("insight")
+}
+
+model InsightDepartment {
+  insightId    String
+  departmentId String
+  insight      Insight    @relation(fields: [insightId], references: [id], onDelete: Cascade)
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@id([insightId, departmentId])
+  @@map("insight_department")
 }

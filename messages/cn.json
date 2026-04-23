@@ -83,7 +83,20 @@
         "heroSection": {
             "eyebrow": "关于律所",
             "title": "曼谷综合律师事务所<br></br>创立于 <gold>1986</gold> 年",
-            "description": "本律所由 Dej-Udom Krairit 教授创立。从最初专注于知识产权领域的专业事务所，现已发展为曼谷久负盛名的全方位法律服务律所之一——致力于在五大核心法律领域，以双语执业能力为跨国企业提供专业咨询。"
+            "description": "本律所由 Dej-Udom Krairit 教授创立。从最初专注于知识产权领域的专业事务所，现已发展为曼谷久负盛名的全方位法律服务律所之 - 致力于在五大核心法律领域，以双语执业能力为跨国企业提供专业咨询。"
+        },
+        "founderSection": {
+            "eyebrow": "创始人",
+            "title": "卓越法律精神<br></br>的传承",
+            "description": "近四十年来，Dej-Udom Krairit 教授创立并领导着律所，始终秉持深厚的专业造诣、对客户的高度承诺以及始终如一的服务标准。",
+            "founder": "Dej-Udom Krairit 教授",
+            "position_title": "创始人兼管理合伙人",
+            "since": "创立于 1986 年 — Dej-Udom & Associates Ltd."
+        },
+        "attorneySection": {
+            "eyebrow": "我们的团队",
+            "title": "专业背后的核心力量",
+            "description": "我们的律师及全体员工在各自专业领域均拥有深厚造诣，并致力于精准把握每一处法律细节."
         }
     },
     "ContactForm": {

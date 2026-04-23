@@ -1,4 +1,6 @@
+import Founder from '@/components/about-us/Founder'
 import AboutHeroSection from '@/components/about-us/HeroSection'
+import People from '@/components/about-us/People'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
@@ -23,8 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function AboutPage() {
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col items-center'>
             <AboutHeroSection/>
+            <Founder/>
+            <People/>
         </div>
     )
 }

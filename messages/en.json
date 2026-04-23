@@ -85,6 +85,19 @@
             "eyebrow": "About the firm",
             "title": "Bangkok's Multidisciplinary<br></br>Law Firm Since <gold>1986</gold>",
             "description": "Founded by Professor Dej-Udom Krairit, our firm has grown from a specialist intellectual property practice into one of Bangkok's established full-service law firms — advising multinational companies across five practice areas and two working languages."
+        },
+        "founderSection": {
+            "eyebrow": "Our Founder",
+            "title": "A Legacy of Legal Excellence",
+            "description": "For nearly four decades, Professor Dej-Udom Krairit has built and led a firm grounded in technical depth, client commitment, and an unwavering standard of service.",
+            "founder": "Prof. Dej-Udom Krairit",
+            "position_title": "Founder & Managing Partner",
+            "since": "Est. 1986 — Dej-Udom & Associates Ltd."
+        },
+        "attorneySection": {
+            "eyebrow": "Our Team",
+            "title": "The People Behind the Practice",
+            "description": "Our attorneys and staff bring genuine depth in their respective areas and a shared commitment to getting the detail right."
         }
     },
     "ContactForm": {
