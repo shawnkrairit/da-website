@@ -68,6 +68,25 @@
             "address": "Charn Issara Tower I, 2nd Floor, 942/69 Rama IV Road, Bangkok 10500"
         }
     },
+    "Metadata": {
+        "title": "Dej-Udom & Associates — Bangkok Law Firm | Corporate, IP & Immigration Lawyers Thailand",
+        "description": "Established in 1986, Dej-Udom & Associates is a partner-led, full-service Bangkok law firm delivering commercially minded legal counsel across Corporate, IP, Immigration, Litigation, Patent, and Tax for businesses operating in Thailand and ASEAN.",
+        "ogTitle": "Dej-Udom & Associates — Bangkok Law Firm",
+        "ogDescription": "Partner-led full-service law firm in Bangkok since 1986. Corporate, IP, Immigration, Litigation, Patent & Tax counsel for multinationals and investors across Thailand and ASEAN."
+    },
+    "AboutPage": {
+        "metadata": {
+            "title": "About Us | Dej-Udom & Associates — Bangkok Law Firm Est. 1986",
+            "description": "Founded in Bangkok in 1986 by Professor Dej-Udom Krairit, Dej-Udom & Associates is a full-service law firm delivering integrated cross-border legal counsel across corporate, IP, immigration, litigation, patent, and tax for businesses operating in Thailand and Southeast Asia.",
+            "ogTitle": "About Dej-Udom & Associates — Bangkok Law Firm",
+            "ogDescription": "Nearly four decades helping businesses, investors, and individuals navigate complex legal landscapes across Southeast Asia. Commercial insight, local authority, uncompromising service."
+        },
+        "heroSection": {
+            "eyebrow": "About the firm",
+            "title": "Bangkok's Multidisciplinary<br></br>Law Firm Since <gold>1986</gold>",
+            "description": "Founded by Professor Dej-Udom Krairit, our firm has grown from a specialist intellectual property practice into one of Bangkok's established full-service law firms — advising multinational companies across five practice areas and two working languages."
+        }
+    },
     "ContactForm": {
         "title": "Send an Enquiry",
         "name": "Name",

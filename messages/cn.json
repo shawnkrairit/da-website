@@ -67,6 +67,25 @@
             "address": "Charn Issara Tower I 大厦二楼，942/69 Rama IV Road，曼谷 10500"
         }
     },
+    "Metadata": {
+        "title": "Dej-Udom & Associates — 曼谷律师事务所 | 泰国公司法、知识产权及移民律师",
+        "description": "Dej-Udom & Associates成立于1986年，是一家总部位于曼谷的合伙人主导全服务律师事务所，为在泰国及东南亚运营的客户提供公司与商业法、知识产权、移民与雇佣、诉讼与争议解决、专利与技术及税务等商业法律顾问服务。",
+        "ogTitle": "Dej-Udom & Associates — 曼谷全服务律师事务所",
+        "ogDescription": "曼谷合伙人主导律师事务所，自1986年起服务跨国企业及外国投资者。专精公司法、知识产权、移民、诉讼、专利及税务，深耕泰国及东南亚市场。"
+    },
+    "AboutPage": {
+        "metadata": {
+            "title": "关于我们 | Dej-Udom & Associates — 曼谷律师事务所 创立于1986年",
+            "description": "Dej-Udom & Associates由Dej-Udom Krairit教授于1986年在曼谷创立，是一家全服务律师事务所，为在泰国及东南亚运营的企业提供公司法、知识产权、移民、诉讼、专利及税务等跨境综合法律服务。",
+            "ogTitle": "关于 Dej-Udom & Associates — 曼谷律师事务所",
+            "ogDescription": "近四十年来协助企业、投资者及个人应对东南亚复杂法律环境。商业洞察力、本地权威与不妥协的服务，成就泰国及海外首选全服务律师事务所。"
+        },
+        "heroSection": {
+            "eyebrow": "关于律所",
+            "title": "曼谷综合律师事务所<br></br>创立于 <gold>1986</gold> 年",
+            "description": "本律所由 Dej-Udom Krairit 教授创立。从最初专注于知识产权领域的专业事务所，现已发展为曼谷久负盛名的全方位法律服务律所之一——致力于在五大核心法律领域，以双语执业能力为跨国企业提供专业咨询。"
+        }
+    },
     "ContactForm": {
         "title": "发送咨询",
         "name": "姓名",

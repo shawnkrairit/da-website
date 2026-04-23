@@ -57,8 +57,8 @@ async function WhatWeDo() {
                                     <Icon className="text-gold" size={20} />
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <p className="font-heading font-semibold text-base text-text-primary">{p.content[locale].title}</p>
-                                    <p className="text-text-secondary text-sm leading-relaxed">{p.content[locale].description}</p>
+                                    <p className="font-heading font-semibold text-lg text-text-primary">{p.content[locale].title}</p>
+                                    <p className="text-text-secondary text-base leading-relaxed">{p.content[locale].description}</p>
                                 </div>
                             </div>
                         )
