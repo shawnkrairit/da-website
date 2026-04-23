@@ -787,11 +787,6 @@
     color: var(--gold);
   }
 
-  /* ===== PUBLICATIONS SECTION ===== */
-  .publications-section {
-    border-top: 1px solid var(--border-subtle);
-    border-bottom: 1px solid var(--border-subtle);
-  }
   .pub-filter {
     display: flex;
     flex-wrap: wrap;
@@ -1066,9 +1061,8 @@
     z-index: 0;
   }
   .section-with-bg > * { position: relative; z-index: 1; }
-  .section-with-bg.bg-founder::before { background-image: url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=60'); }
-  .section-with-bg.bg-team::before { background-image: url('https://images.unsplash.com/photo-1562601579-599dec564e06?w=1200&q=60'); }
-  .section-with-bg.bg-publications::before { background-image: url('https://images.unsplash.com/photo-1549396535-c11d5c55b9df?w=1200&q=60'); }
+  .section-with-bg.bg-founder::before { background-image: url('assets/images/shared/bangkok-skyline.jpg'); }
+  .section-with-bg.bg-team::before { background-image: url('assets/images/about/thai-culture.jpg'); }
 </style>
 </head>
 <body style="opacity:0;transition:opacity .3s" data-i18n-title="about.meta.title" data-i18n-desc="about.meta.desc">
@@ -1091,7 +1085,6 @@
               <div class="nav-dropdown-menu">
                 <a href="DA About Us 2026.html#founder" data-i18n="common.nav.about_founder">Our Founder</a>
                 <a href="DA About Us 2026.html#team" data-i18n="common.nav.about_team">Our Team</a>
-                <a href="DA About Us 2026.html#publications" data-i18n="common.nav.about_publications">Publications</a>
               </div>
             </li>
       <li><a href="index.html#practices" data-i18n="common.nav.expertise">Expertise</a></li>
@@ -1560,16 +1553,6 @@
   </div>
 </div>
 
-<!-- ===== PUBLICATIONS CTA ===== -->
-<div class="section-with-bg bg-publications" id="publications">
-  <div class="section" style="text-align:center;padding-top:100px;padding-bottom:100px;">
-    <div class="section-label reveal" style="justify-content:center;">Publications</div>
-    <h2 class="section-title reveal reveal-delay-1">Articles & Legal Commentary</h2>
-    <p class="section-intro reveal reveal-delay-2" style="max-width:600px;margin-left:auto;margin-right:auto;margin-bottom:2.5rem;">Formal articles and analysis authored by our attorneys on developments in Thai law, regulatory changes, and practice-area insights.</p>
-    <a href="publications/" class="reveal reveal-delay-3" style="display:inline-block;padding:14px 36px;background:var(--gold);color:var(--forest);border-radius:100px;text-decoration:none;font-weight:600;font-size:0.85rem;letter-spacing:0.5px;transition:all .3s;">View All Publications →</a>
-  </div>
-</div>
-
 <!-- ===== CTA STRIP ===== -->
 <div class="cta-strip">
   <div class="cta-strip-inner">
@@ -1602,7 +1585,6 @@
         <h4 data-i18n="common.footer.col_firm">The Firm</h4>
         <a href="DA About Us 2026.html#founder" data-i18n="common.footer.link_founder">Our Founder</a>
         <a href="DA About Us 2026.html#team" data-i18n="common.footer.link_people">Our Team</a>
-        <a href="DA About Us 2026.html#publications" data-i18n="common.footer.link_publications">Publications</a>
         <a href="DA Insights 2026.html" data-i18n="common.footer.link_insights">Insights</a>
       </div>
       <div class="footer-col">

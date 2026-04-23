@@ -1276,7 +1276,6 @@ def generate_country_page(country):
         <h4 data-i18n="common.footer.col_firm">The Firm</h4>
         <a href="../DA About Us 2026.html#founder" data-i18n="common.footer.link_founder">Our Founder</a>
         <a href="../DA About Us 2026.html#team" data-i18n="common.footer.link_people">Our Team</a>
-        <a href="../DA About Us 2026.html#publications" data-i18n="common.footer.link_publications">Publications</a>
         <a href="../DA Insights 2026.html" data-i18n="common.footer.link_insights">Insights</a>
       </div>
       <div class="footer-col">
