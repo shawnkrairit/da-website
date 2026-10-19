@@ -7,7 +7,7 @@
 
 Our IP Department handles every stage of intellectual property protection in Thailand and across the region — from initial filing and registration through to enforcement, licensing, and commercialisation. We act for multinational brand owners, technology companies, pharmaceutical groups, and FMCG businesses managing portfolios that span multiple jurisdictions and asset classes.
 
-The department covers trademarks, patents, copyrights, and related rights, with a dedicated overseas filing desk coordinating protection across ASEAN and internationally through our membership in INTA, APAA, and the International Lawyers Network.
+The department covers trademarks, patents, copyrights, and related rights, with a dedicated overseas filing desk coordinating protection across ASEAN and internationally through our memberships in INTA and AIPPI.
 
 ---
 
@@ -49,12 +49,12 @@ For clients who need IP protection beyond Thailand, our overseas filing desk coo
 
 We work as the instructing firm, liaising with trusted local counsel in each jurisdiction while maintaining a single point of contact for the client. This is particularly relevant for multinational companies that use Bangkok as a regional hub and need consistent portfolio management across Southeast Asia — Thailand, Vietnam, Cambodia, Laos, Myanmar, Indonesia, Malaysia, Singapore, and the Philippines.
 
-Through our long-standing memberships in the International Trademark Association (INTA), Asian Patent Attorneys Association (APAA), and International Lawyers Network (ILN), we have direct access to vetted practitioners in over 50 countries. This allows us to coordinate multi-jurisdiction filings, manage prosecution timelines, and consolidate reporting so that in-house counsel and IP managers are not dealing with a dozen different firms across the region.
+Through our memberships in the International Trademark Association (INTA) and AIPPI, we have direct access to vetted practitioners across multiple jurisdictions. This allows us to coordinate multi-jurisdiction filings, manage prosecution timelines, and consolidate reporting so that in-house counsel and IP managers are not dealing with a dozen different firms across the region.
 
 We also handle Madrid Protocol international trademark registrations designating Thailand, and coordinate PCT national phase filings into Thailand from overseas applicants.
 
 **What we handle:**
-Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through ILN and INTA networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.
+Multi-jurisdiction trademark and patent filings across ASEAN, international filing coordination through INTA and AIPPI networks, Madrid Protocol designations, inbound PCT national phase management, consolidated portfolio reporting.
 
 ---
 

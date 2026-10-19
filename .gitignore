@@ -1,3 +1,9 @@
 .DS_Store
 .claude/
 node_modules/
+
+# Kept on this machine but not published (removed from the public repo 19 Oct 2026)
+*Schedule of Fees.pdf
+Company Profile v.3.pdf
+archive/
+DA Strategic Tree.html
