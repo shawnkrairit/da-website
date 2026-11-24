@@ -1,173 +1,73 @@
-'use client'
-
-import { useTranslations, useLocale } from "next-intl";
-import Image from "next/image";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { motion } from "motion/react";
-import { animate } from "motion";
-import { useEffect, useState } from "react";
-import { r2 } from "@/lib/image";
 
-const EASE: [number, number, number, number] = [0.16, 1, 0.2, 1];
+const HEADLINE: Record<string, [string, string]> = {
+    en: ['Legal expertise', 'with a commercial edge'],
+    th: ['ความเชี่ยวชาญทางกฎหมาย', 'ที่ตอบโจทย์ธุรกิจ'],
+    cn: ['专业法律服务', '兼具商业洞察'],
+};
 
-function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
-    const [count, setCount] = useState(0);
+async function HeroSection() {
+    const [t, locale] = await Promise.all([
+        getTranslations('HomePage.heroSection'),
+        getLocale(),
+    ]);
+    const [line1, line2] = HEADLINE[locale] ?? HEADLINE.en;
 
-    useEffect(() => {
-        const controls = animate(0, to, {
-            duration: 1.8,
-            ease: 'easeOut',
-            onUpdate: (v) => setCount(Math.round(v)),
-        });
-        return () => controls.stop();
-    }, [to]);
-
-    return <>{count}{suffix}</>;
-}
-
-function MetricCard({ number, suffix = '', label }: {
-    number: number;
-    suffix?: string;
-    label: string;
-}) {
-    return (
-        <div className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/3 p-8 text-left transition-all duration-400 hover:-translate-y-0.5 hover:border-[rgba(212,168,83,0.2)] hover:bg-white/5">
-            <div
-                className="absolute inset-x-0 top-0 h-0.5 opacity-0 transition-opacity duration-400 group-hover:opacity-100"
-                style={{ background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)' }}
-            />
-            <div className="font-heading mb-2 text-4xl lg:text-5xl font-normal leading-none text-text-primary">
-                <CountUp to={number} suffix={suffix} />
-            </div>
-            <div className="text-sm font-medium uppercase tracking-[2px] text-[rgba(232,228,221,0.3)]">
-                {label}
-            </div>
-        </div>
-    );
-}
-
-function HeroSection() {
-    const t = useTranslations('HomePage.heroSection');
-    const locale = useLocale();
+    const facts: [string, string][] = [
+        ['40', t('yearsOfPractice')],
+        ['80%+', t('multinational')],
+        ['11', t('asean_countries')],
+        ['20+', t('licensed_attorneys')],
+    ];
 
     return (
-        <section className="relative flex w-full min-h-[60vh] items-center overflow-hidden bg-forest-deep">
-            {/* Background photo */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src={r2('client/bangkok-river.jpg')}
-                    alt=""
-                    fill
-                    className="object-cover object-center opacity-15 brightness-75 saturate-[0.3]"
-                    priority
+        <section className="relative overflow-hidden pb-[clamp(56px,7vw,104px)] pt-[clamp(56px,9vw,136px)]">
+            <div className="wrap relative">
+                {/* the brand guide's overlapping-circles mark */}
+                <svg
                     aria-hidden
-                />
-            </div>
+                    viewBox="0 0 312 172"
+                    fill="none"
+                    stroke="currentColor"
+                    className="pointer-events-none absolute top-1/2 hidden h-auto w-[clamp(420px,44vw,720px)] -translate-y-[58%] text-brand opacity-90 lg:block"
+                    style={{ right: 'calc(-1 * var(--gut) - 150px)' }}
+                >
+                    <circle cx="86" cy="86" r="85" vectorEffect="non-scaling-stroke" strokeWidth="1.25" />
+                    <circle cx="226" cy="86" r="85" vectorEffect="non-scaling-stroke" strokeWidth="1.25" />
+                </svg>
 
-            {/* Radial gradient overlay */}
-            <div
-                className="pointer-events-none absolute inset-0 z-1"
-                style={{
-                    background: [
-                        'radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,122,58,0.08) 0%, transparent 70%)',
-                        'radial-gradient(ellipse 60% 80% at 20% 80%, rgba(212,168,83,0.04) 0%, transparent 60%)',
-                        'linear-gradient(180deg, rgba(5,13,8,0) 0%, rgba(5,13,8,0.6) 100%)',
-                    ].join(', '),
-                }}
-            />
+                <h1 className="relative max-w-[20ch] text-[clamp(2.5rem,1.1rem+5.4vw,5.25rem)]">
+                    {line1}<br />{line2}
+                </h1>
 
-            {/* Animated ambient orbs */}
-            <motion.div
-                animate={{ x: [0, 30, -20, 0], y: [0, -40, 20, 0], scale: [1, 1.05, 0.95, 1] }}
-                transition={{ repeat: Infinity, duration: 20, ease: 'easeInOut', times: [0, 0.33, 0.66, 1] }}
-                className="pointer-events-none absolute -right-25 -top-50 z-1 size-150 rounded-full bg-emerald opacity-[0.12] blur-[80px]"
-            />
-            <motion.div
-                animate={{ x: [0, -30, 20, 0], y: [0, 40, -20, 0], scale: [1, 0.95, 1.05, 1] }}
-                transition={{ repeat: Infinity, duration: 20, ease: 'easeInOut', times: [0, 0.33, 0.66, 1], delay: 7 }}
-                className="pointer-events-none absolute -bottom-25 -left-12.5 z-1 size-100 rounded-full bg-gold opacity-[0.06] blur-[80px]"
-            />
-            <motion.div
-                animate={{ x: [0, 20, -15, 0], y: [0, -20, 10, 0], scale: [1, 1.05, 0.95, 1] }}
-                transition={{ repeat: Infinity, duration: 20, ease: 'easeInOut', times: [0, 0.33, 0.66, 1], delay: 14 }}
-                className="pointer-events-none absolute left-[60%] top-[30%] z-1 size-75 rounded-full bg-emerald-dim opacity-[0.08] blur-[80px]"
-            />
+                <p className="relative mt-[clamp(24px,3vw,40px)] max-w-[52ch] text-[clamp(1.125rem,1.05rem+0.3vw,1.25rem)] leading-[1.55] text-ink-soft">
+                    {t('description')}
+                </p>
 
-            {/* Main content grid */}
-            <div className="relative z-2 mx-auto grid grid-cols-1 md:grid-cols-2 w-full max-w-350 items-center gap-10 md:gap-20 
-            px-4 lg:px-12 pb-30 pt-45">
-
-                {/* ── Left ── */}
-                <div className="max-w-165 flex flex-col gap-6 lg:gap-8">
-                    {/* Eyebrow */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: EASE, delay: 0.3 }}
-                        className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[4px] text-gold"
+                <div className="relative mt-[clamp(28px,3vw,40px)] flex flex-wrap items-center gap-x-7 gap-y-3">
+                    <Link
+                        href="#practices"
+                        className="inline-flex min-h-12 items-center rounded-sm bg-brand px-6.5 font-medium text-white transition-[background-color,transform] duration-150 hover:bg-brand-hover active:scale-[0.97]"
                     >
-                        <span className="h-px w-10 shrink-0 bg-gold opacity-50" />
-                        {t('eyebrow')}
-                    </motion.div>
-
-                    {/* H1 */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, ease: EASE, delay: 0.5 }}
-                        className="font-normal leading-[1.1] tracking-[-0.5px] text-white text-[clamp(42px,5.5vw,68px)]"
+                        {t('explore_button')}
+                    </Link>
+                    <Link
+                        href="#contact"
+                        className="inline-flex min-h-11 items-center font-medium underline decoration-rule-strong decoration-1 underline-offset-[5px] transition-colors duration-150 hover:decoration-current"
                     >
-                        {locale === 'en' ? (
-                            <>Legal expertise<br /><em className="text-gold">with a commercial edge</em></>
-                        ) : locale === 'th' ? (
-                            <>ความเชี่ยวชาญทางกฎหมาย<br /><em className="text-gold">ที่ตอบโจทย์ธุรกิจ</em></>
-                        ) : (
-                            <>专业法律服务<br /><em className="text-gold">兼具商业洞察</em></>
-                        )}
-                    </motion.h1>
-
-                    {/* Description */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.2, ease: EASE, delay: 0.7 }}
-                        className="max-w-120 leading-[1.8] text-text-secondary"
-                    >
-                        {t('description')}
-                    </motion.p>
-
-                    {/* CTA row */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: EASE, delay: 0.9 }}
-                        className="flex flex-col lg:flex-row items-center md:items-start gap-4"
-                    >
-                        <Link
-                            href="#practices"
-                            className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-8 py-4 font-semibold tracking-[0.5px] text-forest transition-all duration-300 hover:-translate-y-0.5 w-full md:w-fit"
-                        >
-                            {t('explore_button')}
-                            <span className="text-base transition-transform duration-300 group-hover:translate-x-1">→</span>
-                        </Link>
-                        <Link
-                            href="#contact"
-                            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-transparent px-8 py-4 font-medium text-text-primary transition-all duration-300 hover:border-gold hover:bg-gold-muted hover:text-gold w-full md:w-fit"
-                        >
-                            {t('getintouch_button')}
-                        </Link>
-                    </motion.div>
+                        {t('getintouch_button')}
+                    </Link>
                 </div>
 
-                {/* ── Right: metrics ── */}
-                <div className="flex flex-col gap-4">
-                    <MetricCard number={40} label={t('yearsOfPractice')} />
-                    <div className="grid grid-cols-2 gap-4">
-                        <MetricCard number={80} suffix="%+" label={t('multinational')} />
-                        <MetricCard number={11} label={t('asean_countries')} />
-                    </div>
-                    <MetricCard number={20} suffix="+" label={t('licensed_attorneys')} />
-                </div>
+                <ul className="relative mt-[clamp(48px,7vw,96px)] flex flex-wrap gap-x-10 gap-y-1.5 border-t border-rule pt-5 text-[0.9375rem] text-ink-soft">
+                    <li className="font-medium text-ink">{t('eyebrow')}</li>
+                    {facts.map(([figure, label]) => (
+                        <li key={label}>
+                            <span className="font-medium tabular-nums text-ink">{figure}</span> {label}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </section>
     );

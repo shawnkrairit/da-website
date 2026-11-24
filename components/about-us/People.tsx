@@ -44,8 +44,8 @@ async function People() {
         : 'en'
 
     return (
-        <section className="w-full bg-forest-deep py-24">
-            <div className="container flex flex-col gap-16 px-4 lg:px-0 mx-auto">
+        <section id="people" className="w-full border-t border-rule py-[clamp(72px,9vw,128px)]">
+            <div className="wrap flex flex-col gap-16">
                 <SectionHeader
                     eyebrow={t('eyebrow')}
                     title={t.rich('title', { br: () => <br /> })}

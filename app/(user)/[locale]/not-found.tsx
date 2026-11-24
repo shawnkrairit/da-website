@@ -10,7 +10,7 @@ export default async function LocaleNotFound() {
             <p className="text-muted-foreground text-sm font-medium tracking-widest uppercase">
                 404
             </p>
-            <h1 className="text-4xl font-bold">{t("title")}</h1>
+            <h1 className="text-5xl">{t("title")}</h1>
             <p className="text-muted-foreground max-w-sm">{t("description")}</p>
             <Button asChild>
                 <Link href="/">{t("back")}</Link>

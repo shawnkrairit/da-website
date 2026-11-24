@@ -25,9 +25,9 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-const inputCls = 'h-11 bg-forest-deep border-white/8 text-text-primary placeholder:text-text-secondary/40 focus-visible:border-gold/50 focus-visible:ring-gold/10'
-const selectTriggerCls = 'data-[size=default]:h-11 bg-forest-deep border-white/8 text-text-primary focus:ring-gold/10 focus:border-gold/50 data-[placeholder]:text-text-secondary/40'
-const labelCls = 'text-xs font-semibold uppercase tracking-wider text-text-secondary'
+const inputCls = 'h-12 rounded-sm bg-paper border-rule-strong text-base text-ink placeholder:text-[#6b776a] focus-visible:border-brand focus-visible:ring-3 focus-visible:ring-gold/55'
+const selectTriggerCls = 'w-full data-[size=default]:h-12 rounded-sm bg-paper border-rule-strong text-base text-ink focus-visible:border-brand focus-visible:ring-3 focus-visible:ring-gold/55 data-[placeholder]:text-[#6b776a]'
+const labelCls = 'text-[0.9375rem] font-medium text-ink'
 
 function ContactForm() {
     const t = useTranslations('ContactForm')
@@ -71,8 +71,8 @@ function ContactForm() {
     }
 
     return (
-        <div className="bg-forest rounded-xl border border-white/8 p-6 flex flex-col gap-6">
-            <h3 className="font-heading text-xl text-text-primary">{t('title')}</h3>
+        <div className="flex flex-col gap-6">
+            <h3 className="text-[1.375rem]">{t('title')}</h3>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FieldGroup className="gap-4">
@@ -107,7 +107,7 @@ function ContactForm() {
                                         <SelectTrigger className={selectTriggerCls}>
                                             <SelectValue placeholder={t('practiceAreaPlaceholder')} />
                                         </SelectTrigger>
-                                        <SelectContent className="bg-forest-deep border-white/8">
+                                        <SelectContent className="bg-paper border-rule">
                                             {practiceAreas.map(a => (
                                                 <SelectItem key={a} value={a}>{a}</SelectItem>
                                             ))}
@@ -126,35 +126,35 @@ function ContactForm() {
                             {...register('message')}
                             rows={4}
                             placeholder={t('messagePlaceholder')}
-                            className="w-full rounded-lg border border-white/8 bg-forest-deep px-3 py-3 text-sm text-text-primary placeholder:text-text-secondary/40 outline-none transition-colors focus:border-gold/50 resize-none aria-invalid:border-destructive"
+                            className="min-h-34 w-full resize-y rounded-sm border border-rule-strong bg-paper px-3.5 py-3 text-base text-ink placeholder:text-[#6b776a] outline-none transition-[border-color,box-shadow] duration-150 focus-visible:border-brand focus-visible:ring-3 focus-visible:ring-gold/55 aria-invalid:border-destructive"
                             aria-invalid={!!errors.message}
                         />
                         <FieldError errors={[errors.message]} />
                     </Field>
 
                     {/* Turnstile */}
-                    <div className="flex justify-center">
+                    <div>
                         <Turnstile
                             sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA'}
                             onVerify={setCfToken}
                             onExpire={() => setCfToken(null)}
-                            theme="dark"
+                            theme="light"
                         />
                     </div>
 
                     <Button
                         type="submit"
                         disabled={status === 'loading' || !cfToken}
-                        className="w-full rounded-full py-6 font-semibold cursor-pointer"
+                        className="h-12 w-full cursor-pointer rounded-sm px-6.5 text-base font-medium sm:w-fit"
                     >
                         {status === 'loading' ? t('submitting') : t('submit')}
                     </Button>
 
                     {status === 'success' && (
-                        <p className="text-center text-sm text-emerald">{t('success')}</p>
+                        <p role="status" className="text-[0.9375rem] text-emerald">{t('success')}</p>
                     )}
                     {status === 'error' && (
-                        <p className="text-center text-sm text-red-400">{t('error')}</p>
+                        <p role="alert" className="text-[0.9375rem] text-destructive">{t('error')}</p>
                     )}
                 </FieldGroup>
             </form>

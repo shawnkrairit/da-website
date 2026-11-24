@@ -1,7 +1,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import type { LocaleKey } from "@/data/practices";
 import { FAQS } from "@/data/faq";
-import SectionHeader from "../global/SectionHeader";
+import Section from "../global/Section";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 async function FAQ() {
@@ -12,36 +12,23 @@ async function FAQ() {
     const locale = (rawLocale as LocaleKey) in { en: 1, th: 1, cn: 1 } ? rawLocale as LocaleKey : 'en'
 
     return (
-        <section className="flex w-full flex-col items-center gap-16 overflow-hidden py-26">
-            <div className="container px-4 lg:px-0">
-                <SectionHeader
-                    eyebrow={t('eyebrow')}
-                    title={t.rich('title', { br: () => <br /> })}
-                />
-            </div>
-
-            <div className="container px-4 lg:px-0 flex justify-center">
-                <Accordion type="single" collapsible className="max-w-4xl">
-                    {FAQS.map(({ key, content }) => {
-                        const { question, answer } = content[locale]
-                        return (
-                            <AccordionItem
-                                key={key}
-                                value={key}
-                                className="border-white/8"
-                            >
-                                <AccordionTrigger className="text-left font-medium text-lg text-text-primary hover:text-gold hover:no-underline py-5">
-                                    {question}
-                                </AccordionTrigger>
-                                <AccordionContent className="text-text-secondary leading-relaxed pb-5 text-base">
-                                    {answer}
-                                </AccordionContent>
-                            </AccordionItem>
-                        )
-                    })}
-                </Accordion>
-            </div>
-        </section>
+        <Section title={t.rich('title', { br: () => <br /> })}>
+            <Accordion type="single" collapsible defaultValue={FAQS[0]?.key} className="border-t border-rule-strong">
+                {FAQS.map(({ key, content }) => {
+                    const { question, answer } = content[locale]
+                    return (
+                        <AccordionItem key={key} value={key} className="border-rule">
+                            <AccordionTrigger className="cursor-pointer py-5 text-left font-heading text-[1.375rem] font-normal leading-snug hover:no-underline">
+                                {question}
+                            </AccordionTrigger>
+                            <AccordionContent className="max-w-[68ch] pb-6 text-[1.0625rem] leading-[1.6] text-ink-soft">
+                                {answer}
+                            </AccordionContent>
+                        </AccordionItem>
+                    )
+                })}
+            </Accordion>
+        </Section>
     );
 }
 

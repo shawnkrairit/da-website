@@ -79,7 +79,7 @@ export default function PeopleClient({ departments, attorneys, locale }: Props) 
                         <Link
                             key={a.id}
                             href={`/about/people/${a.slug}`}
-                            className="group flex flex-col rounded-xl bg-forest border border-gold/10 hover:border-gold/30 transition-colors overflow-hidden"
+                            className="group flex flex-col overflow-hidden rounded-sm border border-rule transition-colors duration-150 hover:border-brand"
                         >
                             {/* Photo — 4:5 */}
                             <AspectRatio ratio={4 / 5}>
@@ -91,8 +91,8 @@ export default function PeopleClient({ departments, attorneys, locale }: Props) 
                                         className="object-cover object-top"
                                     />
                                 ) : (
-                                    <div className="size-full bg-forest-mid flex items-center justify-center">
-                                        <span className="font-heading text-5xl text-gold/30">
+                                    <div className="size-full bg-tint flex items-center justify-center">
+                                        <span className="font-heading text-5xl text-ink-soft/50">
                                             {initials(a.fullNameEn)}
                                         </span>
                                     </div>
@@ -102,10 +102,10 @@ export default function PeopleClient({ departments, attorneys, locale }: Props) 
                             {/* Info */}
                             <div className="flex flex-col gap-3 p-5">
                                 <div>
-                                    <p className="font-semibold text-text-primary text-base leading-snug group-hover:text-gold transition-colors">
+                                    <p className="font-semibold text-base leading-snug">
                                         {displayName}
                                     </p>
-                                    <p className="text-xs text-gold mt-1">{displayTitle}</p>
+                                    <p className="text-[0.8125rem] text-ink-soft mt-1">{displayTitle}</p>
                                 </div>
 
                                 <p className="text-sm text-text-secondary leading-relaxed line-clamp-2">
@@ -118,7 +118,7 @@ export default function PeopleClient({ departments, attorneys, locale }: Props) 
             </div>
 
             {filtered.length === 0 && (
-                <p className="text-sm text-text-secondary/50 text-center py-12">
+                <p className="text-[0.9375rem] text-ink-soft text-center py-12">
                     No attorneys match all selected filters.
                 </p>
             )}

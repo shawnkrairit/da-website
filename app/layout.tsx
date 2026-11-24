@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Noto_Sans_SC, Noto_Sans_Thai } from "next/font/google";
+import { Noto_Sans_SC, Sarabun, Tinos } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
-const libre = Libre_Baskerville({
-  variable: "--font-libre-baskerville",
-  subsets: ["latin"],
+// Brand Identity Guide: Times New Roman for English, Sarabun for Thai.
+// Tinos is the metric-compatible web fallback where Times New Roman is not installed.
+const sarabun = Sarabun({
+  variable: "--font-sarabun",
+  weight: ["400", "500", "600"],
+  subsets: ["latin", "thai"],
 });
 
-const noto_sans_thai = Noto_Sans_Thai({
-  variable: "--font-noto-sans-thai",
+const tinos = Tinos({
+  variable: "--font-tinos",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -33,14 +38,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const HTML_LANG: Record<string, string> = { en: "en", th: "th", cn: "zh-Hans" };
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
     <html
-      className={`light ${libre.variable} ${noto_sans_thai.variable} ${noto_sans_sc.variable} h-full antialiased bg-forest-deep`}
+      lang={HTML_LANG[locale] ?? "en"}
+      className={`light ${sarabun.variable} ${tinos.variable} ${noto_sans_sc.variable} h-full antialiased bg-paper`}
     >
       <body className="min-h-full flex flex-col">
         {children}
