@@ -14,7 +14,7 @@ export default async function NotFound() {
                 <p className="text-text-secondary text-sm font-medium tracking-widest uppercase">
                     404
                 </p>
-                <h1 className="text-4xl font-bold text-gold">{t("title")}</h1>
+                <h1 className="text-5xl">{t("title")}</h1>
                 <p className="text-text-secondary max-w-sm">{t("description")}</p>
                 <Button asChild variant='default'>
                     <Link href="/">{t("back")}</Link>

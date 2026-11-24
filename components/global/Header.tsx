@@ -4,18 +4,10 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import LocaleSwitcher from "./LocaleSwitcher";
-import { Button } from "../ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
-    { href: '/',          key: 'Header.Home' },
     { href: '/about',     key: 'Header.About' },
     { href: '/expertise', key: 'Header.Expertise' },
     { href: '/insight',   key: 'Header.Insights' },
@@ -28,132 +20,103 @@ const ABOUT_SECTIONS = [
     { href: '/about#publications', label: 'Publications' },
 ];
 
+const linkCls =
+    "relative inline-flex min-h-11 items-center text-[0.9375rem] font-medium " +
+    "after:absolute after:inset-x-0 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-current " +
+    "after:transition-transform after:duration-200 after:ease-[cubic-bezier(0.23,1,0.32,1)] hover:after:scale-x-100";
+
 function Header() {
     const t = useTranslations('Global');
     const [open, setOpen] = useState(false);
-    const [aboutOpen, setAboutOpen] = useState(false);
+
+    useEffect(() => {
+        if (!open) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+        document.addEventListener('keydown', onKey);
+        return () => document.removeEventListener('keydown', onKey);
+    }, [open]);
 
     return (
-        <header className="fixed inset-x-0 top-0 z-50 w-full bg-forest-deep/80 backdrop-blur-md">
-            {/* ── Desktop / mobile bar ── */}
-            <div className="container mx-auto flex h-18 items-center justify-between px-4 lg:px-8">
-
-                {/* Logo */}
-                <Link href="/" className="shrink-0">
+        <header className="sticky top-0 z-50 w-full border-b border-rule bg-paper">
+            <div className="wrap flex h-(--nav-h) items-center gap-8">
+                <Link href="/" className="mr-auto shrink-0">
+                    {/* the firm's wordmark; the white file is rendered in brand green on the white header */}
                     <Image
                         src="/dejudom-associates-logo-white.png"
                         width={230}
                         height={60}
-                        alt="Dej-Udom & Associates"
+                        alt="Dej-Udom & Associates, Attorneys at Law"
+                        className="h-11 w-auto brightness-0"
                         priority
                     />
                 </Link>
 
-                {/* Desktop nav */}
-                <nav className="hidden lg:flex items-center gap-6 text-sm text-text-secondary">
-                    {NAV_LINKS.map(({ href, key }) => {
-                        if (key === 'Header.About') {
-                            return (
-                                <DropdownMenu key={href} open={aboutOpen} onOpenChange={setAboutOpen}>
-                                    <DropdownMenuTrigger asChild>
-                                        <div
-                                            onMouseEnter={() => setAboutOpen(true)}
-                                            onMouseLeave={() => setAboutOpen(false)}
-                                        >
-                                            <Link href={href}>
-                                                <Button variant="link" className="text-text-secondary hover:text-gold decoration-gold cursor-pointer">
-                                                    {t(key)}
-                                                </Button>
-                                            </Link>
-                                        </div>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent
-                                        onMouseEnter={() => setAboutOpen(true)}
-                                        onMouseLeave={() => setAboutOpen(false)}
-                                        className="bg-forest-deep border-white/8 min-w-44"
-                                        align="center"
-                                    >
-                                        {ABOUT_SECTIONS.map(({ href, label }) => (
-                                            <DropdownMenuItem
-                                                key={href}
-                                                asChild
-                                                className="py-2 justify-center text-text-secondary data-highlighted:bg-forest-mid data-highlighted:text-text-secondary"
-                                            >
-                                                <Link href={href} className="cursor-pointer text-center w-full">
-                                                    {label}
-                                                </Link>
-                                            </DropdownMenuItem>
-                                        ))}
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            )
-                        }
-
-                        return (
-                            <Link key={href} href={href}>
-                                <Button variant="link" className="text-text-secondary hover:text-gold decoration-gold cursor-pointer">
-                                    {t(key)}
-                                </Button>
-                            </Link>
+                <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
+                    {NAV_LINKS.map(({ href, key }) =>
+                        key === 'Header.About' ? (
+                            <div key={href} className="group relative">
+                                <Link href={href} className={linkCls}>{t(key)}</Link>
+                                <div className="invisible absolute -left-4 top-full min-w-48 translate-y-1 rounded-sm border border-rule bg-paper py-1.5 opacity-0 shadow-[0_12px_28px_-12px_rgba(5,27,4,0.25)] transition-[opacity,transform,visibility] duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                                    {ABOUT_SECTIONS.map(({ href, label }) => (
+                                        <Link key={href} href={href} className="flex min-h-11 items-center px-4 text-[0.9375rem] hover:bg-tint">
+                                            {label}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : (
+                            <Link key={href} href={href} className={linkCls}>{t(key)}</Link>
                         )
-                    })}
+                    )}
                 </nav>
 
-                {/* Desktop right */}
-                <div className="hidden lg:flex items-center gap-4">
+                <div className="hidden items-center gap-5 lg:flex">
                     <LocaleSwitcher />
-                    <Link href="/contact">
-                        <Button className="rounded-full cursor-pointer px-6">
-                            {t('Header.Contact')}
-                        </Button>
+                    <Link
+                        href="/contact"
+                        className="inline-flex min-h-10 items-center rounded-sm bg-brand px-5 text-[0.9375rem] font-medium text-white transition-[background-color,transform] duration-150 hover:bg-brand-hover active:scale-[0.97]"
+                    >
+                        {t('Header.Contact')}
                     </Link>
                 </div>
 
-                {/* Burger */}
                 <button
-                    className="lg:hidden flex items-center justify-center p-2 text-text-primary cursor-pointer"
+                    type="button"
+                    className="flex size-11 cursor-pointer items-center justify-center lg:hidden"
                     onClick={() => setOpen(o => !o)}
-                    aria-label="Toggle menu"
+                    aria-label={open ? 'Close menu' : 'Open menu'}
                     aria-expanded={open}
+                    aria-controls="mobile-menu"
                 >
-                    {open ? <X size={24} /> : <Menu size={24} />}
+                    {open ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
                 </button>
             </div>
 
-            {/* ── Mobile dropdown ── */}
-            <div className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${open ? 'max-h-screen' : 'max-h-0'}`}>
-                <div className="border-t border-white/6 bg-forest px-6 pb-6 pt-4 flex flex-col gap-0">
-                    {/* Nav links */}
-                    {NAV_LINKS.map(({ href, key }) => (
-                        <Link key={href} href={href} onClick={() => setOpen(false)}
-                            className="py-4"
-                        >
-                            <Button variant="link" className="w-full justify-center text-text-secondary hover:text-gold decoration-gold cursor-pointer text-xl py-4">
-                                {t(key)}
-                            </Button>
-                        </Link>
-                    ))}
-
-                    {/* About sub-links on mobile */}
-                    <div className="flex flex-col items-center gap-1 pb-2">
-                        {ABOUT_SECTIONS.map(({ href, label }) => (
-                            <Link key={href} href={href} onClick={() => setOpen(false)}>
-                                <Button variant="link" className="text-text-secondary/60 hover:text-gold cursor-pointer text-sm">
-                                    {label}
-                                </Button>
-                            </Link>
+            {open && (
+                <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-(--nav-h) overflow-y-auto bg-paper lg:hidden">
+                    <nav aria-label="Main" className="wrap flex flex-col pb-10 pt-2">
+                        {[...NAV_LINKS, { href: '/contact', key: 'Header.Contact' } as const].map(({ href, key }) => (
+                            <div key={href} className="border-b border-rule">
+                                <Link href={href} onClick={() => setOpen(false)} className="flex min-h-14 items-center font-heading text-2xl">
+                                    {t(key)}
+                                </Link>
+                                {key === 'Header.About' && (
+                                    <div className="flex flex-col pb-3">
+                                        {ABOUT_SECTIONS.map(({ href, label }) => (
+                                            <Link key={href} href={href} onClick={() => setOpen(false)} className="flex min-h-11 items-center text-ink-soft">
+                                                {label}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         ))}
-                    </div>
-
-                    {/* Divider */}
-                    <div className="my-3 h-px bg-white/6" />
-
-                    {/* Lang switcher */}
-                    <div className="flex justify-center">
-                        <LocaleSwitcher />
-                    </div>
+                        <div className="pt-5">
+                            <LocaleSwitcher />
+                        </div>
+                    </nav>
                 </div>
-            </div>
+            )}
         </header>
     );
 }

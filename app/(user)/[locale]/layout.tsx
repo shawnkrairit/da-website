@@ -4,6 +4,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from '@/components/global/Header';
+import Footer from '@/components/global/Footer';
 import JsonLd from '@/components/global/JsonLd';
 import { r2 } from '@/lib/image';
 
@@ -67,9 +68,15 @@ export default async function LocaleLayout({ children, params }: Props) {
     return (
         <NextIntlClientProvider locale={locale} messages={messages}>
             <JsonLd locale={locale} />
-            <div className='flex flex-col w-full'>
+            <div className='flex min-h-svh w-full flex-col'>
+                <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-100 focus:rounded-sm focus:bg-brand focus:px-4 focus:py-2.5 focus:text-white">
+                    Skip to content
+                </a>
                 <Header />
-                {children}
+                <main id="main" className="flex-1">
+                    {children}
+                </main>
+                <Footer />
             </div>
         </NextIntlClientProvider>
     );

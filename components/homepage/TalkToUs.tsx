@@ -1,53 +1,38 @@
 import { getTranslations } from "next-intl/server";
 import SectionHeader from "@/components/global/SectionHeader";
-import Image from "next/image";
-import { r2 } from "@/lib/image";
 import ContactForm from "../form/ContactForm";
-import { PhoneIcon, MailIcon, MapPinIcon } from "lucide-react";
 
 async function TalkToUs() {
     const t = await getTranslations('HomePage.talkToUsSection')
+    const phone = t('phone')
+    const email = t('email')
+    const address = t('address')
+    const lineCls = "flex min-h-14 items-center border-b border-rule py-2.5 font-heading text-xl leading-snug transition-colors duration-150 hover:border-brand"
 
     return (
-        <section className="relative flex w-full justify-center overflow-hidden bg-forest-deep">
-            {/* Background photo */}
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src={r2('client/handshake.jpg')}
-                    alt="Contact Us"
-                    fill
-                    className="object-cover object-center opacity-20"
-                    priority
-                    aria-hidden
-                />
-            </div>
-
-            {/* overlay */}
-            <div className="pointer-events-none absolute inset-0 z-1 bg-forest-deep/50" />
-
-            <div className="relative z-2 container grid grid-cols-1 lg:grid-cols-2 gap-16 py-26 px-4 lg:px-0 items-center">
-                <div className="flex flex-col gap-8">
+        <section id="contact" className="bg-tint py-[clamp(72px,9vw,128px)]">
+            <div className="wrap grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-12">
+                <div className="lg:col-span-5">
                     <SectionHeader
-                        eyebrow={t('eyebrow')}
-                        title={t.rich('title', {br: () => <br />})}
-                        description={t.rich('description', {br: () => <br />})}
+                        title={t.rich('title', { br: () => <br /> })}
+                        description={t.rich('description', { br: () => <br /> })}
                     />
-                    <div className="flex flex-col gap-4 pt-2">
-                        {[
-                            { icon: PhoneIcon, value: t('phone') },
-                            { icon: MailIcon,  value: t('email') },
-                            { icon: MapPinIcon, value: t('address') },
-                        ].map(({ icon: Icon, value }) => (
-                            <div key={value} className="flex items-start gap-4">
-                                <div className="size-11 shrink-0 rounded-full border border-gold bg-gold/10 flex items-center justify-center text-gold">
-                                    <Icon size={18} />
-                                </div>
-                                <p className="text-text-secondary leading-relaxed pt-2">{value}</p>
-                            </div>
-                        ))}
+                    <div className="mt-9 flex flex-col border-t border-rule-strong">
+                        <a href={`tel:${phone.replace(/\(0\)|[^+\d]/g, '')}`} className={`${lineCls} tabular-nums`}>{phone}</a>
+                        <a href={`mailto:${email}`} className={lineCls}>{email}</a>
+                        <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`}
+                            target="_blank"
+                            rel="noopener"
+                            className={lineCls}
+                        >
+                            {address}
+                        </a>
                     </div>
                 </div>
-                <ContactForm/>
+                <div className="lg:col-span-6 lg:col-start-7">
+                    <ContactForm />
+                </div>
             </div>
         </section>
     );

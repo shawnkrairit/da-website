@@ -9,21 +9,21 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        // active filter — gold fill
+        // active filter — brand fill
         default:
-          "border-gold bg-gold text-forest-deep hover:bg-gold-light hover:border-gold-light",
-        // inactive filter — outlined gold
+          "border-brand bg-brand text-white hover:bg-brand-hover hover:border-brand-hover",
+        // inactive filter — outlined
         outline:
-          "border-white/8 bg-transparent text-text-secondary hover:border-gold hover:text-gold",
-        // subtle tag — muted gold tint background
+          "border-rule-strong bg-transparent text-ink-soft hover:border-brand hover:text-ink",
+        // subtle tag — tint background
         secondary:
-          "border-transparent bg-gold-muted text-gold hover:bg-gold/20",
+          "border-transparent bg-tint text-ink hover:bg-gold-muted",
         // ghost — no border, hover reveals background
         ghost:
-          "border-transparent text-text-secondary hover:bg-gold-muted hover:text-gold",
+          "border-transparent text-ink-soft hover:bg-tint hover:text-ink",
         destructive:
           "border-transparent bg-red-900/30 text-red-400 hover:bg-red-900/50",
-        link: "border-transparent text-gold underline-offset-4 hover:underline p-0",
+        link: "border-transparent text-ink underline-offset-4 hover:underline p-0",
       },
     },
     defaultVariants: {
